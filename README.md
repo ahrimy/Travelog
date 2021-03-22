@@ -11,5 +11,5 @@
 ## 🗂 Documetation
 - [Wireframe](https://www.figma.com/proto/3Q5JEVhMo3v1nT5wtvyEUB/%EB%AA%A8%EB%B0%94%EC%9D%BCSW%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4?node-id=32%3A0&scaling=min-zoom)
 
-
+### 🔗 [WIKI](https://github.com/ahrimy/Travelog/wiki)
 
