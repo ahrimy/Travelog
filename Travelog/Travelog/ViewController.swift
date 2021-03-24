@@ -9,8 +9,22 @@ import UIKit
 
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    
+    let posts = [
+        PostThumbnail(postId: "1", image: "https://user-images.githubusercontent.com/26592306/112343616-a7d4e680-8d06-11eb-928a-1714f8acc9bd.jpeg"),
+        PostThumbnail(postId:"2",image:"https://user-images.githubusercontent.com/26592306/112343646-ab686d80-8d06-11eb-8d7d-8af1eddd0a74.jpeg"),
+        PostThumbnail(postId: "3", image: "https://user-images.githubusercontent.com/26592306/112343650-ac010400-8d06-11eb-8845-56d5086add38.jpeg"),
+        PostThumbnail(postId: "4", image: "https://user-images.githubusercontent.com/26592306/112343653-ad323100-8d06-11eb-9a10-50a65e6d24b2.jpeg"),
+        PostThumbnail(postId: "5", image: "https://user-images.githubusercontent.com/26592306/112343655-adcac780-8d06-11eb-8e2f-1a28d6bb44ba.jpeg"),
+        PostThumbnail(postId: "6", image: "https://user-images.githubusercontent.com/26592306/112343673-b02d2180-8d06-11eb-9ebd-1949c80ce163.jpeg"),
+        PostThumbnail(postId: "7", image: "https://user-images.githubusercontent.com/26592306/112343684-b28f7b80-8d06-11eb-9804-effc377924fa.jpeg"),
+
+        PostThumbnail(postId: "8", image: "https://user-images.githubusercontent.com/26592306/112343695-b3c0a880-8d06-11eb-9078-8f8a9e56d44e.jpeg"),
+        PostThumbnail(postId: "9", image: "https://user-images.githubusercontent.com/26592306/112343702-b58a6c00-8d06-11eb-8ef9-b43986bc641c.jpeg"),
+
+        PostThumbnail(postId: "10", image: "https://user-images.githubusercontent.com/26592306/112344303-4bbe9200-8d07-11eb-91ea-59f61b86e9d8.jpeg"),
+        ]
+
+
     @IBAction func addAction(_ sender: Any) {
 
     let alert =  UIAlertController(title: "원하는 타이틀", message: "원하는 메세지", preferredStyle: .actionSheet)
@@ -55,19 +69,28 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var collectionView: UICollectionView!
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.numberOfCell
+        return posts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ViewCell
+        
+        cell.postThumbnail = posts[indexPath.row]
+        let url = URL(string:posts[indexPath.row].image)!
+        do{
+            let data = try Data(contentsOf: url)
+            cell.thumbnailImage.image = UIImage(data: data)
+        }catch{
+            print("Error occured")
+        }
         
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.numberOfCell += 1
-        collectionView.reloadData()
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        self.numberOfCell += 1
+//        collectionView.reloadData()
+//    }
     // collection View 기능 추가
     
     
