@@ -19,6 +19,7 @@
 		3E6F507E260B9A4800B22252 /* PostThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F507D260B9A4800B22252 /* PostThumbnail.swift */; };
 		3E6F508B260B9E0800B22252 /* ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F508A260B9E0800B22252 /* ViewCell.swift */; };
 		ACA7BF10260A328F00C108EC /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7BF0F260A328E00C108EC /* SettingViewController.swift */; };
+		ACA7BF23260C82FF00C108EC /* MyProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7BF22260C82FE00C108EC /* MyProfileEditViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		3E6F507D260B9A4800B22252 /* PostThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostThumbnail.swift; sourceTree = "<group>"; };
 		3E6F508A260B9E0800B22252 /* ViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCell.swift; sourceTree = "<group>"; };
 		ACA7BF0F260A328E00C108EC /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		ACA7BF22260C82FE00C108EC /* MyProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileEditViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				3E464D8626088FF700390A0B /* SceneDelegate.swift */,
 				3E464D8826088FF700390A0B /* ViewController.swift */,
 				ACA7BF0F260A328E00C108EC /* SettingViewController.swift */,
+				ACA7BF22260C82FE00C108EC /* MyProfileEditViewController.swift */,
 				3E464D8A26088FF700390A0B /* Main.storyboard */,
 				3E464D9026088FF800390A0B /* Assets.xcassets */,
 				3E464D9226088FF800390A0B /* LaunchScreen.storyboard */,
@@ -270,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACA7BF23260C82FF00C108EC /* MyProfileEditViewController.swift in Sources */,
 				3E6F507E260B9A4800B22252 /* PostThumbnail.swift in Sources */,
 				ACA7BF10260A328F00C108EC /* SettingViewController.swift in Sources */,
 				3E464D8926088FF700390A0B /* ViewController.swift in Sources */,

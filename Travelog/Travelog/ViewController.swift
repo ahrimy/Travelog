@@ -86,10 +86,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 //    }
     // collection View 기능 추가
     
-    
-    @IBOutlet weak var myView: UIView!
-    @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var profileEditButton: UIButton!
+    @IBOutlet weak var myProfileImage: UIImageView!
+    @IBOutlet weak var myProfileEditButton: UIButton!
 
     
     @IBAction func touchUpSelectSettingButton(_sender: UIButton){
@@ -97,9 +95,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         print("Setting button pressed")
     }
     
-    @IBAction func touchUpSelectProfileEditButton(_sender: UIButton){
-        // 프로필 수정 버튼 눌렀을 때 액션
-        print("Edit button pressed")
+    @IBAction func touchUpSelectMyProfileEditButton(_sender: UIButton){
+        // 프로필 id 버튼 눌렀을 때 액션
+        print("My Profile Edit button pressed")
     }
     
     override func viewDidLoad() {
@@ -121,10 +119,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // collectionView 레이아웃 설정
         
         
-        
+        /*
         myView.layer.cornerRadius = 50
         myView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         //View 코너 둥글게
+         */
     }
     
     
