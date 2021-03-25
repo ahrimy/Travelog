@@ -24,47 +24,40 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         PostThumbnail(postId: "10", image: "https://user-images.githubusercontent.com/26592306/112344303-4bbe9200-8d07-11eb-91ea-59f61b86e9d8.jpeg"),
         ]
 
+    
+    
+    @IBAction func CameraButtonAction(_ sender: Any) {
+        
+        let picker = UIImagePickerController()
 
-    @IBAction func addAction(_ sender: Any) {
+        let alert =  UIAlertController(title: "원하는 타이틀", message: "원하는 메세지", preferredStyle: .actionSheet)
+        // 알림 메세지
+        
+        let library =  UIAlertAction(title: "사진앨범", style: .default) { (action) in
+            picker.sourceType = .photoLibrary
+            self.present(picker, animated: false, completion: nil)
+        } // 앨범 열기
+    
 
-    let alert =  UIAlertController(title: "원하는 타이틀", message: "원하는 메세지", preferredStyle: .actionSheet)
+        let camera =  UIAlertAction(title: "카메라", style: .default) { (action) in
+            picker.sourceType = .camera
+            self.present(picker, animated: false, completion: nil)
+        } // 카메라 열기
 
-    let library =  UIAlertAction(title: "사진앨범", style: .default) { (action) in self.openLibrary()
-
-    }
-
-    let camera =  UIAlertAction(title: "카메라", style: .default) { (action) in
-    self.openCamera()
-    }
-
-    let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-    alert.addAction(library)
-    alert.addAction(camera)
-    alert.addAction(cancel)
-    present(alert, animated: true, completion: nil)
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        // 취소
+        alert.addAction(library)
+        alert.addAction(camera)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
 
     }
     
     let picker = UIImagePickerController()
-    
-    func openLibrary(){
-
-      picker.sourceType = .photoLibrary
-
-      present(picker, animated: false, completion: nil)
-
-    }
-
-    func openCamera(){
-
-      picker.sourceType = .camera
-
-      present(picker, animated: false, completion: nil)
-
-    }
 
     
     var numberOfCell: Int = 10
+    // post cell 수
     let cellIdentifier: String = "cell"
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -95,21 +88,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     
     @IBOutlet weak var myView: UIView!
-    @IBOutlet weak var profileImage: UIImage!
-    
-    
-    @IBAction func touchUpSelectCameraButton(_sender: UIButton){
-        // 카메라 버튼 눌렀을 때 액션
-        print("Camera button pressed")
-    }
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var profileEditButton: UIButton!
+
     
     @IBAction func touchUpSelectSettingButton(_sender: UIButton){
         // 설정 버튼 눌렀을 때 액션
         print("Setting button pressed")
     }
     
-    @IBAction func touchUpSelectEditButton(_sender: UIButton){
-        // 설정 버튼 눌렀을 때 액션
+    @IBAction func touchUpSelectProfileEditButton(_sender: UIButton){
+        // 프로필 수정 버튼 눌렀을 때 액션
         print("Edit button pressed")
     }
     

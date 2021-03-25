@@ -70,7 +70,7 @@
                                                     <imageReference key="image" image="edit" symbolScale="large"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="touchUpSelectEditButtonWith_sender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qTC-1G-wTq"/>
+                                                    <action selector="touchUpSelectProfileEditButtonWith_sender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qTC-1G-wTq"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -155,7 +155,7 @@
                         <barButtonItem key="leftBarButtonItem" title="업로드" image="camera.fill" catalog="system" id="TaP-rV-koe">
                             <color key="tintColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="addAction:" destination="BYZ-38-t0r" id="Wg1-Yn-Ebm"/>
+                                <action selector="CameraButtonAction:" destination="BYZ-38-t0r" id="ip1-HN-BII"/>
                             </connections>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="fso-TV-Zhx">
@@ -180,6 +180,8 @@
                     <connections>
                         <outlet property="collectionView" destination="Uvl-2Q-iN6" id="0LM-Py-1fn"/>
                         <outlet property="myView" destination="xgl-Kr-T5K" id="ymm-oY-CVt"/>
+                        <outlet property="profileEditButton" destination="2zY-Hn-0pf" id="wj8-MS-p7w"/>
+                        <outlet property="profileImage" destination="Fjb-9g-F4Q" id="0YC-dt-kBs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
