@@ -8,7 +8,7 @@
 import UIKit
 
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MyPostViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     let posts = [
         PostThumbnail(postId: "1", image: "https://user-images.githubusercontent.com/26592306/112343616-a7d4e680-8d06-11eb-928a-1714f8acc9bd.jpeg"),
         PostThumbnail(postId:"2",image:"https://user-images.githubusercontent.com/26592306/112343646-ab686d80-8d06-11eb-8d7d-8af1eddd0a74.jpeg"),
