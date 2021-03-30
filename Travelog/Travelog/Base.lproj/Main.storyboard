@@ -15,11 +15,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MyPostViewController" customModule="Travelog" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mH5-O1-w4B">
-                                <rect key="frame" x="0.0" y="88" width="390" height="673"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="673"/>
                                 <subviews>
                                     <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Uvl-2Q-iN6">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="673"/>
@@ -63,6 +63,7 @@
                                             <segment title="지도"/>
                                             <segment title="리스트"/>
                                         </segments>
+                                        <color key="tintColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="selectedSegmentTintColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </segmentedControl>
                                 </subviews>
@@ -96,20 +97,35 @@
                     </view>
                     <navigationItem key="navigationItem" id="otN-NW-kx8">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" title="업로드" image="camera.fill" catalog="system" id="TaP-rV-koe">
-                            <color key="tintColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <barButtonItem key="leftBarButtonItem" title="업로드" id="TaP-rV-koe">
+                            <imageReference key="image" image="square.and.pencil" catalog="system" symbolScale="large"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="CameraButtonAction:" destination="BYZ-38-t0r" id="ip1-HN-BII"/>
+                                <segue destination="cCo-zQ-00d" kind="show" id="nCG-xM-BgD"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="설정" id="1tz-fz-6Uk">
-                            <imageReference key="image" image="gearshape.fill" catalog="system" symbolScale="large"/>
-                            <color key="tintColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="touchUpSelectSettingButtonWith_sender:" destination="BYZ-38-t0r" id="LE4-ie-Lz2"/>
-                                <segue destination="EOK-sM-XSu" kind="show" id="0M7-bR-EYM"/>
-                            </connections>
-                        </barButtonItem>
+                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="MyUserName" textAlignment="center" minimumFontSize="17" id="k4j-5h-tdj">
+                            <rect key="frame" x="127" y="5" width="136" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <rightBarButtonItems>
+                            <barButtonItem title="설정" id="1tz-fz-6Uk">
+                                <imageReference key="image" image="gearshape.fill" catalog="system" symbolScale="large"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="touchUpSelectSettingButtonWith_sender:" destination="BYZ-38-t0r" id="LE4-ie-Lz2"/>
+                                    <segue destination="EOK-sM-XSu" kind="show" id="0M7-bR-EYM"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="알림" id="Ik0-I5-nC9">
+                                <imageReference key="image" image="bell" catalog="system" symbolScale="large"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Uvl-2Q-iN6" id="0LM-Py-1fn"/>
@@ -132,18 +148,34 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ya1-ZU-vB5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-303" y="-1171"/>
+            <point key="canvasLocation" x="775" y="-1193"/>
+        </scene>
+        <!--Upload Post View Controller-->
+        <scene sceneID="LjK-t2-gv6">
+            <objects>
+                <viewController id="cCo-zQ-00d" customClass="UploadPostViewController" customModule="Travelog" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RnC-DB-Ogq">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="szz-i5-M8d"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6zY-f8-WmT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BxN-eF-YD8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1255" y="-1944"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="0wd-hj-Ydh">
             <objects>
                 <viewController id="EOK-sM-XSu" customClass="SettingViewController" customModule="Travelog" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5AX-m9-qow">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kBp-pJ-mD0">
-                                <rect key="frame" x="0.0" y="88" width="390" height="673"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -160,7 +192,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sUU-OU-OmR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-303" y="-1944"/>
+            <point key="canvasLocation" x="-165" y="-1944"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lCc-ai-wAe">
@@ -225,9 +257,10 @@
                     <tabBarItem key="tabBarItem" title="" id="Yhk-eG-Ioa">
                         <imageReference key="image" image="person.fill" catalog="system" symbolScale="large"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gwh-Oy-Fyp">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Gwh-Oy-Fyp">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.30588235294117649" green="0.16078431372549018" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="yB8-8u-uZY"/>
@@ -310,11 +343,12 @@
     </scenes>
     <color key="tintColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
-        <image name="camera.fill" catalog="system" width="128" height="94"/>
+        <image name="bell" catalog="system" width="128" height="124"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="rectangle.split.2x2.fill" catalog="system" width="128" height="93"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
