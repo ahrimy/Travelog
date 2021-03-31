@@ -8,11 +8,19 @@
 import UIKit
 
 class UploadPostViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.tabBarController?.tabBar.isHidden = true
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor(red: 0.85, green: 0.72, blue: 0.76, alpha: 1.00)], for: .normal)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = false
     }
     
 
@@ -25,8 +33,4 @@ class UploadPostViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-    @IBAction func closeUploadPostView(_ sender: Any) {
-        self.dismiss(animated: true)
-    }
 }
