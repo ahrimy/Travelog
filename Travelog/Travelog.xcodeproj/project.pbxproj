@@ -24,6 +24,8 @@
 		3E7F919626124A3800B319E8 /* AllPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F919526124A3800B319E8 /* AllPostViewController.swift */; };
 		ACA7BF10260A328F00C108EC /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7BF0F260A328E00C108EC /* SettingViewController.swift */; };
 		ACA7BF23260C82FF00C108EC /* MyProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7BF22260C82FE00C108EC /* MyProfileEditViewController.swift */; };
+		ACA7BF362613761F00C108EC /* MyPostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7BF352613761F00C108EC /* MyPostListViewController.swift */; };
+		ACA7BF3E2613767800C108EC /* MyPostMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7BF3D2613767800C108EC /* MyPostMapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		3E7F919526124A3800B319E8 /* AllPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostViewController.swift; sourceTree = "<group>"; };
 		ACA7BF0F260A328E00C108EC /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		ACA7BF22260C82FE00C108EC /* MyProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileEditViewController.swift; sourceTree = "<group>"; };
+		ACA7BF352613761F00C108EC /* MyPostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostListViewController.swift; sourceTree = "<group>"; };
+		ACA7BF3D2613767800C108EC /* MyPostMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,8 @@
 				3E464D8426088FF700390A0B /* AppDelegate.swift */,
 				3E464D8626088FF700390A0B /* SceneDelegate.swift */,
 				3E464D8826088FF700390A0B /* MyPostViewController.swift */,
+				ACA7BF352613761F00C108EC /* MyPostListViewController.swift */,
+				ACA7BF3D2613767800C108EC /* MyPostMapViewController.swift */,
 				ACA7BF0F260A328E00C108EC /* SettingViewController.swift */,
 				ACA7BF22260C82FE00C108EC /* MyProfileEditViewController.swift */,
 				3E464D8A26088FF700390A0B /* Main.storyboard */,
@@ -285,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACA7BF362613761F00C108EC /* MyPostListViewController.swift in Sources */,
 				3E7F918C26124A1800B319E8 /* SearchViewController.swift in Sources */,
 				ACA7BF23260C82FF00C108EC /* MyProfileEditViewController.swift in Sources */,
 				3E6F507E260B9A4800B22252 /* PostThumbnail.swift in Sources */,
@@ -297,6 +304,7 @@
 				3E6F508B260B9E0800B22252 /* ViewCell.swift in Sources */,
 				3E464D8526088FF700390A0B /* AppDelegate.swift in Sources */,
 				3E464D8726088FF700390A0B /* SceneDelegate.swift in Sources */,
+				ACA7BF3E2613767800C108EC /* MyPostMapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
