@@ -101,8 +101,7 @@
                             <imageReference key="image" image="square.and.pencil" catalog="system" symbolScale="large"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="CameraButtonAction:" destination="BYZ-38-t0r" id="ip1-HN-BII"/>
-                                <segue destination="cCo-zQ-00d" kind="show" id="nCG-xM-BgD"/>
+                                <segue destination="v7P-kg-Zqm" kind="show" id="OLh-M2-v5F"/>
                             </connections>
                         </barButtonItem>
                         <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="MyUserName" textAlignment="center" minimumFontSize="17" id="k4j-5h-tdj">
@@ -150,16 +149,34 @@
             </objects>
             <point key="canvasLocation" x="775" y="-1193"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MJM-R2-NNt">
+            <objects>
+                <navigationController id="v7P-kg-Zqm" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="kgf-NF-pWU"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hoz-y9-x2c">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cCo-zQ-00d" kind="relationship" relationship="rootViewController" id="n9h-rM-fWZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z1n-5p-t16" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-655" y="-1929"/>
+        </scene>
         <!--Upload Post View Controller-->
         <scene sceneID="LjK-t2-gv6">
             <objects>
                 <viewController id="cCo-zQ-00d" customClass="UploadPostViewController" customModule="Travelog" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RnC-DB-Ogq">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1r6-UH-4vH">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="350"/>
+                                <rect key="frame" x="0.0" y="88" width="390" height="350"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Add Photos" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hhF-0O-tx0">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
@@ -191,21 +208,20 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Add Location" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kkf-ib-BvP">
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zug-Os-sru">
                                         <rect key="frame" x="0.0" y="300" width="390" height="50"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="kfP-Zi-QDt"/>
+                                            <constraint firstAttribute="height" constant="50" id="s9T-1g-2OG"/>
                                         </constraints>
-                                        <color key="textColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                        <connections>
+                                            <segue destination="TPS-GL-x1h" kind="embed" id="Reh-yL-hRO"/>
+                                        </connections>
+                                    </containerView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                             </stackView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GLm-Rt-mLM">
-                                <rect key="frame" x="19" y="363" width="125" height="32"/>
+                                <rect key="frame" x="16" y="574" width="125" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <segments>
@@ -228,6 +244,9 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="ZWO-x8-zyr">
                             <imageReference key="image" image="xmark" catalog="system" symbolScale="large"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="closeUploadPostView:" destination="cCo-zQ-00d" id="txB-o8-ndv"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Upload" id="DGy-ON-5Te">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -236,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BxN-eF-YD8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-575" y="-1929"/>
+            <point key="canvasLocation" x="60" y="-1929"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="0wd-hj-Ydh">
@@ -412,10 +431,56 @@
             </objects>
             <point key="canvasLocation" x="-1255" y="914"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="w93-eP-6Yd">
+            <objects>
+                <viewController id="lnb-vK-IpB" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YEN-PV-Kmj">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ozw-Xj-Jl8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1211" y="-1911"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="pz5-ui-Xzs">
+            <objects>
+                <viewController id="TPS-GL-x1h" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="k1M-i8-1D3">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" text="Add Location" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kkf-ib-BvP">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="kfP-Zi-QDt"/>
+                                </constraints>
+                                <color key="textColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FcF-D0-zVF">
+                                <rect key="frame" x="361" y="14" width="13" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="chevron.right" catalog="system"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PNZ-2H-p3Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-392" y="-2352"/>
+        </scene>
     </scenes>
     <color key="tintColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
         <image name="bell" catalog="system" width="128" height="124"/>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>

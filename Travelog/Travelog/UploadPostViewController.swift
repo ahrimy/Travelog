@@ -26,4 +26,7 @@ class UploadPostViewController: UIViewController {
     }
     */
 
+    @IBAction func closeUploadPostView(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
 }
