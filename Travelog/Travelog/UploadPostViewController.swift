@@ -21,6 +21,7 @@ class UploadPostViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor :        UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)], for: .normal)
     }
     
 
