@@ -8,11 +8,24 @@
 import UIKit
 
 class StarredPostViewController: UIViewController {
+    
+    @IBOutlet weak var StarredPostMapView: UIView!
+    @IBOutlet weak var StarredPostListView: UIView!
+    
+    @IBAction func SelectedSegmentedControl(_sender: UISegmentedControl){
+        if _sender.selectedSegmentIndex == 0 {
+            StarredPostMapView.alpha = 1
+            StarredPostListView.alpha = 0
+        } else {
+            StarredPostMapView.alpha = 0
+            StarredPostListView.alpha = 1
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
     }
     
 
