@@ -125,15 +125,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbB-7n-Rkx">
-                                <rect key="frame" x="30" y="10" width="330" height="23"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="plus.rectangle.fill.on.folder.fill" catalog="system" symbolScale="large"/>
-                                </state>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Gl-Io-aob">
-                                <rect key="frame" x="30" y="43" width="330" height="22"/>
+                                <rect key="frame" x="30" y="380" width="330" height="22"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위치 추가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmS-v4-Vg7">
                                         <rect key="frame" x="0.0" y="0.0" width="308" height="22"/>
@@ -141,7 +134,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="zeq-nY-a41"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
@@ -157,22 +150,12 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="글을 입력하세요" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lNr-pI-Fxe">
-                                <rect key="frame" x="30" y="75" width="330" height="130"/>
-                                <color key="backgroundColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="L4B-xg-MxU"/>
-                                </constraints>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GLm-Rt-mLM">
-                                <rect key="frame" x="20" y="215" width="100" height="31"/>
+                                <rect key="frame" x="30" y="552" width="130" height="31"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="MN6-F2-ozm"/>
-                                    <constraint firstAttribute="width" constant="100" id="gOC-RI-RQb"/>
+                                    <constraint firstAttribute="width" constant="130" id="ai9-HU-jZk"/>
                                 </constraints>
                                 <segments>
                                     <segment title="Public"/>
@@ -180,25 +163,43 @@
                                 </segments>
                                 <color key="selectedSegmentTintColor" red="0.85098039219999999" green="0.72156862749999995" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="글을 입력하세요" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lNr-pI-Fxe">
+                                <rect key="frame" x="30" y="412" width="330" height="130"/>
+                                <color key="backgroundColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="L4B-xg-MxU"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.on.rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rKo-3s-SHo">
+                                <rect key="frame" x="20" y="10.333333333333343" width="350" height="349.33333333333331"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="5wg-gr-3gG"/>
+                                    <constraint firstAttribute="height" constant="350" id="FMg-rU-1Ri"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="XFV-BT-SD7" appends="YES" id="cCb-RU-WoI"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="szz-i5-M8d"/>
                         <color key="backgroundColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="2Gl-Io-aob" firstAttribute="top" secondItem="fbB-7n-Rkx" secondAttribute="bottom" constant="10" id="0yH-5D-mG5"/>
-                            <constraint firstItem="fbB-7n-Rkx" firstAttribute="leading" secondItem="szz-i5-M8d" secondAttribute="leading" constant="30" id="4za-qr-ClU"/>
-                            <constraint firstItem="lNr-pI-Fxe" firstAttribute="centerX" secondItem="RnC-DB-Ogq" secondAttribute="centerX" id="7IU-ou-b8d"/>
                             <constraint firstItem="lNr-pI-Fxe" firstAttribute="top" secondItem="2Gl-Io-aob" secondAttribute="bottom" constant="10" id="MH7-gx-VFl"/>
+                            <constraint firstItem="rKo-3s-SHo" firstAttribute="centerX" secondItem="RnC-DB-Ogq" secondAttribute="centerX" id="OV4-U6-Cbl"/>
                             <constraint firstItem="szz-i5-M8d" firstAttribute="trailing" secondItem="2Gl-Io-aob" secondAttribute="trailing" constant="30" id="W2m-Ls-ivb"/>
                             <constraint firstItem="GLm-Rt-mLM" firstAttribute="leading" secondItem="szz-i5-M8d" secondAttribute="leading" constant="30" id="WCk-oF-kRy"/>
                             <constraint firstItem="2Gl-Io-aob" firstAttribute="leading" secondItem="szz-i5-M8d" secondAttribute="leading" constant="30" id="Xsa-dU-jYO"/>
                             <constraint firstItem="GLm-Rt-mLM" firstAttribute="top" secondItem="lNr-pI-Fxe" secondAttribute="bottom" constant="10" id="e25-sG-FzF"/>
-                            <constraint firstItem="GLm-Rt-mLM" firstAttribute="leading" secondItem="szz-i5-M8d" secondAttribute="leading" constant="20" id="haM-rC-esg"/>
-                            <constraint firstItem="fbB-7n-Rkx" firstAttribute="top" secondItem="szz-i5-M8d" secondAttribute="top" constant="10" id="hoT-6t-isv"/>
+                            <constraint firstItem="2Gl-Io-aob" firstAttribute="top" secondItem="rKo-3s-SHo" secondAttribute="bottom" constant="20" id="i8m-NA-FDu"/>
                             <constraint firstItem="szz-i5-M8d" firstAttribute="trailing" secondItem="lNr-pI-Fxe" secondAttribute="trailing" constant="30" id="lYZ-yX-Od8"/>
-                            <constraint firstItem="szz-i5-M8d" firstAttribute="trailing" secondItem="fbB-7n-Rkx" secondAttribute="trailing" constant="30" id="tSS-vi-Hd0"/>
                             <constraint firstItem="lNr-pI-Fxe" firstAttribute="leading" secondItem="szz-i5-M8d" secondAttribute="leading" constant="30" id="tUr-Sl-PNi"/>
-                            <constraint firstItem="fbB-7n-Rkx" firstAttribute="centerX" secondItem="RnC-DB-Ogq" secondAttribute="centerX" id="zWK-bu-m0y"/>
+                            <constraint firstItem="rKo-3s-SHo" firstAttribute="top" secondItem="szz-i5-M8d" secondAttribute="top" constant="10" id="ube-w0-hcQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6zY-f8-WmT">
@@ -206,8 +207,17 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="publicPrivateSegmentedControl" destination="GLm-Rt-mLM" id="WSR-a2-Cvl"/>
+                        <outlet property="selectedPhoto" destination="rKo-3s-SHo" id="d2p-ve-Tg3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BxN-eF-YD8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="XFV-BT-SD7">
+                    <connections>
+                        <action selector="didTapImageView:" destination="cCo-zQ-00d" id="Tbp-WS-rdL"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="561.53846153846155" y="-1893.1279620853079"/>
         </scene>
@@ -514,6 +524,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="8WB-5i-yzw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
@@ -602,6 +613,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="r7v-qY-3H3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
@@ -617,7 +629,7 @@
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
-        <image name="plus.rectangle.fill.on.folder.fill" catalog="system" width="128" height="96"/>
+        <image name="photo.on.rectangle" catalog="system" width="128" height="96"/>
         <image name="rectangle.split.2x2.fill" catalog="system" width="128" height="93"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>

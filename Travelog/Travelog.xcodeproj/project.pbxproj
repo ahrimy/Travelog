@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3E0EAD5A2613170A009D8790 /* UploadPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0EAD592613170A009D8790 /* UploadPostViewController.swift */; };
 		3E464D8526088FF700390A0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E464D8426088FF700390A0B /* AppDelegate.swift */; };
 		3E464D8726088FF700390A0B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E464D8626088FF700390A0B /* SceneDelegate.swift */; };
 		3E464D8926088FF700390A0B /* MyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E464D8826088FF700390A0B /* MyPostViewController.swift */; };
@@ -19,6 +18,7 @@
 		3E464DAA26088FF800390A0B /* TravelogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E464DA926088FF800390A0B /* TravelogUITests.swift */; };
 		3E6F507E260B9A4800B22252 /* PostThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F507D260B9A4800B22252 /* PostThumbnail.swift */; };
 		3E6F508B260B9E0800B22252 /* ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F508A260B9E0800B22252 /* ViewCell.swift */; };
+		3E74B9D0261C61BF00AE1CB6 /* UploadPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E74B9CF261C61BF00AE1CB6 /* UploadPostViewController.swift */; };
 		3E7F918C26124A1800B319E8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F918B26124A1800B319E8 /* SearchViewController.swift */; };
 		3E7F919126124A2D00B319E8 /* StarredPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F919026124A2D00B319E8 /* StarredPostViewController.swift */; };
 		3E7F919626124A3800B319E8 /* AllPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F919526124A3800B319E8 /* AllPostViewController.swift */; };
@@ -48,7 +48,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3E0EAD592613170A009D8790 /* UploadPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostViewController.swift; sourceTree = "<group>"; };
 		3E464D8126088FF600390A0B /* Travelog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travelog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E464D8426088FF700390A0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E464D8626088FF700390A0B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +65,7 @@
 		3E464DAB26088FF800390A0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E6F507D260B9A4800B22252 /* PostThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostThumbnail.swift; sourceTree = "<group>"; };
 		3E6F508A260B9E0800B22252 /* ViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCell.swift; sourceTree = "<group>"; };
+		3E74B9CF261C61BF00AE1CB6 /* UploadPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostViewController.swift; sourceTree = "<group>"; };
 		3E7F918B26124A1800B319E8 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3E7F919026124A2D00B319E8 /* StarredPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredPostViewController.swift; sourceTree = "<group>"; };
 		3E7F919526124A3800B319E8 /* AllPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +127,7 @@
 			children = (
 				3E7F919526124A3800B319E8 /* AllPostViewController.swift */,
 				3E7F919026124A2D00B319E8 /* StarredPostViewController.swift */,
+				3E74B9CF261C61BF00AE1CB6 /* UploadPostViewController.swift */,
 				3E7F918B26124A1800B319E8 /* SearchViewController.swift */,
 				3E464D8426088FF700390A0B /* AppDelegate.swift */,
 				3E464D8626088FF700390A0B /* SceneDelegate.swift */,
@@ -144,7 +145,6 @@
 				3E464D8D26088FF700390A0B /* Travelog.xcdatamodeld */,
 				3E6F507D260B9A4800B22252 /* PostThumbnail.swift */,
 				3E6F508A260B9E0800B22252 /* ViewCell.swift */,
-				3E0EAD592613170A009D8790 /* UploadPostViewController.swift */,
 			);
 			path = Travelog;
 			sourceTree = "<group>";
@@ -300,10 +300,10 @@
 				ACA7BF362613761F00C108EC /* MyPostListViewController.swift in Sources */,
 				ACE90859261B7F160087F6AA /* StarredPostMapViewController.swift in Sources */,
 				3E7F918C26124A1800B319E8 /* SearchViewController.swift in Sources */,
+				3E74B9D0261C61BF00AE1CB6 /* UploadPostViewController.swift in Sources */,
 				ACA7BF23260C82FF00C108EC /* MyProfileEditViewController.swift in Sources */,
 				ACE9085E261B7F8D0087F6AA /* StarredPostListViewController.swift in Sources */,
 				3E6F507E260B9A4800B22252 /* PostThumbnail.swift in Sources */,
-				3E0EAD5A2613170A009D8790 /* UploadPostViewController.swift in Sources */,
 				ACA7BF10260A328F00C108EC /* SettingViewController.swift in Sources */,
 				3E7F919626124A3800B319E8 /* AllPostViewController.swift in Sources */,
 				3E464D8926088FF700390A0B /* MyPostViewController.swift in Sources */,
