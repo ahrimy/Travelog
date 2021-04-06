@@ -10,7 +10,7 @@ import MapKit
 
 class MyPostMapViewController: UIViewController, CLLocationManagerDelegate {
     
-    @IBOutlet weak var PostMap: MKMapView!
+    @IBOutlet weak var MyPostMap: MKMapView!
     let locationManager = CLLocationManager()
     
 /*
@@ -79,7 +79,7 @@ class MyPostMapViewController: UIViewController, CLLocationManagerDelegate {
         // 위치 업데이트를 시작
         locationManager.startUpdatingLocation()
         // 위치 보기 설정
-        PostMap.showsUserLocation = true
+        MyPostMap.showsUserLocation = true
 
         // Do any additional setup after loading the view.
     }
