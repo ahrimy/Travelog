@@ -82,7 +82,6 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
         picker.delegate = self
- 
         
         /*
         myView.layer.cornerRadius = 50

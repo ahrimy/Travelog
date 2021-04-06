@@ -203,6 +203,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6zY-f8-WmT">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="xmark" catalog="system" id="cQS-2o-yyu">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="cancelUpload:" destination="cCo-zQ-00d" id="4KB-Et-pkl"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Upload" id="DGy-ON-5Te">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>

@@ -25,6 +25,8 @@ class UploadPostViewController: UIViewController,PHPickerViewControllerDelegate 
         }
     }
     
+//    @IBOutlet weak var closeButton: UIBarButtonItem!
+    
     
     // MARK: - View Life Cycle
     
@@ -51,6 +53,10 @@ class UploadPostViewController: UIViewController,PHPickerViewControllerDelegate 
         
         picker.delegate = self
         self.present(picker, animated: true, completion: nil)
+    }
+    
+    @IBAction func cancelUpload(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Methods
