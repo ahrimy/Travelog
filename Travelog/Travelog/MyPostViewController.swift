@@ -50,7 +50,8 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBOutlet weak var myProfileImage: UIImageView!
     @IBOutlet weak var myProfileEditButton: UIButton!
-
+    @IBOutlet weak var mapListSegmentedControl: UISegmentedControl!
+    
     
     @IBAction func touchUpSelectSettingButton(_sender: UIButton){
         // 설정 버튼 눌렀을 때 액션
@@ -80,7 +81,8 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
+        mapListSegmentedControl.setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
+        mapListSegmentedControl.setTitleTextAttributes([.foregroundColor :        UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)], for: .normal)
         picker.delegate = self
         
         /*

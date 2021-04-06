@@ -96,6 +96,7 @@
                     <connections>
                         <outlet property="MyPostListView" destination="2wa-e7-FtS" id="DB7-U3-JIa"/>
                         <outlet property="MyPostMapView" destination="40I-a1-TdQ" id="kzV-QE-X1C"/>
+                        <outlet property="mapListSegmentedControl" destination="2aD-38-Ny5" id="Jpx-aQ-9Wv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
