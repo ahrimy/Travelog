@@ -132,6 +132,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="위치 추가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmS-v4-Vg7">
                                         <rect key="frame" x="0.0" y="0.0" width="308" height="22"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="zeq-nY-a41"/>
                                         </constraints>
@@ -148,6 +149,9 @@
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="chevron.forward" catalog="system"/>
+                                        <connections>
+                                            <segue destination="yNT-vv-NWH" kind="presentation" id="Dct-Yn-J6l"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -217,16 +221,97 @@
                     <connections>
                         <outlet property="publicPrivateSegmentedControl" destination="GLm-Rt-mLM" id="WSR-a2-Cvl"/>
                         <outlet property="selectedPhoto" destination="rKo-3s-SHo" id="d2p-ve-Tg3"/>
+                        <outlet property="setLocationLabel" destination="wmS-v4-Vg7" id="jje-ac-zRQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BxN-eF-YD8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="XFV-BT-SD7">
                     <connections>
-                        <action selector="didTapImageView:" destination="cCo-zQ-00d" id="Tbp-WS-rdL"/>
+                        <action selector="didTapImageView:" destination="cCo-zQ-00d" id="4rl-1v-TP8"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="561.53846153846155" y="-1893.1279620853079"/>
+        </scene>
+        <!--Location Search View Controller-->
+        <scene sceneID="vQ2-Xs-mdY">
+            <objects>
+                <viewController storyboardIdentifier="LocationSearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yNT-vv-NWH" customClass="LocationSearchViewController" customModule="Travelog" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h01-VW-NQA">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2hl-5y-5Db">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NrL-Ux-gMm">
+                                <rect key="frame" x="0.0" y="56" width="390" height="700"/>
+                                <color key="backgroundColor" red="0.30588235294117649" green="0.16078431372549018" blue="0.35686274509803922" alpha="0.48421271115738823" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationSearchResultCell" id="06L-Bq-kXO" customClass="LocationSearchTableViewCell" customModule="Travelog" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="390" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="06L-Bq-kXO" id="6el-jz-jOt">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TextLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3v7-UO-Zk4">
+                                                    <rect key="frame" x="10" y="3" width="370" height="21"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DetailTextLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Yv-oT-YkW">
+                                                    <rect key="frame" x="10" y="22.666666666666668" width="370" height="18.000000000000004"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7Yv-oT-YkW" firstAttribute="leading" secondItem="6el-jz-jOt" secondAttribute="leading" constant="10" id="5m4-fO-CbV"/>
+                                                <constraint firstAttribute="trailing" secondItem="3v7-UO-Zk4" secondAttribute="trailing" constant="10" id="PE1-oJ-O3b"/>
+                                                <constraint firstAttribute="bottom" secondItem="7Yv-oT-YkW" secondAttribute="bottom" constant="3" id="cwb-Ui-AVh"/>
+                                                <constraint firstAttribute="trailing" secondItem="7Yv-oT-YkW" secondAttribute="trailing" constant="10" id="dDh-pm-Wqo"/>
+                                                <constraint firstItem="3v7-UO-Zk4" firstAttribute="top" secondItem="6el-jz-jOt" secondAttribute="top" constant="3" id="gbA-57-AfM"/>
+                                                <constraint firstItem="3v7-UO-Zk4" firstAttribute="leading" secondItem="6el-jz-jOt" secondAttribute="leading" constant="10" id="yLP-AC-Ob2"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.30588235294117649" green="0.16078431372549018" blue="0.35686274509803922" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="subTitleLabel" destination="7Yv-oT-YkW" id="JZv-N1-npv"/>
+                                            <outlet property="titleLabel" destination="3v7-UO-Zk4" id="Wh4-0i-Xq1"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gqg-at-g1s"/>
+                        <color key="backgroundColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="2hl-5y-5Db" firstAttribute="leading" secondItem="gqg-at-g1s" secondAttribute="leading" id="7kZ-ht-BSZ"/>
+                            <constraint firstItem="2hl-5y-5Db" firstAttribute="top" secondItem="gqg-at-g1s" secondAttribute="top" id="8QV-gT-iQh"/>
+                            <constraint firstItem="NrL-Ux-gMm" firstAttribute="leading" secondItem="gqg-at-g1s" secondAttribute="leading" id="USs-xd-2XQ"/>
+                            <constraint firstItem="NrL-Ux-gMm" firstAttribute="top" secondItem="2hl-5y-5Db" secondAttribute="bottom" id="UsQ-Rg-xfk"/>
+                            <constraint firstItem="NrL-Ux-gMm" firstAttribute="bottom" secondItem="gqg-at-g1s" secondAttribute="bottom" id="awT-vv-V0j"/>
+                            <constraint firstItem="2hl-5y-5Db" firstAttribute="trailing" secondItem="gqg-at-g1s" secondAttribute="trailing" id="bgJ-pq-dW7"/>
+                            <constraint firstItem="NrL-Ux-gMm" firstAttribute="trailing" secondItem="gqg-at-g1s" secondAttribute="trailing" id="jOn-2S-JdI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="2hl-5y-5Db" id="lPr-Uz-r1G"/>
+                        <outlet property="searchResultsTable" destination="NrL-Ux-gMm" id="WFn-27-UKB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YuH-Ow-Wf4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="561.53846153846155" y="-2567.7725118483413"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="0wd-hj-Ydh">

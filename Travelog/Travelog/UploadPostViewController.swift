@@ -8,10 +8,13 @@
 import UIKit
 import PhotosUI
 
-class UploadPostViewController: UIViewController,PHPickerViewControllerDelegate {
+class UploadPostViewController: UIViewController,PHPickerViewControllerDelegate, LocationSearchViewControllerDelegate {
     
     // MARK: - Properties
     
+    let locationSearchViewController = LocationSearchViewController()
+    
+    @IBOutlet weak var setLocationLabel: UILabel!
     @IBOutlet weak var selectedPhoto: UIImageView!{
         didSet {
             selectedPhoto.isUserInteractionEnabled = true
@@ -41,6 +44,12 @@ class UploadPostViewController: UIViewController,PHPickerViewControllerDelegate 
         super.viewWillDisappear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let locationSearchViewController = segue.destination as? LocationSearchViewController {
+            locationSearchViewController.delegate = self
+        }
     }
     
     // MARK: - Actions
@@ -76,6 +85,11 @@ class UploadPostViewController: UIViewController,PHPickerViewControllerDelegate 
             // TODO: Handle empty results or item provider not being able load UIImage
         }
     }
+    
+    func setLocation(location: String) {
+        setLocationLabel.text = location
+    }
+    
     
     /*
      // MARK: - Navigation

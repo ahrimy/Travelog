@@ -22,6 +22,8 @@
 		3E7F918C26124A1800B319E8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F918B26124A1800B319E8 /* SearchViewController.swift */; };
 		3E7F919126124A2D00B319E8 /* StarredPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F919026124A2D00B319E8 /* StarredPostViewController.swift */; };
 		3E7F919626124A3800B319E8 /* AllPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F919526124A3800B319E8 /* AllPostViewController.swift */; };
+		3EC3A4F8261DD1D2004BA4FF /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC3A4F7261DD1D2004BA4FF /* LocationSearchViewController.swift */; };
+		3EC3A4FD261E1461004BA4FF /* LocationSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC3A4FC261E1461004BA4FF /* LocationSearchTableViewCell.swift */; };
 		ACA7BF10260A328F00C108EC /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7BF0F260A328E00C108EC /* SettingViewController.swift */; };
 		ACA7BF23260C82FF00C108EC /* MyProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7BF22260C82FE00C108EC /* MyProfileEditViewController.swift */; };
 		ACA7BF362613761F00C108EC /* MyPostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7BF352613761F00C108EC /* MyPostListViewController.swift */; };
@@ -69,6 +71,8 @@
 		3E7F918B26124A1800B319E8 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3E7F919026124A2D00B319E8 /* StarredPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredPostViewController.swift; sourceTree = "<group>"; };
 		3E7F919526124A3800B319E8 /* AllPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostViewController.swift; sourceTree = "<group>"; };
+		3EC3A4F7261DD1D2004BA4FF /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
+		3EC3A4FC261E1461004BA4FF /* LocationSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewCell.swift; sourceTree = "<group>"; };
 		ACA7BF0F260A328E00C108EC /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		ACA7BF22260C82FE00C108EC /* MyProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileEditViewController.swift; sourceTree = "<group>"; };
 		ACA7BF352613761F00C108EC /* MyPostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostListViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 				3E464D8D26088FF700390A0B /* Travelog.xcdatamodeld */,
 				3E6F507D260B9A4800B22252 /* PostThumbnail.swift */,
 				3E6F508A260B9E0800B22252 /* ViewCell.swift */,
+				3EC3A4F7261DD1D2004BA4FF /* LocationSearchViewController.swift */,
+				3EC3A4FC261E1461004BA4FF /* LocationSearchTableViewCell.swift */,
 			);
 			path = Travelog;
 			sourceTree = "<group>";
@@ -305,12 +311,14 @@
 				ACE9085E261B7F8D0087F6AA /* StarredPostListViewController.swift in Sources */,
 				3E6F507E260B9A4800B22252 /* PostThumbnail.swift in Sources */,
 				ACA7BF10260A328F00C108EC /* SettingViewController.swift in Sources */,
+				3EC3A4FD261E1461004BA4FF /* LocationSearchTableViewCell.swift in Sources */,
 				3E7F919626124A3800B319E8 /* AllPostViewController.swift in Sources */,
 				3E464D8926088FF700390A0B /* MyPostViewController.swift in Sources */,
 				3E7F919126124A2D00B319E8 /* StarredPostViewController.swift in Sources */,
 				3E464D8F26088FF700390A0B /* Travelog.xcdatamodeld in Sources */,
 				3E6F508B260B9E0800B22252 /* ViewCell.swift in Sources */,
 				3E464D8526088FF700390A0B /* AppDelegate.swift in Sources */,
+				3EC3A4F8261DD1D2004BA4FF /* LocationSearchViewController.swift in Sources */,
 				3E464D8726088FF700390A0B /* SceneDelegate.swift in Sources */,
 				ACA7BF3E2613767800C108EC /* MyPostMapViewController.swift in Sources */,
 			);
