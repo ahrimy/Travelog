@@ -425,7 +425,7 @@
         <scene sceneID="u7b-3v-UHt">
             <objects>
                 <viewController id="naz-id-V5s" customClass="AllPostViewController" customModule="Travelog" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0vP-5l-8hP">
+                    <view key="view" contentMode="scaleToFill" id="0vP-5l-8hP" customClass="StarredPostListViewCon">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="PTa-Yt-qbb"/>
@@ -566,7 +566,7 @@
         <image name="rectangle.split.2x2.fill" catalog="system" width="128" height="93"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
-        <image name="xmark" catalog="system" width="128" height="113"/>
+        <image name="xmark" catalog="system" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
