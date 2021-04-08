@@ -141,7 +141,6 @@
 		3E464D8326088FF600390A0B /* Travelog */ = {
 			isa = PBXGroup;
 			children = (
-				3E74B9CF261C61BF00AE1CB6 /* UploadPostViewController.swift */,
 				4395B4FC261DE30A00E0C54D /* Config */,
 				4395B4FB261DE2C700E0C54D /* Main */,
 				3E464D8A26088FF700390A0B /* Main.storyboard */,
@@ -175,6 +174,7 @@
 		3EC3A528261E9A0F004BA4FF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3E74B9CF261C61BF00AE1CB6 /* UploadPostViewController.swift */,
 				ACA7BF0F260A328E00C108EC /* SettingViewController.swift */,
 				3E464D8826088FF700390A0B /* MyPostViewController.swift */,
 				ACA7BF352613761F00C108EC /* MyPostListViewController.swift */,
