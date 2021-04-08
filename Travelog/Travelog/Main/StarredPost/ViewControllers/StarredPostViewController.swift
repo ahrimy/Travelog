@@ -25,6 +25,8 @@ class StarredPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.isNavigationBarHidden = true
+        view.insetsLayoutMarginsFromSafeArea = false
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
     }
     
