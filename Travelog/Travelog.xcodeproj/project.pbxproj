@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E0FE1D72625E2D3004E93E7 /* AddButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0FE1D62625E2D3004E93E7 /* AddButtonCollectionViewCell.swift */; };
+		3E1322A92624639800D52C7D /* SelectedPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1322A82624639800D52C7D /* SelectedPhotoViewController.swift */; };
+		3E1322AE262467CF00D52C7D /* SelectedPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1322AD262467CF00D52C7D /* SelectedPhotoCollectionViewCell.swift */; };
 		3E464D8526088FF700390A0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E464D8426088FF700390A0B /* AppDelegate.swift */; };
 		3E464D8726088FF700390A0B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E464D8626088FF700390A0B /* SceneDelegate.swift */; };
 		3E464D8926088FF700390A0B /* MyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E464D8826088FF700390A0B /* MyPostViewController.swift */; };
@@ -56,6 +59,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E0FE1D62625E2D3004E93E7 /* AddButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButtonCollectionViewCell.swift; sourceTree = "<group>"; };
+		3E1322A82624639800D52C7D /* SelectedPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedPhotoViewController.swift; sourceTree = "<group>"; };
+		3E1322AD262467CF00D52C7D /* SelectedPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E464D8126088FF600390A0B /* Travelog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travelog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E464D8426088FF700390A0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E464D8626088FF700390A0B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +183,7 @@
 				3E74B9CF261C61BF00AE1CB6 /* UploadPostViewController.swift */,
 				ACA7BF0F260A328E00C108EC /* SettingViewController.swift */,
 				3E464D8826088FF700390A0B /* MyPostViewController.swift */,
+				3E1322A82624639800D52C7D /* SelectedPhotoViewController.swift */,
 				ACA7BF352613761F00C108EC /* MyPostListViewController.swift */,
 				ACA7BF3D2613767800C108EC /* MyPostMapViewController.swift */,
 				3EC3A4F7261DD1D2004BA4FF /* LocationSearchViewController.swift */,
@@ -190,6 +197,8 @@
 			children = (
 				3EC3A4FC261E1461004BA4FF /* LocationSearchTableViewCell.swift */,
 				3E6F508A260B9E0800B22252 /* ViewCell.swift */,
+				3E0FE1D62625E2D3004E93E7 /* AddButtonCollectionViewCell.swift */,
+				3E1322AD262467CF00D52C7D /* SelectedPhotoCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -476,6 +485,7 @@
 				ACE90875261C31D70087F6AA /* Bundle-Decodable.swift in Sources */,
 				3E6F507E260B9A4800B22252 /* PostThumbnail.swift in Sources */,
 				ACA7BF10260A328F00C108EC /* SettingViewController.swift in Sources */,
+				3E0FE1D72625E2D3004E93E7 /* AddButtonCollectionViewCell.swift in Sources */,
 				3EC3A4FD261E1461004BA4FF /* LocationSearchTableViewCell.swift in Sources */,
 				AC54C5B3261D6EED0020980D /* StarredPostListCell.swift in Sources */,
 				3E7F919626124A3800B319E8 /* AllPostViewController.swift in Sources */,
@@ -484,6 +494,8 @@
 				3E464D8F26088FF700390A0B /* Travelog.xcdatamodeld in Sources */,
 				3E6F508B260B9E0800B22252 /* ViewCell.swift in Sources */,
 				3E464D8526088FF700390A0B /* AppDelegate.swift in Sources */,
+				3E1322A92624639800D52C7D /* SelectedPhotoViewController.swift in Sources */,
+				3E1322AE262467CF00D52C7D /* SelectedPhotoCollectionViewCell.swift in Sources */,
 				3EC3A4F8261DD1D2004BA4FF /* LocationSearchViewController.swift in Sources */,
 				3E464D8726088FF700390A0B /* SceneDelegate.swift in Sources */,
 				AC54C5BF261D6F3A0020980D /* Section.swift in Sources */,
