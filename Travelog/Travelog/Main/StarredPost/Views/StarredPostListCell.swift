@@ -15,6 +15,8 @@ class StarredPostListCell: UICollectionViewCell, SelfConfiguringCell {
     let imageView = UIImageView()
     let address_info = UILabel()
     let text = UILabel()
+    let like = UIButton()
+    let comment = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,13 +27,13 @@ class StarredPostListCell: UICollectionViewCell, SelfConfiguringCell {
         
         imageView.layer.cornerRadius = 10
         imageView.clipsToBounds = true
-//        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         
 //        address_info.font = UIFont(name: "Apple SD 산돌고딕 Neo 볼드체", size: 17)
         address_info.font = UIFont.systemFont(ofSize: 16)
-//        address_info.textColor = UIColor.init(red: 78.0, green: 41.0, blue: 91.0, alpha: 1.0)
-        address_info.textColor = .purple // TODO: 보라색 사용자 컬러 지정 필요
+        address_info.textColor = UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)
         address_info.textAlignment = .center
+        address_info.numberOfLines = 1
         
 //        text.font = UIFont(name: "Apple SD 산돌고딕 Neo 볼드체", size: 17)
         text.font = UIFont.systemFont(ofSize: 16)
@@ -44,7 +46,8 @@ class StarredPostListCell: UICollectionViewCell, SelfConfiguringCell {
         stackView.axis = .vertical
         stackView.distribution = .equalCentering // TODO: 변경 필요
         contentView.addSubview(stackView)
-        NSLayoutConstraint.activate([stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor), stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor), stackView.topAnchor.constraint(equalTo: contentView.topAnchor), stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)])
+        let margins = contentView.layoutMarginsGuide
+        NSLayoutConstraint.activate([stackView.leadingAnchor.constraint(equalTo: margins.leadingAnchor), stackView.trailingAnchor.constraint(equalTo: margins.trailingAnchor), stackView.topAnchor.constraint(equalTo: margins.topAnchor), stackView.bottomAnchor.constraint(equalTo: margins.bottomAnchor)])
         
 //        stackView.setCustomSpacing(5, after: imageView)
 //        stackView.setCustomSpacing(5, after: address_info)
