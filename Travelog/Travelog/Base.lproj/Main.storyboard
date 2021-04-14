@@ -690,31 +690,30 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddButtonCell" id="EGb-zU-AEE" customClass="AddButtonCollectionViewCell" customModule="Travelog" customModuleProvider="target">
-                                        <rect key="frame" x="340" y="0.0" width="150" height="330"/>
+                                        <rect key="frame" x="340" y="0.0" width="180" height="330"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="FqH-uY-lHt">
-                                            <rect key="frame" x="0.0" y="0.0" width="150" height="330"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="HKh-gj-PVQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="330"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTy-qT-Vwg">
-                                                    <rect key="frame" x="0.0" y="90" width="150" height="150"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTy-qT-Vwg">
+                                                    <rect key="frame" x="40" y="115" width="100" height="100"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="150" id="2mV-8f-h8o"/>
-                                                        <constraint firstAttribute="height" constant="150" id="JWw-5v-dmq"/>
+                                                        <constraint firstAttribute="width" constant="100" id="2mV-8f-h8o"/>
+                                                        <constraint firstAttribute="height" constant="100" id="JWw-5v-dmq"/>
                                                     </constraints>
                                                     <color key="tintColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <state key="normal">
-                                                        <imageReference key="image" image="plus.circle" catalog="system" symbolScale="large"/>
+                                                        <imageReference key="image" image="plus" symbolScale="large"/>
                                                     </state>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="zTy-qT-Vwg" firstAttribute="centerY" secondItem="FqH-uY-lHt" secondAttribute="centerY" id="3JG-mf-jdQ"/>
-                                                <constraint firstItem="zTy-qT-Vwg" firstAttribute="centerX" secondItem="FqH-uY-lHt" secondAttribute="centerX" id="GWS-LT-vHq"/>
+                                                <constraint firstItem="zTy-qT-Vwg" firstAttribute="centerY" secondItem="HKh-gj-PVQ" secondAttribute="centerY" id="3JG-mf-jdQ"/>
+                                                <constraint firstItem="zTy-qT-Vwg" firstAttribute="centerX" secondItem="HKh-gj-PVQ" secondAttribute="centerX" id="GWS-LT-vHq"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="150" height="330"/>
+                                        <size key="customSize" width="180" height="330"/>
                                         <connections>
                                             <outlet property="addPhotoButton" destination="zTy-qT-Vwg" id="ZN5-PY-Xgw"/>
                                         </connections>
@@ -724,9 +723,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="1mI-oC-9Bp" secondAttribute="bottom" id="4aj-dZ-8Pg"/>
-                            <constraint firstItem="1mI-oC-9Bp" firstAttribute="top" secondItem="CKw-YW-XiZ" secondAttribute="top" id="JYv-aW-v2m"/>
+                            <constraint firstItem="1mI-oC-9Bp" firstAttribute="top" secondItem="CKw-YW-XiZ" secondAttribute="topMargin" id="7id-1O-Z0j"/>
                             <constraint firstAttribute="trailing" secondItem="1mI-oC-9Bp" secondAttribute="trailing" constant="10" id="Nso-fP-ZZD"/>
+                            <constraint firstItem="1mI-oC-9Bp" firstAttribute="bottom" secondItem="CKw-YW-XiZ" secondAttribute="bottomMargin" id="rem-e4-kiu"/>
                             <constraint firstItem="1mI-oC-9Bp" firstAttribute="leading" secondItem="CKw-YW-XiZ" secondAttribute="leading" constant="10" id="zyu-pJ-jBl"/>
                         </constraints>
                     </view>
@@ -746,7 +745,7 @@
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
-        <image name="plus.circle" catalog="system" width="128" height="121"/>
+        <image name="plus" width="170.66667175292969" height="170.66667175292969"/>
         <image name="rectangle.split.2x2.fill" catalog="system" width="128" height="93"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
