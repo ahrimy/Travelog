@@ -148,14 +148,14 @@
                                 </segments>
                                 <color key="selectedSegmentTintColor" red="0.85098039219999999" green="0.72156862749999995" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="글을 입력하세요" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lNr-pI-Fxe">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lNr-pI-Fxe">
                                 <rect key="frame" x="30" y="400" width="330" height="130"/>
                                 <color key="backgroundColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="L4B-xg-MxU"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3yD-nL-em2">
@@ -197,6 +197,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="postTextView" destination="lNr-pI-Fxe" id="2Qm-3z-QqB"/>
                         <outlet property="publicPrivateSegmentedControl" destination="GLm-Rt-mLM" id="WSR-a2-Cvl"/>
                         <outlet property="setLocationLabel" destination="wmS-v4-Vg7" id="jje-ac-zRQ"/>
                     </connections>
@@ -758,6 +759,7 @@
                                 </connections>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="5hf-Na-BaU"/>
                         <color key="backgroundColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="2Gl-Io-aob" secondAttribute="trailing" constant="5" id="2sO-Kc-ApT"/>
