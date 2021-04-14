@@ -39,6 +39,9 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate, MKLoc
         searchBar.delegate = self
         searchResultsTable.delegate = self
         searchResultsTable.dataSource = self
+        
+        searchBar.searchTextField.textColor = UIColor.white
+        searchBar.searchTextField.leftView?.tintColor = UIColor.white
     }
     
     
