@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C263619435BB98422CB3B26 /* Pods_TravelogTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDCB900C2B65E19BDEE17D5 /* Pods_TravelogTests.framework */; };
 		3E464D8526088FF700390A0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E464D8426088FF700390A0B /* AppDelegate.swift */; };
 		3E464D8726088FF700390A0B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E464D8626088FF700390A0B /* SceneDelegate.swift */; };
 		3E464D8926088FF700390A0B /* MyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E464D8826088FF700390A0B /* MyPostViewController.swift */; };
@@ -28,6 +29,7 @@
 		AC54C5B2261D6EED0020980D /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54C5AE261D6EED0020980D /* SelfConfiguringCell.swift */; };
 		AC54C5B3261D6EED0020980D /* StarredPostListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54C5AF261D6EED0020980D /* StarredPostListCell.swift */; };
 		AC54C5BF261D6F3A0020980D /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54C5BE261D6F3A0020980D /* Section.swift */; };
+		AC5D30772627D95200F2C920 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC5D30762627D95200F2C920 /* GoogleService-Info.plist */; };
 		ACA7BF10260A328F00C108EC /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7BF0F260A328E00C108EC /* SettingViewController.swift */; };
 		ACA7BF23260C82FF00C108EC /* MyProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7BF22260C82FE00C108EC /* MyProfileEditViewController.swift */; };
 		ACA7BF362613761F00C108EC /* MyPostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7BF352613761F00C108EC /* MyPostListViewController.swift */; };
@@ -36,6 +38,8 @@
 		ACE9085E261B7F8D0087F6AA /* StarredPostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9085D261B7F8D0087F6AA /* StarredPostListViewController.swift */; };
 		ACE90875261C31D70087F6AA /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE90874261C31D70087F6AA /* Bundle-Decodable.swift */; };
 		ACE90885261C33970087F6AA /* StarredPostList.json in Resources */ = {isa = PBXBuildFile; fileRef = ACE90884261C33970087F6AA /* StarredPostList.json */; };
+		C8C5CF520D769178F7D30738 /* Pods_Travelog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53ECBF0DEDC9E59E3D0AC49A /* Pods_Travelog.framework */; };
+		F905161DA84603C1458B2450 /* Pods_Travelog_TravelogUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0709ED7BCDC4A87A48341416 /* Pods_Travelog_TravelogUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +60,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0709ED7BCDC4A87A48341416 /* Pods_Travelog_TravelogUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Travelog_TravelogUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		19F31494A9CD119F65AF8AA6 /* Pods-TravelogTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelogTests.release.xcconfig"; path = "Target Support Files/Pods-TravelogTests/Pods-TravelogTests.release.xcconfig"; sourceTree = "<group>"; };
+		1DDCB900C2B65E19BDEE17D5 /* Pods_TravelogTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TravelogTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		211EC349DC7F3D96D8A74D6C /* Pods-Travelog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travelog.release.xcconfig"; path = "Target Support Files/Pods-Travelog/Pods-Travelog.release.xcconfig"; sourceTree = "<group>"; };
 		3E464D8126088FF600390A0B /* Travelog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travelog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E464D8426088FF700390A0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E464D8626088FF700390A0B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,10 +87,12 @@
 		3E7F919526124A3800B319E8 /* AllPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostViewController.swift; sourceTree = "<group>"; };
 		3EC3A4F7261DD1D2004BA4FF /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 		3EC3A4FC261E1461004BA4FF /* LocationSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewCell.swift; sourceTree = "<group>"; };
+		53ECBF0DEDC9E59E3D0AC49A /* Pods_Travelog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Travelog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC54C5AD261D6EED0020980D /* StarredPostList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarredPostList.swift; sourceTree = "<group>"; };
 		AC54C5AE261D6EED0020980D /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
 		AC54C5AF261D6EED0020980D /* StarredPostListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarredPostListCell.swift; sourceTree = "<group>"; };
 		AC54C5BE261D6F3A0020980D /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		AC5D30762627D95200F2C920 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ACA7BF0F260A328E00C108EC /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		ACA7BF22260C82FE00C108EC /* MyProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileEditViewController.swift; sourceTree = "<group>"; };
 		ACA7BF352613761F00C108EC /* MyPostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostListViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +101,10 @@
 		ACE9085D261B7F8D0087F6AA /* StarredPostListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarredPostListViewController.swift; sourceTree = "<group>"; };
 		ACE90874261C31D70087F6AA /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		ACE90884261C33970087F6AA /* StarredPostList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = StarredPostList.json; path = Travelog/Main/StarredPost/StarredPostList.json; sourceTree = SOURCE_ROOT; };
+		BDC9F07A0516D3F46A13E5D5 /* Pods-Travelog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travelog.debug.xcconfig"; path = "Target Support Files/Pods-Travelog/Pods-Travelog.debug.xcconfig"; sourceTree = "<group>"; };
+		D71AC29749E8FA3E914EB735 /* Pods-TravelogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelogTests.debug.xcconfig"; path = "Target Support Files/Pods-TravelogTests/Pods-TravelogTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D786E777DFB0A9D827089D61 /* Pods-Travelog-TravelogUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travelog-TravelogUITests.release.xcconfig"; path = "Target Support Files/Pods-Travelog-TravelogUITests/Pods-Travelog-TravelogUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F0C6298DFA4F925D90C46497 /* Pods-Travelog-TravelogUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Travelog-TravelogUITests.debug.xcconfig"; path = "Target Support Files/Pods-Travelog-TravelogUITests/Pods-Travelog-TravelogUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8C5CF520D769178F7D30738 /* Pods_Travelog.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C263619435BB98422CB3B26 /* Pods_TravelogTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F905161DA84603C1458B2450 /* Pods_Travelog_TravelogUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +142,8 @@
 				3E464D9D26088FF800390A0B /* TravelogTests */,
 				3E464DA826088FF800390A0B /* TravelogUITests */,
 				3E464D8226088FF600390A0B /* Products */,
+				C0CF09421CD62A3152B615F7 /* Pods */,
+				EBAD73144CBEDB071E292CB8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -149,6 +168,7 @@
 				3E464D9526088FF800390A0B /* Info.plist */,
 				3E6F507D260B9A4800B22252 /* PostThumbnail.swift */,
 				ACE90874261C31D70087F6AA /* Bundle-Decodable.swift */,
+				AC5D30762627D95200F2C920 /* GoogleService-Info.plist */,
 			);
 			path = Travelog;
 			sourceTree = "<group>";
@@ -335,6 +355,30 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
+		C0CF09421CD62A3152B615F7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BDC9F07A0516D3F46A13E5D5 /* Pods-Travelog.debug.xcconfig */,
+				211EC349DC7F3D96D8A74D6C /* Pods-Travelog.release.xcconfig */,
+				F0C6298DFA4F925D90C46497 /* Pods-Travelog-TravelogUITests.debug.xcconfig */,
+				D786E777DFB0A9D827089D61 /* Pods-Travelog-TravelogUITests.release.xcconfig */,
+				D71AC29749E8FA3E914EB735 /* Pods-TravelogTests.debug.xcconfig */,
+				19F31494A9CD119F65AF8AA6 /* Pods-TravelogTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		EBAD73144CBEDB071E292CB8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				53ECBF0DEDC9E59E3D0AC49A /* Pods_Travelog.framework */,
+				0709ED7BCDC4A87A48341416 /* Pods_Travelog_TravelogUITests.framework */,
+				1DDCB900C2B65E19BDEE17D5 /* Pods_TravelogTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -342,9 +386,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3E464DAE26088FF800390A0B /* Build configuration list for PBXNativeTarget "Travelog" */;
 			buildPhases = (
+				791A3F24BCEE260B2AD43EA5 /* [CP] Check Pods Manifest.lock */,
 				3E464D7D26088FF600390A0B /* Sources */,
 				3E464D7E26088FF600390A0B /* Frameworks */,
 				3E464D7F26088FF600390A0B /* Resources */,
+				D657B5DE7D5BBA64229AB1CA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -359,6 +405,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3E464DB126088FF800390A0B /* Build configuration list for PBXNativeTarget "TravelogTests" */;
 			buildPhases = (
+				6AF057D80A2BA2FE0D830762 /* [CP] Check Pods Manifest.lock */,
 				3E464D9626088FF800390A0B /* Sources */,
 				3E464D9726088FF800390A0B /* Frameworks */,
 				3E464D9826088FF800390A0B /* Resources */,
@@ -377,9 +424,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3E464DB426088FF800390A0B /* Build configuration list for PBXNativeTarget "TravelogUITests" */;
 			buildPhases = (
+				BE198AF4451EE6E8035378A9 /* [CP] Check Pods Manifest.lock */,
 				3E464DA126088FF800390A0B /* Sources */,
 				3E464DA226088FF800390A0B /* Frameworks */,
 				3E464DA326088FF800390A0B /* Resources */,
+				EA21B54E9BE7E567597563DC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -440,6 +489,7 @@
 			files = (
 				3E464D9426088FF800390A0B /* LaunchScreen.storyboard in Resources */,
 				3E464D9126088FF800390A0B /* Assets.xcassets in Resources */,
+				AC5D30772627D95200F2C920 /* GoogleService-Info.plist in Resources */,
 				3E464D8C26088FF700390A0B /* Main.storyboard in Resources */,
 				ACE90885261C33970087F6AA /* StarredPostList.json in Resources */,
 			);
@@ -460,6 +510,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6AF057D80A2BA2FE0D830762 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TravelogTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		791A3F24BCEE260B2AD43EA5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Travelog-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE198AF4451EE6E8035378A9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Travelog-TravelogUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D657B5DE7D5BBA64229AB1CA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Travelog/Pods-Travelog-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Travelog/Pods-Travelog-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Travelog/Pods-Travelog-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA21B54E9BE7E567597563DC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Travelog-TravelogUITests/Pods-Travelog-TravelogUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Travelog-TravelogUITests/Pods-Travelog-TravelogUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Travelog-TravelogUITests/Pods-Travelog-TravelogUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3E464D7D26088FF600390A0B /* Sources */ = {
@@ -661,6 +814,7 @@
 		};
 		3E464DAF26088FF800390A0B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDC9F07A0516D3F46A13E5D5 /* Pods-Travelog.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -679,6 +833,7 @@
 		};
 		3E464DB026088FF800390A0B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 211EC349DC7F3D96D8A74D6C /* Pods-Travelog.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -697,6 +852,7 @@
 		};
 		3E464DB226088FF800390A0B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D71AC29749E8FA3E914EB735 /* Pods-TravelogTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -719,6 +875,7 @@
 		};
 		3E464DB326088FF800390A0B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19F31494A9CD119F65AF8AA6 /* Pods-TravelogTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -741,6 +898,7 @@
 		};
 		3E464DB526088FF800390A0B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0C6298DFA4F925D90C46497 /* Pods-Travelog-TravelogUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -761,6 +919,7 @@
 		};
 		3E464DB626088FF800390A0B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D786E777DFB0A9D827089D61 /* Pods-Travelog-TravelogUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
