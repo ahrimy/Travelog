@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,11 +25,11 @@
 		3E7F919626124A3800B319E8 /* AllPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F919526124A3800B319E8 /* AllPostViewController.swift */; };
 		3EC3A4F8261DD1D2004BA4FF /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC3A4F7261DD1D2004BA4FF /* LocationSearchViewController.swift */; };
 		3EC3A4FD261E1461004BA4FF /* LocationSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC3A4FC261E1461004BA4FF /* LocationSearchTableViewCell.swift */; };
+		3EF8C41B262AF67800F7F7A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3EF8C41A262AF67800F7F7A4 /* GoogleService-Info.plist */; };
 		AC54C5B1261D6EED0020980D /* StarredPostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54C5AD261D6EED0020980D /* StarredPostList.swift */; };
 		AC54C5B2261D6EED0020980D /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54C5AE261D6EED0020980D /* SelfConfiguringCell.swift */; };
 		AC54C5B3261D6EED0020980D /* StarredPostListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54C5AF261D6EED0020980D /* StarredPostListCell.swift */; };
 		AC54C5BF261D6F3A0020980D /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54C5BE261D6F3A0020980D /* Section.swift */; };
-		AC5D30772627D95200F2C920 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC5D30762627D95200F2C920 /* GoogleService-Info.plist */; };
 		ACA7BF10260A328F00C108EC /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7BF0F260A328E00C108EC /* SettingViewController.swift */; };
 		ACA7BF23260C82FF00C108EC /* MyProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7BF22260C82FE00C108EC /* MyProfileEditViewController.swift */; };
 		ACA7BF362613761F00C108EC /* MyPostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7BF352613761F00C108EC /* MyPostListViewController.swift */; };
@@ -87,12 +87,12 @@
 		3E7F919526124A3800B319E8 /* AllPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostViewController.swift; sourceTree = "<group>"; };
 		3EC3A4F7261DD1D2004BA4FF /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 		3EC3A4FC261E1461004BA4FF /* LocationSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewCell.swift; sourceTree = "<group>"; };
+		3EF8C41A262AF67800F7F7A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		53ECBF0DEDC9E59E3D0AC49A /* Pods_Travelog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Travelog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC54C5AD261D6EED0020980D /* StarredPostList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarredPostList.swift; sourceTree = "<group>"; };
 		AC54C5AE261D6EED0020980D /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
 		AC54C5AF261D6EED0020980D /* StarredPostListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarredPostListCell.swift; sourceTree = "<group>"; };
 		AC54C5BE261D6F3A0020980D /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
-		AC5D30762627D95200F2C920 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ACA7BF0F260A328E00C108EC /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		ACA7BF22260C82FE00C108EC /* MyProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileEditViewController.swift; sourceTree = "<group>"; };
 		ACA7BF352613761F00C108EC /* MyPostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostListViewController.swift; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 				3E464D9526088FF800390A0B /* Info.plist */,
 				3E6F507D260B9A4800B22252 /* PostThumbnail.swift */,
 				ACE90874261C31D70087F6AA /* Bundle-Decodable.swift */,
-				AC5D30762627D95200F2C920 /* GoogleService-Info.plist */,
+				3EF8C41A262AF67800F7F7A4 /* GoogleService-Info.plist */,
 			);
 			path = Travelog;
 			sourceTree = "<group>";
@@ -365,7 +365,6 @@
 				D71AC29749E8FA3E914EB735 /* Pods-TravelogTests.debug.xcconfig */,
 				19F31494A9CD119F65AF8AA6 /* Pods-TravelogTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -489,7 +488,7 @@
 			files = (
 				3E464D9426088FF800390A0B /* LaunchScreen.storyboard in Resources */,
 				3E464D9126088FF800390A0B /* Assets.xcassets in Resources */,
-				AC5D30772627D95200F2C920 /* GoogleService-Info.plist in Resources */,
+				3EF8C41B262AF67800F7F7A4 /* GoogleService-Info.plist in Resources */,
 				3E464D8C26088FF700390A0B /* Main.storyboard in Resources */,
 				ACE90885261C33970087F6AA /* StarredPostList.json in Resources */,
 			);
