@@ -16,7 +16,12 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate, MKLoc
     
     // MARK: - Properties
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar!{
+        didSet{
+            searchBar.searchTextField.textColor = UIColor.white
+            searchBar.searchTextField.leftView?.tintColor = UIColor.white
+        }
+    }
     @IBOutlet weak var searchResultsTable: UITableView!
     
     // Create a search completer object
@@ -39,9 +44,7 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate, MKLoc
         searchBar.delegate = self
         searchResultsTable.delegate = self
         searchResultsTable.dataSource = self
-        
-        searchBar.searchTextField.textColor = UIColor.white
-        searchBar.searchTextField.leftView?.tintColor = UIColor.white
+        searchBar.becomeFirstResponder()
     }
     
     

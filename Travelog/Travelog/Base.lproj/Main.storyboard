@@ -146,7 +146,7 @@
                                     <segment title="Public"/>
                                     <segment title="Private"/>
                                 </segments>
-                                <color key="selectedSegmentTintColor" red="0.85098039219999999" green="0.72156862749999995" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="selectedSegmentTintColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lNr-pI-Fxe">
                                 <rect key="frame" x="30" y="400" width="330" height="130"/>
@@ -647,7 +647,6 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KaG-Si-Qz8">
                                                     <rect key="frame" x="0.0" y="0.0" width="330" height="330"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="330" id="2lp-hF-kHl"/>
                                                         <constraint firstAttribute="width" constant="330" id="c5b-Rc-OYk"/>

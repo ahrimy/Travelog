@@ -14,10 +14,18 @@ class UploadPostViewController: UIViewController {
     @IBOutlet weak var publicPrivateSegmentedControl: UISegmentedControl!{
         didSet {
             publicPrivateSegmentedControl.setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
-            publicPrivateSegmentedControl.setTitleTextAttributes([.foregroundColor : UIColor(red: 0.85, green: 0.72, blue: 0.76, alpha: 1.00)], for: .normal)
+            publicPrivateSegmentedControl.setTitleTextAttributes([.foregroundColor : UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)], for: .normal)
         }
     }
-    @IBOutlet weak var postTextView: UITextView!
+    @IBOutlet weak var postTextView: UITextView!{
+        didSet{
+            postTextView.tintColor = .white
+            postTextView.backgroundColor = UIColor(red: 0.44, green: 0.29, blue: 0.49, alpha: 1.00)
+            postTextView.textColor = UIColor(red: 0.86, green: 0.86, blue: 0.86, alpha: 1.00)
+            postTextView.font = UIFont.systemFont(ofSize: 15)
+            postTextView.text = "글을 입력하세요"
+        }
+    }
     
 //    @IBOutlet weak var closeButton: UIBarButtonItem!
     
@@ -29,12 +37,7 @@ class UploadPostViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         self.tabBarController?.tabBar.isHidden = true
-        
-        self.postTextView.backgroundColor = UIColor(red: 0.60, green: 0.45, blue: 0.66, alpha: 1.00)
         self.postTextView.delegate = self
-        self.postTextView.text = "글을 입력하세요"
-        self.postTextView.textColor = UIColor.lightGray
-//        self.postTextView.font = UIFont(name: "Headline", size: 50)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -65,7 +68,7 @@ class UploadPostViewController: UIViewController {
 
 extension UploadPostViewController: UITextViewDelegate{
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if postTextView.textColor == UIColor.lightGray {
+        if postTextView.textColor == UIColor(red: 0.86, green: 0.86, blue: 0.86, alpha: 1.00) {
             postTextView.text = nil
             postTextView.textColor = UIColor.white
         }
@@ -74,7 +77,7 @@ extension UploadPostViewController: UITextViewDelegate{
     func textViewDidEndEditing(_ textView: UITextView) {
         if postTextView.text.isEmpty {
             postTextView.text = "글을 입력하세요"
-            postTextView.textColor = UIColor.lightGray
+            postTextView.textColor = UIColor(red: 0.86, green: 0.86, blue: 0.86, alpha: 1.00)
         }
     }
 }
