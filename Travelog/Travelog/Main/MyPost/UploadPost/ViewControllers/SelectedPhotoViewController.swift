@@ -24,7 +24,7 @@ class SelectedPhotoViewController: UIViewController ,PHPickerViewControllerDeleg
     }
     
     @objc func didTouchUpInsideAddPhotoButton(_ sender: Any) {
-        var configuration = PHPickerConfiguration()
+        var configuration = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
         configuration.filter = .any(of: [.images, .videos])
         configuration.selectionLimit = 10 - selectedPhotos.count
 
@@ -39,6 +39,14 @@ class SelectedPhotoViewController: UIViewController ,PHPickerViewControllerDeleg
         
         itemProviders = results.map(\.itemProvider)
         iterator = itemProviders.makeIterator()
+        
+        // Image Metadata
+//        let identifiers = results.compactMap(\.assetIdentifier)
+//        let fetchResult = PHAsset.fetchAssets(withLocalIdentifiers: identifiers, options: nil)
+//
+//        for i in 0..<fetchResult.count{
+//            print(fetchResult.object(at: i))
+//        }
         
         while let itemProvider = iterator?.next(),itemProvider.canLoadObject(ofClass: UIImage.self) {
             itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in

@@ -13,6 +13,8 @@
 		3E1322A92624639800D52C7D /* SelectedPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1322A82624639800D52C7D /* SelectedPhotoViewController.swift */; };
 		3E1322AE262467CF00D52C7D /* SelectedPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1322AD262467CF00D52C7D /* SelectedPhotoCollectionViewCell.swift */; };
 		3E33A938262C8BBC00ABCA8A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E33A937262C8BBC00ABCA8A /* Post.swift */; };
+		3E33A940262DDFAC00ABCA8A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E33A93F262DDFAC00ABCA8A /* Location.swift */; };
+		3E33A945262DDFB900ABCA8A /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E33A944262DDFB900ABCA8A /* Image.swift */; };
 		3E464D8526088FF700390A0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E464D8426088FF700390A0B /* AppDelegate.swift */; };
 		3E464D8726088FF700390A0B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E464D8626088FF700390A0B /* SceneDelegate.swift */; };
 		3E464D8926088FF700390A0B /* MyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E464D8826088FF700390A0B /* MyPostViewController.swift */; };
@@ -74,6 +76,8 @@
 		3E1322A82624639800D52C7D /* SelectedPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedPhotoViewController.swift; sourceTree = "<group>"; };
 		3E1322AD262467CF00D52C7D /* SelectedPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E33A937262C8BBC00ABCA8A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		3E33A93F262DDFAC00ABCA8A /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		3E33A944262DDFB900ABCA8A /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		3E464D8126088FF600390A0B /* Travelog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travelog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E464D8426088FF700390A0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E464D8626088FF700390A0B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,8 +153,40 @@
 			isa = PBXGroup;
 			children = (
 				3E33A937262C8BBC00ABCA8A /* Post.swift */,
+				3E33A93F262DDFAC00ABCA8A /* Location.swift */,
+				3E33A944262DDFB900ABCA8A /* Image.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		3E33A94E262DEB6A00ABCA8A /* UploadPost */ = {
+			isa = PBXGroup;
+			children = (
+				3E33A953262DEC6E00ABCA8A /* Views */,
+				3E33A94F262DEB8A00ABCA8A /* ViewControllers */,
+			);
+			path = UploadPost;
+			sourceTree = "<group>";
+		};
+		3E33A94F262DEB8A00ABCA8A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3E74B9CF261C61BF00AE1CB6 /* UploadPostViewController.swift */,
+				3EC3A4F7261DD1D2004BA4FF /* LocationSearchViewController.swift */,
+				3E1322A82624639800D52C7D /* SelectedPhotoViewController.swift */,
+				3E04BB64262735A500362303 /* SelectedLocationViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3E33A953262DEC6E00ABCA8A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3EC3A4FC261E1461004BA4FF /* LocationSearchTableViewCell.swift */,
+				3E0FE1D62625E2D3004E93E7 /* AddButtonCollectionViewCell.swift */,
+				3E1322AD262467CF00D52C7D /* SelectedPhotoCollectionViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		3E464D7826088FF600390A0B = {
@@ -212,14 +248,10 @@
 		3EC3A528261E9A0F004BA4FF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3E74B9CF261C61BF00AE1CB6 /* UploadPostViewController.swift */,
-				3E04BB64262735A500362303 /* SelectedLocationViewController.swift */,
 				ACA7BF0F260A328E00C108EC /* SettingViewController.swift */,
 				3E464D8826088FF700390A0B /* MyPostViewController.swift */,
-				3E1322A82624639800D52C7D /* SelectedPhotoViewController.swift */,
 				ACA7BF352613761F00C108EC /* MyPostListViewController.swift */,
 				ACA7BF3D2613767800C108EC /* MyPostMapViewController.swift */,
-				3EC3A4F7261DD1D2004BA4FF /* LocationSearchViewController.swift */,
 				ACA7BF22260C82FE00C108EC /* MyProfileEditViewController.swift */,
 			);
 			path = ViewControllers;
@@ -228,10 +260,7 @@
 		3EC3A529261E9A1B004BA4FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3EC3A4FC261E1461004BA4FF /* LocationSearchTableViewCell.swift */,
 				3E6F508A260B9E0800B22252 /* ViewCell.swift */,
-				3E0FE1D62625E2D3004E93E7 /* AddButtonCollectionViewCell.swift */,
-				3E1322AD262467CF00D52C7D /* SelectedPhotoCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -311,6 +340,7 @@
 		4395B4F7261DE29D00E0C54D /* MyPost */ = {
 			isa = PBXGroup;
 			children = (
+				3E33A94E262DEB6A00ABCA8A /* UploadPost */,
 				3E33A936262C8BB000ABCA8A /* Models */,
 				3EC3A529261E9A1B004BA4FF /* Views */,
 				3EC3A528261E9A0F004BA4FF /* ViewControllers */,
@@ -639,6 +669,7 @@
 				3E74B9D0261C61BF00AE1CB6 /* UploadPostViewController.swift in Sources */,
 				AC54C5B1261D6EED0020980D /* StarredPostList.swift in Sources */,
 				ACA7BF23260C82FF00C108EC /* MyProfileEditViewController.swift in Sources */,
+				3E33A940262DDFAC00ABCA8A /* Location.swift in Sources */,
 				ACE9085E261B7F8D0087F6AA /* StarredPostListViewController.swift in Sources */,
 				ACE90875261C31D70087F6AA /* Bundle-Decodable.swift in Sources */,
 				3E6F507E260B9A4800B22252 /* PostThumbnail.swift in Sources */,
@@ -651,6 +682,7 @@
 				3E464D8926088FF700390A0B /* MyPostViewController.swift in Sources */,
 				3E7F919126124A2D00B319E8 /* StarredPostViewController.swift in Sources */,
 				3E464D8F26088FF700390A0B /* Travelog.xcdatamodeld in Sources */,
+				3E33A945262DDFB900ABCA8A /* Image.swift in Sources */,
 				3E6F508B260B9E0800B22252 /* ViewCell.swift in Sources */,
 				3E33A938262C8BBC00ABCA8A /* Post.swift in Sources */,
 				3E464D8526088FF700390A0B /* AppDelegate.swift in Sources */,

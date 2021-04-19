@@ -10,7 +10,7 @@ import UIKit
 class UploadPostViewController: UIViewController {
     
     // MARK: - Properties
-
+    var selectedLocationViewController: SelectedLocationViewController!
     @IBOutlet weak var publicPrivateSegmentedControl: UISegmentedControl!{
         didSet {
             publicPrivateSegmentedControl.setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
@@ -46,13 +46,27 @@ class UploadPostViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "selectedLocationEmbedSegue" {
+            self.selectedLocationViewController = segue.destination as? SelectedLocationViewController
+           }
+    }
+    
     // MARK: - Actions
     
     @IBAction func cancelUpload(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func uploadPost(_ sender: Any) {
+        print(postTextView.text as String)
+        
+    }
     // MARK: - Methods
+    
+    func setLocation(){
+        
+    }
     
     /*
      // MARK: - Navigation

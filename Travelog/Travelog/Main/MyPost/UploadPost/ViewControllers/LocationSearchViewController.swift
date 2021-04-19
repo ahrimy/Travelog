@@ -110,7 +110,6 @@ extension LocationSearchViewController: UITableViewDataSource {
         
         //Create  a new UITableViewCell object
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationSearchResultCell", for: indexPath) as! LocationSearchTableViewCell
-        
         //Set the content of the cell to our searchResult data
         cell.titleLabel?.text = searchResult.title
         cell.subTitleLabel?.text = searchResult.subtitle

@@ -132,7 +132,7 @@
                                     <constraint firstAttribute="height" constant="30" id="aDX-xh-oGx"/>
                                 </constraints>
                                 <connections>
-                                    <segue destination="rwL-2C-1Nr" kind="embed" id="5ln-Az-uOu"/>
+                                    <segue destination="rwL-2C-1Nr" kind="embed" identifier="selectedLocationEmbedSegue" id="5ln-Az-uOu"/>
                                 </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GLm-Rt-mLM">
@@ -194,6 +194,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Upload" id="DGy-ON-5Te">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="uploadPost:" destination="cCo-zQ-00d" id="a5L-oZ-ChM"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
