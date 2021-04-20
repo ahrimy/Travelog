@@ -9,14 +9,26 @@ import UIKit
 
 class SelectedDateViewController: UIViewController {
 
-    // MARK: - IBOulet
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var datePicker: UIDatePicker!
+    // MARK: - IBOutlet
+    @IBOutlet weak var datePicker: UIDatePicker!{
+        didSet{
+            datePicker.date = Date()
+            datePicker.maximumDate = Date()
+        }
+    }
+    @IBOutlet weak var dateLabel: UILabel!{
+        didSet{
+            let formatter = DateFormatter() // DateFormatter 클래스 상수 선언
+            formatter.dateFormat = "yyyy-MM-dd" // formatter의 dateFormat 속성을 설정
+            dateLabel.text = formatter.string(from: datePicker.date)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        datePicker.isHidden = true
     }
     
 
