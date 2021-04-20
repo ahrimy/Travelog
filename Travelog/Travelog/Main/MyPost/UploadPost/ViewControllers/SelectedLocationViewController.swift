@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SelectedLocationViewController: UIViewController,LocationSearchViewControllerDelegate{
+class SelectedLocationViewController: UIViewController,LocationSearchViewControllerLocationNameDelegate{
     
     // MARK: - Properties
     
@@ -26,7 +26,7 @@ class SelectedLocationViewController: UIViewController,LocationSearchViewControl
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let locationSearchViewController = segue.destination as? LocationSearchViewController {
-            locationSearchViewController.delegate = self
+            locationSearchViewController.locationNameDelegate = self
         }
     }
     
@@ -35,8 +35,8 @@ class SelectedLocationViewController: UIViewController,LocationSearchViewControl
     
     // MARK: - Methods
     
-    func setLocation(location: String) {
-        setLocationLabel.text = location
+    func setLocation(name: String) {
+        setLocationLabel.text = name
         isSelected = true
     }
 

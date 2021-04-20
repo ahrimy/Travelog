@@ -11,9 +11,9 @@ class Post {
     
     init(
         id: Int = -1,
-        date: String="",
-        text: String="",
-        image: [Image] = [],
+        date: String = "",
+        text: String = "",
+        imageRef: String = "",
         location: Location? = nil,
         isPublic: Bool = false,
         createdAt: String="",
@@ -22,7 +22,7 @@ class Post {
         self.id = id
         self.date = date
         self.text = text
-        self.image = image
+        self.imageRef = imageRef
         self.location = location
         self.isPublic = isPublic
         self.createdAt = createdAt
@@ -32,7 +32,7 @@ class Post {
     var id : Int
     var date: String
     var text: String
-    var image: [Image]
+    var imageRef: String
     var location: Location?
     var isPublic: Bool
     var createdAt: String
