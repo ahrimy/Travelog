@@ -14,6 +14,8 @@ class SelectedLocationViewController: UIViewController,LocationSearchViewControl
     var isSelected = false
     let locationSearchViewController = LocationSearchViewController()
 
+    // MARK: - IBOutlet
+    
     @IBOutlet weak var setLocationLabel: UILabel!
     
     // MARK: - View Life Cycle
