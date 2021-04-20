@@ -8,9 +8,11 @@
 import UIKit
 import MapKit
 
+// Label 설정
 protocol LocationSearchViewControllerLocationNameDelegate {
     func setLocation(name:String)
 }
+// Location Model 설정
 protocol LocationSearchViewControllerLocationDelegate{
     func setLocation(lat:Float, lng:Float, title:String, subTitle:String)
 }
@@ -19,6 +21,16 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate, MKLoc
     
     // MARK: - Properties
     
+    // Create a search completer object
+    var searchCompleter = MKLocalSearchCompleter()
+    // These are the results that are returned from the searchCompleter & what we are displaying
+    // on the searchResultsTable
+    var searchResults = [MKLocalSearchCompletion]()
+    
+    var locationDelegate: LocationSearchViewControllerLocationDelegate?
+    var locationNameDelegate: LocationSearchViewControllerLocationNameDelegate?
+   
+   // MARK: - IBOutlet
     @IBOutlet weak var searchBar: UISearchBar!{
         didSet{
             searchBar.searchTextField.textColor = UIColor.white
@@ -27,16 +39,6 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate, MKLoc
     }
     @IBOutlet weak var searchResultsTable: UITableView!
     
-    // Create a search completer object
-    var searchCompleter = MKLocalSearchCompleter()
-    
-    // These are the results that are returned from the searchCompleter & what we are displaying
-    // on the searchResultsTable
-    var searchResults = [MKLocalSearchCompletion]()
-    
-    var locationDelegate: LocationSearchViewControllerLocationDelegate?
-    var locationNameDelegate: LocationSearchViewControllerLocationNameDelegate?
-   
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
