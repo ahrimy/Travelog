@@ -10,8 +10,8 @@ import Foundation
 class Location{
     
     init(
-        lat: Float = 0.0,
-        lng: Float = 0.0,
+        lat: String = "",
+        lng: String = "",
         title: String = "",
         subTitle: String = ""
     ){
@@ -21,8 +21,8 @@ class Location{
         self.subTitle = subTitle
     }
     
-    var lat: Float
-    var lng: Float
+    var lat: String
+    var lng: String
     var title: String
     var subTitle: String
 }

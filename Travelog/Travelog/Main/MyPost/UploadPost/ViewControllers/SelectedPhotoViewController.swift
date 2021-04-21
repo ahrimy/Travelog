@@ -8,11 +8,18 @@
 import UIKit
 import PhotosUI
 
+protocol SelectedPhotoViewControllerDelegate{
+    func appendImage(image: UIImage)
+}
+
 class SelectedPhotoViewController: UIViewController ,PHPickerViewControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource{
 
     var selectedPhotos:[UIImage] = []
     var itemProviders:[NSItemProvider] = []
     var iterator:IndexingIterator<[NSItemProvider]>?
+    
+    var selectedPhotoViewControllerDelegate: SelectedPhotoViewControllerDelegate?
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -51,6 +58,7 @@ class SelectedPhotoViewController: UIViewController ,PHPickerViewControllerDeleg
         while let itemProvider = iterator?.next(),itemProvider.canLoadObject(ofClass: UIImage.self) {
             itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
                 DispatchQueue.main.async {
+                    self.selectedPhotoViewControllerDelegate?.appendImage(image: image as! UIImage)
                     self.selectedPhotos.append(image as! UIImage)
                     self.collectionView.reloadData()
                 }

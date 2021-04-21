@@ -7,39 +7,46 @@
 
 import UIKit
 
-class SelectedDateViewController: UIViewController {
+protocol SelectedDateViewControllerDelegate {
+    func setDate(date: String)
+}
 
+class SelectedDateViewController: UIViewController {
+    
+    // MARK: - Properties
+    var selectedDateViewControllerDelegate: SelectedDateViewControllerDelegate?
+    
     // MARK: - IBOutlet
+    
     @IBOutlet weak var datePicker: UIDatePicker!{
         didSet{
             datePicker.date = Date()
             datePicker.maximumDate = Date()
         }
     }
-    @IBOutlet weak var dateLabel: UILabel!{
-        didSet{
-            let formatter = DateFormatter() // DateFormatter 클래스 상수 선언
-            formatter.dateFormat = "yyyy-MM-dd" // formatter의 dateFormat 속성을 설정
-            dateLabel.text = formatter.string(from: datePicker.date)
-        }
-    }
+    
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
-        datePicker.isHidden = true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - IBAction
+    
+    @IBAction func dateValueChanged(_ sender: Any) {
+        print(datePicker.date)
     }
-    */
-
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

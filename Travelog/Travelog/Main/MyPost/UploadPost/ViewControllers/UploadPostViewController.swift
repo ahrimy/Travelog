@@ -7,8 +7,7 @@
 
 import UIKit
 
-class UploadPostViewController: UIViewController,LocationSearchViewControllerLocationDelegate {
-    
+class UploadPostViewController: UIViewController,SelectedLocationViewControllerDelegate,SelectedPhotoViewControllerDelegate {
     
     // MARK: - Properties
     var images:[UIImage] = []
@@ -16,16 +15,28 @@ class UploadPostViewController: UIViewController,LocationSearchViewControllerLoc
     var location = Location()
     var text = ""
     
-    let locationSearchViewController = LocationSearchViewController()
+    var initialContentsHeight:CGFloat = CGFloat(40)
+    
+    let locationSearchViewController = SelectedLocationViewController()
+    let selectedPhotoViewController = SelectedPhotoViewController()
     
     // MARK: - IBOutlet
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var publicPrivateSegmentedControl: UISegmentedControl!{
-        didSet {
-            publicPrivateSegmentedControl.setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
-            publicPrivateSegmentedControl.setTitleTextAttributes([.foregroundColor : UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)], for: .normal)
+    
+    @IBOutlet weak var uploadButton: UIBarButtonItem!{
+        didSet{
+            uploadButton.isEnabled = false
         }
     }
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet var contentView: UIView!
+    @IBOutlet weak var selectedPhotoView: UIView!
+    @IBOutlet weak var datePicker: UIDatePicker!{
+        didSet{
+            datePicker.date = Date()
+            datePicker.maximumDate = Date()
+        }
+    }
+    @IBOutlet weak var selectedLocationView: UIView!
     @IBOutlet weak var postTextView: UITextView!{
         didSet{
             postTextView.tintColor = .white
@@ -35,12 +46,13 @@ class UploadPostViewController: UIViewController,LocationSearchViewControllerLoc
             postTextView.text = "글을 입력하세요"
         }
     }
-    @IBOutlet weak var uploadButton: UIBarButtonItem!{
-        didSet{
-            uploadButton.isEnabled = false
+    @IBOutlet weak var publicPrivateSegmentedControl: UISegmentedControl!{
+        didSet {
+            publicPrivateSegmentedControl.setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
+            publicPrivateSegmentedControl.setTitleTextAttributes([.foregroundColor : UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)], for: .normal)
         }
     }
-    
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     // MARK: - View Life Cycle
     
@@ -50,6 +62,11 @@ class UploadPostViewController: UIViewController,LocationSearchViewControllerLoc
         // Do any additional setup after loading the view.
         self.tabBarController?.tabBar.isHidden = true
         self.postTextView.delegate = self
+        
+        //        hideKeyboard()
+        addObservers()
+        self.hideKeyboard()
+        self.initialContentsHeight += selectedPhotoView.frame.height + datePicker.frame.height + selectedLocationView.frame.height + postTextView.frame.height + publicPrivateSegmentedControl.frame.height
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -59,10 +76,16 @@ class UploadPostViewController: UIViewController,LocationSearchViewControllerLoc
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let locationSearchViewController = segue.destination as? LocationSearchViewController {
-            locationSearchViewController.locationDelegate = self
+        if let selectedPhotoViewController = segue.destination as? SelectedPhotoViewController {
+            selectedPhotoViewController.selectedPhotoViewControllerDelegate = self
+        }
+        if let selectedLocationViewController = segue.destination as? SelectedLocationViewController {
+            selectedLocationViewController.selectedLocationViewControllerDelegate = self
         }
     }
+    //    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    //        self.view.endEditing(true)
+    //    }
     
     // MARK: - Actions
     
@@ -72,27 +95,64 @@ class UploadPostViewController: UIViewController,LocationSearchViewControllerLoc
     
     @IBAction func uploadPost(_ sender: Any) {
         print(postTextView.text as String)
+        print(datePicker.date)
+        print(publicPrivateSegmentedControl.isSelected)
+        print(publicPrivateSegmentedControl.selectedSegmentIndex)
         
+    }
+    @IBAction func dateValueChanged(_ sender: Any) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd, YYYY"
+        let dateString = dateFormatter.string(from: datePicker.date)
+        print(dateString)
     }
     // MARK: - Methods
     
-    func setLocation(lat: Float, lng: Float, title: String, subTitle: String){
+    //    func hideKeyboard() {
+    //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
+    //            action: #selector(UIViewController.dismissKeyboard))
+    //        view.addGestureRecognizer(tap)
+    //    }
+    //    @objc func dismissKeyboard() {
+    //        view.endEditing(true)
+    //    }
+    private func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keybaordRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keybaordRectangle.height
+            let bottomOffset = CGPoint(x: 0, y: (initialContentsHeight - keyboardHeight))
+            scrollView.setContentOffset(bottomOffset, animated: true)
+            bottomConstraint.constant =  keyboardHeight
+        }
+    }
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        bottomConstraint.constant = CGFloat(0.0)
+    }
+    
+    func setLocation(lat: String, lng: String, title: String, subTitle: String){
+        print("location")
         location.lat = lat
         location.lng = lng
         location.title = title
         location.subTitle = subTitle
+        print(title)
         
-        checkRequiredForm()
+        self.checkRequiredForm()
     }
     
     func appendImage(image: UIImage){
+        print("append")
         images.append(image)
-        checkRequiredForm()
-    }
-    
-    func setDate(date: String){
-        self.date = date
-        checkRequiredForm()
+        self.checkRequiredForm()
     }
     
     func setText(text: String){
@@ -101,7 +161,8 @@ class UploadPostViewController: UIViewController,LocationSearchViewControllerLoc
     }
     
     func checkRequiredForm(){
-        if images.count > 0, date != "", location.title != "", text != "" {
+        print("count: ",images.count,"location: ",location.title, "text: ",postTextView.text)
+        if images.count > 0, location.title != "", postTextView.textColor == .white, !postTextView.text.isEmpty {
             uploadButton.isEnabled = true
             return
         }
@@ -111,18 +172,33 @@ class UploadPostViewController: UIViewController,LocationSearchViewControllerLoc
 
 extension UploadPostViewController: UITextViewDelegate{
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if postTextView.textColor == UIColor(red: 0.86, green: 0.86, blue: 0.86, alpha: 1.00) {
-            postTextView.text = nil
-            postTextView.textColor = UIColor.white
+        if postTextView.textColor == UIColor(red: 0.86, green: 0.86, blue: 0.86, alpha: 1.00){
+            postTextView.text = ""
+            postTextView.textColor = .white
         }
     }
-    
+    func textViewDidChange(_ textView: UITextView) {
+        self.checkRequiredForm()
+    }
     func textViewDidEndEditing(_ textView: UITextView) {
         if postTextView.text.isEmpty {
-            postTextView.text = "글을 입력하세요"
             postTextView.textColor = UIColor(red: 0.86, green: 0.86, blue: 0.86, alpha: 1.00)
-        } else {
-            setText(text: postTextView.text)
+            postTextView.text = "글을 입력하세요"
         }
+    }
+}
+
+extension UIViewController
+{
+    func hideKeyboard()
+    {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyboard()
+    {
+        view.endEditing(true)
     }
 }

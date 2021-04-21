@@ -9,12 +9,8 @@ import UIKit
 import MapKit
 
 // Label 설정
-protocol LocationSearchViewControllerLocationNameDelegate {
-    func setLocation(name:String)
-}
-// Location Model 설정
-protocol LocationSearchViewControllerLocationDelegate{
-    func setLocation(lat:Float, lng:Float, title:String, subTitle:String)
+protocol LocationSearchViewControllerDelegate {
+    func setLocation(lat: String, lng: String, title: String, subTitle: String)
 }
 
 class LocationSearchViewController: UIViewController, UISearchBarDelegate, MKLocalSearchCompleterDelegate {
@@ -27,8 +23,7 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate, MKLoc
     // on the searchResultsTable
     var searchResults = [MKLocalSearchCompletion]()
     
-    var locationDelegate: LocationSearchViewControllerLocationDelegate?
-    var locationNameDelegate: LocationSearchViewControllerLocationNameDelegate?
+    var locationSearchViewControllerDelegate: LocationSearchViewControllerDelegate?
    
    // MARK: - IBOutlet
     @IBOutlet weak var searchBar: UISearchBar!{
@@ -136,23 +131,23 @@ extension LocationSearchViewController: UITableViewDelegate {
         
         let search = MKLocalSearch(request: searchRequest)
         search.start { (response, error) in
-//            guard let coordinate = response?.mapItems[0].placemark.coordinate else {
-//                return
-//            }
-//            
+            guard let coordinate = response?.mapItems[0].placemark.coordinate else {
+                return
+            }
+          
             guard let name = response?.mapItems[0].name else {
                 return
             }
-//            
-//            let lat = coordinate.latitude
-//            let lon = coordinate.longitude
-//            
+           
+            let lat = String(coordinate.latitude)
+            let lng = String(coordinate.longitude)
+      
 //            print(lat)
 //            print(lon)
 //            print(name)
             
-            self.locationNameDelegate?.setLocation(name: name)
-            self.locationDelegate?.setLocation(lat: 1.0, lng: 1.0, title: "temp", subTitle: "temp")
+            self.locationSearchViewControllerDelegate?.setLocation(lat: lat, lng: lng, title: name, subTitle: "temp")
+            
             self.dismiss(animated: true, completion: nil)
         }
     }
