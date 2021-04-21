@@ -26,6 +26,7 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate, MKLoc
     var locationSearchViewControllerDelegate: LocationSearchViewControllerDelegate?
    
    // MARK: - IBOutlet
+    
     @IBOutlet weak var searchBar: UISearchBar!{
         didSet{
             searchBar.searchTextField.textColor = UIColor.white
@@ -40,14 +41,13 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate, MKLoc
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        //Set up the delegates & the dataSources of both the searchbar & searchResultsTableView
+        // Set up the delegates & the dataSources of both the searchbar & searchResultsTableView
         searchCompleter.delegate = self
         searchBar.delegate = self
         searchResultsTable.delegate = self
         searchResultsTable.dataSource = self
         searchBar.becomeFirstResponder()
     }
-    
     
     // MARK: - Methods
     
@@ -114,9 +114,7 @@ extension LocationSearchViewController: UITableViewDataSource {
         //Set the content of the cell to our searchResult data
         cell.titleLabel?.text = searchResult.title
         cell.subTitleLabel?.text = searchResult.subtitle
-        
-        //        print(searchResult.title)
-        
+                
         return cell
     }
 }
@@ -143,11 +141,10 @@ extension LocationSearchViewController: UITableViewDelegate {
             let lng = String(coordinate.longitude)
       
 //            print(lat)
-//            print(lon)
+//            print(lng)
 //            print(name)
             
             self.locationSearchViewControllerDelegate?.setLocation(lat: lat, lng: lng, title: name, subTitle: "temp")
-            
             self.dismiss(animated: true, completion: nil)
         }
     }

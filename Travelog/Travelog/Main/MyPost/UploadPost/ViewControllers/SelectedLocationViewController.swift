@@ -7,7 +7,6 @@
 
 import UIKit
 
-// Location Model 설정
 protocol SelectedLocationViewControllerDelegate{
     func setLocation(lat:String, lng:String, title:String, subTitle:String)
 }
@@ -17,6 +16,7 @@ class SelectedLocationViewController: UIViewController, LocationSearchViewContro
     // MARK: - Properties
     
     var isSelected = false
+    
     let locationSearchViewController = LocationSearchViewController()
     
     var selectedLocationViewControllerDelegate: SelectedLocationViewControllerDelegate?
