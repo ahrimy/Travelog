@@ -11,9 +11,7 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
     
     // MARK: - Properties
     var images:[UIImage] = []
-    var date: String = ""
     var location = Location()
-    var text = ""
     
     var initialContentsHeight:CGFloat = CGFloat(40)
     
@@ -63,8 +61,7 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
         self.tabBarController?.tabBar.isHidden = true
         self.postTextView.delegate = self
         
-        //        hideKeyboard()
-        addObservers()
+        self.addObservers()
         self.hideKeyboard()
         self.initialContentsHeight += selectedPhotoView.frame.height + datePicker.frame.height + selectedLocationView.frame.height + postTextView.frame.height + publicPrivateSegmentedControl.frame.height
     }
@@ -83,9 +80,6 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
             selectedLocationViewController.selectedLocationViewControllerDelegate = self
         }
     }
-    //    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    //        self.view.endEditing(true)
-    //    }
     
     // MARK: - Actions
     
@@ -94,10 +88,16 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
     }
     
     @IBAction func uploadPost(_ sender: Any) {
-        print(postTextView.text as String)
-        print(datePicker.date)
-        print(publicPrivateSegmentedControl.isSelected)
-        print(publicPrivateSegmentedControl.selectedSegmentIndex)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd "
+        let dateString = dateFormatter.string(from: datePicker.date)
+        print("Photo count: ",images.count)
+        print("Date: ", dateString)
+        print("Location: ", location.title)
+        print("Latitude: ", location.lat, " Longitude: ", location.lng)
+        print("Text: ", postTextView.text as String)
+        let privacy = publicPrivateSegmentedControl.selectedSegmentIndex == 0 ? "Public" : "Private"
+        print("Privacy: ", privacy)
         
     }
     @IBAction func dateValueChanged(_ sender: Any) {
@@ -106,16 +106,30 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
         let dateString = dateFormatter.string(from: datePicker.date)
         print(dateString)
     }
+    
     // MARK: - Methods
     
-    //    func hideKeyboard() {
-    //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
-    //            action: #selector(UIViewController.dismissKeyboard))
-    //        view.addGestureRecognizer(tap)
-    //    }
-    //    @objc func dismissKeyboard() {
-    //        view.endEditing(true)
-    //    }
+    func setLocation(lat: String, lng: String, title: String, subTitle: String){
+        location.lat = lat
+        location.lng = lng
+        location.title = title
+        location.subTitle = subTitle
+        
+        self.checkRequiredForm()
+    }
+    
+    func appendImage(image: UIImage){
+        images.append(image)
+        self.checkRequiredForm()
+    }
+    
+    func checkRequiredForm(){
+        if images.count > 0, location.title != "", postTextView.textColor == .white, !postTextView.text.isEmpty {
+            uploadButton.isEnabled = true
+            return
+        }
+        uploadButton.isEnabled = false
+    }
     private func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(
@@ -136,37 +150,6 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
     }
     @objc private func keyboardWillHide(_ notification: Notification) {
         bottomConstraint.constant = CGFloat(0.0)
-    }
-    
-    func setLocation(lat: String, lng: String, title: String, subTitle: String){
-        print("location")
-        location.lat = lat
-        location.lng = lng
-        location.title = title
-        location.subTitle = subTitle
-        print(title)
-        
-        self.checkRequiredForm()
-    }
-    
-    func appendImage(image: UIImage){
-        print("append")
-        images.append(image)
-        self.checkRequiredForm()
-    }
-    
-    func setText(text: String){
-        self.text = text
-        checkRequiredForm()
-    }
-    
-    func checkRequiredForm(){
-        print("count: ",images.count,"location: ",location.title, "text: ",postTextView.text)
-        if images.count > 0, location.title != "", postTextView.textColor == .white, !postTextView.text.isEmpty {
-            uploadButton.isEnabled = true
-            return
-        }
-        uploadButton.isEnabled = false
     }
 }
 
