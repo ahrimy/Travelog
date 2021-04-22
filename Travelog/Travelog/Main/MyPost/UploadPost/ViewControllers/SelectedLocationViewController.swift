@@ -7,13 +7,22 @@
 
 import UIKit
 
-class SelectedLocationViewController: UIViewController,LocationSearchViewControllerDelegate{
+protocol SelectedLocationViewControllerDelegate{
+    func setLocation(lat:String, lng:String, title:String, subTitle:String)
+}
+
+class SelectedLocationViewController: UIViewController, LocationSearchViewControllerDelegate{
     
     // MARK: - Properties
     
     var isSelected = false
+    
     let locationSearchViewController = LocationSearchViewController()
+    
+    var selectedLocationViewControllerDelegate: SelectedLocationViewControllerDelegate?
 
+    // MARK: - IBOutlet
+    
     @IBOutlet weak var setLocationLabel: UILabel!
     
     // MARK: - View Life Cycle
@@ -26,7 +35,7 @@ class SelectedLocationViewController: UIViewController,LocationSearchViewControl
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let locationSearchViewController = segue.destination as? LocationSearchViewController {
-            locationSearchViewController.delegate = self
+            locationSearchViewController.locationSearchViewControllerDelegate = self
         }
     }
     
@@ -35,9 +44,11 @@ class SelectedLocationViewController: UIViewController,LocationSearchViewControl
     
     // MARK: - Methods
     
-    func setLocation(location: String) {
-        setLocationLabel.text = location
+    func setLocation(lat: String, lng: String, title: String, subTitle: String) {
+        setLocationLabel.text = title
         isSelected = true
+        
+        self.selectedLocationViewControllerDelegate?.setLocation(lat: lat, lng: lng, title: title, subTitle: subTitle)
     }
 
     /*
