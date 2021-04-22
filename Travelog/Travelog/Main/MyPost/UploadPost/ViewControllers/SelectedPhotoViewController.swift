@@ -51,15 +51,42 @@ class SelectedPhotoViewController: UIViewController ,PHPickerViewControllerDeleg
 //        for i in 0..<fetchResult.count{
 //            print(fetchResult.object(at: i))
 //        }
-        
+          
         while let itemProvider = iterator?.next(),itemProvider.canLoadObject(ofClass: UIImage.self) {
-            itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
-                DispatchQueue.main.async {
-                    self.selectedPhotoViewControllerDelegate?.appendImage(image: image as! UIImage)
-                    self.selectedPhotos.append(image as! UIImage)
-                    self.collectionView.reloadData()
+            print(itemProvider.registeredTypeIdentifiers)
+            itemProvider.loadFileRepresentation(forTypeIdentifier: UTType.image.identifier){[weak self](file,error)in
+                if (file != nil) {
+                    do{
+                        let data = try Data(contentsOf: file!)
+                        let image = UIImage(data: data)
+                        
+                        DispatchQueue.main.async {
+                            self?.selectedPhotoViewControllerDelegate?.appendImage(image: image!)
+                            self?.selectedPhotos.append(image!)
+                            self?.collectionView.reloadData()
+                        }
+                    }catch{
+                        print("Error occured")
+                    }
+                }
+                if (error != nil){
+                    print("error")
                 }
             }
+            
+            // HEIC type error
+//            itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
+//                if (image != nil) {
+//                    DispatchQueue.main.async {
+//                        self.selectedPhotoViewControllerDelegate?.appendImage(image: image as! UIImage)
+//                        self.selectedPhotos.append(image as! UIImage)
+//                        self.collectionView.reloadData()
+//                    }
+//                }
+//                if (error != nil){
+//                    print("error")
+//                }
+//            }
         }
     }
     
@@ -67,6 +94,7 @@ class SelectedPhotoViewController: UIViewController ,PHPickerViewControllerDeleg
         var configuration = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
         configuration.filter = .any(of: [.images, .videos])
         configuration.selectionLimit = 10 - selectedPhotos.count
+        configuration.preferredAssetRepresentationMode = .current
 
         let picker = PHPickerViewController(configuration: configuration)
 
