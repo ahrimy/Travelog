@@ -15,4 +15,5 @@ struct StarredList: Decodable, Hashable {
     let country: String
     let city: String
     let text: String
+    
 }

@@ -43,22 +43,39 @@ class StarredPostListCell: UICollectionViewCell, SelfConfiguringCell {
         text.textAlignment = .left
         text.numberOfLines = 5
         
-        // TODO : 좋아요 & 댓글 오른쪽 정렬 필요
         likeButton.setImage(UIImage(systemName: "star"), for: .normal)
+        likeButton.imageEdgeInsets = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
+        likeButton.imageView?.contentMode = .scaleAspectFit
+
         likeNum.text = "77" // TODO: data file에서 불러오기
         likeNum.textColor = UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)
-        likeNum.font = UIFont.systemFont(ofSize: 16)
+        likeNum.font = UIFont.systemFont(ofSize: 12)
+        
         commentButton.setImage(UIImage(systemName: "text.bubble"), for: .normal)
+        commentButton.imageEdgeInsets = UIEdgeInsets(top: 3, left: 0, bottom: 2, right: 0)
+        commentButton.imageView?.contentMode = .scaleAspectFit
+        
         commmentNum.text = "6" // TODO: data file에서 불러오기
         commmentNum.textColor = UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)
-        commmentNum.font = UIFont.systemFont(ofSize: 16)
-        let buttonStackView = UIStackView(arrangedSubviews: [likeButton, likeNum, commentButton, commmentNum])
+        commmentNum.font = UIFont.systemFont(ofSize: 12)
+        
+        let likeStackView = UIStackView(arrangedSubviews: [likeButton, likeNum])
+        likeStackView.axis = .horizontal
+        likeStackView.distribution = .equalCentering
+        let commentStackView = UIStackView(arrangedSubviews: [commentButton, commmentNum])
+        commentStackView.axis = .horizontal
+        commentStackView.distribution = .equalCentering
+        let buttonStackView = UIStackView(arrangedSubviews: [likeStackView, commentStackView])
         buttonStackView.translatesAutoresizingMaskIntoConstraints = false
         buttonStackView.axis = .horizontal
         buttonStackView.distribution = .equalSpacing
-        buttonStackView.setCustomSpacing(20, after: likeNum)
+        buttonStackView.setCustomSpacing(5, after: likeStackView)
+        let emptyView = UIView()
+        let bottomStackView = UIStackView(arrangedSubviews: [emptyView, buttonStackView])
+        bottomStackView.axis = .horizontal
+        bottomStackView.distribution = .equalSpacing
         
-        let stackView = UIStackView(arrangedSubviews: [name, imageView, address_info, text, buttonStackView])
+        let stackView = UIStackView(arrangedSubviews: [name, imageView, address_info, text, bottomStackView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.distribution = .equalCentering // TODO: 변경 필요
