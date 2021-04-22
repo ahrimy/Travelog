@@ -11,6 +11,7 @@ class StarredPostViewController: UIViewController {
     
     @IBOutlet weak var StarredPostMapView: UIView!
     @IBOutlet weak var StarredPostListView: UIView!
+    @IBOutlet weak var mapListSegmentedControl: UISegmentedControl!
     
     @IBAction func SelectedSegmentedControl(_sender: UISegmentedControl){
         if _sender.selectedSegmentIndex == 0 {
@@ -27,8 +28,8 @@ class StarredPostViewController: UIViewController {
         
         self.navigationController?.isNavigationBarHidden = true
         view.insetsLayoutMarginsFromSafeArea = false
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
-    }
+        mapListSegmentedControl.setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
+        mapListSegmentedControl.setTitleTextAttributes([.foregroundColor :        UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)], for: .normal)    }
     
 
     /*

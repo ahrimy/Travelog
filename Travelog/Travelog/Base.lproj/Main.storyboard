@@ -34,7 +34,7 @@
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2aD-38-Ny5">
                                 <rect key="frame" x="143" y="563" width="104" height="32"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
                                     <segment title="지도"/>
                                     <segment title="리스트"/>
@@ -503,6 +503,7 @@
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="isA-Lx-TpP">
                                 <rect key="frame" x="143" y="612" width="104" height="32"/>
+                                <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                                 <segments>
                                     <segment title="지도"/>
                                     <segment title="리스트"/>
@@ -526,6 +527,7 @@
                     <connections>
                         <outlet property="StarredPostListView" destination="8ta-dJ-yLe" id="rlr-Id-5k3"/>
                         <outlet property="StarredPostMapView" destination="tyI-ax-3a1" id="lL3-Zt-pUV"/>
+                        <outlet property="mapListSegmentedControl" destination="isA-Lx-TpP" id="oDc-vp-SFA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzh-lq-TUy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
