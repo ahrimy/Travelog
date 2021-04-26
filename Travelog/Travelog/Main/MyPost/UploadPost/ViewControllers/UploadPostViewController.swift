@@ -6,11 +6,18 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class UploadPostViewController: UIViewController,SelectedLocationViewControllerDelegate,SelectedPhotoViewControllerDelegate {
+
     
     // MARK: - Properties
+    let storage = Storage.storage()
+    let userId = 1;
+    let postId = 1;
+    
     var images:[UIImage] = []
+    var imageRefs:[String] = []
     var location = Location()
     
     var initialContentsHeight:CGFloat = CGFloat(40)
@@ -86,7 +93,6 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
     @IBAction func cancelUpload(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
     @IBAction func uploadPost(_ sender: Any) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd "
@@ -98,7 +104,7 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
         print("Text: ", postTextView.text as String)
         let privacy = publicPrivateSegmentedControl.selectedSegmentIndex == 0 ? "Public" : "Private"
         print("Privacy: ", privacy)
-        
+        uploadImages()
     }
     @IBAction func dateValueChanged(_ sender: Any) {
         let dateFormatter = DateFormatter()
@@ -117,18 +123,42 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
         
         self.checkRequiredForm()
     }
-    
     func appendImage(image: UIImage){
         images.append(image)
         self.checkRequiredForm()
     }
-    
     func checkRequiredForm(){
         if images.count > 0, location.title != "", postTextView.textColor == .white, !postTextView.text.isEmpty {
             uploadButton.isEnabled = true
             return
         }
         uploadButton.isEnabled = false
+    }
+    func uploadImages(){
+        var data = Data()
+        var imageId = 1;
+        let filepath = "\(self.userId)/\(self.postId)/image"
+        let storageRef = storage.reference()
+        self.images.forEach{image in
+            let imageRef = storageRef.child(filepath + String(imageId))
+            data = image.jpegData(compressionQuality: 0.8)!
+            imageRef.putData(data, metadata: nil){
+                (metaData, error) in if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }else{
+                    imageRef.downloadURL { (url, error) in
+                      guard let downloadURL = url else {
+                        print(error?.localizedDescription ?? "Error occured")
+                        return
+                      }
+                        print(downloadURL)
+                        self.imageRefs.append(downloadURL.absoluteString)
+                    }
+                }
+            }
+            imageId = imageId + 1
+        }
     }
     private func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
