@@ -17,8 +17,8 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
     let db = Firestore.firestore()
     let group = DispatchGroup()
     
-    let userId = 1;
-    let postId = 1;
+    let userId = "ahrimy";
+    var postId:String = "";
     
     var images:[UIImage] = []
     var imageRefs:[String] = []
@@ -108,6 +108,7 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
         print("Text: ", postTextView.text as String)
         let privacy = publicPrivateSegmentedControl.selectedSegmentIndex == 0 ? "Public" : "Private"
         print("Privacy: ", privacy)
+        self.createPost()
         let uploadImageQueue = DispatchQueue(label: "uploadImage")
         group.enter()
         uploadImageQueue.async(group: group) {
@@ -115,7 +116,7 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
         }
         
         group.notify(queue: .main) {
-            self.addPost()
+            self.setImageRefs()
         }
     }
     @IBAction func dateValueChanged(_ sender: Any) {
@@ -176,11 +177,10 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
             imageId = imageId + 1
         }
     }
-    func addPost(){
-        db.collection("posts").addDocument(data: [
+    func createPost(){
+        let ref = db.collection("posts").addDocument(data: [
                                             "write":"ahrimy",
                                             "date":Timestamp(date: datePicker.date),
-                                            "imageRefs": imageRefs,
                                             "text":postTextView.text ?? "",
                                             "Location":[
                                                 "title":location.title,
@@ -193,6 +193,19 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
                 print("Error writing document: \(err)")
             } else {
                 print("Document successfully written!")
+            }
+        }
+        self.postId = ref.documentID
+    }
+    func setImageRefs(){
+        db.collection("posts").document(self.postId).updateData([
+            "imageRefs": imageRefs,
+            "updatedAt":Timestamp(date: Date())
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
             }
         }
     }
