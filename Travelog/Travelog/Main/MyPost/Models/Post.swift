@@ -13,7 +13,7 @@ class Post {
         id: Int = -1,
         date: String = "",
         text: String = "",
-        imageRef: String = "",
+        imageRefs: [String] = [],
         location: Location? = nil,
         isPublic: Bool = false,
         createdAt: String="",
@@ -22,7 +22,7 @@ class Post {
         self.id = id
         self.date = date
         self.text = text
-        self.imageRef = imageRef
+        self.imageRefs = imageRefs
         self.location = location
         self.isPublic = isPublic
         self.createdAt = createdAt
@@ -32,7 +32,7 @@ class Post {
     var id : Int
     var date: String
     var text: String
-    var imageRef: String
+    var imageRefs: [String]
     var location: Location?
     var isPublic: Bool
     var createdAt: String
