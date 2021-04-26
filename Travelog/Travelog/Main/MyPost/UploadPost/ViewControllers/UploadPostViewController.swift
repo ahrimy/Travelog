@@ -179,7 +179,7 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
     }
     func createPost(){
         let ref = db.collection("posts").addDocument(data: [
-                                            "write":"ahrimy",
+                                            "writer":"ahrimy",
                                             "date":Timestamp(date: datePicker.date),
                                             "text":postTextView.text ?? "",
                                             "Location":[
