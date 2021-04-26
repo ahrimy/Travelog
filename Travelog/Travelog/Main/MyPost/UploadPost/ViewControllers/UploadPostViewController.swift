@@ -7,12 +7,16 @@
 
 import UIKit
 import FirebaseStorage
+import FirebaseFirestore
 
 class UploadPostViewController: UIViewController,SelectedLocationViewControllerDelegate,SelectedPhotoViewControllerDelegate {
-
+    
     
     // MARK: - Properties
     let storage = Storage.storage()
+    let db = Firestore.firestore()
+    let group = DispatchGroup()
+    
     let userId = 1;
     let postId = 1;
     
@@ -104,7 +108,15 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
         print("Text: ", postTextView.text as String)
         let privacy = publicPrivateSegmentedControl.selectedSegmentIndex == 0 ? "Public" : "Private"
         print("Privacy: ", privacy)
-        uploadImages()
+        let uploadImageQueue = DispatchQueue(label: "uploadImage")
+        group.enter()
+        uploadImageQueue.async(group: group) {
+            self.uploadImages()
+        }
+        
+        group.notify(queue: .main) {
+            self.addPost()
+        }
     }
     @IBAction func dateValueChanged(_ sender: Any) {
         let dateFormatter = DateFormatter()
@@ -148,16 +160,40 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
                     return
                 }else{
                     imageRef.downloadURL { (url, error) in
-                      guard let downloadURL = url else {
-                        print(error?.localizedDescription ?? "Error occured")
-                        return
-                      }
+                        guard let downloadURL = url else {
+                            print(error?.localizedDescription ?? "Error occured")
+                            return
+                        }
                         print(downloadURL)
                         self.imageRefs.append(downloadURL.absoluteString)
+                        
+                        if self.imageRefs.count == imageId - 1 {
+                            self.group.leave()
+                        }
                     }
                 }
             }
             imageId = imageId + 1
+        }
+    }
+    func addPost(){
+        db.collection("posts").addDocument(data: [
+                                            "write":"ahrimy",
+                                            "date":Timestamp(date: datePicker.date),
+                                            "imageRefs": imageRefs,
+                                            "text":postTextView.text ?? "",
+                                            "Location":[
+                                                "title":location.title,
+                                                "latitude":location.lat,
+                                                "longitude":location.lng],
+                                            "isPublic":publicPrivateSegmentedControl.selectedSegmentIndex == 0,
+                                            "createdAt":Timestamp(date: Date()),
+                                            "updatedAt":Timestamp(date: Date())]){ err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
         }
     }
     private func addObservers() {
