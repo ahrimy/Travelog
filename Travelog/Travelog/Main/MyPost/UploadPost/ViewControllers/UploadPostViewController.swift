@@ -121,12 +121,16 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
         post.setLocation(latitude: lat, longitude: lng, title: title, subTitle: subTitle)
         self.activateUploadButton()
     }
+    func resetLocation(){
+        self.post.deleteLocation()
+        self.activateUploadButton()
+    }
     func appendImage(image: UIImage){
         images.append(image)
         self.activateUploadButton()
     }
     func activateUploadButton(){
-        if images.count > 0, self.post.location.title != "", postTextView.textColor == .white, !postTextView.text.isEmpty {
+        if images.count > 0, self.post.location.title != "No Location", postTextView.textColor == .white, !postTextView.text.isEmpty {
             uploadButton.isEnabled = true
             return
         }

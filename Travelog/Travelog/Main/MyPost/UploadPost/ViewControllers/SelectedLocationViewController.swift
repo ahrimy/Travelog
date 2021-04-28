@@ -9,6 +9,7 @@ import UIKit
 
 protocol SelectedLocationViewControllerDelegate{
     func setLocation(lat:String, lng:String, title:String, subTitle:String)
+    func resetLocation()
 }
 
 class SelectedLocationViewController: UIViewController, LocationSearchViewControllerDelegate{
@@ -53,6 +54,7 @@ class SelectedLocationViewController: UIViewController, LocationSearchViewContro
         setLocationButton.isHidden = false
         resetLocationButton.isHidden = true
         setLocationTapGestureRecognizer.isEnabled = true
+        self.selectedLocationViewControllerDelegate?.resetLocation()
     }
     
     // MARK: - Methods
