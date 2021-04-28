@@ -17,12 +17,11 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
     let db = Firestore.firestore()
     let group = DispatchGroup()
     
-    let userId = "ahrimy";
-    var postId:String = "";
+    let userId = "ahrimy"
+    var postId:String = ""
+    var post = Post(userId: "ahrimy")
     
     var images:[UIImage] = []
-    var imageRefs:[String] = []
-    var location = Location()
     
     var initialContentsHeight:CGFloat = CGFloat(40)
     
@@ -41,7 +40,7 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
     @IBOutlet weak var selectedPhotoView: UIView!
     @IBOutlet weak var datePicker: UIDatePicker!{
         didSet{
-            datePicker.date = Date()
+            datePicker.date = self.post.date
             datePicker.maximumDate = Date()
         }
     }
@@ -68,10 +67,8 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         self.tabBarController?.tabBar.isHidden = true
         self.postTextView.delegate = self
-        
         self.addObservers()
         self.hideKeyboard()
         self.initialContentsHeight += selectedPhotoView.frame.height + datePicker.frame.height + selectedLocationView.frame.height + postTextView.frame.height + publicPrivateSegmentedControl.frame.height
@@ -97,17 +94,16 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
     @IBAction func cancelUpload(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    @IBAction func uploadPost(_ sender: Any) {
+    @IBAction func dateValueChanged(_ sender: Any) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-dd "
+        dateFormatter.dateFormat = "MMM dd, YYYY"
         let dateString = dateFormatter.string(from: datePicker.date)
-        print("Photo count: ",images.count)
-        print("Date: ", dateString)
-        print("Location: ", location.title)
-        print("Latitude: ", location.lat, " Longitude: ", location.lng)
-        print("Text: ", postTextView.text as String)
-        let privacy = publicPrivateSegmentedControl.selectedSegmentIndex == 0 ? "Public" : "Private"
-        print("Privacy: ", privacy)
+        print(dateString)
+    }
+    @IBAction func changePrivacy(_ sender: Any) {
+        self.post.changePrivacy(isPublic: publicPrivateSegmentedControl.selectedSegmentIndex == 0)
+    }
+    @IBAction func uploadPost(_ sender: Any) {
         self.createPost()
         let uploadImageQueue = DispatchQueue(label: "uploadImage")
         group.enter()
@@ -119,33 +115,33 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
             self.setImageRefs()
         }
     }
-    @IBAction func dateValueChanged(_ sender: Any) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd, YYYY"
-        let dateString = dateFormatter.string(from: datePicker.date)
-        print(dateString)
-    }
     
     // MARK: - Methods
-    
     func setLocation(lat: String, lng: String, title: String, subTitle: String){
-        location.lat = lat
-        location.lng = lng
-        location.title = title
-        location.subTitle = subTitle
-        
-        self.checkRequiredForm()
+        post.setLocation(latitude: lat, longitude: lng, title: title, subTitle: subTitle)
+        self.activateUploadButton()
     }
     func appendImage(image: UIImage){
         images.append(image)
-        self.checkRequiredForm()
+        self.activateUploadButton()
     }
-    func checkRequiredForm(){
-        if images.count > 0, location.title != "", postTextView.textColor == .white, !postTextView.text.isEmpty {
+    func activateUploadButton(){
+        if images.count > 0, self.post.location.title != "", postTextView.textColor == .white, !postTextView.text.isEmpty {
             uploadButton.isEnabled = true
             return
         }
         uploadButton.isEnabled = false
+    }
+    func createPost(){
+        self.post.uploadPost()
+        let ref = db.collection("posts").addDocument(data:self.post.getPostData()){ err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+        self.postId = ref.documentID
     }
     func uploadImages(){
         var data = Data()
@@ -166,9 +162,9 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
                             return
                         }
                         print(downloadURL)
-                        self.imageRefs.append(downloadURL.absoluteString)
+                        self.post.appendImageReference(imageRef: downloadURL.absoluteString)
                         
-                        if self.imageRefs.count == imageId - 1 {
+                        if self.post.imageRefs.count == imageId - 1 {
                             self.group.leave()
                         }
                     }
@@ -177,31 +173,8 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
             imageId = imageId + 1
         }
     }
-    func createPost(){
-        let ref = db.collection("posts").addDocument(data: [
-                                            "writer":"ahrimy",
-                                            "date":Timestamp(date: datePicker.date),
-                                            "text":postTextView.text ?? "",
-                                            "Location":[
-                                                "title":location.title,
-                                                "latitude":location.lat,
-                                                "longitude":location.lng],
-                                            "isPublic":publicPrivateSegmentedControl.selectedSegmentIndex == 0,
-                                            "createdAt":Timestamp(date: Date()),
-                                            "updatedAt":Timestamp(date: Date())]){ err in
-            if let err = err {
-                print("Error writing document: \(err)")
-            } else {
-                print("Document successfully written!")
-            }
-        }
-        self.postId = ref.documentID
-    }
     func setImageRefs(){
-        db.collection("posts").document(self.postId).updateData([
-            "imageRefs": imageRefs,
-            "updatedAt":Timestamp(date: Date())
-        ]) { err in
+        db.collection("posts").document(self.postId).updateData(self.post.getImageRefsData()) { err in
             if let err = err {
                 print("Error updating document: \(err)")
             } else {
@@ -209,6 +182,7 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
             }
         }
     }
+
     private func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(
@@ -240,7 +214,8 @@ extension UploadPostViewController: UITextViewDelegate{
         }
     }
     func textViewDidChange(_ textView: UITextView) {
-        self.checkRequiredForm()
+        self.post.updateText(text: postTextView.text)
+        self.activateUploadButton()
     }
     func textViewDidEndEditing(_ textView: UITextView) {
         if postTextView.text.isEmpty {

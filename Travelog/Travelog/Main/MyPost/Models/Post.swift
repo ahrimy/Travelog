@@ -7,34 +7,73 @@
 
 import Foundation
 
-class Post {
+class Post{
     
     init(
-        id: Int = -1,
-        date: String = "",
-        text: String = "",
-        imageRefs: [String] = [],
-        location: Location? = nil,
-        isPublic: Bool = false,
-        createdAt: String="",
-        updatedAt:String=""
+        userId:String
     ){
-        self.id = id
-        self.date = date
-        self.text = text
-        self.imageRefs = imageRefs
-        self.location = location
-        self.isPublic = isPublic
-        self.createdAt = createdAt
-        self.updatedAt = updatedAt
+        self.id = ""
+        self.writer = userId
+        self.date = Date()
+        self.text = ""
+        self.imageRefs = []
+        self.location = Location()
+        self.isPublic = true
+        self.createdAt = Date()
+        self.updatedAt = Date()
     }
     
-    var id : Int
-    var date: String
+    var id: String
+    var writer: String
+    var date: Date
     var text: String
     var imageRefs: [String]
-    var location: Location?
+    var location: Location!
     var isPublic: Bool
-    var createdAt: String
-    var updatedAt: String
+    var createdAt: Date
+    var updatedAt: Date
+    
+    func setDate(date:Date){
+        self.date = date
+    }
+    func updateText(text:String){
+        self.text = text
+    }
+    func appendImageReference(imageRef:String){
+        self.imageRefs.append(imageRef)
+    }
+    func setLocation(latitude: String, longitude:String, title:String, subTitle:String){
+        self.location.latitude = latitude
+        self.location.longitude = longitude
+        self.location.title = title
+        self.location.subTitle = subTitle
+    }
+    func deleteLocation(){
+        self.location.latitude = ""
+        self.location.longitude = ""
+        self.location.title = "No Location"
+        self.location.subTitle = ""
+    }
+    func changePrivacy(isPublic:Bool){
+        self.isPublic = isPublic
+    }
+    func uploadPost(){
+        self.createdAt = Date()
+        self.updatedAt = Date()
+    }
+    func getPostData() -> [String:Any]{
+        return [
+            "writer":self.writer,
+            "date":self.date,
+            "text":self.text,
+            "imageRefs":self.imageRefs,
+            "location":self.location.getLocationData(),
+            "isPublic":self.isPublic,
+            "createdAt":self.createdAt,
+            "updatedAt":self.updatedAt
+        ]
+    }
+    func getImageRefsData() -> [String:[String]]{
+        return ["imageRefs":imageRefs]
+    }
 }

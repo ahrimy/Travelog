@@ -24,7 +24,13 @@ class SelectedLocationViewController: UIViewController, LocationSearchViewContro
     // MARK: - IBOutlet
     
     @IBOutlet weak var setLocationLabel: UILabel!
-    
+    @IBOutlet weak var setLocationButton: UIButton!
+    @IBOutlet weak var resetLocationButton: UIButton!{
+        didSet{
+            resetLocationButton.isHidden = true
+        }
+    }
+    @IBOutlet weak var setLocationTapGestureRecognizer: UITapGestureRecognizer!
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -41,15 +47,25 @@ class SelectedLocationViewController: UIViewController, LocationSearchViewContro
     
     // MARK: - Actions
 
+    @IBAction func resetLocation(_ sender: Any) {
+        setLocationLabel.text = "위치 추가"
+        isSelected = false
+        setLocationButton.isHidden = false
+        resetLocationButton.isHidden = true
+        setLocationTapGestureRecognizer.isEnabled = true
+    }
     
     // MARK: - Methods
     
     func setLocation(lat: String, lng: String, title: String, subTitle: String) {
         setLocationLabel.text = title
         isSelected = true
-        
+        setLocationButton.isHidden = true
+        resetLocationButton.isHidden = false
+        setLocationTapGestureRecognizer.isEnabled = false
         self.selectedLocationViewControllerDelegate?.setLocation(lat: lat, lng: lng, title: title, subTitle: subTitle)
     }
+
 
     /*
     // MARK: - Navigation

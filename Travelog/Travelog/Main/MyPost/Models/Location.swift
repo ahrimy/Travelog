@@ -9,20 +9,24 @@ import Foundation
 
 class Location{
     
-    init(
-        lat: String = "",
-        lng: String = "",
-        title: String = "",
-        subTitle: String = ""
-    ){
-        self.lat = lat
-        self.lng = lng
-        self.title = title
-        self.subTitle = subTitle
+    init(){
+        self.latitude = ""
+        self.longitude = ""
+        self.title = "No Location"
+        self.subTitle = ""
     }
     
-    var lat: String
-    var lng: String
+    var latitude: String
+    var longitude: String
     var title: String
     var subTitle: String
+    
+    func getLocationData() -> [String:Any] {
+        return[
+            "latitude":self.latitude,
+            "longitude":self.longitude,
+            "title":self.title,
+            "subTitle":self.subTitle
+        ]
+    }
 }
