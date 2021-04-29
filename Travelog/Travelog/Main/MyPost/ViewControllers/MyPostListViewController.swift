@@ -10,18 +10,11 @@ import UIKit
 class MyPostListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     let posts = [
-        PostThumbnail(postId: "1", image: "https://user-images.githubusercontent.com/26592306/112343616-a7d4e680-8d06-11eb-928a-1714f8acc9bd.jpeg"),
-        PostThumbnail(postId:"2",image:"https://user-images.githubusercontent.com/26592306/112343646-ab686d80-8d06-11eb-8d7d-8af1eddd0a74.jpeg"),
-        PostThumbnail(postId: "3", image: "https://user-images.githubusercontent.com/26592306/112343650-ac010400-8d06-11eb-8845-56d5086add38.jpeg"),
-        PostThumbnail(postId: "4", image: "https://user-images.githubusercontent.com/26592306/112343653-ad323100-8d06-11eb-9a10-50a65e6d24b2.jpeg"),
-        PostThumbnail(postId: "5", image: "https://user-images.githubusercontent.com/26592306/112343655-adcac780-8d06-11eb-8e2f-1a28d6bb44ba.jpeg"),
-        PostThumbnail(postId: "6", image: "https://user-images.githubusercontent.com/26592306/112343673-b02d2180-8d06-11eb-9ebd-1949c80ce163.jpeg"),
-        PostThumbnail(postId: "7", image: "https://user-images.githubusercontent.com/26592306/112343684-b28f7b80-8d06-11eb-9804-effc377924fa.jpeg"),
-
-        PostThumbnail(postId: "8", image: "https://user-images.githubusercontent.com/26592306/112343695-b3c0a880-8d06-11eb-9078-8f8a9e56d44e.jpeg"),
-        PostThumbnail(postId: "9", image: "https://user-images.githubusercontent.com/26592306/112343702-b58a6c00-8d06-11eb-8ef9-b43986bc641c.jpeg"),
-
-        PostThumbnail(postId: "10", image: "https://user-images.githubusercontent.com/26592306/112344303-4bbe9200-8d07-11eb-91ea-59f61b86e9d8.jpeg"),
+        PostThumbnail(postId: "IidJt7M8ukwEQhxLQpWg", image: "https://firebasestorage.googleapis.com/v0/b/travelog-6cf98.appspot.com/o/ahrimy%2FIidJt7M8ukwEQhxLQpWg%2Fimage1?alt=media&token=be17bba5-c517-46cb-bd8e-2d3ee5fc5303"),
+        PostThumbnail(postId:"P91CzQHef6pRdlU6REf2",image:"https://firebasestorage.googleapis.com/v0/b/travelog-6cf98.appspot.com/o/ahrimy%2FP91CzQHef6pRdlU6REf2%2Fimage2?alt=media&token=3d171ae6-88d1-4c7a-ab5d-fdb760043ac8"),
+        PostThumbnail(postId: "UAHfGFaPxqkFUI8m4cvG", image: "https://firebasestorage.googleapis.com/v0/b/travelog-6cf98.appspot.com/o/ahrimy%2FUAHfGFaPxqkFUI8m4cvG%2Fimage2?alt=media&token=8326f7a6-c727-4f6b-832b-2696fd45c27b"),
+        PostThumbnail(postId: "ZaAHu8bgRVI0L6EUHQCS", image: "https://firebasestorage.googleapis.com/v0/b/travelog-6cf98.appspot.com/o/ahrimy%2FZaAHu8bgRVI0L6EUHQCS%2Fimage1?alt=media&token=5e04e205-0230-41c7-9da5-ddb05015691a"),
+        PostThumbnail(postId: "p9BuAMHkkAcrHAcGRcTU", image: "https://firebasestorage.googleapis.com/v0/b/travelog-6cf98.appspot.com/o/ahrimy%2Fp9BuAMHkkAcrHAcGRcTU%2Fimage1?alt=media&token=a9708bce-06ed-4714-a208-2f720cd36095"),
         ]
 
     var numberOfCell: Int = 10
