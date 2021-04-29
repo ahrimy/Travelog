@@ -316,6 +316,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="j0r-gV-Pdw"/>
                         <color key="backgroundColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="2hl-5y-5Db" firstAttribute="leading" secondItem="h01-VW-NQA" secondAttribute="leading" id="7kZ-ht-BSZ"/>
@@ -389,10 +390,10 @@
         <scene sceneID="ks8-eY-x9N">
             <objects>
                 <viewController id="Gpl-A6-Mta" customClass="SearchViewController" customModule="Travelog" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fY1-XP-Pyc">
+                    <view key="view" contentMode="scaleToFill" id="Uv9-Kg-foN">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="JTB-Ly-uId"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <viewLayoutGuide key="safeArea" id="5LB-Pl-kPd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="7cH-CB-9uQ"/>

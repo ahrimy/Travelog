@@ -29,7 +29,7 @@ class StarredPostViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         view.insetsLayoutMarginsFromSafeArea = false
         mapListSegmentedControl.setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
-        mapListSegmentedControl.setTitleTextAttributes([.foregroundColor :        UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)], for: .normal)    }
+        mapListSegmentedControl.setTitleTextAttributes([.foregroundColor : UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)], for: .normal)    }
     
 
     /*
