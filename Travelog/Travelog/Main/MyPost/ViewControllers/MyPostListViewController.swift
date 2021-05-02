@@ -10,11 +10,7 @@ import UIKit
 class MyPostListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     let posts = [
-        PostThumbnail(postId: "IidJt7M8ukwEQhxLQpWg", image: "https://firebasestorage.googleapis.com/v0/b/travelog-6cf98.appspot.com/o/ahrimy%2FIidJt7M8ukwEQhxLQpWg%2Fimage1?alt=media&token=be17bba5-c517-46cb-bd8e-2d3ee5fc5303"),
-        PostThumbnail(postId:"P91CzQHef6pRdlU6REf2",image:"https://firebasestorage.googleapis.com/v0/b/travelog-6cf98.appspot.com/o/ahrimy%2FP91CzQHef6pRdlU6REf2%2Fimage2?alt=media&token=3d171ae6-88d1-4c7a-ab5d-fdb760043ac8"),
-        PostThumbnail(postId: "UAHfGFaPxqkFUI8m4cvG", image: "https://firebasestorage.googleapis.com/v0/b/travelog-6cf98.appspot.com/o/ahrimy%2FUAHfGFaPxqkFUI8m4cvG%2Fimage2?alt=media&token=8326f7a6-c727-4f6b-832b-2696fd45c27b"),
-        PostThumbnail(postId: "ZaAHu8bgRVI0L6EUHQCS", image: "https://firebasestorage.googleapis.com/v0/b/travelog-6cf98.appspot.com/o/ahrimy%2FZaAHu8bgRVI0L6EUHQCS%2Fimage1?alt=media&token=5e04e205-0230-41c7-9da5-ddb05015691a"),
-        PostThumbnail(postId: "p9BuAMHkkAcrHAcGRcTU", image: "https://firebasestorage.googleapis.com/v0/b/travelog-6cf98.appspot.com/o/ahrimy%2Fp9BuAMHkkAcrHAcGRcTU%2Fimage1?alt=media&token=a9708bce-06ed-4714-a208-2f720cd36095"),
+        PostThumbnail(postId: "FTqFduNMQTdlmH9uKDm8", image: "https://firebasestorage.googleapis.com/v0/b/travelog-6cf98.appspot.com/o/ahrimy%2FDC3AB93A-2D99-454D-A8C5-0A291F6F96E5?alt=media&token=6437979a-8e10-4b59-bbda-c58e9a366c41")
         ]
 
     var numberOfCell: Int = 10
