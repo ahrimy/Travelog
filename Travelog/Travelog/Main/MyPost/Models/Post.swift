@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import FirebaseStorage
+import FirebaseFirestore
 
 class Post{
     
@@ -48,7 +50,7 @@ class Post{
         self.location.title = title
         self.location.subTitle = subTitle
     }
-    func deleteLocation(){
+    func resetLocation(){
         self.location.latitude = ""
         self.location.longitude = ""
         self.location.title = "No Location"
@@ -56,10 +58,6 @@ class Post{
     }
     func changePrivacy(isPublic:Bool){
         self.isPublic = isPublic
-    }
-    func uploadPost(){
-        self.createdAt = Date()
-        self.updatedAt = Date()
     }
     func getPostData() -> [String:Any]{
         return [
@@ -73,7 +71,43 @@ class Post{
             "updatedAt":self.updatedAt
         ]
     }
-    func getImageRefsData() -> [String:[String]]{
-        return ["imageRefs":imageRefs]
+    func upload(images:[Data], group:DispatchGroup){
+        let storageRef = Storage.storage().reference()
+        images.forEach{image in
+            let imageRef = storageRef.child("\(self.writer)/\(UUID().uuidString)")
+            imageRef.putData(image, metadata: nil){
+                (metaData, error) in if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }else{
+                    imageRef.downloadURL { (url, error) in
+                        guard let downloadURL = url else {
+                            print(error?.localizedDescription ?? "Error occured")
+                            return
+                        }
+                        self.imageRefs.append(downloadURL.absoluteString)
+                        
+                        if images.count == self.imageRefs.count {
+                            self.uploadPost(group: group)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    func uploadPost(group:DispatchGroup){
+        let db = Firestore.firestore()
+        self.createdAt = Date()
+        self.updatedAt = Date()
+        let ref = db.collection("posts").addDocument(data:self.getPostData()){ err in
+            if let err = err {
+                print("Error writing document: \(err)")
+                return
+            } else {
+                print("Document successfully written!")
+                group.leave()
+            }
+        }
+        self.id = ref.documentID
     }
 }

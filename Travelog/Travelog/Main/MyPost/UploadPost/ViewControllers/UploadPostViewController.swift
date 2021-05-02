@@ -6,15 +6,11 @@
 //
 
 import UIKit
-import FirebaseStorage
-import FirebaseFirestore
 
 class UploadPostViewController: UIViewController,SelectedLocationViewControllerDelegate,SelectedPhotoViewControllerDelegate {
     
     
     // MARK: - Properties
-    let storage = Storage.storage()
-    let db = Firestore.firestore()
     let group = DispatchGroup()
     
     let userId = "ahrimy"
@@ -104,15 +100,18 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
         self.post.changePrivacy(isPublic: publicPrivateSegmentedControl.selectedSegmentIndex == 0)
     }
     @IBAction func uploadPost(_ sender: Any) {
-        self.createPost()
+        var imageData:[Data] = []
+        images.forEach{image in
+            imageData.append(image.jpegData(compressionQuality: 0.8)!)
+        }
         let uploadImageQueue = DispatchQueue(label: "uploadImage")
         group.enter()
         uploadImageQueue.async(group: group) {
-            self.uploadImages()
+            self.post.upload(images: imageData, group: self.group)
         }
         
         group.notify(queue: .main) {
-            self.setImageRefs()
+            self.completeUpload()
         }
     }
     
@@ -122,7 +121,7 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
         self.activateUploadButton()
     }
     func resetLocation(){
-        self.post.deleteLocation()
+        self.post.resetLocation()
         self.activateUploadButton()
     }
     func appendImage(image: UIImage){
@@ -136,58 +135,12 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
         }
         uploadButton.isEnabled = false
     }
-    func createPost(){
-        self.post.uploadPost()
-        let ref = db.collection("posts").addDocument(data:self.post.getPostData()){ err in
-            if let err = err {
-                print("Error writing document: \(err)")
-            } else {
-                print("Document successfully written!")
-            }
-        }
-        self.postId = ref.documentID
-    }
-    func uploadImages(){
-        var data = Data()
-        var imageId = 1;
-        let filepath = "\(self.userId)/\(self.postId)/image"
-        let storageRef = storage.reference()
-        self.images.forEach{image in
-            let imageRef = storageRef.child(filepath + String(imageId))
-            data = image.jpegData(compressionQuality: 0.8)!
-            imageRef.putData(data, metadata: nil){
-                (metaData, error) in if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }else{
-                    imageRef.downloadURL { (url, error) in
-                        guard let downloadURL = url else {
-                            print(error?.localizedDescription ?? "Error occured")
-                            return
-                        }
-                        print(downloadURL)
-                        self.post.appendImageReference(imageRef: downloadURL.absoluteString)
-                        
-                        if self.post.imageRefs.count == imageId - 1 {
-                            self.group.leave()
-                        }
-                    }
-                }
-            }
-            imageId = imageId + 1
-        }
-    }
-    func setImageRefs(){
-        db.collection("posts").document(self.postId).updateData(self.post.getImageRefsData()) { err in
-            if let err = err {
-                print("Error updating document: \(err)")
-            } else {
-                print("Document successfully updated!")
+    func completeUpload(){
+        if self.post.id != ""{
                 self.navigationController?.popViewController(animated: false)
-            }
         }
     }
-
+    
     private func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(
