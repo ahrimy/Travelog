@@ -33,6 +33,7 @@
 		3EC3A4F8261DD1D2004BA4FF /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC3A4F7261DD1D2004BA4FF /* LocationSearchViewController.swift */; };
 		3EC3A4FD261E1461004BA4FF /* LocationSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC3A4FC261E1461004BA4FF /* LocationSearchTableViewCell.swift */; };
 		3EF8C41B262AF67800F7F7A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3EF8C41A262AF67800F7F7A4 /* GoogleService-Info.plist */; };
+		AC3B52AC263F73B7007F0D78 /* StarredPostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B52AB263F73B7007F0D78 /* StarredPostDetailViewController.swift */; };
 		AC54C5B1261D6EED0020980D /* StarredPostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54C5AD261D6EED0020980D /* StarredPostList.swift */; };
 		AC54C5B2261D6EED0020980D /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54C5AE261D6EED0020980D /* SelfConfiguringCell.swift */; };
 		AC54C5B3261D6EED0020980D /* StarredPostListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54C5AF261D6EED0020980D /* StarredPostListCell.swift */; };
@@ -104,6 +105,7 @@
 		3EC3A4FC261E1461004BA4FF /* LocationSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewCell.swift; sourceTree = "<group>"; };
 		3EF8C41A262AF67800F7F7A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		53ECBF0DEDC9E59E3D0AC49A /* Pods_Travelog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Travelog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC3B52AB263F73B7007F0D78 /* StarredPostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredPostDetailViewController.swift; sourceTree = "<group>"; };
 		AC54C5AD261D6EED0020980D /* StarredPostList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarredPostList.swift; sourceTree = "<group>"; };
 		AC54C5AE261D6EED0020980D /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
 		AC54C5AF261D6EED0020980D /* StarredPostListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarredPostListCell.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				3E7F919026124A2D00B319E8 /* StarredPostViewController.swift */,
 				ACE90858261B7F160087F6AA /* StarredPostMapViewController.swift */,
 				ACE9085D261B7F8D0087F6AA /* StarredPostListViewController.swift */,
+				AC3B52AB263F73B7007F0D78 /* StarredPostDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -679,6 +682,7 @@
 				3E4F027C262F162100233133 /* SelectedDateViewController.swift in Sources */,
 				3E6F507E260B9A4800B22252 /* PostThumbnail.swift in Sources */,
 				ACA7BF10260A328F00C108EC /* SettingViewController.swift in Sources */,
+				AC3B52AC263F73B7007F0D78 /* StarredPostDetailViewController.swift in Sources */,
 				3E04BB65262735A500362303 /* SelectedLocationViewController.swift in Sources */,
 				3E0FE1D72625E2D3004E93E7 /* AddButtonCollectionViewCell.swift in Sources */,
 				3EC3A4FD261E1461004BA4FF /* LocationSearchTableViewCell.swift in Sources */,

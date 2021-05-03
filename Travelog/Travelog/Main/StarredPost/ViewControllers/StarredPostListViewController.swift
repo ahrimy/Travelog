@@ -56,6 +56,11 @@ extension StarredPostListViewController: UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("\(sections[0].items[indexPath.item])") // TODO: 셀 클릭 했을 때, 동작
+        
+        // 포스트 상세 페이지 모달
+        let postDetailView = self.storyboard?.instantiateViewController(withIdentifier: "postDetailView")
+        postDetailView?.modalTransitionStyle = .coverVertical
+        self.present(postDetailView!, animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
