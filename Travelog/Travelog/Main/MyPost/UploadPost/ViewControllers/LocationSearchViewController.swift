@@ -10,7 +10,7 @@ import MapKit
 
 // Label 설정
 protocol LocationSearchViewControllerDelegate {
-    func setLocation(lat: String, lng: String, title: String, subTitle: String)
+    func setLocation(placeInfo:[String:String])
 }
 
 class LocationSearchViewController: UIViewController, UISearchBarDelegate, MKLocalSearchCompleterDelegate {
@@ -129,22 +129,30 @@ extension LocationSearchViewController: UITableViewDelegate {
         
         let search = MKLocalSearch(request: searchRequest)
         search.start { (response, error) in
-            guard let coordinate = response?.mapItems[0].placemark.coordinate else {
+            guard let name = response?.mapItems[0].name else{
+                return
+            }
+            guard let placemark = response?.mapItems[0].placemark else {
                 return
             }
           
-            guard let name = response?.mapItems[0].name else {
-                return
-            }
-           
-            let lat = String(coordinate.latitude)
-            let lng = String(coordinate.longitude)
-      
-//            print(lat)
-//            print(lng)
-//            print(name)
+            let placeInfo = [
+                "latitude" : String(placemark.coordinate.latitude),
+                "longitude" : String(placemark.coordinate.longitude),
+                "name" : name,
+                "address" : placemark.title ?? "",
+                "postalCode" : placemark.postalCode ?? "",
+                "country": placemark.country ?? ""
+            ]
             
-            self.locationSearchViewControllerDelegate?.setLocation(lat: lat, lng: lng, title: name, subTitle: "temp")
+//            print("lat: " + (placeInfo["latitude"] ?? "No Data"))
+//            print("lng: " + (placeInfo["longitude"] ?? "No Data"))
+//            print("name: " + (placeInfo["name"] ?? "No Data"))
+//            print("address: " + (placeInfo["address"] ?? "No Data"))
+//            print("postal: " + (placeInfo["postalCode"] ?? "No Data"))
+//            print("country: " + (placeInfo["country"] ?? "No Data"))
+            
+            self.locationSearchViewControllerDelegate?.setLocation(placeInfo: placeInfo)
             self.dismiss(animated: true, completion: nil)
         }
     }

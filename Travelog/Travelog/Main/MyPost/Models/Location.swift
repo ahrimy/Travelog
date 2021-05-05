@@ -12,21 +12,27 @@ class Location{
     init(){
         self.latitude = ""
         self.longitude = ""
-        self.title = "No Location"
-        self.subTitle = ""
+        self.name = "No Location"
+        self.address = ""
+        self.postalCode = ""
+        self.country = ""
     }
     
     var latitude: String
     var longitude: String
-    var title: String
-    var subTitle: String
+    var name: String
+    var address: String
+    var postalCode: String
+    var country: String
     
     func getLocationData() -> [String:Any] {
         return[
             "latitude":self.latitude,
             "longitude":self.longitude,
-            "title":self.title,
-            "subTitle":self.subTitle
+            "name":self.name,
+            "address":self.address,
+            "postalCode":self.postalCode,
+            "country":self.country
         ]
     }
 }

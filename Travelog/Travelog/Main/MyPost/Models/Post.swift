@@ -44,17 +44,21 @@ class Post{
     func appendImageReference(imageRef:String){
         self.imageRefs.append(imageRef)
     }
-    func setLocation(latitude: String, longitude:String, title:String, subTitle:String){
-        self.location.latitude = latitude
-        self.location.longitude = longitude
-        self.location.title = title
-        self.location.subTitle = subTitle
+    func setLocation(placeInfo:[String:String]){
+        self.location.latitude = placeInfo["latitude"]!
+        self.location.longitude = placeInfo["longitude"]!
+        self.location.name = placeInfo["name"]!
+        self.location.address = placeInfo["address"]!
+        self.location.postalCode = placeInfo["postalCode"]!
+        self.location.country = placeInfo["country"]!
     }
     func resetLocation(){
         self.location.latitude = ""
         self.location.longitude = ""
-        self.location.title = "No Location"
-        self.location.subTitle = ""
+        self.location.name = "No Location"
+        self.location.address = ""
+        self.location.postalCode = ""
+        self.location.country = ""
     }
     func changePrivacy(isPublic:Bool){
         self.isPublic = isPublic

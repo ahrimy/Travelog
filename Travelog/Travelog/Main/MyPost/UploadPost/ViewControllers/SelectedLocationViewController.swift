@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import MapKit
 
 protocol SelectedLocationViewControllerDelegate{
-    func setLocation(lat:String, lng:String, title:String, subTitle:String)
+    func setLocation(placeInfo:[String:String])
     func resetLocation()
 }
 
@@ -59,13 +60,13 @@ class SelectedLocationViewController: UIViewController, LocationSearchViewContro
     
     // MARK: - Methods
     
-    func setLocation(lat: String, lng: String, title: String, subTitle: String) {
-        setLocationLabel.text = title
+    func setLocation(placeInfo: [String:String]) {
+        setLocationLabel.text = placeInfo["name"]!
         isSelected = true
         setLocationButton.isHidden = true
         resetLocationButton.isHidden = false
         setLocationTapGestureRecognizer.isEnabled = false
-        self.selectedLocationViewControllerDelegate?.setLocation(lat: lat, lng: lng, title: title, subTitle: subTitle)
+        self.selectedLocationViewControllerDelegate?.setLocation(placeInfo:placeInfo)
     }
 
 
