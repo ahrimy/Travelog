@@ -703,7 +703,7 @@
                                 <rect key="frame" x="292" y="500" width="82" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.83010095360000002" green="0.62696772810000001" blue="0.670589149" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.85098039219999999" green="0.72156862749999995" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFw-OU-M1i">
@@ -711,12 +711,12 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal">
-                                    <imageReference key="image" image="smile" symbolScale="large"/>
+                                    <imageReference key="image" image="smile.pink" symbolScale="large"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                 </state>
                                 <state key="selected">
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <imageReference key="image" image="smile.fill" symbolScale="large"/>
+                                    <imageReference key="image" image="smile.fill.pink" symbolScale="large"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
                                 <connections>
@@ -727,16 +727,19 @@
                                 <rect key="frame" x="52" y="500" width="32" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.85098039219999999" green="0.72156862749999995" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="maP-7Q-KXp">
                                 <rect key="frame" x="92" y="496" width="28" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.85098039219999999" green="0.72156862749999995" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal">
                                     <imageReference key="image" image="text.bubble" catalog="system" symbolScale="large"/>
                                 </state>
+                                <connections>
+                                    <segue destination="nlg-FX-8ao" kind="show" id="6Sq-pA-Xog"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncK-3V-gxJ">
                                 <rect key="frame" x="16" y="704" width="358" height="30"/>
@@ -753,15 +756,24 @@
                                 <rect key="frame" x="128" y="500" width="66" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.85098039219999999" green="0.72156862749999995" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHr-QW-RRJ">
+                                <rect key="frame" x="350" y="52" width="24" height="4"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="dot"/>
+                                <connections>
+                                    <action selector="editNdeleteButton:" destination="osg-hi-0s5" eventType="touchUpInside" id="4BA-2S-GNp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="G2E-ee-CZL"/>
                         <color key="backgroundColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="dateLabel" destination="gF4-k2-rRX" id="zcQ-9I-5ad"/>
+                        <outlet property="editButton" destination="YHr-QW-RRJ" id="Mj5-lo-DNe"/>
                         <outlet property="imageView" destination="VFv-F3-Z7c" id="aJI-0x-WvQ"/>
                         <outlet property="likesButton" destination="tFw-OU-M1i" id="UxC-VT-xON"/>
                         <outlet property="likesCount" destination="Q6Z-Dh-KJw" id="GOY-HL-U13"/>
@@ -976,19 +988,21 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="Bzs-Yx-Bbf"/>
         <segue reference="pqY-Ko-8tV"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
         <image name="bell" catalog="system" width="128" height="124"/>
         <image name="chevron.forward" catalog="system" width="96" height="128"/>
+        <image name="dot" width="170.66667175292969" height="34.333332061767578"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" width="170.66667175292969" height="170.66667175292969"/>
         <image name="rectangle.split.2x2.fill" catalog="system" width="128" height="93"/>
-        <image name="smile" width="170.66667175292969" height="170.66667175292969"/>
-        <image name="smile.fill" width="170.66667175292969" height="170.66667175292969"/>
+        <image name="smile.fill.pink" width="512" height="512"/>
+        <image name="smile.pink" width="512" height="512"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="text.bubble" catalog="system" width="128" height="110"/>

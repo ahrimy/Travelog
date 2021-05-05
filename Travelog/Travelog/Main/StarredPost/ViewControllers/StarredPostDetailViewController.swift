@@ -10,6 +10,7 @@ import UIKit
 class StarredPostDetailViewController: UIViewController {
     
     // MARK: - IBOutlets
+    @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var likesButton: UIButton!
     @IBOutlet weak var likesCount: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -25,6 +26,22 @@ class StarredPostDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.layer.cornerRadius = 45
+    }
+    
+    @IBAction func editNdeleteButton(_ sender: Any){
+        let alert =  UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let delete = UIAlertAction(title: "삭제", style: .destructive){_ in}
+        
+        let edit =  UIAlertAction(title: "수정", style: .default) {_ in 
+        }
+       
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alert.addAction(delete)
+        alert.addAction(edit)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func tappedLikeButton(_ sender: Any){
