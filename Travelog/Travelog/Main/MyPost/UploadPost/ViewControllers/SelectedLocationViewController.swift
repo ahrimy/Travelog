@@ -16,7 +16,6 @@ protocol SelectedLocationViewControllerDelegate{
 class SelectedLocationViewController: UIViewController, LocationSearchViewControllerDelegate{
     
     // MARK: - Properties
-    
     var isSelected = false
     
     let locationSearchViewController = LocationSearchViewController()
@@ -24,7 +23,6 @@ class SelectedLocationViewController: UIViewController, LocationSearchViewContro
     var selectedLocationViewControllerDelegate: SelectedLocationViewControllerDelegate?
 
     // MARK: - IBOutlet
-    
     @IBOutlet weak var setLocationLabel: UILabel!
     @IBOutlet weak var setLocationButton: UIButton!
     @IBOutlet weak var resetLocationButton: UIButton!{
@@ -48,7 +46,6 @@ class SelectedLocationViewController: UIViewController, LocationSearchViewContro
     }
     
     // MARK: - Actions
-
     @IBAction func resetLocation(_ sender: Any) {
         setLocationLabel.text = "위치 추가"
         isSelected = false
@@ -59,7 +56,7 @@ class SelectedLocationViewController: UIViewController, LocationSearchViewContro
     }
     
     // MARK: - Methods
-    
+
     func setLocation(placeInfo: [String:String]) {
         setLocationLabel.text = placeInfo["name"]!
         isSelected = true

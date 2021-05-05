@@ -9,12 +9,34 @@ import UIKit
 
 class MyPostListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
+    // MARK: - Properties
     var posts:[PostThumbnail] = []
-
-    var numberOfCell: Int = 10
-    // post cell 수
     let cellIdentifier: String = "cell"
+    
+    // MARK: - IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
+
+    // MARK: - View Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+        let flowLayout: UICollectionViewFlowLayout
+        flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionInset = UIEdgeInsets.zero
+        flowLayout.minimumInteritemSpacing = 5
+        flowLayout.minimumLineSpacing = 5
+        
+        flowLayout.estimatedItemSize = CGSize(width: 125, height: 125)
+        
+        self.collectionView.collectionViewLayout = flowLayout
+    }
+
+    // MARK: - Methods
+    func reloadData(list: [PostThumbnail]) {
+        self.posts = list
+        self.collectionView.reloadData()
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
@@ -33,35 +55,6 @@ class MyPostListViewController: UIViewController, UICollectionViewDataSource, UI
         }
         
         return cell
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        let flowLayout: UICollectionViewFlowLayout
-        flowLayout = UICollectionViewFlowLayout()
-        flowLayout.sectionInset = UIEdgeInsets.zero
-        flowLayout.minimumInteritemSpacing = 5
-        flowLayout.minimumLineSpacing = 5
-        
-        flowLayout.estimatedItemSize = CGSize(width: 125, height: 125)
-        
-        self.collectionView.collectionViewLayout = flowLayout
-        // collectionView 레이아웃 설정
-        
-        // Do any additional setup after loading the view.
-    }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let myPostViewController = segue.destination as? MyPostViewController {
-//            print("prepare")
-//            myPostViewController.myPostViewControllerDelegate = self
-//        }
-//    }
-
-    func reloadData(list: [PostThumbnail]) {
-        self.posts = list
-        self.collectionView.reloadData()
     }
 
     /*

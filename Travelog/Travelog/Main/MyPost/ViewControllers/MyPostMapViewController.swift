@@ -10,10 +10,14 @@ import MapKit
 
 class MyPostMapViewController: UIViewController,CLLocationManagerDelegate {
     
-    @IBOutlet weak var mapView: MKMapView!
+    // MARK: - Properties
     var locationManager = CLLocationManager()
     var posts:[PostThumbnail] = []
+    
+    // MARK: - IBOutlet
+    @IBOutlet weak var mapView: MKMapView!
 
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,6 +35,7 @@ class MyPostMapViewController: UIViewController,CLLocationManagerDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    // MARK: - Methods
     private func setup(){
         mapView.translatesAutoresizingMaskIntoConstraints = false
         

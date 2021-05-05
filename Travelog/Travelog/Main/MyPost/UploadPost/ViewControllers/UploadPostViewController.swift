@@ -18,14 +18,9 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
     var post = Post(userId: "ahrimy")
     
     var images:[UIImage] = []
-    
     var initialContentsHeight:CGFloat = CGFloat(40)
-    
-//    let locationSearchViewController = SelectedLocationViewController()
-//    let selectedPhotoViewController = SelectedPhotoViewController()
-//
+
     // MARK: - IBOutlet
-    
     @IBOutlet weak var uploadButton: UIBarButtonItem!{
         didSet{
             uploadButton.isEnabled = false
@@ -59,7 +54,6 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
     // MARK: - View Life Cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -86,7 +80,6 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
     }
     
     // MARK: - Actions
-    
     @IBAction func cancelUpload(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }

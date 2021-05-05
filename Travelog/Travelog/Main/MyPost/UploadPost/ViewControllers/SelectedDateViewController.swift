@@ -17,7 +17,6 @@ class SelectedDateViewController: UIViewController {
     var selectedDateViewControllerDelegate: SelectedDateViewControllerDelegate?
     
     // MARK: - IBOutlet
-    
     @IBOutlet weak var datePicker: UIDatePicker!{
         didSet{
             datePicker.date = Date()
@@ -26,7 +25,6 @@ class SelectedDateViewController: UIViewController {
     }
     
     // MARK: - View Life Cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,7 +32,6 @@ class SelectedDateViewController: UIViewController {
     }
     
     // MARK: - IBAction
-    
     @IBAction func dateValueChanged(_ sender: Any) {
         print(datePicker.date)
     }

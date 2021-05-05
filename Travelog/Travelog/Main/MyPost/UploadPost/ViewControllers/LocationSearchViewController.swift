@@ -16,7 +16,6 @@ protocol LocationSearchViewControllerDelegate {
 class LocationSearchViewController: UIViewController, UISearchBarDelegate, MKLocalSearchCompleterDelegate {
     
     // MARK: - Properties
-    
     // Create a search completer object
     var searchCompleter = MKLocalSearchCompleter()
     // These are the results that are returned from the searchCompleter & what we are displaying
@@ -26,7 +25,6 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate, MKLoc
     var locationSearchViewControllerDelegate: LocationSearchViewControllerDelegate?
    
    // MARK: - IBOutlet
-    
     @IBOutlet weak var searchBar: UISearchBar!{
         didSet{
             searchBar.searchTextField.textColor = UIColor.white
@@ -36,7 +34,6 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate, MKLoc
     @IBOutlet weak var searchResultsTable: UITableView!
     
     // MARK: - View Life Cycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,7 +47,6 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate, MKLoc
     }
     
     // MARK: - Methods
-    
     // This method declares that whenever the text in the searchbar is change to also update
     // the query that the searchCompleter will search based off of
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

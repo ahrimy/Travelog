@@ -73,20 +73,6 @@ class SelectedPhotoViewController: UIViewController ,PHPickerViewControllerDeleg
                     print("error")
                 }
             }
-            
-            // HEIC type error
-//            itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
-//                if (image != nil) {
-//                    DispatchQueue.main.async {
-//                        self.selectedPhotoViewControllerDelegate?.appendImage(image: image as! UIImage)
-//                        self.selectedPhotos.append(image as! UIImage)
-//                        self.collectionView.reloadData()
-//                    }
-//                }
-//                if (error != nil){
-//                    print("error")
-//                }
-//            }
         }
     }
     
