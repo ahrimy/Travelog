@@ -14,6 +14,7 @@ struct StarredList: Decodable, Hashable {
     let image: String
     let country: String
     let city: String
+    let date: String
     let text: String
     
 }
