@@ -8,30 +8,30 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    //서치바 만들기
+    let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Search"
         setSearchBar()
-        // Do any additional setup after loading the view.
     }
     
-    func setSearchBar(){
-        
-        //서치바 만들기
-        let searchController = UISearchController(searchResultsController: nil)
-//        searchController.searchBar.placeholder = "Search"
+    func setSearchBar() {
+        searchController.delegate = self
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.autocapitalizationType = .none
+        searchController.searchBar.delegate = self // Monitor when the search button is tapped.
+        searchController.searchBar.placeholder = "Search"
         //왼쪽 서치아이콘 이미지 세팅하기
         searchController.searchBar.setImage(UIImage(named: "icSearchNonW"), for: UISearchBar.Icon.search, state: .normal)
         //오른쪽 x버튼 이미지 세팅하기
         searchController.searchBar.setImage(UIImage(named: "icCancel"), for: .clear, state: .normal)
-        //네비게이션에 서치바 넣기
-//        self.navigationController?.navigationBar.topItem?.titleView = searchBar
         searchController.searchBar.scopeButtonTitles = [ "장소", "계정", "태그"]
         searchController.searchBar.setScopeBarButtonTitleTextAttributes([.foregroundColor : UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)], for: .selected)
         searchController.searchBar.setScopeBarButtonTitleTextAttributes([.foregroundColor : UIColor.white], for: .normal)
-        self.navigationItem.searchController = searchController
         searchController.automaticallyShowsCancelButton = true
-    
+
         if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
             //플레이스홀더 글씨 색 정하기
             textfield.attributedPlaceholder = NSAttributedString(string: textfield.placeholder ?? "", attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
@@ -50,16 +50,14 @@ class SearchViewController: UIViewController {
                 rightView.tintColor = UIColor.white
             }
         }
+        //네비게이션에 서치바 넣기
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false // FIXME: 이거 추가하니까 상단에 잘 나와요
+        definesPresentationContext = true
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+}
+extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
 }
