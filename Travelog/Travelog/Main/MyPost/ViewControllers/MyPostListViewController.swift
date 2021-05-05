@@ -9,9 +9,7 @@ import UIKit
 
 class MyPostListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    let posts = [
-        PostThumbnail(postId: "FTqFduNMQTdlmH9uKDm8", image: "https://firebasestorage.googleapis.com/v0/b/travelog-6cf98.appspot.com/o/ahrimy%2FDC3AB93A-2D99-454D-A8C5-0A291F6F96E5?alt=media&token=6437979a-8e10-4b59-bbda-c58e9a366c41")
-        ]
+    var posts:[PostThumbnail] = []
 
     var numberOfCell: Int = 10
     // post cell 수
@@ -54,6 +52,17 @@ class MyPostListViewController: UIViewController, UICollectionViewDataSource, UI
         // Do any additional setup after loading the view.
     }
     
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let myPostViewController = segue.destination as? MyPostViewController {
+//            print("prepare")
+//            myPostViewController.myPostViewControllerDelegate = self
+//        }
+//    }
+
+    func reloadData(list: [PostThumbnail]) {
+        self.posts = list
+        self.collectionView.reloadData()
+    }
 
     /*
     // MARK: - Navigation

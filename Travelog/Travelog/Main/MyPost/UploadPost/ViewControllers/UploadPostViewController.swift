@@ -21,9 +21,9 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
     
     var initialContentsHeight:CGFloat = CGFloat(40)
     
-    let locationSearchViewController = SelectedLocationViewController()
-    let selectedPhotoViewController = SelectedPhotoViewController()
-    
+//    let locationSearchViewController = SelectedLocationViewController()
+//    let selectedPhotoViewController = SelectedPhotoViewController()
+//
     // MARK: - IBOutlet
     
     @IBOutlet weak var uploadButton: UIBarButtonItem!{
