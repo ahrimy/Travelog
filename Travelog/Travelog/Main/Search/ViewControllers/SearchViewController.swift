@@ -13,7 +13,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Search"
+        self.navigationItem.title = "Search"
         setSearchBar()
     }
     
