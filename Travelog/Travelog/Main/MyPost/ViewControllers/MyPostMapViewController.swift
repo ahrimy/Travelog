@@ -12,7 +12,8 @@ class MyPostMapViewController: UIViewController,CLLocationManagerDelegate {
     
     // MARK: - Properties
     var locationManager = CLLocationManager()
-    var posts:[PostThumbnail] = []
+//    var posts:[PostThumbnail] = []
+    var posts:[PostOverview] = []
     
     // MARK: - IBOutlet
     @IBOutlet weak var mapView: MKMapView!
@@ -56,20 +57,11 @@ class MyPostMapViewController: UIViewController,CLLocationManagerDelegate {
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
     }
-    func reloadData(list: [PostThumbnail]) {
+    func reloadData(list: [PostOverview]) {
         self.posts = list
         
         self.posts.forEach{post in
-            let url = URL(string:post.image)!
-            do{
-                let data = try Data(contentsOf: url)
-                if let image = UIImage(data: data){
-                    self.addMapPin(with: CLLocation(latitude: (post.latitude as NSString).doubleValue, longitude: (post.longitude as NSString).doubleValue), title: post.postId, image:image)
-                }
-            }catch{
-                print("Error occured")
-            }
-            
+            self.addMapPin(with: post.coordinate, title: post.id, image:post.image)
         }
     }
     

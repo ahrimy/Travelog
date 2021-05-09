@@ -9,17 +9,18 @@ import UIKit
 import PhotosUI
 
 protocol SelectedPhotoViewControllerDelegate{
-    func appendImage(image: UIImage)
+    func activateUploadButton()
 }
 
 class SelectedPhotoViewController: UIViewController ,PHPickerViewControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource{
 
     // MARK: - Properties
-    
-    var selectedPhotos:[UIImage] = []
+
+    var images:[UIImage] = []
     var itemProviders:[NSItemProvider] = []
     var iterator:IndexingIterator<[NSItemProvider]>?
     
+    // Delegate
     var selectedPhotoViewControllerDelegate: SelectedPhotoViewControllerDelegate?
     
     // MARK: - IBOutlet
@@ -61,8 +62,8 @@ class SelectedPhotoViewController: UIViewController ,PHPickerViewControllerDeleg
                         let image = UIImage(data: data)
                         
                         DispatchQueue.main.async {
-                            self?.selectedPhotoViewControllerDelegate?.appendImage(image: image!)
-                            self?.selectedPhotos.append(image!)
+//                            self?.selectedPhotoViewControllerDelegate?.appendImage(image: image!)
+                            self?.images.append(image!)
                             self?.collectionView.reloadData()
                         }
                     }catch{
@@ -74,12 +75,16 @@ class SelectedPhotoViewController: UIViewController ,PHPickerViewControllerDeleg
                 }
             }
         }
+        
+        if self.images.count > 0 {
+            self.selectedPhotoViewControllerDelegate?.activateUploadButton()
+        }
     }
     
     @objc func didTouchUpInsideAddPhotoButton(_ sender: Any) {
         var configuration = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
         configuration.filter = .any(of: [.images, .videos])
-        configuration.selectionLimit = 10 - selectedPhotos.count
+        configuration.selectionLimit = 10 - images.count
         configuration.preferredAssetRepresentationMode = .current
 
         let picker = PHPickerViewController(configuration: configuration)
@@ -87,29 +92,19 @@ class SelectedPhotoViewController: UIViewController ,PHPickerViewControllerDeleg
         picker.delegate = self
         self.present(picker, animated: true, completion: nil)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
 extension SelectedPhotoViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(selectedPhotos.count >= 10){
+        if(images.count >= 10){
             return 10
         }
-        return selectedPhotos.count + 1
+        return images.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == (selectedPhotos.count), selectedPhotos.count < 10 {
+        if indexPath.row == (images.count), images.count < 10 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddButtonCell", for: indexPath) as! AddButtonCollectionViewCell
             cell.addPhotoButton.addTarget(self, action: #selector(self.didTouchUpInsideAddPhotoButton(_:)), for: .touchUpInside)
             cell.sizeToFit()
@@ -119,12 +114,12 @@ extension SelectedPhotoViewController: UICollectionViewDelegateFlowLayout{
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedPhotoCell", for: indexPath) as! SelectedPhotoCollectionViewCell
         
-        cell.imageView.image = selectedPhotos[indexPath.row]
+        cell.imageView.image = images[indexPath.row]
         
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        if selectedPhotos.count == 0 {
+        if images.count == 0 {
             return UIEdgeInsets(top: 0, left: (collectionView.frame.size.width-180)/2, bottom: 0, right: (collectionView.frame.size.width-180)/2)
         }
         return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
@@ -136,7 +131,7 @@ extension SelectedPhotoViewController: UICollectionViewDelegateFlowLayout{
         return 5
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.row == selectedPhotos.count {
+        if indexPath.row == images.count {
             return CGSize(width: 180, height: 330)
         }
         return CGSize(width: 330, height: 330)

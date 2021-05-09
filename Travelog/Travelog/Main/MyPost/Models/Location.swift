@@ -6,33 +6,33 @@
 //
 
 import Foundation
+import MapKit
 
 class Location{
     
-    init(){
-        self.latitude = ""
-        self.longitude = ""
-        self.name = "No Location"
-        self.address = ""
-        self.postalCode = ""
-        self.country = ""
+    init(name:String = "No Location",
+         address:String = "",
+         postalCode:String = "",
+         country: String = "",
+         coordinate:CLLocation = CLLocation(latitude: 0.0, longitude: 0.0)){
+        self.name = name
+        self.address = address
+        self.postalCode = postalCode
+        self.country = country
+        self.coordinate = coordinate
     }
     
-    var latitude: String
-    var longitude: String
-    var name: String
-    var address: String
-    var postalCode: String
-    var country: String
+    var name:String
+    var address:String
+    var postalCode:String
+    var country:String
+    var coordinate: CLLocation
     
-    func getLocationData() -> [String:Any] {
-        return[
-            "latitude":self.latitude,
-            "longitude":self.longitude,
-            "name":self.name,
-            "address":self.address,
-            "postalCode":self.postalCode,
-            "country":self.country
-        ]
+    func updateLocation(info:[String: Any]) {
+        self.name = info["name"] as! String
+        self.address = info["address"] as! String
+        self.postalCode = info["postalCode"] as! String
+        self.country = info["country"] as! String
+        self.coordinate = info["coordinate"] as! CLLocation
     }
 }

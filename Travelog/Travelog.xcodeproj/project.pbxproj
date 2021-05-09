@@ -25,7 +25,7 @@
 		3E464DAA26088FF800390A0B /* TravelogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E464DA926088FF800390A0B /* TravelogUITests.swift */; };
 		3E4F027C262F162100233133 /* SelectedDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4F027B262F162100233133 /* SelectedDateViewController.swift */; };
 		3E6F507E260B9A4800B22252 /* PostThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F507D260B9A4800B22252 /* PostThumbnail.swift */; };
-		3E6F508B260B9E0800B22252 /* ViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F508A260B9E0800B22252 /* ViewCell.swift */; };
+		3E6F508B260B9E0800B22252 /* MyPostViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F508A260B9E0800B22252 /* MyPostViewCell.swift */; };
 		3E74B9D0261C61BF00AE1CB6 /* UploadPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E74B9CF261C61BF00AE1CB6 /* UploadPostViewController.swift */; };
 		3E7F918C26124A1800B319E8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F918B26124A1800B319E8 /* SearchViewController.swift */; };
 		3E7F919126124A2D00B319E8 /* StarredPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F919026124A2D00B319E8 /* StarredPostViewController.swift */; };
@@ -34,6 +34,9 @@
 		3EC3A4FD261E1461004BA4FF /* LocationSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC3A4FC261E1461004BA4FF /* LocationSearchTableViewCell.swift */; };
 		3EE8AAE526427778002D13AE /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8AAE426427778002D13AE /* PostList.swift */; };
 		3EE8AAE7264313EB002D13AE /* PostAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8AAE6264313EB002D13AE /* PostAnnotation.swift */; };
+		3EF3BA702648291F006B1DCA /* PostOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF3BA6F2648291F006B1DCA /* PostOverview.swift */; };
+		3EF3BA7226482ABA006B1DCA /* PostDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF3BA7126482ABA006B1DCA /* PostDetail.swift */; };
+		3EF3BA7426482C04006B1DCA /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF3BA7326482C04006B1DCA /* PostService.swift */; };
 		3EF8C41B262AF67800F7F7A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3EF8C41A262AF67800F7F7A4 /* GoogleService-Info.plist */; };
 		AC3B52AC263F73B7007F0D78 /* StarredPostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3B52AB263F73B7007F0D78 /* StarredPostDetailViewController.swift */; };
 		AC54C5B1261D6EED0020980D /* StarredPostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54C5AD261D6EED0020980D /* StarredPostList.swift */; };
@@ -99,7 +102,7 @@
 		3E464DAB26088FF800390A0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E4F027B262F162100233133 /* SelectedDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDateViewController.swift; sourceTree = "<group>"; };
 		3E6F507D260B9A4800B22252 /* PostThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostThumbnail.swift; sourceTree = "<group>"; };
-		3E6F508A260B9E0800B22252 /* ViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCell.swift; sourceTree = "<group>"; };
+		3E6F508A260B9E0800B22252 /* MyPostViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostViewCell.swift; sourceTree = "<group>"; };
 		3E74B9CF261C61BF00AE1CB6 /* UploadPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostViewController.swift; sourceTree = "<group>"; };
 		3E7F918B26124A1800B319E8 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3E7F919026124A2D00B319E8 /* StarredPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredPostViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +111,9 @@
 		3EC3A4FC261E1461004BA4FF /* LocationSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewCell.swift; sourceTree = "<group>"; };
 		3EE8AAE426427778002D13AE /* PostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostList.swift; sourceTree = "<group>"; };
 		3EE8AAE6264313EB002D13AE /* PostAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAnnotation.swift; sourceTree = "<group>"; };
+		3EF3BA6F2648291F006B1DCA /* PostOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOverview.swift; sourceTree = "<group>"; };
+		3EF3BA7126482ABA006B1DCA /* PostDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetail.swift; sourceTree = "<group>"; };
+		3EF3BA7326482C04006B1DCA /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		3EF8C41A262AF67800F7F7A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		53ECBF0DEDC9E59E3D0AC49A /* Pods_Travelog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Travelog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC3B52AB263F73B7007F0D78 /* StarredPostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredPostDetailViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +169,9 @@
 			isa = PBXGroup;
 			children = (
 				3E33A937262C8BBC00ABCA8A /* Post.swift */,
+				3EF3BA6F2648291F006B1DCA /* PostOverview.swift */,
+				3EF3BA7326482C04006B1DCA /* PostService.swift */,
+				3EF3BA7126482ABA006B1DCA /* PostDetail.swift */,
 				3E33A93F262DDFAC00ABCA8A /* Location.swift */,
 				3EE8AAE426427778002D13AE /* PostList.swift */,
 				3EE8AAE6264313EB002D13AE /* PostAnnotation.swift */,
@@ -272,7 +281,7 @@
 		3EC3A529261E9A1B004BA4FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3E6F508A260B9E0800B22252 /* ViewCell.swift */,
+				3E6F508A260B9E0800B22252 /* MyPostViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -684,6 +693,7 @@
 				AC5D30BD262F405200F2C920 /* StarredPostLocation.swift in Sources */,
 				3E74B9D0261C61BF00AE1CB6 /* UploadPostViewController.swift in Sources */,
 				AC54C5B1261D6EED0020980D /* StarredPostList.swift in Sources */,
+				3EF3BA702648291F006B1DCA /* PostOverview.swift in Sources */,
 				ACA7BF23260C82FF00C108EC /* MyProfileEditViewController.swift in Sources */,
 				3E33A940262DDFAC00ABCA8A /* Location.swift in Sources */,
 				ACE9085E261B7F8D0087F6AA /* StarredPostListViewController.swift in Sources */,
@@ -694,6 +704,7 @@
 				3EE8AAE7264313EB002D13AE /* PostAnnotation.swift in Sources */,
 				ACA7BF10260A328F00C108EC /* SettingViewController.swift in Sources */,
 				AC3B52AC263F73B7007F0D78 /* StarredPostDetailViewController.swift in Sources */,
+				3EF3BA7226482ABA006B1DCA /* PostDetail.swift in Sources */,
 				3E04BB65262735A500362303 /* SelectedLocationViewController.swift in Sources */,
 				3E0FE1D72625E2D3004E93E7 /* AddButtonCollectionViewCell.swift in Sources */,
 				3EC3A4FD261E1461004BA4FF /* LocationSearchTableViewCell.swift in Sources */,
@@ -702,13 +713,14 @@
 				3E464D8926088FF700390A0B /* MyPostViewController.swift in Sources */,
 				3E7F919126124A2D00B319E8 /* StarredPostViewController.swift in Sources */,
 				3E464D8F26088FF700390A0B /* Travelog.xcdatamodeld in Sources */,
-				3E6F508B260B9E0800B22252 /* ViewCell.swift in Sources */,
+				3E6F508B260B9E0800B22252 /* MyPostViewCell.swift in Sources */,
 				3E33A938262C8BBC00ABCA8A /* Post.swift in Sources */,
 				3E464D8526088FF700390A0B /* AppDelegate.swift in Sources */,
 				3E1322A92624639800D52C7D /* SelectedPhotoViewController.swift in Sources */,
 				3E1322AE262467CF00D52C7D /* SelectedPhotoCollectionViewCell.swift in Sources */,
 				3EC3A4F8261DD1D2004BA4FF /* LocationSearchViewController.swift in Sources */,
 				3E464D8726088FF700390A0B /* SceneDelegate.swift in Sources */,
+				3EF3BA7426482C04006B1DCA /* PostService.swift in Sources */,
 				AC54C5BF261D6F3A0020980D /* Section.swift in Sources */,
 				ACA7BF3E2613767800C108EC /* MyPostMapViewController.swift in Sources */,
 				AC54C5B2261D6EED0020980D /* SelfConfiguringCell.swift in Sources */,

@@ -7,18 +7,22 @@
 
 import UIKit
 
+protocol UploadPostViewControllerDelegate {
+    func uploadPost(data:[String:Any],completion:()->())
+}
+
 class UploadPostViewController: UIViewController,SelectedLocationViewControllerDelegate,SelectedPhotoViewControllerDelegate {
     
     
     // MARK: - Properties
-    let group = DispatchGroup()
-    
-    let userId = "ahrimy"
-    var postId:String = ""
-    var post = Post(userId: "ahrimy")
-    
-    var images:[UIImage] = []
     var initialContentsHeight:CGFloat = CGFloat(40)
+    
+    // VC
+    var selectedLocationViewController: SelectedLocationViewController?
+    var selectedPhotoViewController: SelectedPhotoViewController?
+    
+    // Delegate
+    var uploadPostViewControllerDelegate: UploadPostViewControllerDelegate?
 
     // MARK: - IBOutlet
     @IBOutlet weak var uploadButton: UIBarButtonItem!{
@@ -31,7 +35,7 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
     @IBOutlet weak var selectedPhotoView: UIView!
     @IBOutlet weak var datePicker: UIDatePicker!{
         didSet{
-            datePicker.date = self.post.date
+            datePicker.date = Date()
             datePicker.maximumDate = Date()
         }
     }
@@ -69,13 +73,19 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
         
         self.tabBarController?.tabBar.isHidden = false
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let selectedPhotoViewController = segue.destination as? SelectedPhotoViewController {
             selectedPhotoViewController.selectedPhotoViewControllerDelegate = self
         }
         if let selectedLocationViewController = segue.destination as? SelectedLocationViewController {
             selectedLocationViewController.selectedLocationViewControllerDelegate = self
+        }
+        if let selectedLocationViewController = segue.destination as? SelectedLocationViewController {
+            self.selectedLocationViewController = selectedLocationViewController
+        }
+        if let selectedPhotoViewController = segue.destination as? SelectedPhotoViewController {
+            self.selectedPhotoViewController = selectedPhotoViewController
         }
     }
     
@@ -90,48 +100,42 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
         print(dateString)
     }
     @IBAction func changePrivacy(_ sender: Any) {
-        self.post.changePrivacy(isPublic: publicPrivateSegmentedControl.selectedSegmentIndex == 0)
+        print("privacy changed")
     }
     @IBAction func uploadPost(_ sender: Any) {
-        var imageData:[Data] = []
-        images.forEach{image in
-            imageData.append(image.jpegData(compressionQuality: 0.8)!)
+        guard let images = self.selectedPhotoViewController?.images else{
+            return
         }
-        let uploadImageQueue = DispatchQueue(label: "uploadImage")
-        group.enter()
-        uploadImageQueue.async(group: group) {
-            self.post.upload(images: imageData, group: self.group)
+        guard let location = self.selectedLocationViewController?.location else{
+            return
         }
+        let date = self.datePicker.date
+        let text = self.postTextView.text ?? ""
+        let isPublic = self.publicPrivateSegmentedControl.selectedSegmentIndex == 0
+        let data = [
+            "images": images,
+            "date":date,
+            "location" : location,
+            "text":text,
+            "isPublic":isPublic
+        ] as [String : Any]
         
-        group.notify(queue: .main) {
-            self.completeUpload()
-        }
+        self.uploadPostViewControllerDelegate?.uploadPost(data: data, completion: completeUpload)
     }
     
     // MARK: - Methods
-    func setLocation(placeInfo: [String:String]){
-        post.setLocation(placeInfo: placeInfo)
-        self.activateUploadButton()
-    }
-    func resetLocation(){
-        self.post.resetLocation()
-        self.activateUploadButton()
-    }
-    func appendImage(image: UIImage){
-        images.append(image)
-        self.activateUploadButton()
-    }
     func activateUploadButton(){
-        if images.count > 0, self.post.location.name != "No Location", postTextView.textColor == .white, !postTextView.text.isEmpty {
+        if (self.selectedPhotoViewController?.images.count ?? 0) > 0,
+           (self.selectedLocationViewController?.isSelected ?? false),
+           self.postTextView.textColor == .white,
+           !self.postTextView.text.isEmpty {
             uploadButton.isEnabled = true
             return
         }
         uploadButton.isEnabled = false
     }
     func completeUpload(){
-        if self.post.id != ""{
-                self.navigationController?.popViewController(animated: false)
-        }
+        self.navigationController?.popViewController(animated: false)
     }
     
     private func addObservers() {
@@ -165,7 +169,6 @@ extension UploadPostViewController: UITextViewDelegate{
         }
     }
     func textViewDidChange(_ textView: UITextView) {
-        self.post.updateText(text: postTextView.text)
         self.activateUploadButton()
     }
     func textViewDidEndEditing(_ textView: UITextView) {

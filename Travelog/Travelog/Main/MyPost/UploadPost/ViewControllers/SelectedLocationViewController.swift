@@ -9,17 +9,16 @@ import UIKit
 import MapKit
 
 protocol SelectedLocationViewControllerDelegate{
-    func setLocation(placeInfo:[String:String])
-    func resetLocation()
+    func activateUploadButton()
 }
 
 class SelectedLocationViewController: UIViewController, LocationSearchViewControllerDelegate{
     
     // MARK: - Properties
     var isSelected = false
+    var location = Location()
     
-    let locationSearchViewController = LocationSearchViewController()
-    
+    // Delegate
     var selectedLocationViewControllerDelegate: SelectedLocationViewControllerDelegate?
 
     // MARK: - IBOutlet
@@ -31,6 +30,7 @@ class SelectedLocationViewController: UIViewController, LocationSearchViewContro
         }
     }
     @IBOutlet weak var setLocationTapGestureRecognizer: UITapGestureRecognizer!
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -48,33 +48,25 @@ class SelectedLocationViewController: UIViewController, LocationSearchViewContro
     // MARK: - Actions
     @IBAction func resetLocation(_ sender: Any) {
         setLocationLabel.text = "위치 추가"
-        isSelected = false
         setLocationButton.isHidden = false
         resetLocationButton.isHidden = true
         setLocationTapGestureRecognizer.isEnabled = true
-        self.selectedLocationViewControllerDelegate?.resetLocation()
+        
+        self.isSelected = false
+        self.selectedLocationViewControllerDelegate?.activateUploadButton()
     }
     
     // MARK: - Methods
 
-    func setLocation(placeInfo: [String:String]) {
-        setLocationLabel.text = placeInfo["name"]!
-        isSelected = true
+    func setLocation(info: [String:Any]) {
+        setLocationLabel.text = info["name"] as? String
         setLocationButton.isHidden = true
         resetLocationButton.isHidden = false
         setLocationTapGestureRecognizer.isEnabled = false
-        self.selectedLocationViewControllerDelegate?.setLocation(placeInfo:placeInfo)
+        
+        self.isSelected = true
+        self.location.updateLocation(info: info)
+        self.selectedLocationViewControllerDelegate?.activateUploadButton()
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

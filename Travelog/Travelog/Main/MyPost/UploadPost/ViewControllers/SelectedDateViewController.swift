@@ -7,14 +7,12 @@
 
 import UIKit
 
-protocol SelectedDateViewControllerDelegate {
-    func setDate(date: String)
-}
-
 class SelectedDateViewController: UIViewController {
     
     // MARK: - Properties
-    var selectedDateViewControllerDelegate: SelectedDateViewControllerDelegate?
+    var selectedDate: Date = Date()
+    
+//    var selectedDateViewControllerDelegate: SelectedDateViewControllerDelegate?
     
     // MARK: - IBOutlet
     @IBOutlet weak var datePicker: UIDatePicker!{

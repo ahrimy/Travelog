@@ -10,7 +10,8 @@ import UIKit
 class MyPostListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     // MARK: - Properties
-    var posts:[PostThumbnail] = []
+    var posts:[PostOverview] = []
+//    var posts:[PostThumbnail] = []
     let cellIdentifier: String = "cell"
     
     // MARK: - IBOutlet
@@ -33,7 +34,7 @@ class MyPostListViewController: UIViewController, UICollectionViewDataSource, UI
     }
 
     // MARK: - Methods
-    func reloadData(list: [PostThumbnail]) {
+    func reloadData(list: [PostOverview]) {
         self.posts = list
         self.collectionView.reloadData()
     }
@@ -43,16 +44,10 @@ class MyPostListViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MyPostViewCell
         
-        cell.postThumbnail = posts[indexPath.row]
-        let url = URL(string:posts[indexPath.row].image)!
-        do{
-            let data = try Data(contentsOf: url)
-            cell.thumbnailImage.image = UIImage(data: data)
-        }catch{
-            print("Error occured")
-        }
+        cell.overview = posts[indexPath.row]
+        cell.imageView.image = posts[indexPath.row].image
         
         return cell
     }
