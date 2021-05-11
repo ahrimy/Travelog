@@ -34,8 +34,12 @@ class MyPostListViewController: UIViewController, UICollectionViewDataSource, UI
     }
 
     // MARK: - Methods
+    func appendPost(post:PostOverview){
+        self.posts.append(post)
+        self.collectionView.reloadData()
+    }
     func reloadData(list: [PostOverview]) {
-        self.posts = list
+//        self.posts = list
         self.collectionView.reloadData()
     }
     

@@ -57,8 +57,12 @@ class MyPostMapViewController: UIViewController,CLLocationManagerDelegate {
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
     }
+    func appendPost(post:PostOverview){
+        self.posts.append(post)
+        self.addMapPin(with: post.coordinate, title: post.id, image: post.image)
+    }
     func reloadData(list: [PostOverview]) {
-        self.posts = list
+//        self.posts = list
         
         self.posts.forEach{post in
             self.addMapPin(with: post.coordinate, title: post.id, image:post.image)

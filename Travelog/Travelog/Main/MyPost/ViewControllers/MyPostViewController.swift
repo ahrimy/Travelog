@@ -11,7 +11,8 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
 
     // MARK: - Properties
 //    var list = PostList()
-    var postService = PostService()
+    var username = "ahrimy"
+    var postService = PostService(username: "ahrimy")
 
     var uploadPostViewController: UploadPostViewController?
     var myPostListViewController: MyPostListViewController?
@@ -79,10 +80,26 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
 //    }
     
     func uploadPost(data: [String : Any], completion: () -> ()) {
-        self.postService.uploadImage()
-        self.postService.uploadPostOverview()
-        self.postService.uploadPostDetail()
+        var imageIds:[String] = []
+        var imageRefs:[String] = []
+        let images = data["images"] as? [UIImage]
+        if (images != nil) {
+            for _ in 0..<images!.count{
+                let id = UUID().uuidString
+                imageIds.append(id)
+                imageRefs.append("https://firebasestorage.googleapis.com/v0/b/travelog-6cf98.appspot.com/o/\(self.username)%2F\(id)")
+            }
+        }
+        self.postService.uploadImage(ids: imageIds, images: images ?? [])
+        let postId = UUID().uuidString
+        self.postService.uploadPostOverview(id:postId, data:data, imageId: imageIds[0])
+        self.postService.uploadPostDetail(id:postId, data:data, imageIds: imageIds)
+        self.appendPost(post: PostOverview(id: postId, image: (images?[0])!, date: data["date"] as! Date, createdAt: data["createdAt"] as! Date, coordinate: (data["location"] as! Location).coordinate, likes: 0, comments: 0, writer: self.username))
         completion()
+    }
+    func appendPost(post: PostOverview){
+        myPostListViewController?.appendPost(post: post)
+        myPostMapViewController?.appendPost(post: post)
     }
 }
 

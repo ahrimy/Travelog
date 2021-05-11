@@ -113,11 +113,12 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
         let text = self.postTextView.text ?? ""
         let isPublic = self.publicPrivateSegmentedControl.selectedSegmentIndex == 0
         let data = [
-            "images": images,
-            "date":date,
-            "location" : location,
-            "text":text,
-            "isPublic":isPublic
+            "images": images as [UIImage] ,
+            "date":date as Date,
+            "location" : location as Location ,
+            "text":text as String,
+            "isPublic":isPublic as Bool,
+            "createdAt": Date()
         ] as [String : Any]
         
         self.uploadPostViewControllerDelegate?.uploadPost(data: data, completion: completeUpload)
