@@ -17,6 +17,7 @@ class StarredPostDetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var scrollview: UIScrollView!
     
     // MARK: - Properties
     var data: StarredList?
@@ -25,7 +26,7 @@ class StarredPostDetailViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.layer.cornerRadius = 45
+//        view.layer.cornerRadius = 45 // 모달 둥근 정도..
     }
     
     @IBAction func editNdeleteButton(_ sender: Any){
