@@ -95,13 +95,26 @@ extension MyPostMapViewController: MKMapViewDelegate {
             return nil
         } else {
             let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "reuseId") ?? MKAnnotationView()
-            annotationView.canShowCallout = true
+            let width = self.mapView.frame.width / 7
             annotationView.annotation = annotation
             
-            let width = self.view.frame.width / 7
-            let height = self.view.frame.height / 7
-            let img = UIImage.resize(image: imgParam, targetSize: CGSize(width: width, height: height))
-            annotationView.image = img
+            let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: width + 10, height: width + 10 ))
+            backgroundView.backgroundColor = UIColor.white
+            backgroundView.layer.cornerRadius = 5
+            
+            let imageView = UIImageView(image: imgParam)
+            imageView.layer.masksToBounds = true
+            imageView.layer.cornerRadius = 5
+
+            backgroundView.addSubview(imageView)
+            annotationView.addSubview(backgroundView)
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                imageView.widthAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 0.92),
+                imageView.heightAnchor.constraint(equalTo: backgroundView.heightAnchor, multiplier: 0.92),
+                imageView.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
+                imageView.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor),
+            ])
             
             return annotationView
         }
