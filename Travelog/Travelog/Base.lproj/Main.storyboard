@@ -70,13 +70,6 @@
                                 <segue destination="cCo-zQ-00d" kind="show" id="bh8-W3-q6t"/>
                             </connections>
                         </barButtonItem>
-                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="MyUserName" textAlignment="center" minimumFontSize="17" id="k4j-5h-tdj">
-                            <rect key="frame" x="127" y="5" width="136" height="34"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
                         <rightBarButtonItems>
                             <barButtonItem title="설정" id="1tz-fz-6Uk">
                                 <imageReference key="image" image="gearshape.fill" catalog="system" symbolScale="large"/>
@@ -436,7 +429,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Gwh-Oy-Fyp">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.30588235294117649" green="0.16078431372549018" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="yB8-8u-uZY"/>

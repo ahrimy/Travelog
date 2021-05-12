@@ -12,7 +12,6 @@ class MyPostMapViewController: UIViewController,CLLocationManagerDelegate {
     
     // MARK: - Properties
     var locationManager = CLLocationManager()
-//    var posts:[PostThumbnail] = []
     var posts:[PostOverview] = []
     
     // MARK: - IBOutlet
@@ -62,7 +61,7 @@ class MyPostMapViewController: UIViewController,CLLocationManagerDelegate {
         self.addMapPin(with: post.coordinate, title: post.id, image: post.image)
     }
     func reloadData(list: [PostOverview]) {
-//        self.posts = list
+        self.posts = list
         
         self.posts.forEach{post in
             self.addMapPin(with: post.coordinate, title: post.id, image:post.image)

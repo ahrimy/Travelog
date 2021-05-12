@@ -11,8 +11,6 @@ class MyPostListViewController: UIViewController, UICollectionViewDataSource, UI
     
     // MARK: - Properties
     var posts:[PostOverview] = []
-//    var posts:[PostThumbnail] = []
-//    let cellIdentifier: String = "cell"
     
     // MARK: - IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
@@ -22,15 +20,6 @@ class MyPostListViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-//        let flowLayout: UICollectionViewFlowLayout
-//        flowLayout = UICollectionViewFlowLayout()
-//        flowLayout.sectionInset = UIEdgeInsets.zero
-//        flowLayout.minimumInteritemSpacing = 5
-//        flowLayout.minimumLineSpacing = 5
-//
-//        flowLayout.estimatedItemSize = CGSize(width:  collectionView.frame.width/3, height:  collectionView.frame.width/3)
-//
-//        self.collectionView.collectionViewLayout = flowLayout
     }
 
     // MARK: - Methods
@@ -39,7 +28,7 @@ class MyPostListViewController: UIViewController, UICollectionViewDataSource, UI
         self.collectionView.reloadData()
     }
     func reloadData(list: [PostOverview]) {
-//        self.posts = list
+        self.posts = list
         self.collectionView.reloadData()
     }
     
