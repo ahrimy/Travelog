@@ -13,6 +13,7 @@ class PostDetail {
     init(id:String = "-1",
          images:[UIImage] = [],
          date:Date = Date(),
+         text:String = "",
          createdAt:Date = Date(),
          updatedAt:Date = Date(),
          location:Location,
@@ -23,6 +24,7 @@ class PostDetail {
         self.id = id
         self.images = images
         self.date = date
+        self.text = text
         self.createdAt = createdAt
         self.updatedAt = updatedAt
         self.location = location
@@ -35,6 +37,7 @@ class PostDetail {
     var id: String
     var images: [UIImage]
     var date: Date
+    var text: String
     var createdAt: Date
     var updatedAt: Date
     var location: Location

@@ -46,6 +46,7 @@ class PostService {
                 "writer" : self.username,
                 "image" : imageId,
                 "date" : data["date"] as! Date,
+                "text" : data["text"] as! String,
                 "coordinate":GeoPoint(latitude: location.coordinate.coordinate.latitude, longitude: location.coordinate.coordinate.longitude),
                 "createdAt" : data["createdAt"] as! Date,
                 "isPublic" : data["isPublic"] as! Bool,
@@ -67,6 +68,7 @@ class PostService {
                 "writer" : self.username,
                 "images" : imageIds,
                 "date" : data["date"] as! Date,
+                "text" : data["text"] as! String,
                 "location" : [
                     "name" : location.name,
                     "address": location.address,
@@ -101,6 +103,7 @@ class PostService {
 
                     let data = documents[i].data()
                     let id = documents[i].documentID
+                    let text = data["text"] as! String
                     let writer = data["writer"] as! String
                     let comments = data["comments"] as! Int
                     let likes = data["likes"] as! Int
@@ -122,6 +125,7 @@ class PostService {
                                 ref.appendPost(post: PostOverview(id:id,
                                                                   image: image,
                                                                   date: date.dateValue(),
+                                                                  text: text,
                                                                   createdAt: createdAt.dateValue(),
                                                                   coordinate: coordinate,
                                                                   likes: likes,

@@ -14,6 +14,7 @@ class PostOverview{
     init(id:String = "-1",
          image:UIImage,
          date:Date = Date(),
+         text:String = "",
          createdAt: Date = Date(),
          coordinate:CLLocation = CLLocation(latitude: 0.0, longitude: 0.0 ),
          likes:Int = 0,
@@ -22,6 +23,7 @@ class PostOverview{
         self.id = id
         self.image = image
         self.date = date
+        self.text = text
         self.createdAt = createdAt
         self.coordinate = coordinate
         self.likes = likes
@@ -32,6 +34,7 @@ class PostOverview{
     var id:String
     var image:UIImage
     var date:Date
+    var text:String
     var createdAt: Date
     var coordinate: CLLocation
     var likes:Int
