@@ -11,7 +11,7 @@ import MapKit
 class MyPostMapViewController: UIViewController,CLLocationManagerDelegate {
     
     // MARK: - Properties
-    var locationManager = CLLocationManager()
+    var locationManager:CLLocationManager!
     var posts:[PostOverview] = []
     
     // MARK: - IBOutlet
