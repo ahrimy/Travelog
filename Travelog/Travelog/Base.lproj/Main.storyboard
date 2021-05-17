@@ -136,6 +136,8 @@
                                             </containerView>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="tbF-6t-f95">
                                                 <rect key="frame" x="30" y="340" width="330" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" red="0.67776289977656712" green="0.52527323546674543" blue="0.75890018964054606" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="YUf-Mb-aXg"/>
                                                 </constraints>
@@ -211,7 +213,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="szz-i5-M8d"/>
                         <color key="backgroundColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="tintColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="BUa-eB-vef" firstAttribute="trailing" secondItem="szz-i5-M8d" secondAttribute="trailing" id="4BL-IK-DEp"/>
                             <constraint firstItem="BUa-eB-vef" firstAttribute="leading" secondItem="szz-i5-M8d" secondAttribute="leading" id="NaP-Ek-eEL"/>
