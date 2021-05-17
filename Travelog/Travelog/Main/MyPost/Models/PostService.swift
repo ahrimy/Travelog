@@ -91,7 +91,7 @@ class PostService {
                 }
             }
     }
-    func loadPostOverviewsForList(ref:MyPostListViewController){
+    func loadPostOverviewsForList(appendPost:@escaping (PostOverview) -> Void){
         let storageRef = self.storage.reference()
         db.collection("postoverviews").whereField("writer", isEqualTo: "ahrimy").getDocuments(){ (querySnapshot, err) in
             if let err = err {
@@ -122,7 +122,7 @@ class PostService {
                                 let imageData = try Data(contentsOf: url!)
                                 let image = UIImage(data: imageData)!
                             
-                                ref.appendPost(post: PostOverview(id:id,
+                                appendPost(PostOverview(id:id,
                                                                   image: image,
                                                                   date: date.dateValue(),
                                                                   text: text,
@@ -140,7 +140,7 @@ class PostService {
             }
         }
     }
-    func loadPostOverviewsForMap(ref:MyPostMapViewController){
+    func loadPostOverviewsForMap(appendPost:@escaping (PostOverview) -> Void){
         let storageRef = self.storage.reference()
         db.collection("postoverviews").whereField("writer", isEqualTo: "ahrimy").getDocuments(){ (querySnapshot, err) in
             if let err = err {
@@ -168,7 +168,7 @@ class PostService {
                                 let imageData = try Data(contentsOf: url!)
                                 let image = UIImage(data: imageData)!
                             
-                                ref.appendPost(post: PostOverview(id:id,
+                                appendPost(PostOverview(id:id,
                                                                  image: image,
                                                                  date: date.dateValue(),
                                                                  createdAt: createdAt.dateValue(),
