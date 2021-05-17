@@ -13,6 +13,7 @@ class StarredPostDetailViewController: UIViewController {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var likesButton: UIButton!
     @IBOutlet weak var likesCount: UILabel!
+    @IBOutlet weak var commentsCount: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
@@ -21,7 +22,7 @@ class StarredPostDetailViewController: UIViewController {
     
     // MARK: - Properties
     var data: PostOverview?
-//    var likesCountInt: Int = 0
+    var detailData : PostDetail?
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -49,6 +50,9 @@ class StarredPostDetailViewController: UIViewController {
         if (likesButton.isSelected == false) {
             likesButton.isSelected = true
             likesButton.setImage(UIImage(named: "smile.fill"), for: .normal)
+//            var likesCountInt : Int = data!.likes
+//            likesCount.text = "\(likesCountInt)"
+//            likesCountInt += 1
 //            likesButton.tintColor = .white
 //            likesCountInt += 1
         }
@@ -73,11 +77,40 @@ class StarredPostDetailViewController: UIViewController {
         configureUI()
     }
     
+    let dateFormatter: DateFormatter = {
+        let formatter: DateFormatter = DateFormatter()
+//        formatter.dateStyle = .medium
+//        formatter.timeStyle = .medium
+        formatter.dateFormat = "yyyy/MM/dd"
+        return formatter
+    }()
+    
     func configureUI() {
-        locationLabel.text = "\(String(describing: data?.coordinate))"
-        dateLabel.text = "\(String(describing: data?.date))"
-        textLabel.text = "LA에서 한 할아버지를 만나서 무한도전을 아냐고 물었다. 할아버지께서는 당연히 안다고 하셨다. 그래서 외쳐보았다 무한 ~ "
+        let someLocation: Location? = detailData?.location // TODO : Location 정보 없음
+        if let newLocation = someLocation {
+            locationLabel.text = "\(newLocation.address)"
+        }
+
         imageView.image = data?.image
+        
+        let date: Date? = data?.date
+        if let newDate = date {
+            let dateString: String = self.dateFormatter.string(from: newDate)
+            dateLabel.text = dateString
+        }
+    
+        let likesInt: Int? = data?.likes
+        if let newLikesInt = likesInt{
+            likesCount.text = "\(newLikesInt)"
+        }
+        
+        let commentsInt: Int? = data?.comments
+        if let newCommentsInt = commentsInt{
+            commentsCount.text = "\(newCommentsInt)"
+        }
+        
+        textLabel.text = "LA에서 한 할아버지를 만나서 무한도전을 아냐고 물었다. 할아버지께서는 당연히 안다고 하셨다. 그래서 외쳐보았다 무한 ~ "
+        
         
 //        likesCount.text = "\(likesCountInt)"
         

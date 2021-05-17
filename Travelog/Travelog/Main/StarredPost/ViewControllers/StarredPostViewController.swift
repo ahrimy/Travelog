@@ -9,7 +9,7 @@ import UIKit
 
 class StarredPostViewController: UIViewController {
     
-    var postService = PostService(username: "ye")
+    var postService = PostService(username: "ahrimy")
     var starredPostListViewController: StarredPostListViewController?
     var starredPostMapViewController: StarredPostMapViewController?
     

@@ -20,6 +20,18 @@ class StarredPostListCell: UICollectionViewCell {
     let commentButton = UIButton()
     let commentNum = UILabel()
     
+    var postDetail : PostDetail?
+    
+    func configure(with starredpostlist: PostOverview) {
+        name.text = "\(starredpostlist.writer)"
+        imageView.image = starredpostlist.image
+        address_info.text = "\(String(describing: postDetail?.location.address))" // TODO : nil 값 반환 해결 필요함
+        likeNum.text = "\(starredpostlist.comments)"
+        commentNum.text = "\(starredpostlist.likes)"
+        text.text = "LA에서 한 할아버지를 만나서 무한도전을 아냐고 물었다. 할아버지께서는 당연히 안다고 하셨다. 그래서 외쳐보았다 무한 ~ "
+        
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 //        name.font = UIFont(name: "Apple SD 산돌고딕 Neo 볼드체", size: 17)
@@ -47,7 +59,6 @@ class StarredPostListCell: UICollectionViewCell {
         likeButton.imageEdgeInsets = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
         likeButton.imageView?.contentMode = .scaleAspectFit
 
-        likeNum.text = "77" // TODO: data file에서 불러오기
         likeNum.textColor = UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)
         likeNum.font = UIFont.systemFont(ofSize: 12)
         
@@ -55,7 +66,6 @@ class StarredPostListCell: UICollectionViewCell {
         commentButton.imageEdgeInsets = UIEdgeInsets(top: 3, left: 0, bottom: 2, right: 0)
         commentButton.imageView?.contentMode = .scaleAspectFit
         
-        commentNum.text = "6" // TODO: data file에서 불러오기
         commentNum.textColor = UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)
         commentNum.font = UIFont.systemFont(ofSize: 12)
         
@@ -87,15 +97,7 @@ class StarredPostListCell: UICollectionViewCell {
 //        stackView.setCustomSpacing(5, after: address_info)
     }
     
-    func configure(with starredpostlist: PostOverview) {
-        name.text = "\(starredpostlist.writer)"
-        imageView.image = starredpostlist.image
-        address_info.text = "\(starredpostlist.coordinate)"
-        likeNum.text = "\(starredpostlist.comments)"
-        commentNum.text = "\(starredpostlist.likes)"
-        text.text = "LA에서 한 할아버지를 만나서 무한도전을 아냐고 물었다. 할아버지께서는 당연히 안다고 하셨다. 그래서 외쳐보았다 무한 ~ "
-        
-    }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

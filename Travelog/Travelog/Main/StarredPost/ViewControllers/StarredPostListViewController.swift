@@ -9,28 +9,19 @@ import UIKit
 
 class StarredPostListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-//    lazy var sections: [Section] = {
-//        return Bundle.main.decode([Section].self, from: "StarredPostList.json")
-//    }()
-    
     var posts:[PostOverview] = []
     let cellIdentifier: String = "StarredPostListCell"
     @IBOutlet weak var StarredPostListCollectionView: UICollectionView!
     
+    func appendPost(post:PostOverview){
+        self.posts.append(post)
+        self.StarredPostListCollectionView.reloadData()
+    }
     
+    func reloadData(){
+        self.StarredPostListCollectionView.reloadData()
+    }
     
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return posts.count
-//    }
-    
-
-    
-//    lazy var StarredPostListCollectionView: UICollectionView = {
-//        let collectionView = UICollectionView(frame: view.frame, collectionViewLayout: UICollectionViewFlowLayout())
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
-//        return collectionView
-//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,20 +37,15 @@ class StarredPostListViewController: UIViewController, UICollectionViewDelegate,
         StarredPostListCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
 
         StarredPostListCollectionView.register(StarredPostListCell.self, forCellWithReuseIdentifier: StarredPostListCell.reuseIdentifier)
+        
+        StarredPostListCollectionView.dataSource = self
+        StarredPostListCollectionView.delegate = self
+        
     }
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(animated)
 //        StarredPostListCollectionView.reloadData()
 //    }
-    
-    func appendPost(post:PostOverview){
-        self.posts.append(post)
-        self.StarredPostListCollectionView.reloadData()
-    }
-    
-    func reloadData(){
-        self.StarredPostListCollectionView.reloadData()
-    }
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -79,9 +65,6 @@ class StarredPostListViewController: UIViewController, UICollectionViewDelegate,
 
 
 extension StarredPostListViewController:  UICollectionViewDelegateFlowLayout {
-    
-    
-    
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //print("\(sections[0].items[indexPath.item])") // TODO: 셀 클릭 했을 때, 동작
