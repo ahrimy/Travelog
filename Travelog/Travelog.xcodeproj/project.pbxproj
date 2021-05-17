@@ -23,7 +23,6 @@
 		3E464D9426088FF800390A0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E464D9226088FF800390A0B /* LaunchScreen.storyboard */; };
 		3E464D9F26088FF800390A0B /* TravelogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E464D9E26088FF800390A0B /* TravelogTests.swift */; };
 		3E464DAA26088FF800390A0B /* TravelogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E464DA926088FF800390A0B /* TravelogUITests.swift */; };
-		3E4F027C262F162100233133 /* SelectedDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4F027B262F162100233133 /* SelectedDateViewController.swift */; };
 		3E6F507E260B9A4800B22252 /* PostThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F507D260B9A4800B22252 /* PostThumbnail.swift */; };
 		3E6F508B260B9E0800B22252 /* MyPostViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6F508A260B9E0800B22252 /* MyPostViewCell.swift */; };
 		3E74B9D0261C61BF00AE1CB6 /* UploadPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E74B9CF261C61BF00AE1CB6 /* UploadPostViewController.swift */; };
@@ -100,7 +99,6 @@
 		3E464DA526088FF800390A0B /* TravelogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E464DA926088FF800390A0B /* TravelogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelogUITests.swift; sourceTree = "<group>"; };
 		3E464DAB26088FF800390A0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3E4F027B262F162100233133 /* SelectedDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDateViewController.swift; sourceTree = "<group>"; };
 		3E6F507D260B9A4800B22252 /* PostThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostThumbnail.swift; sourceTree = "<group>"; };
 		3E6F508A260B9E0800B22252 /* MyPostViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostViewCell.swift; sourceTree = "<group>"; };
 		3E74B9CF261C61BF00AE1CB6 /* UploadPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostViewController.swift; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 				3E74B9CF261C61BF00AE1CB6 /* UploadPostViewController.swift */,
 				3EC3A4F7261DD1D2004BA4FF /* LocationSearchViewController.swift */,
 				3E1322A82624639800D52C7D /* SelectedPhotoViewController.swift */,
-				3E4F027B262F162100233133 /* SelectedDateViewController.swift */,
 				3E04BB64262735A500362303 /* SelectedLocationViewController.swift */,
 			);
 			path = ViewControllers;
@@ -698,7 +695,6 @@
 				3E33A940262DDFAC00ABCA8A /* Location.swift in Sources */,
 				ACE9085E261B7F8D0087F6AA /* StarredPostListViewController.swift in Sources */,
 				ACE90875261C31D70087F6AA /* Bundle-Decodable.swift in Sources */,
-				3E4F027C262F162100233133 /* SelectedDateViewController.swift in Sources */,
 				3EE8AAE526427778002D13AE /* PostList.swift in Sources */,
 				3E6F507E260B9A4800B22252 /* PostThumbnail.swift in Sources */,
 				3EE8AAE7264313EB002D13AE /* PostAnnotation.swift in Sources */,
