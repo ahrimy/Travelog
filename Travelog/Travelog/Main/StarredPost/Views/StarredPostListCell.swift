@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StarredPostListCell: UICollectionViewCell, SelfConfiguringCell {
+class StarredPostListCell: UICollectionViewCell {
    
     static let reuseIdentifier: String = "StarredPostListCell"
 
@@ -18,7 +18,7 @@ class StarredPostListCell: UICollectionViewCell, SelfConfiguringCell {
     let likeButton = UIButton()
     let likeNum = UILabel()
     let commentButton = UIButton()
-    let commmentNum = UILabel()
+    let commentNum = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,14 +55,14 @@ class StarredPostListCell: UICollectionViewCell, SelfConfiguringCell {
         commentButton.imageEdgeInsets = UIEdgeInsets(top: 3, left: 0, bottom: 2, right: 0)
         commentButton.imageView?.contentMode = .scaleAspectFit
         
-        commmentNum.text = "6" // TODO: data file에서 불러오기
-        commmentNum.textColor = UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)
-        commmentNum.font = UIFont.systemFont(ofSize: 12)
+        commentNum.text = "6" // TODO: data file에서 불러오기
+        commentNum.textColor = UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)
+        commentNum.font = UIFont.systemFont(ofSize: 12)
         
         let likeStackView = UIStackView(arrangedSubviews: [likeButton, likeNum])
         likeStackView.axis = .horizontal
         likeStackView.distribution = .equalCentering
-        let commentStackView = UIStackView(arrangedSubviews: [commentButton, commmentNum])
+        let commentStackView = UIStackView(arrangedSubviews: [commentButton, commentNum])
         commentStackView.axis = .horizontal
         commentStackView.distribution = .equalCentering
         let buttonStackView = UIStackView(arrangedSubviews: [likeStackView, commentStackView])
@@ -87,13 +87,14 @@ class StarredPostListCell: UICollectionViewCell, SelfConfiguringCell {
 //        stackView.setCustomSpacing(5, after: address_info)
     }
     
-    func configure(with starredpostlist: StarredList) {
-        name.text = starredpostlist.name
-        imageView.image = UIImage(named: starredpostlist.image)
-        address_info.text = starredpostlist.city + ", " + starredpostlist.country
-        text.text = starredpostlist.text
-//        likeNum.text = starredpostlist.likeNum
-//        commmentNum.text = starredpostlist.commentNum
+    func configure(with starredpostlist: PostOverview) {
+        name.text = "\(starredpostlist.writer)"
+        imageView.image = starredpostlist.image
+        address_info.text = "\(starredpostlist.coordinate)"
+        likeNum.text = "\(starredpostlist.comments)"
+        commentNum.text = "\(starredpostlist.likes)"
+        text.text = "LA에서 한 할아버지를 만나서 무한도전을 아냐고 물었다. 할아버지께서는 당연히 안다고 하셨다. 그래서 외쳐보았다 무한 ~ "
+        
     }
     
     required init?(coder: NSCoder) {

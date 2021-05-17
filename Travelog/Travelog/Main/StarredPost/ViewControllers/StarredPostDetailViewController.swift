@@ -20,7 +20,7 @@ class StarredPostDetailViewController: UIViewController {
     @IBOutlet weak var scrollview: UIScrollView!
     
     // MARK: - Properties
-    var data: StarredList?
+    var data: PostOverview?
 //    var likesCountInt: Int = 0
     
     // MARK: - Life Cycle
@@ -74,10 +74,10 @@ class StarredPostDetailViewController: UIViewController {
     }
     
     func configureUI() {
-        locationLabel.text = data?.city
-        dateLabel.text = data?.date
-        textLabel.text = data?.text
-        imageView.image = UIImage(named: data?.image ?? "")
+        locationLabel.text = "\(String(describing: data?.coordinate))"
+        dateLabel.text = "\(String(describing: data?.date))"
+        textLabel.text = "LA에서 한 할아버지를 만나서 무한도전을 아냐고 물었다. 할아버지께서는 당연히 안다고 하셨다. 그래서 외쳐보았다 무한 ~ "
+        imageView.image = data?.image
         
 //        likesCount.text = "\(likesCountInt)"
         
