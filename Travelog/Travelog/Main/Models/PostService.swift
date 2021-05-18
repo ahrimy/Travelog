@@ -106,7 +106,7 @@ class PostService {
         let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: self.username)
         self.appedPostOverviews(documentRef: documentRef, appendPost: appendPost)
     }
-    func loadPostOverviewsForStarredPostMapappendPost(appendPost:@escaping (PostOverview) -> Void){
+    func loadPostOverviewsForStarredPostMap(appendPost:@escaping (PostOverview) -> Void){
         // TODO: starred list 에 있는 user의 포스트 가져오도록 조건 변경
         let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: self.username)
         self.appedPostOverviews(documentRef: documentRef, appendPost: appendPost)
