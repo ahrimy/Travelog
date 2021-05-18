@@ -163,16 +163,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E13E1AB2653D61100D308BB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3EF3BA7326482C04006B1DCA /* PostService.swift */,
+				3E33A93F262DDFAC00ABCA8A /* Location.swift */,
+				3EF3BA7126482ABA006B1DCA /* PostDetail.swift */,
+				3EF3BA6F2648291F006B1DCA /* PostOverview.swift */,
+				3EE8AAE6264313EB002D13AE /* PostAnnotation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		3E33A936262C8BB000ABCA8A /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				3E33A937262C8BBC00ABCA8A /* Post.swift */,
-				3EF3BA6F2648291F006B1DCA /* PostOverview.swift */,
-				3EF3BA7326482C04006B1DCA /* PostService.swift */,
-				3EF3BA7126482ABA006B1DCA /* PostDetail.swift */,
-				3E33A93F262DDFAC00ABCA8A /* Location.swift */,
 				3EE8AAE426427778002D13AE /* PostList.swift */,
-				3EE8AAE6264313EB002D13AE /* PostAnnotation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -403,6 +410,7 @@
 		4395B4FB261DE2C700E0C54D /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				3E13E1AB2653D61100D308BB /* Models */,
 				4395B4F7261DE29D00E0C54D /* MyPost */,
 				4395B4F8261DE2AB00E0C54D /* Search */,
 				4395B4F9261DE2B700E0C54D /* StarredPost */,
