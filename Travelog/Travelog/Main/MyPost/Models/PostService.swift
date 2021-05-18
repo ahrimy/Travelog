@@ -186,6 +186,105 @@ class PostService {
             }
         }
     }
+    
+    func loadPostOverviewsForList2(ref:StarredPostListViewController){
+        let storageRef = self.storage.reference()
+        db.collection("postoverviews").whereField("writer", isEqualTo: "ahrimy").getDocuments(){ (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                let documents = querySnapshot!.documents
+                for i in 0..<documents.count {
+                    print("\(documents[i].documentID) => \(documents[i].data())")
+
+                    let data = documents[i].data()
+                    let id = documents[i].documentID
+                    let writer = data["writer"] as! String
+                    let comments = data["comments"] as! Int
+                    let likes = data["likes"] as! Int
+                    let date = data["date"] as! Timestamp
+                    let createdAt = data["createdAt"] as! Timestamp
+                    let coordinateData = data["coordinate"] as! GeoPoint
+                    let coordinate = CLLocation(latitude: coordinateData.latitude, longitude: coordinateData.longitude)
+
+                    let imageRef = data["image"] as! String
+
+                    storageRef.child("\(self.username)/\(imageRef)").downloadURL{ url, err in
+                        if let err = err {
+                            print("Error occurred while get url \(err)")
+                        }else{
+                            do{
+                                let imageData = try Data(contentsOf: url!)
+                                let image = UIImage(data: imageData)!
+                            
+                                ref.appendPost(post: PostOverview(id:id,
+                                                                  image: image,
+                                                                  date: date.dateValue(),
+                                                                  createdAt: createdAt.dateValue(),
+                                                                  coordinate: coordinate,
+                                                                  likes: likes,
+                                                                  comments: comments,
+                                                                  writer: writer))
+                            }catch{
+                                print("Error occured while load image from url")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    /*
+    func loadPostOverviewsForMap2(ref:StarredPostMapViewController){
+        let storageRef = self.storage.reference()
+        db.collection("postoverviews").whereField("writer", isEqualTo: "ahrimy").getDocuments(){ (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                let documents = querySnapshot!.documents
+                for i in 0..<documents.count {
+                    print("\(documents[i].documentID) => \(documents[i].data())")
+                    let data = documents[i].data()
+                    let id = documents[i].documentID
+                    let writer = data["writer"] as! String
+                    let comments = data["comments"] as! Int
+                    let likes = data["likes"] as! Int
+                    let date = data["date"] as! Timestamp
+                    let createdAt = data["createdAt"] as! Timestamp
+                    let coordinateData = data["coordinate"] as! GeoPoint
+                    let coordinate = CLLocation(latitude: coordinateData.latitude, longitude: coordinateData.longitude)
+
+                    let imageRef = data["image"] as! String
+                    storageRef.child("\(self.username)/\(imageRef)").downloadURL{ url, err in
+                        if let err = err {
+                            print("Error occurred while get url \(err)")
+                        }else{
+                            do{
+                                let imageData = try Data(contentsOf: url!)
+                                let image = UIImage(data: imageData)!
+                            
+                                ref.appendPost(post: PostOverview(id:id,
+                                                                 image: image,
+                                                                 date: date.dateValue(),
+                                                                 createdAt: createdAt.dateValue(),
+                                                                 coordinate: coordinate,
+                                                                 likes: likes,
+                                                                 comments: comments,
+                                                                 writer: writer))
+                                
+                            }catch{
+                                print("Error occured while load image from url")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+ */
+ 
     func loadPostDetail(){
         
     }
