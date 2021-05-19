@@ -49,6 +49,7 @@ class PostService {
                 "date" : data["date"] as! Date,
                 "text" : data["text"] as! String,
                 "coordinate":GeoPoint(latitude: location.coordinate.coordinate.latitude, longitude: location.coordinate.coordinate.longitude),
+                "locationName":location.name,
                 "createdAt" : data["createdAt"] as! Date,
                 "isPublic" : data["isPublic"] as! Bool,
                 "likes" : 0,
@@ -130,7 +131,9 @@ class PostService {
                     let createdAt = data["createdAt"] as! Timestamp
                     let coordinateData = data["coordinate"] as! GeoPoint
                     let coordinate = CLLocation(latitude: coordinateData.latitude, longitude: coordinateData.longitude)
-
+                    let locationName = data["locationName"] as! String
+                    let text = data["text"] as! String
+                    
                     let imageRef = data["image"] as! String
                     self.storageRef.child("\(writer)/\(imageRef)").downloadURL{ url, err in
                         if let err = err {
@@ -143,8 +146,10 @@ class PostService {
                                 appendPost(PostOverview(id:id,
                                                                  image: image,
                                                                  date: date.dateValue(),
+                                                                 text:text,
                                                                  createdAt: createdAt.dateValue(),
                                                                  coordinate: coordinate,
+                                                                 locationName: locationName,
                                                                  likes: likes,
                                                                  comments: comments,
                                                                  writer: writer))

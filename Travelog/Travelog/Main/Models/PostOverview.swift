@@ -17,6 +17,7 @@ class PostOverview{
          text:String = "",
          createdAt: Date = Date(),
          coordinate:CLLocation = CLLocation(latitude: 0.0, longitude: 0.0 ),
+         locationName:String = "",
          likes:Int = 0,
          comments: Int = 0,
          writer:String = ""){
@@ -26,6 +27,7 @@ class PostOverview{
         self.text = text
         self.createdAt = createdAt
         self.coordinate = coordinate
+        self.locationName = locationName
         self.likes = likes
         self.comments = comments
         self.writer = writer
@@ -37,6 +39,7 @@ class PostOverview{
     var text:String
     var createdAt: Date
     var coordinate: CLLocation
+    var locationName: String
     var likes:Int
     var comments: Int
     var writer:String

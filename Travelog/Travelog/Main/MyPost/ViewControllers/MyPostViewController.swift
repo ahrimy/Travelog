@@ -97,7 +97,7 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
         let postId = UUID().uuidString
         self.postService.uploadPostOverview(id:postId, data:data, imageId: imageIds[0])
         self.postService.uploadPostDetail(id:postId, data:data, imageIds: imageIds)
-        self.appendPost(post: PostOverview(id: postId, image: (images?[0])!, date: data["date"] as! Date, text: data["text"] as! String, createdAt: data["createdAt"] as! Date, coordinate: (data["location"] as! Location).coordinate, likes: 0, comments: 0, writer: self.username))
+        self.appendPost(post: PostOverview(id: postId, image: (images?[0])!, date: data["date"] as! Date, text: data["text"] as! String, createdAt: data["createdAt"] as! Date, coordinate: (data["location"] as! Location).coordinate,locationName: (data["location"] as! Location).name, likes: 0, comments: 0, writer: self.username))
         completion()
     }
     func appendPost(post: PostOverview){

@@ -23,12 +23,12 @@ class StarredPostListCell: UICollectionViewCell {
     var postDetail : PostDetail?
     
     func configure(with starredpostlist: PostOverview) {
-        name.text = "\(starredpostlist.writer)"
+        name.text = starredpostlist.writer
         imageView.image = starredpostlist.image
-        address_info.text = "\(String(describing: postDetail?.location.address))" // TODO : nil 값 반환 해결 필요함
+        address_info.text = starredpostlist.locationName // TODO : nil 값 반환 해결 필요함
         likeNum.text = "\(starredpostlist.comments)"
         commentNum.text = "\(starredpostlist.likes)"
-        text.text = "LA에서 한 할아버지를 만나서 무한도전을 아냐고 물었다. 할아버지께서는 당연히 안다고 하셨다. 그래서 외쳐보았다 무한 ~ "
+        text.text = starredpostlist.text
         
     }
     
