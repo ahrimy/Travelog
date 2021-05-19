@@ -11,8 +11,9 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
 
     // MARK: - Properties
 //    var list = PostList()
-    var username = "ahrimy"
-    var postService = PostService(username: "ahrimy")
+    let userService = UserService()
+    let username = "ahrimy"
+    let postService = PostService(username: "ahrimy")
 
     var uploadPostViewController: UploadPostViewController?
     var myPostListViewController: MyPostListViewController?
@@ -36,6 +37,9 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
             MyPostMapView.alpha = 0
             MyPostListView.alpha = 1
         }
+    }
+    @IBAction func touchUpNotificatioinButton(_ sender: Any) {
+        userService.signOut(completion: presentSignInVC)
     }
     
     // MARK: - View Life Cycle
@@ -103,6 +107,11 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
     func appendPost(post: PostOverview){
         myPostListViewController?.appendPost(post: post)
         myPostMapViewController?.appendPost(post: post)
+    }
+    func presentSignInVC(){
+        if let vc = self.storyboard?.instantiateViewController(identifier: "SignInViewController") {
+            self.view.window?.rootViewController = vc
+        }
     }
 }
 

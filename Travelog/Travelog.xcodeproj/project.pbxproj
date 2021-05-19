@@ -12,6 +12,10 @@
 		3E0FE1D72625E2D3004E93E7 /* AddButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0FE1D62625E2D3004E93E7 /* AddButtonCollectionViewCell.swift */; };
 		3E1322A92624639800D52C7D /* SelectedPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1322A82624639800D52C7D /* SelectedPhotoViewController.swift */; };
 		3E1322AE262467CF00D52C7D /* SelectedPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1322AD262467CF00D52C7D /* SelectedPhotoCollectionViewCell.swift */; };
+		3E13E1B12655612A00D308BB /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E13E1B02655612A00D308BB /* SignInViewController.swift */; };
+		3E13E1B32655780D00D308BB /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E13E1B22655780D00D308BB /* LoadingViewController.swift */; };
+		3E13E1B526557C9500D308BB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E13E1B426557C9500D308BB /* User.swift */; };
+		3E13E1B726557C9D00D308BB /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E13E1B626557C9D00D308BB /* UserService.swift */; };
 		3E33A938262C8BBC00ABCA8A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E33A937262C8BBC00ABCA8A /* Post.swift */; };
 		3E33A940262DDFAC00ABCA8A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E33A93F262DDFAC00ABCA8A /* Location.swift */; };
 		3E464D8526088FF700390A0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E464D8426088FF700390A0B /* AppDelegate.swift */; };
@@ -82,6 +86,10 @@
 		3E0FE1D62625E2D3004E93E7 /* AddButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E1322A82624639800D52C7D /* SelectedPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedPhotoViewController.swift; sourceTree = "<group>"; };
 		3E1322AD262467CF00D52C7D /* SelectedPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		3E13E1B02655612A00D308BB /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		3E13E1B22655780D00D308BB /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		3E13E1B426557C9500D308BB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3E13E1B626557C9D00D308BB /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		3E33A937262C8BBC00ABCA8A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		3E33A93F262DDFAC00ABCA8A /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		3E464D8126088FF600390A0B /* Travelog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Travelog.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,8 +179,26 @@
 				3EF3BA7126482ABA006B1DCA /* PostDetail.swift */,
 				3EF3BA6F2648291F006B1DCA /* PostOverview.swift */,
 				3EE8AAE6264313EB002D13AE /* PostAnnotation.swift */,
+				3E13E1B426557C9500D308BB /* User.swift */,
+				3E13E1B626557C9D00D308BB /* UserService.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		3E13E1AE265560AE00D308BB /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				3E13E1AF265560CF00D308BB /* ViewControllers */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		3E13E1AF265560CF00D308BB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3E13E1B02655612A00D308BB /* SignInViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		3E33A936262C8BB000ABCA8A /* Models */ = {
@@ -410,11 +436,13 @@
 		4395B4FB261DE2C700E0C54D /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				3E13E1AE265560AE00D308BB /* SignIn */,
 				3E13E1AB2653D61100D308BB /* Models */,
 				4395B4F7261DE29D00E0C54D /* MyPost */,
 				4395B4F8261DE2AB00E0C54D /* Search */,
 				4395B4F9261DE2B700E0C54D /* StarredPost */,
 				4395B4FA261DE2C000E0C54D /* AllPost */,
+				3E13E1B22655780D00D308BB /* LoadingViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -696,12 +724,14 @@
 				ACE90859261B7F160087F6AA /* StarredPostMapViewController.swift in Sources */,
 				3E7F918C26124A1800B319E8 /* SearchViewController.swift in Sources */,
 				AC5D30BD262F405200F2C920 /* StarredPostLocation.swift in Sources */,
+				3E13E1B12655612A00D308BB /* SignInViewController.swift in Sources */,
 				3E74B9D0261C61BF00AE1CB6 /* UploadPostViewController.swift in Sources */,
 				AC54C5B1261D6EED0020980D /* StarredPostList.swift in Sources */,
 				3EF3BA702648291F006B1DCA /* PostOverview.swift in Sources */,
 				ACA7BF23260C82FF00C108EC /* MyProfileEditViewController.swift in Sources */,
 				3E33A940262DDFAC00ABCA8A /* Location.swift in Sources */,
 				ACE9085E261B7F8D0087F6AA /* StarredPostListViewController.swift in Sources */,
+				3E13E1B32655780D00D308BB /* LoadingViewController.swift in Sources */,
 				ACE90875261C31D70087F6AA /* Bundle-Decodable.swift in Sources */,
 				3EE8AAE526427778002D13AE /* PostList.swift in Sources */,
 				3E6F507E260B9A4800B22252 /* PostThumbnail.swift in Sources */,
@@ -718,6 +748,7 @@
 				3E7F919126124A2D00B319E8 /* StarredPostViewController.swift in Sources */,
 				3E464D8F26088FF700390A0B /* Travelog.xcdatamodeld in Sources */,
 				3E6F508B260B9E0800B22252 /* MyPostViewCell.swift in Sources */,
+				3E13E1B526557C9500D308BB /* User.swift in Sources */,
 				3E33A938262C8BBC00ABCA8A /* Post.swift in Sources */,
 				3E464D8526088FF700390A0B /* AppDelegate.swift in Sources */,
 				3E1322A92624639800D52C7D /* SelectedPhotoViewController.swift in Sources */,
@@ -728,6 +759,7 @@
 				AC54C5BF261D6F3A0020980D /* Section.swift in Sources */,
 				ACA7BF3E2613767800C108EC /* MyPostMapViewController.swift in Sources */,
 				AC54C5B2261D6EED0020980D /* SelfConfiguringCell.swift in Sources */,
+				3E13E1B726557C9D00D308BB /* UserService.swift in Sources */,
 				AC6BD234264307B100AA0826 /* CommentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
