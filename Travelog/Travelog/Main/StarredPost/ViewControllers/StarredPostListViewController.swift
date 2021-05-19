@@ -80,7 +80,7 @@ extension StarredPostListViewController:  UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width / 2 - 2, height: 350) // TODO: 셀 사이즈 지정
+        return CGSize(width: view.frame.width / 2 - 2, height: 300) // TODO: 셀 사이즈 지정
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

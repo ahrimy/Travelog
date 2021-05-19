@@ -125,17 +125,17 @@ class PostService {
                     //TODO: Location 추가
                     let data = documents[i].data()
                     let id = documents[i].documentID
-                    let writer = data["writer"] as! String
-                    let comments = data["comments"] as! Int
-                    let likes = data["likes"] as! Int
-                    let date = data["date"] as! Timestamp
-                    let createdAt = data["createdAt"] as! Timestamp
-                    let coordinateData = data["coordinate"] as! GeoPoint
+                    guard let writer = data["writer"] as? String else { return }
+                    guard let comments = data["comments"] as? Int else { return }
+                    guard let likes = data["likes"] as? Int else { return }
+                    guard let date = data["date"] as? Timestamp else { return }
+                    guard let createdAt = data["createdAt"] as? Timestamp else { return }
+                    guard let coordinateData = data["coordinate"] as? GeoPoint else { return }
                     let coordinate = CLLocation(latitude: coordinateData.latitude, longitude: coordinateData.longitude)
-                    let locationName = data["locationName"] as! String
-                    let text = data["text"] as! String
+                    guard let locationName = data["locationName"] as? String else { return }
+                    guard let text = data["text"] as? String else { return }
                     
-                    let imageRef = data["image"] as! String
+                    guard let imageRef = data["image"] as? String else { return }
                     self.storageRef.child("\(writer)/\(imageRef)").downloadURL{ url, err in
                         if let err = err {
                             print("Error occurred while get url \(err)")
