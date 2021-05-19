@@ -21,8 +21,8 @@ class StarredPostDetailViewController: UIViewController {
     @IBOutlet weak var scrollview: UIScrollView!
     
     // MARK: - Properties
+    //var data: PostDetail?
     var data: PostOverview?
-    var detailData : PostDetail?
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -85,12 +85,8 @@ class StarredPostDetailViewController: UIViewController {
         return formatter
     }()
     
-    func configureUI() {
-        let someLocation: Location? = detailData?.location // TODO : Location 정보 없음
-        if let newLocation = someLocation {
-            locationLabel.text = "\(newLocation.address)"
-        }
-
+    func configureUI(){
+        locationLabel.text = data?.locationName
         imageView.image = data?.image
         
         let date: Date? = data?.date
@@ -109,7 +105,7 @@ class StarredPostDetailViewController: UIViewController {
             commentsCount.text = "\(newCommentsInt)"
         }
         
-        textLabel.text = "LA에서 한 할아버지를 만나서 무한도전을 아냐고 물었다. 할아버지께서는 당연히 안다고 하셨다. 그래서 외쳐보았다 무한 ~ "
+        textLabel.text = data?.text
         
         
 //        likesCount.text = "\(likesCountInt)"
@@ -126,5 +122,6 @@ class StarredPostDetailViewController: UIViewController {
         textLabel.sizeToFit()
         textLabel.lineBreakStrategy = .hangulWordPriority
     }
+
 
 }
