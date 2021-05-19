@@ -46,7 +46,7 @@ class StarredPostListCell: UICollectionViewCell {
 //        address_info.font = UIFont(name: "Apple SD 산돌고딕 Neo 볼드체", size: 17)
         address_info.font = UIFont.systemFont(ofSize: 16)
         address_info.textColor = UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)
-        address_info.textAlignment = .center
+        address_info.textAlignment = .left
         address_info.numberOfLines = 1
         
 //        text.font = UIFont(name: "Apple SD 산돌고딕 Neo 볼드체", size: 17)
@@ -85,7 +85,7 @@ class StarredPostListCell: UICollectionViewCell {
         bottomStackView.axis = .horizontal
         bottomStackView.distribution = .equalSpacing
         
-        let stackView = UIStackView(arrangedSubviews: [name, imageView, address_info, text, bottomStackView])
+        let stackView = UIStackView(arrangedSubviews: [name, imageView, address_info, bottomStackView]) // text 뺀 상태
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.distribution = .equalCentering // TODO: 변경 필요
