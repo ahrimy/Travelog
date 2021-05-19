@@ -49,7 +49,7 @@ class PostService {
                 "date" : data["date"] as! Date,
                 "text" : data["text"] as! String,
                 "coordinate":GeoPoint(latitude: location.coordinate.coordinate.latitude, longitude: location.coordinate.coordinate.longitude),
-                "locationName":location.name,
+                "locationName":"\(location.name), \(location.country)",
                 "createdAt" : data["createdAt"] as! Date,
                 "isPublic" : data["isPublic"] as! Bool,
                 "likes" : 0,
