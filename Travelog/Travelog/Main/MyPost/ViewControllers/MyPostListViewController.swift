@@ -25,6 +25,7 @@ class MyPostListViewController: UIViewController, UICollectionViewDataSource, UI
     // MARK: - Methods
     func appendPost(post:PostOverview){
         self.posts.append(post)
+        self.posts = self.posts.sorted(by: {$0.date > $1.date})
         self.collectionView.reloadData()
     }
     func loadPosts(posts: [PostOverview]) {

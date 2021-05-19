@@ -104,12 +104,12 @@ class PostService {
     }
     func loadPostOverviewsForStarredPostList(loadPosts:@escaping ([PostOverview]) -> Void){
         // TODO: starred list 에 있는 user의 포스트 가져오도록 조건 변경
-        let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: self.username)
+        let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: self.username).whereField("isPublic", isEqualTo: true)
         self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
     }
     func loadPostOverviewsForStarredPostMap(loadPosts:@escaping ([PostOverview]) -> Void){
         // TODO: starred list 에 있는 user의 포스트 가져오도록 조건 변경
-        let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: self.username)
+        let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: self.username).whereField("isPublic", isEqualTo: true)
         self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
     }
     
