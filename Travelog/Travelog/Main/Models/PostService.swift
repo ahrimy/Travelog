@@ -94,26 +94,27 @@ class PostService {
             }
     }
   
-    func loadPostOverviewsForMyPostList(appendPost:@escaping (PostOverview) -> Void){
+    func loadPostOverviewsForMyPostList(loadPosts:@escaping ([PostOverview]) -> Void){
         let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: self.username)
-        self.appedPostOverviews(documentRef: documentRef, appendPost: appendPost)
+        self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
     }
-    func loadPostOverviewsForMyPostMap(appendPost:@escaping (PostOverview) -> Void){
+    func loadPostOverviewsForMyPostMap(loadPosts:@escaping ([PostOverview]) -> Void){
         let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: self.username)
-        self.appedPostOverviews(documentRef: documentRef, appendPost: appendPost)
+        self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
     }
-    func loadPostOverviewsForStarredPostList(appendPost:@escaping (PostOverview) -> Void){
+    func loadPostOverviewsForStarredPostList(loadPosts:@escaping ([PostOverview]) -> Void){
         // TODO: starred list 에 있는 user의 포스트 가져오도록 조건 변경
         let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: self.username)
-        self.appedPostOverviews(documentRef: documentRef, appendPost: appendPost)
+        self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
     }
-    func loadPostOverviewsForStarredPostMap(appendPost:@escaping (PostOverview) -> Void){
+    func loadPostOverviewsForStarredPostMap(loadPosts:@escaping ([PostOverview]) -> Void){
         // TODO: starred list 에 있는 user의 포스트 가져오도록 조건 변경
         let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: self.username)
-        self.appedPostOverviews(documentRef: documentRef, appendPost: appendPost)
+        self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
     }
     
-    func appedPostOverviews(documentRef:Query,appendPost:@escaping (PostOverview) -> Void){
+    func appedPostOverviews(documentRef:Query,loadPosts:@escaping ([PostOverview]) -> Void){
+        var posts:[PostOverview] = []
         documentRef.getDocuments(){(querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -143,16 +144,29 @@ class PostService {
                                 let imageData = try Data(contentsOf: url!)
                                 let image = UIImage(data: imageData)!
                             
-                                appendPost(PostOverview(id:id,
-                                                                 image: image,
-                                                                 date: date.dateValue(),
-                                                                 text:text,
-                                                                 createdAt: createdAt.dateValue(),
-                                                                 coordinate: coordinate,
-                                                                 locationName: locationName,
-                                                                 likes: likes,
-                                                                 comments: comments,
-                                                                 writer: writer))
+                                posts.append(PostOverview(id:id,
+                                                          image: image,
+                                                          date: date.dateValue(),
+                                                          text:text,
+                                                          createdAt: createdAt.dateValue(),
+                                                          coordinate: coordinate,
+                                                          locationName: locationName,
+                                                          likes: likes,
+                                                          comments: comments,
+                                                          writer: writer))
+//                                appendPost(PostOverview(id:id,
+//                                                                 image: image,
+//                                                                 date: date.dateValue(),
+//                                                                 text:text,
+//                                                                 createdAt: createdAt.dateValue(),
+//                                                                 coordinate: coordinate,
+//                                                                 locationName: locationName,
+//                                                                 likes: likes,
+//                                                                 comments: comments,
+//                                                                 writer: writer))
+                                if documents.count == posts.count {
+                                    loadPosts(posts)
+                                }
                             }catch{
                                 print("Error occured while load image from url")
                             }

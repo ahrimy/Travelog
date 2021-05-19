@@ -18,7 +18,8 @@ class StarredPostListViewController: UIViewController, UICollectionViewDelegate,
         self.StarredPostListCollectionView.reloadData()
     }
     
-    func reloadData(){
+    func loadPosts(posts:[PostOverview]){
+        self.posts = posts
         self.StarredPostListCollectionView.reloadData()
     }
     

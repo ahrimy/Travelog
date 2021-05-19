@@ -36,7 +36,7 @@ class StarredPostViewController: UIViewController {
         mapListSegmentedControl.setTitleTextAttributes([.foregroundColor : UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)], for: .normal)
         
         if let starredPostListViewController = self.starredPostListViewController {
-            self.postService.loadPostOverviewsForStarredPostList(appendPost: starredPostListViewController.appendPost(post:))
+            self.postService.loadPostOverviewsForStarredPostList(loadPosts: starredPostListViewController.loadPosts(posts:))
         }
         
         /*

@@ -51,10 +51,10 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
         
 //        self.list.loadPosts(listVC: self)
         if let myPostListViewController = self.myPostListViewController {
-            self.postService.loadPostOverviewsForMyPostList(appendPost: myPostListViewController.appendPost(post:))
+            self.postService.loadPostOverviewsForMyPostList(loadPosts: myPostListViewController.loadPosts(posts: ))
         }
         if let myPostMapViewController = self.myPostMapViewController {
-            self.postService.loadPostOverviewsForMyPostMap(appendPost: myPostMapViewController.appendPost(post:))
+            self.postService.loadPostOverviewsForMyPostMap(loadPosts: myPostMapViewController.loadPosts(posts: ))
         }
         /*
         myView.layer.cornerRadius = 50
