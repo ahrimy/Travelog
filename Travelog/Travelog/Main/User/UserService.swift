@@ -27,7 +27,6 @@ class UserService {
     var user: User?
     
     func authUser(authorizedCompletion:@escaping ()->Void, unAuthorizedCompletion: ()->Void){
-        print("hi")
         if let authUser = auth.currentUser {
             db.collection("users").whereField("uid", isEqualTo: authUser.uid).getDocuments(){(querySnapshot, err) in
                 if let err = err {
@@ -37,7 +36,6 @@ class UserService {
                     let username = (data["username"] ?? "") as! String
                     let starredUsers = (data["starredUsers"] ?? []) as! [String]
                     
-                    print(username, starredUsers)
                     UserService.shared.user = User(uid: authUser.uid, username: username, starredUsers: starredUsers)
                     authorizedCompletion()
                 }
@@ -59,7 +57,6 @@ class UserService {
                         let username = (data["username"] ?? "") as! String
                         let starredUsers = (data["starredUsers"] ?? []) as! [String]
                         
-                        print(username, starredUsers)
                         UserService.shared.user = User(uid: uid, username: username, starredUsers: starredUsers)
                         completion()
                     }

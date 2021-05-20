@@ -171,7 +171,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3E13E1AB2653D61100D308BB /* Models */ = {
+		3E13E1AB2653D61100D308BB /* Post */ = {
 			isa = PBXGroup;
 			children = (
 				3EF3BA7326482C04006B1DCA /* PostService.swift */,
@@ -179,10 +179,8 @@
 				3EF3BA7126482ABA006B1DCA /* PostDetail.swift */,
 				3EF3BA6F2648291F006B1DCA /* PostOverview.swift */,
 				3EE8AAE6264313EB002D13AE /* PostAnnotation.swift */,
-				3E13E1B426557C9500D308BB /* User.swift */,
-				3E13E1B626557C9D00D308BB /* UserService.swift */,
 			);
-			path = Models;
+			path = Post;
 			sourceTree = "<group>";
 		};
 		3E13E1AE265560AE00D308BB /* SignIn */ = {
@@ -294,6 +292,15 @@
 				3E464DAB26088FF800390A0B /* Info.plist */,
 			);
 			path = TravelogUITests;
+			sourceTree = "<group>";
+		};
+		3E77017E26566A6E00D9590E /* User */ = {
+			isa = PBXGroup;
+			children = (
+				3E13E1B426557C9500D308BB /* User.swift */,
+				3E13E1B626557C9D00D308BB /* UserService.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		3EC3A528261E9A0F004BA4FF /* ViewControllers */ = {
@@ -436,8 +443,9 @@
 		4395B4FB261DE2C700E0C54D /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				3E77017E26566A6E00D9590E /* User */,
 				3E13E1AE265560AE00D308BB /* SignIn */,
-				3E13E1AB2653D61100D308BB /* Models */,
+				3E13E1AB2653D61100D308BB /* Post */,
 				4395B4F7261DE29D00E0C54D /* MyPost */,
 				4395B4F8261DE2AB00E0C54D /* Search */,
 				4395B4F9261DE2B700E0C54D /* StarredPost */,
