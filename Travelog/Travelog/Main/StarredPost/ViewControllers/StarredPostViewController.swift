@@ -9,6 +9,7 @@ import UIKit
 
 class StarredPostViewController: UIViewController {
     
+    // TODO: builder 생성 => 중복으로 Service 생성되지 않도록
     var postService = PostService(username: "ahrimy")
     var starredPostListViewController: StarredPostListViewController?
     var starredPostMapViewController: StarredPostMapViewController?

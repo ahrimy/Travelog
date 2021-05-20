@@ -19,16 +19,15 @@ class PostService {
         self.username = username
     }
     
-    var db: Firestore
-    var storage : Storage
-    var username: String
-    var storageRef: StorageReference
+    let db: Firestore
+    let storage : Storage
+    let username: String
+    let storageRef: StorageReference
     
     func uploadImage(ids:[String], images:[UIImage]){
-        var imageRef:StorageReference
         for i in 0..<images.count{
-            imageRef = storageRef.child("\(self.username)/\(ids[i])")
             if let imageData = images[i].jpegData(compressionQuality: 0.8){
+                let imageRef:StorageReference = storageRef.child("\(self.username)/\(ids[i])")
                 imageRef.putData(imageData, metadata: nil){(metaData, error) in
                     if let error = error {
                         print(error.localizedDescription)
@@ -120,9 +119,9 @@ class PostService {
                 print("Error getting documents: \(err)")
             } else {
                 let documents = querySnapshot!.documents
+                var count = 0
                 for i in 0..<documents.count {
 //                    print("\(documents[i].documentID) => \(documents[i].data())")
-                    //TODO: Location 추가
                     let data = documents[i].data()
                     let id = documents[i].documentID
                     guard let writer = data["writer"] as? String else { return }
@@ -140,6 +139,7 @@ class PostService {
                         if let err = err {
                             print("Error occurred while get url \(err)")
                         }else{
+                            count += 1
                             do{
                                 let imageData = try Data(contentsOf: url!)
                                 let image = UIImage(data: imageData)!
@@ -154,17 +154,8 @@ class PostService {
                                                           likes: likes,
                                                           comments: comments,
                                                           writer: writer))
-//                                appendPost(PostOverview(id:id,
-//                                                                 image: image,
-//                                                                 date: date.dateValue(),
-//                                                                 text:text,
-//                                                                 createdAt: createdAt.dateValue(),
-//                                                                 coordinate: coordinate,
-//                                                                 locationName: locationName,
-//                                                                 likes: likes,
-//                                                                 comments: comments,
-//                                                                 writer: writer))
-                                if documents.count == posts.count {
+
+                                if count == documents.count {
                                     loadPosts(posts)
                                 }
                             }catch{
@@ -177,7 +168,53 @@ class PostService {
             
         }
     }
-    func loadPostDetail(){
-        
+    func loadPostDetail(postId: String, loadPost:@escaping (PostDetail) -> Void){
+        db.collection("postdetails").document(postId).getDocument{(document, error) in
+            if let document = document, document.exists {
+                guard let data = document.data() else {return}
+                let id = document.documentID
+                guard let date = data["date"] as? Timestamp else { return }
+                guard let text = data["text"] as? String else { return }
+                guard let createdAt = data["createdAt"] as? Timestamp else { return }
+                guard let updatedAt = data["updatedAt"] as? Timestamp else { return }
+                guard let location = data["location"] as? [String:Any] else { return }
+                guard let likes = data["likes"] as? Int else { return }
+                guard let likeUsers = data["likeUsers"] as? [String] else { return }
+                guard let comments = data["comments"] as? Int else { return }
+                guard let writer = data["writer"] as? String else { return }
+                guard let name = location["name"] as? String else { return }
+                guard let address = location["address"] as? String else { return }
+                guard let postalCode = location["postalCode"] as? String else { return }
+                guard let country = location["country"] as? String else { return }
+                guard let coordinateData = location["coordinate"] as? GeoPoint else { return }
+                let coordinate = CLLocation(latitude: coordinateData.latitude, longitude: coordinateData.longitude)
+                
+                guard let imageRefs = data["images"] as? [String] else { return }
+                var images:[UIImage] = []
+                var count = 0
+                for i in 0..<imageRefs.count {
+                    self.storageRef.child("\(writer)/\(imageRefs[i])").downloadURL{ url, err in
+                        count += 1
+                        if let err = err {
+                            print("Error occurred while get url \(err)")
+                        }else{
+                            do{
+                                let imageData = try Data(contentsOf: url!)
+                                let image = UIImage(data: imageData)!
+                                images.append(image)
+                                
+                                if count == imageRefs.count{
+                                    loadPost(PostDetail(id: id, images: images, date: date.dateValue(), text: text, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), location: Location(name: name, address: address, postalCode: postalCode, country: country, coordinate: coordinate), likes: likes, likeUsers: likeUsers, comments: comments, writer: writer))
+                                }
+                            }catch{
+                                print("Error occured while load image from url")
+                            }
+                        }
+                    }
+                }
+            } else {
+                print("Document does not exist")
+            }
+        }
     }
 }
