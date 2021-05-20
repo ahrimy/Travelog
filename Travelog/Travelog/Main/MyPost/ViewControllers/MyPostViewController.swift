@@ -107,7 +107,7 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
         myPostMapViewController?.appendPost(post: post)
     }
     func presentSignInVC(){
-        if let vc = self.storyboard?.instantiateViewController(identifier: "SignInViewController") {
+        if let vc = self.storyboard?.instantiateViewController(identifier: "AuthViewController") {
             self.view.window?.rootViewController = vc
         }
     }

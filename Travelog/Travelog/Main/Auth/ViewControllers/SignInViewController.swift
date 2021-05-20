@@ -10,15 +10,17 @@ import UIKit
 class SignInViewController: UIViewController {
 
     // MARK: - Properties
-    let userService = UserService()
     
     // MARK: - IBOutlet
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     // MARK: - IBAction
-    @IBAction func didLoginButtonTouched(_ sender: Any) {
-        userService.signIn(email: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: presentMainVC)
+    @IBAction func didTouchLoginButton(_ sender: Any) {
+        UserService.shared.signIn(email: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: presentMainVC)
+    }
+    @IBAction func didTouchCancelButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - View Life Cycle

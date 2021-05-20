@@ -18,23 +18,23 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="트래블로그" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i6I-XD-EKv">
                                 <rect key="frame" x="99" y="244" width="216.5" height="56"/>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="50"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Travelog" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gvv-rr-uUS">
-                                <rect key="frame" x="132" y="350" width="150" height="50"/>
+                                <rect key="frame" x="132" y="340" width="150" height="50"/>
                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="40"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="i6I-XD-EKv" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0TS-K0-3Gg"/>
                             <constraint firstItem="Gvv-rr-uUS" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="SaB-tK-Eu9"/>
                             <constraint firstItem="i6I-XD-EKv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="200" id="wIG-rx-OUo"/>
-                            <constraint firstItem="Gvv-rr-uUS" firstAttribute="top" secondItem="i6I-XD-EKv" secondAttribute="bottom" constant="50" id="wcv-QZ-w6A"/>
+                            <constraint firstItem="Gvv-rr-uUS" firstAttribute="top" secondItem="i6I-XD-EKv" secondAttribute="bottom" constant="40" id="wcv-QZ-w6A"/>
                         </constraints>
                     </view>
                 </viewController>
