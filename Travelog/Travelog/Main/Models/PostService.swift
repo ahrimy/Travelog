@@ -11,23 +11,22 @@ import FirebaseStorage
 import MapKit
 
 class PostService {
+    static let shared = PostService()
     
-    init(username:String){
+    init(){
         db = Firestore.firestore()
         storage = Storage.storage()
         storageRef = storage.reference()
-        self.username = username
     }
     
     let db: Firestore
     let storage : Storage
-    let username: String
     let storageRef: StorageReference
     
-    func uploadImage(ids:[String], images:[UIImage]){
+    func uploadImage(writer:String, ids:[String], images:[UIImage]){
         for i in 0..<images.count{
             if let imageData = images[i].jpegData(compressionQuality: 0.8){
-                let imageRef:StorageReference = storageRef.child("\(self.username)/\(ids[i])")
+                let imageRef:StorageReference = storageRef.child("\(writer)/\(ids[i])")
                 imageRef.putData(imageData, metadata: nil){(metaData, error) in
                     if let error = error {
                         print(error.localizedDescription)
@@ -43,7 +42,7 @@ class PostService {
         let location = data["location"] as! Location
         db.collection("postoverviews").document(id)
             .setData([
-                "writer" : self.username,
+                "writer" : data["writer"] as! String,
                 "image" : imageId,
                 "date" : data["date"] as! Date,
                 "text" : data["text"] as! String,
@@ -66,7 +65,7 @@ class PostService {
         let location = data["location"] as! Location
         db.collection("postdetails").document(id)
             .setData([
-                "writer" : self.username,
+                "writer" : data["writer"] as! String,
                 "images" : imageIds,
                 "date" : data["date"] as! Date,
                 "text" : data["text"] as! String,
@@ -94,22 +93,32 @@ class PostService {
     }
   
     func loadPostOverviewsForMyPostList(loadPosts:@escaping ([PostOverview]) -> Void){
-        let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: self.username)
-        self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
+        if let username = UserService.shared.user?.username {
+            let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: username)
+            self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
+        }
     }
     func loadPostOverviewsForMyPostMap(loadPosts:@escaping ([PostOverview]) -> Void){
-        let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: self.username)
-        self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
+        if let username = UserService.shared.user?.username {
+            let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: username)
+            self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
+        }
     }
     func loadPostOverviewsForStarredPostList(loadPosts:@escaping ([PostOverview]) -> Void){
         // TODO: starred list 에 있는 user의 포스트 가져오도록 조건 변경
-        let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: self.username).whereField("isPublic", isEqualTo: true)
-        self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
+        if let starredUsers = UserService.shared.user?.starredUsers , starredUsers
+        .count > 0{
+            let documentRef = db.collection("postoverviews").whereField("writer", in: starredUsers).whereField("isPublic", isEqualTo: true)
+            self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
+        }
     }
     func loadPostOverviewsForStarredPostMap(loadPosts:@escaping ([PostOverview]) -> Void){
         // TODO: starred list 에 있는 user의 포스트 가져오도록 조건 변경
-        let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: self.username).whereField("isPublic", isEqualTo: true)
-        self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
+        if let starredUsers = UserService.shared.user?.starredUsers, starredUsers
+            .count > 0 {
+            let documentRef = db.collection("postoverviews").whereField("writer", in: starredUsers).whereField("isPublic", isEqualTo: true)
+            self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
+        }
     }
     
     func appedPostOverviews(documentRef:Query,loadPosts:@escaping ([PostOverview]) -> Void){

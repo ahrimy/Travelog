@@ -11,6 +11,7 @@ import FirebaseStorage
 import FirebaseAuth
 
 class UserService {
+    static let shared = UserService()
     
     init(){
         db = Firestore.firestore()
@@ -19,12 +20,14 @@ class UserService {
         auth = Auth.auth()
     }
     
-    var db: Firestore
-    var storage : Storage
-    var storageRef: StorageReference
-    var auth: Auth
+    let db: Firestore
+    let storage : Storage
+    let storageRef: StorageReference
+    let auth: Auth
+    var user: User?
     
-    func getUser(setUser:@escaping (_ user:User)->Void){
+    func authUser(authorizedCompletion:@escaping ()->Void, unAuthorizedCompletion: ()->Void){
+        print("hi")
         if let authUser = auth.currentUser {
             db.collection("users").whereField("uid", isEqualTo: authUser.uid).getDocuments(){(querySnapshot, err) in
                 if let err = err {
@@ -34,17 +37,33 @@ class UserService {
                     let username = (data["username"] ?? "") as! String
                     let starredUsers = (data["starredUsers"] ?? []) as! [String]
                     
-                    setUser(User(uid: authUser.uid, username: username, starredUsers: starredUsers))
+                    print(username, starredUsers)
+                    UserService.shared.user = User(uid: authUser.uid, username: username, starredUsers: starredUsers)
+                    authorizedCompletion()
                 }
             }
-
+        }else {
+            unAuthorizedCompletion()
         }
     }
     func signIn(email:String, password:String, completion:@escaping ()->Void){
         auth.signIn(withEmail: email, password: password) {(authResult, error) in
             if authResult?.user != nil{
                 print("login success")
-                completion()
+                guard let uid = authResult?.user.uid else {return}
+                self.db.collection("users").whereField("uid", isEqualTo: uid).getDocuments(){(querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting documents: \(err)")
+                    } else {
+                        let data = querySnapshot!.documents[0].data()
+                        let username = (data["username"] ?? "") as! String
+                        let starredUsers = (data["starredUsers"] ?? []) as! [String]
+                        
+                        print(username, starredUsers)
+                        UserService.shared.user = User(uid: uid, username: username, starredUsers: starredUsers)
+                        completion()
+                    }
+                }
             }else{
                 print("login fail")
             }
@@ -52,7 +71,7 @@ class UserService {
     }
     func signOut(completion:()->Void){
         do {
-          try auth.signOut()
+            try auth.signOut()
             completion()
         } catch let signOutError as NSError {
           print ("Error signing out: %@", signOutError)

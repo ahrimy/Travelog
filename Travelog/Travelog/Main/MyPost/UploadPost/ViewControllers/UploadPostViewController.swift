@@ -103,16 +103,14 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
         print("privacy changed")
     }
     @IBAction func uploadPost(_ sender: Any) {
-        guard let images = self.selectedPhotoViewController?.images else{
-            return
-        }
-        guard let location = self.selectedLocationViewController?.location else{
-            return
-        }
+        guard let images = self.selectedPhotoViewController?.images else {return}
+        guard let location = self.selectedLocationViewController?.location else {return}
+        guard let writer = UserService.shared.user?.username else {return}
+        guard let text = self.postTextView.text else {return}
         let date = self.datePicker.date
-        let text = self.postTextView.text ?? ""
         let isPublic = self.publicPrivateSegmentedControl.selectedSegmentIndex == 0
         let data = [
+            "writer": writer as String,
             "images": images as [UIImage] ,
             "date":date as Date,
             "location" : location as Location ,

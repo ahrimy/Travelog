@@ -18,7 +18,7 @@ class User{
         self.starredUsers = starredUsers
     }
     
-    var uid:String
+    let uid:String
     var username:String
     var starredUsers: [String]
 }

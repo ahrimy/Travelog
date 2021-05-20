@@ -10,7 +10,7 @@ import UIKit
 class StarredPostViewController: UIViewController {
     
     // TODO: builder 생성 => 중복으로 Service 생성되지 않도록
-    var postService = PostService(username: "ahrimy")
+//    var postService = PostService(username: "ahrimy")
     var starredPostListViewController: StarredPostListViewController?
     var starredPostMapViewController: StarredPostMapViewController?
     
@@ -37,7 +37,7 @@ class StarredPostViewController: UIViewController {
         mapListSegmentedControl.setTitleTextAttributes([.foregroundColor : UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)], for: .normal)
         
         if let starredPostListViewController = self.starredPostListViewController {
-            self.postService.loadPostOverviewsForStarredPostList(loadPosts: starredPostListViewController.loadPosts(posts:))
+            PostService.shared.loadPostOverviewsForStarredPostList(loadPosts: starredPostListViewController.loadPosts(posts:))
         }
         
         /*

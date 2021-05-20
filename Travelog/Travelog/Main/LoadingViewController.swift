@@ -16,14 +16,18 @@ class LoadingViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
-        if Auth.auth().currentUser != nil{
-                if let vc = self.storyboard?.instantiateViewController(identifier: "HomeViewController") {
-                    self.view.window?.rootViewController = vc
-                }
-        }else{
-            if let vc = self.storyboard?.instantiateViewController(identifier: "SignInViewController") {
-                self.view.window?.rootViewController = vc
-            }
+        UserService.shared.authUser(authorizedCompletion: presentMainVC, unAuthorizedCompletion: presentSignInVC)
+    }
+    
+    // MARK: - Methods
+    func presentMainVC(){
+        if let vc = self.storyboard?.instantiateViewController(identifier: "HomeViewController") {
+            self.view.window?.rootViewController = vc
+        }
+    }
+    func presentSignInVC(){
+        if let vc = self.storyboard?.instantiateViewController(identifier: "SignInViewController") {
+            self.view.window?.rootViewController = vc
         }
     }
     

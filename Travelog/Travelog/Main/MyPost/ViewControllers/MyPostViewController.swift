@@ -11,9 +11,9 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
 
     // MARK: - Properties
 //    var list = PostList()
-    let userService = UserService()
-    let username = "ahrimy"
-    let postService = PostService(username: "ahrimy")
+//    let userService = UserService()
+//    let username = "ahrimy"
+//    let postService = PostService(username: "ahrimy")
 
     var uploadPostViewController: UploadPostViewController?
     var myPostListViewController: MyPostListViewController?
@@ -39,7 +39,7 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
     }
     @IBAction func touchUpNotificatioinButton(_ sender: Any) {
-        userService.signOut(completion: presentSignInVC)
+        UserService.shared.signOut(completion: presentSignInVC)
     }
     
     // MARK: - View Life Cycle
@@ -48,17 +48,17 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
         // Do any additional setup after loading the view.
         
 //        self.usernameItem.title = self.username
-        self.navigationItem.title = self.username
+        self.navigationItem.title = UserService.shared.user?.username
         
         mapListSegmentedControl.setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
         mapListSegmentedControl.setTitleTextAttributes([.foregroundColor :        UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)], for: .normal)
         
 //        self.list.loadPosts(listVC: self)
         if let myPostListViewController = self.myPostListViewController {
-            self.postService.loadPostOverviewsForMyPostList(loadPosts: myPostListViewController.loadPosts(posts: ))
+            PostService.shared.loadPostOverviewsForMyPostList(loadPosts: myPostListViewController.loadPosts(posts: ))
         }
         if let myPostMapViewController = self.myPostMapViewController {
-            self.postService.loadPostOverviewsForMyPostMap(loadPosts: myPostMapViewController.loadPosts(posts: ))
+            PostService.shared.loadPostOverviewsForMyPostMap(loadPosts: myPostMapViewController.loadPosts(posts: ))
         }
         /*
         myView.layer.cornerRadius = 50
@@ -66,7 +66,6 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
         //View 코너 둥글게
          */
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let myPostListViewController = segue.destination as? MyPostListViewController {
             self.myPostListViewController = myPostListViewController
@@ -88,20 +87,19 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     func uploadPost(data: [String : Any], completion: () -> ()) {
         var imageIds:[String] = []
-        var imageRefs:[String] = []
         let images = data["images"] as? [UIImage]
+        guard let writer = data["writer"] as? String else {return}
         if (images != nil) {
             for _ in 0..<images!.count{
                 let id = UUID().uuidString
                 imageIds.append(id)
-                imageRefs.append("https://firebasestorage.googleapis.com/v0/b/travelog-6cf98.appspot.com/o/\(self.username)%2F\(id)")
             }
         }
-        self.postService.uploadImage(ids: imageIds, images: images ?? [])
+        PostService.shared.uploadImage(writer:writer, ids: imageIds, images: images ?? [])
         let postId = UUID().uuidString
-        self.postService.uploadPostOverview(id:postId, data:data, imageId: imageIds[0])
-        self.postService.uploadPostDetail(id:postId, data:data, imageIds: imageIds)
-        self.appendPost(post: PostOverview(id: postId, image: (images?[0])!, date: data["date"] as! Date, text: data["text"] as! String, createdAt: data["createdAt"] as! Date, coordinate: (data["location"] as! Location).coordinate,locationName: (data["location"] as! Location).name, likes: 0, comments: 0, writer: self.username))
+        PostService.shared.uploadPostOverview(id:postId, data:data, imageId: imageIds[0])
+        PostService.shared.uploadPostDetail(id:postId, data:data, imageIds: imageIds)
+        self.appendPost(post: PostOverview(id: postId, image: (images?[0])!, date: data["date"] as! Date, text: data["text"] as! String, createdAt: data["createdAt"] as! Date, coordinate: (data["location"] as! Location).coordinate,locationName: (data["location"] as! Location).name, likes: 0, comments: 0, writer: writer))
         completion()
     }
     func appendPost(post: PostOverview){
