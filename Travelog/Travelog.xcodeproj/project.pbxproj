@@ -40,7 +40,6 @@
 		3EC3A4F8261DD1D2004BA4FF /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC3A4F7261DD1D2004BA4FF /* LocationSearchViewController.swift */; };
 		3EC3A4FD261E1461004BA4FF /* LocationSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC3A4FC261E1461004BA4FF /* LocationSearchTableViewCell.swift */; };
 		3EE8AAE526427778002D13AE /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8AAE426427778002D13AE /* PostList.swift */; };
-		3EE8AAE7264313EB002D13AE /* PostAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE8AAE6264313EB002D13AE /* PostAnnotation.swift */; };
 		3EF3BA702648291F006B1DCA /* PostOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF3BA6F2648291F006B1DCA /* PostOverview.swift */; };
 		3EF3BA7226482ABA006B1DCA /* PostDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF3BA7126482ABA006B1DCA /* PostDetail.swift */; };
 		3EF3BA7426482C04006B1DCA /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF3BA7326482C04006B1DCA /* PostService.swift */; };
@@ -124,7 +123,6 @@
 		3EC3A4F7261DD1D2004BA4FF /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 		3EC3A4FC261E1461004BA4FF /* LocationSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewCell.swift; sourceTree = "<group>"; };
 		3EE8AAE426427778002D13AE /* PostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostList.swift; sourceTree = "<group>"; };
-		3EE8AAE6264313EB002D13AE /* PostAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAnnotation.swift; sourceTree = "<group>"; };
 		3EF3BA6F2648291F006B1DCA /* PostOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOverview.swift; sourceTree = "<group>"; };
 		3EF3BA7126482ABA006B1DCA /* PostDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetail.swift; sourceTree = "<group>"; };
 		3EF3BA7326482C04006B1DCA /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
@@ -186,7 +184,6 @@
 				3E33A93F262DDFAC00ABCA8A /* Location.swift */,
 				3EF3BA7126482ABA006B1DCA /* PostDetail.swift */,
 				3EF3BA6F2648291F006B1DCA /* PostOverview.swift */,
-				3EE8AAE6264313EB002D13AE /* PostAnnotation.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -757,7 +754,6 @@
 				3EE8AAE526427778002D13AE /* PostList.swift in Sources */,
 				3E5CF6D22659476600847F84 /* ClusterAnnotationView.swift in Sources */,
 				3E6F507E260B9A4800B22252 /* PostThumbnail.swift in Sources */,
-				3EE8AAE7264313EB002D13AE /* PostAnnotation.swift in Sources */,
 				3E5CF6D62659486800847F84 /* MapItem.swift in Sources */,
 				ACA7BF10260A328F00C108EC /* SettingViewController.swift in Sources */,
 				AC3B52AC263F73B7007F0D78 /* StarredPostDetailViewController.swift in Sources */,
