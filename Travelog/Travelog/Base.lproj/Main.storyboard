@@ -99,21 +99,6 @@
             </objects>
             <point key="canvasLocation" x="-1255.3846153846152" y="-1152.3696682464454"/>
         </scene>
-        <!--My Profile Edit View Controller-->
-        <scene sceneID="lhl-u0-nRe">
-            <objects>
-                <viewController id="Z5h-jz-NFu" customClass="MyProfileEditViewController" customModule="Travelog" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="r0m-EO-gxi">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="tW0-J3-rZR"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ya1-ZU-vB5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="775" y="-1193"/>
-        </scene>
         <!--Upload Post View Controller-->
         <scene sceneID="LjK-t2-gv6">
             <objects>
@@ -172,7 +157,6 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="mHu-bT-mdn"/>
-                                                    <constraint firstAttribute="width" constant="125" id="qyH-L9-gW4"/>
                                                 </constraints>
                                                 <segments>
                                                     <segment title="Public"/>
@@ -190,6 +174,7 @@
                                             <constraint firstItem="lNr-pI-Fxe" firstAttribute="top" secondItem="8R9-ZJ-QnV" secondAttribute="bottom" constant="10" id="E6U-Mw-dMa"/>
                                             <constraint firstItem="8R9-ZJ-QnV" firstAttribute="top" secondItem="tbF-6t-f95" secondAttribute="bottom" constant="10" id="GMo-By-dbQ"/>
                                             <constraint firstAttribute="trailing" secondItem="lNr-pI-Fxe" secondAttribute="trailing" constant="30" id="KZ6-Rm-kHS"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GLm-Rt-mLM" secondAttribute="trailing" constant="20" symbolic="YES" id="PHQ-Xc-JRg"/>
                                             <constraint firstAttribute="trailing" secondItem="8R9-ZJ-QnV" secondAttribute="trailing" constant="30" id="PVV-sI-bjJ"/>
                                             <constraint firstAttribute="bottom" secondItem="GLm-Rt-mLM" secondAttribute="bottom" id="REX-TT-K89"/>
                                             <constraint firstItem="tbF-6t-f95" firstAttribute="leading" secondItem="9iC-fr-G9N" secondAttribute="leading" constant="30" id="SxI-g9-uNy"/>
@@ -1314,14 +1299,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1X-lw-OuG">
-                                <rect key="frame" x="30" y="88" width="52" height="22.666666666666671"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1X-lw-OuG">
+                                <rect key="frame" x="30" y="88" width="330" height="22.666666666666671"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZnA-d8-HTg">
-                                <rect key="frame" x="29.999999999999993" y="190.66666666666666" width="69.333333333333314" height="22.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZnA-d8-HTg">
+                                <rect key="frame" x="30" y="190.66666666666666" width="330" height="22.666666666666657"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1335,8 +1320,8 @@
                                 <color key="tintColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="가입"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사용자 이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COW-n1-MDz">
-                                <rect key="frame" x="29.999999999999993" y="353.33333333333331" width="92.333333333333314" height="22.666666666666686"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사용자 이름" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COW-n1-MDz">
+                                <rect key="frame" x="30" y="353.33333333333331" width="330" height="22.666666666666686"/>
                                 <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1353,6 +1338,7 @@
                         <viewLayoutGuide key="safeArea" id="m2M-n7-vzX"/>
                         <color key="backgroundColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="m2M-n7-vzX" firstAttribute="trailing" secondItem="COW-n1-MDz" secondAttribute="trailing" constant="30" id="19q-jH-EP5"/>
                             <constraint firstItem="OkQ-aP-Tnz" firstAttribute="leading" secondItem="m2M-n7-vzX" secondAttribute="leading" constant="30" id="1h1-DJ-GvG"/>
                             <constraint firstItem="xfj-92-X7m" firstAttribute="leading" secondItem="m2M-n7-vzX" secondAttribute="leading" constant="30" id="5p9-bM-k92"/>
                             <constraint firstItem="abk-S9-yAt" firstAttribute="top" secondItem="ZnA-d8-HTg" secondAttribute="bottom" constant="10" id="BhB-iw-AeK"/>
@@ -1374,7 +1360,9 @@
                             <constraint firstItem="R1X-lw-OuG" firstAttribute="leading" secondItem="m2M-n7-vzX" secondAttribute="leading" constant="30" id="tHt-7y-lUm"/>
                             <constraint firstItem="COW-n1-MDz" firstAttribute="leading" secondItem="m2M-n7-vzX" secondAttribute="leading" constant="30" id="twl-GR-MdX"/>
                             <constraint firstItem="M7V-dN-aYk" firstAttribute="top" secondItem="COW-n1-MDz" secondAttribute="bottom" constant="10" id="ucm-Ej-IIJ"/>
+                            <constraint firstItem="m2M-n7-vzX" firstAttribute="trailing" secondItem="R1X-lw-OuG" secondAttribute="trailing" constant="30" id="we7-Rf-8fZ"/>
                             <constraint firstItem="Gby-yA-mJq" firstAttribute="top" secondItem="m2M-n7-vzX" secondAttribute="top" constant="20" id="xDY-0A-2T2"/>
+                            <constraint firstItem="m2M-n7-vzX" firstAttribute="trailing" secondItem="ZnA-d8-HTg" secondAttribute="trailing" constant="30" id="yyF-Uj-uuW"/>
                             <constraint firstItem="m2M-n7-vzX" firstAttribute="trailing" secondItem="M7V-dN-aYk" secondAttribute="trailing" constant="30" id="z4C-H0-VyH"/>
                         </constraints>
                     </view>
