@@ -32,11 +32,12 @@ class UserService {
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
-                    let data = querySnapshot!.documents[0].data()
+                    let document = querySnapshot!.documents[0]
+                    let data = document.data()
                     let username = (data["username"] ?? "") as! String
                     let starredUsers = (data["starredUsers"] ?? []) as! [String]
                     
-                    UserService.shared.user = User(uid: authUser.uid, username: username, starredUsers: starredUsers)
+                    UserService.shared.user = User(id: document.documentID, uid: authUser.uid, username: username, starredUsers: starredUsers)
                     authorizedCompletion()
                 }
             }
@@ -53,11 +54,12 @@ class UserService {
                     if let err = err {
                         print("Error getting documents: \(err)")
                     } else {
-                        let data = querySnapshot!.documents[0].data()
+                        let document = querySnapshot!.documents[0]
+                        let data = document.data()
                         let username = (data["username"] ?? "") as! String
                         let starredUsers = (data["starredUsers"] ?? []) as! [String]
                         
-                        UserService.shared.user = User(uid: uid, username: username, starredUsers: starredUsers)
+                        UserService.shared.user = User(id: document.documentID,uid: uid, username: username, starredUsers: starredUsers)
                         completion()
                     }
                 }
@@ -72,6 +74,40 @@ class UserService {
             completion()
         } catch let signOutError as NSError {
           print ("Error signing out: %@", signOutError)
+        }
+    }
+    func checkUsernameDuplicate(username:String, completion: @escaping(_ isExist:Bool)->Void){
+        db.collection("users").whereField("username", isEqualTo: username).getDocuments{(querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            }else {
+                completion((querySnapshot?.count ?? 0) > 0)
+            }
+            
+        }
+    }
+    func singUp(data:[String: String], completion: @escaping()->Void){
+        guard let email = data["email"] else {return}
+        guard let password = data["password"] else {return}
+        guard let username = data["username"] else {return}
+        auth.createUser(withEmail: email, password: password) { authResult, err in
+            guard let user = authResult?.user, err == nil else {
+                print(err!.localizedDescription)
+                return
+            }
+            var documentRef: DocumentReference? = nil
+            documentRef = self.db.collection("users").addDocument(data: [
+                "uid": user.uid,
+                "username": username,
+                "starredUsers": []
+            ]){ err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    UserService.shared.user = User(id: documentRef!.documentID,uid: user.uid, username: username, starredUsers: [])
+                    completion()
+                }
+            }
         }
     }
 }

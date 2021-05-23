@@ -10,15 +10,18 @@ import UIKit
 
 class User{
     
-    init(uid:String = "",
+    init(id:String,
+         uid:String,
          username:String = "",
          starredUsers:[String] = []){
+        self.id = id
         self.uid = uid
         self.username = username
         self.starredUsers = starredUsers
     }
     
-    let uid:String
-    var username:String
+    let id: String
+    let uid: String
+    var username: String
     var starredUsers: [String]
 }

@@ -1258,7 +1258,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이메일을 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OkQ-aP-Tnz">
+                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="email" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이메일을 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OkQ-aP-Tnz">
                                 <rect key="frame" x="30" y="120.66666666666669" width="330" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="1oX-Kp-yeQ"/>
@@ -1266,7 +1266,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="abk-S9-yAt">
+                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="password" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="abk-S9-yAt">
                                 <rect key="frame" x="30" y="223.33333333333334" width="330" height="50.000000000000028"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0GM-fM-dXb"/>
@@ -1274,7 +1274,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xfj-92-X7m">
+                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="passwordConfirm" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호를 입력해주세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xfj-92-X7m">
                                 <rect key="frame" x="30" y="283.33333333333331" width="330" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Eow-wQ-Jk9"/>
@@ -1319,6 +1319,9 @@
                                 </constraints>
                                 <color key="tintColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="가입"/>
+                                <connections>
+                                    <action selector="didTouchSignUpButton:" destination="DIl-hO-tPL" eventType="touchUpInside" id="vew-Zv-1BB"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사용자 이름" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COW-n1-MDz">
                                 <rect key="frame" x="30" y="353.33333333333331" width="330" height="22.666666666666686"/>
@@ -1326,7 +1329,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="사용자 이름을 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M7V-dN-aYk">
+                            <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="username" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="사용자 이름을 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M7V-dN-aYk">
                                 <rect key="frame" x="30" y="386" width="330" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="bfh-v1-ddg"/>
@@ -1366,6 +1369,13 @@
                             <constraint firstItem="m2M-n7-vzX" firstAttribute="trailing" secondItem="M7V-dN-aYk" secondAttribute="trailing" constant="30" id="z4C-H0-VyH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="OkQ-aP-Tnz" id="fnE-jS-46R"/>
+                        <outlet property="passwordConfirmTextField" destination="xfj-92-X7m" id="plB-FC-z5v"/>
+                        <outlet property="passwordTextField" destination="abk-S9-yAt" id="V1Y-Gy-yVs"/>
+                        <outlet property="signUpButton" destination="VK1-RL-htg" id="Qhq-ru-EZo"/>
+                        <outlet property="usernameTextField" destination="M7V-dN-aYk" id="uLn-Ts-Wg6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6hg-nH-Xg8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
