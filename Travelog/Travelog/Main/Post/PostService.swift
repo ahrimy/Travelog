@@ -93,30 +93,32 @@ class PostService {
     }
   
     func loadPostOverviewsForMyPostList(loadPosts:@escaping ([PostOverview]) -> Void){
+        // TODO: 데이터 부분적으로 가져올 수 있도록
         if let username = UserService.shared.user?.username {
-            let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: username)
+            let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: username).limit(to: 5)
             self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
         }
     }
     func loadPostOverviewsForMyPostMap(loadPosts:@escaping ([PostOverview]) -> Void){
+        // TODO: 데이터 부분적으로 가져올 수 있도록
         if let username = UserService.shared.user?.username {
-            let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: username)
+            let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: username).limit(to: 5)
             self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
         }
     }
     func loadPostOverviewsForStarredPostList(loadPosts:@escaping ([PostOverview]) -> Void){
-        // TODO: starred list 에 있는 user의 포스트 가져오도록 조건 변경
+        // TODO: 데이터 부분적으로 가져올 수 있도록
         if let starredUsers = UserService.shared.user?.starredUsers , starredUsers
         .count > 0{
-            let documentRef = db.collection("postoverviews").whereField("writer", in: starredUsers).whereField("isPublic", isEqualTo: true)
+            let documentRef = db.collection("postoverviews").whereField("writer", in: starredUsers).whereField("isPublic", isEqualTo: true).limit(to: 5)
             self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
         }
     }
     func loadPostOverviewsForStarredPostMap(loadPosts:@escaping ([PostOverview]) -> Void){
-        // TODO: starred list 에 있는 user의 포스트 가져오도록 조건 변경
+        // TODO: 데이터 부분적으로 가져올 수 있도록
         if let starredUsers = UserService.shared.user?.starredUsers, starredUsers
             .count > 0 {
-            let documentRef = db.collection("postoverviews").whereField("writer", in: starredUsers).whereField("isPublic", isEqualTo: true)
+            let documentRef = db.collection("postoverviews").whereField("writer", in: starredUsers).whereField("isPublic", isEqualTo: true).limit(to: 5)
             self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
         }
     }
