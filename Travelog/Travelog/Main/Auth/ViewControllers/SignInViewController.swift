@@ -17,7 +17,7 @@ class SignInViewController: UIViewController {
     
     // MARK: - IBAction
     @IBAction func didTouchLoginButton(_ sender: Any) {
-        UserService.shared.signIn(email: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: presentMainVC)
+        UserService.shared.signIn(email: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: completeSignIn)
     }
     @IBAction func didTouchCancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -31,7 +31,7 @@ class SignInViewController: UIViewController {
     }
     
     // MARK: - Methods
-    func presentMainVC(){
+    func completeSignIn(){
         if let vc = self.storyboard?.instantiateViewController(identifier: "HomeViewController") {
             self.view.window?.rootViewController = vc
         }

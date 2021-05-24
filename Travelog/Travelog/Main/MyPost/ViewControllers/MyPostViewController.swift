@@ -10,10 +10,6 @@ import UIKit
 class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UploadPostViewControllerDelegate {
 
     // MARK: - Properties
-//    var list = PostList()
-//    let userService = UserService()
-//    let username = "ahrimy"
-//    let postService = PostService(username: "ahrimy")
 
     var uploadPostViewController: UploadPostViewController?
     var myPostListViewController: MyPostListViewController?
@@ -39,7 +35,7 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
     }
     @IBAction func touchUpNotificatioinButton(_ sender: Any) {
-        UserService.shared.signOut(completion: presentSignInVC)
+        UserService.shared.signOut(completion: completeSignOut)
     }
     
     // MARK: - View Life Cycle
@@ -79,12 +75,6 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     // MARK: - Methods
-//    func reloadData(list: [PostThumbnail]){
-//        print("Post Count: ", list.count)
-//        self.myPostListViewController?.reloadData(list: list)
-//        self.myPostMapViewController?.reloadData(list: list)
-//    }
-    
     func uploadPost(data: [String : Any], completion: () -> ()) {
         var imageIds:[String] = []
         let images = data["images"] as? [UIImage]
@@ -106,7 +96,7 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
         myPostListViewController?.appendPost(post: post)
         myPostMapViewController?.appendPost(post: post)
     }
-    func presentSignInVC(){
+    func completeSignOut(){
         if let vc = self.storyboard?.instantiateViewController(identifier: "AuthViewController") {
             self.view.window?.rootViewController = vc
         }
