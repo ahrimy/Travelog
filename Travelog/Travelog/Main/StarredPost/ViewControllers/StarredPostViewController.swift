@@ -39,14 +39,9 @@ class StarredPostViewController: UIViewController {
         if let starredPostListViewController = self.starredPostListViewController {
             PostService.shared.loadPostOverviewsForStarredPostList(loadPosts: starredPostListViewController.loadPosts(posts:))
         }
-        
-        /*
         if let starredPostMapViewController = self.starredPostMapViewController {
-         self.postService.loadPostOverviewsForStarredPostMap(appendPost: starredPostMapViewController.appendPost(post:))
+            PostService.shared.loadPostOverviewsForStarredPostMap(loadPosts: starredPostMapViewController.loadPosts(posts:))
         }
- */
-        
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -61,7 +56,7 @@ class StarredPostViewController: UIViewController {
     
     func appendPost(post: PostOverview){
         starredPostListViewController?.appendPost(post: post)
-//        starredPostMapViewController?.appendPost(post: post)
+        starredPostMapViewController?.appendPost(post: post)
     }
     
     
