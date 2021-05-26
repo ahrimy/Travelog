@@ -50,12 +50,7 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
         mapListSegmentedControl.setTitleTextAttributes([.foregroundColor : UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)], for: .normal)
         
 //        self.list.loadPosts(listVC: self)
-        if let myPostListViewController = self.myPostListViewController {
-            PostService.shared.loadPostOverviewsForMyPostList(loadPosts: myPostListViewController.loadPosts(posts: ))
-        }
-        if let myPostMapViewController = self.myPostMapViewController {
-            PostService.shared.loadPostOverviewsForMyPostMap(loadPosts: myPostMapViewController.loadPosts(posts: ))
-        }
+        PostService.shared.loadMyPostOverviews(loadPosts: loadPost(posts:))
         /*
         myView.layer.cornerRadius = 50
         myView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -85,12 +80,20 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
                 imageIds.append(id)
             }
         }
-        PostService.shared.uploadImage(writer:writer, ids: imageIds, images: images ?? [])
         let postId = UUID().uuidString
+        PostService.shared.uploadImage(postId: postId, writer:writer, ids: imageIds, images: images ?? [])
         PostService.shared.uploadPostOverview(id:postId, data:data, imageId: imageIds[0])
         PostService.shared.uploadPostDetail(id:postId, data:data, imageIds: imageIds)
         self.appendPost(post: PostOverview(id: postId, image: (images?[0])!, date: data["date"] as! Date, text: data["text"] as! String, createdAt: data["createdAt"] as! Date, coordinate: (data["location"] as! Location).coordinate,locationName: (data["location"] as! Location).name, likes: 0, comments: 0, writer: writer))
         completion()
+    }
+    func loadPost(posts:[PostOverview]){
+        if let myPostListViewController = self.myPostListViewController {
+            myPostListViewController.loadPosts(posts: posts )
+        }
+        if let myPostMapViewController = self.myPostMapViewController {
+            myPostMapViewController.loadPosts(posts: posts)
+        }
     }
     func appendPost(post: PostOverview){
         myPostListViewController?.appendPost(post: post)

@@ -17,22 +17,39 @@ class PostService {
         db = Firestore.firestore()
         storage = Storage.storage()
         storageRef = storage.reference()
+        posts = []
     }
     
     let db: Firestore
     let storage : Storage
     let storageRef: StorageReference
+    var posts: [PostOverview]
     
-    func uploadImage(writer:String, ids:[String], images:[UIImage]){
+    func uploadImage(postId:String, writer:String, ids:[String], images:[UIImage]){
+        var imageUrls = [String](repeating: "", count: images.count)
+        var count = 0
         for i in 0..<images.count{
             if let imageData = images[i].jpegData(compressionQuality: 0.8){
                 let imageRef:StorageReference = storageRef.child("\(writer)/\(ids[i])")
                 imageRef.putData(imageData, metadata: nil){(metaData, error) in
                     if let error = error {
+                        count += 1
                         print(error.localizedDescription)
                         return
                     }else {
                         print("Image successfully uploaded!")
+                        imageRef.downloadURL { (url, error) in
+                            count += 1
+                            guard let downloadURL = url else {
+                                print(error?.localizedDescription ?? "Error occured")
+                                return
+                            }
+                            imageUrls[i] = downloadURL.absoluteString
+                            if images.count == count {
+                                self.db.collection("postoverviews").document(postId).setData(["imageUrl":imageUrls[0]], merge: true)
+                                self.db.collection("postdetails").document(postId).setData(["imageUrls":imageUrls], merge: true)
+                            }
+                        }
                     }
                 }
             }
@@ -52,7 +69,7 @@ class PostService {
                 "isPublic" : data["isPublic"] as! Bool,
                 "likes" : 0,
                 "comments" : 0
-            ]){ err in
+            ], merge: true){ err in
                 if let err = err {
                     print("Error writing document: \(err)")
                     return
@@ -82,7 +99,7 @@ class PostService {
                 "likes" : 0,
                 "comments" : 0,
                 "likeUsers" : []
-            ]){ err in
+            ], merge: true){ err in
                 if let err = err {
                     print("Error writing document: \(err)")
                     return
@@ -91,20 +108,27 @@ class PostService {
                 }
             }
     }
-  
-    func loadPostOverviewsForMyPostList(loadPosts:@escaping ([PostOverview]) -> Void){
-        // TODO: 데이터 부분적으로 가져올 수 있도록
+    
+    func loadMyPostOverviews(loadPosts:@escaping ([PostOverview]) -> Void){
         if let username = UserService.shared.user?.username {
-            let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: username).limit(to: 5)
+            let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: username)
             self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
         }
     }
+  
+    //현재 사용 X
+    func loadPostOverviewsForMyPostList(loadPosts:@escaping ([PostOverview]) -> Void){
+       if let username = UserService.shared.user?.username {
+           let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: username).limit(to: 5)
+           self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
+       }
+    }
+    //현재 사용 X
     func loadPostOverviewsForMyPostMap(loadPosts:@escaping ([PostOverview]) -> Void){
-        // TODO: 데이터 부분적으로 가져올 수 있도록
-        if let username = UserService.shared.user?.username {
-            let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: username).limit(to: 5)
-            self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
-        }
+       if let username = UserService.shared.user?.username {
+           let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: username).limit(to: 5)
+           self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
+       }
     }
     func loadPostOverviewsForStarredPostList(loadPosts:@escaping ([PostOverview]) -> Void){
         // TODO: 데이터 부분적으로 가져올 수 있도록
@@ -132,6 +156,7 @@ class PostService {
                 let documents = querySnapshot!.documents
                 var count = 0
                 for i in 0..<documents.count {
+                    count += 1
 //                    print("\(documents[i].documentID) => \(documents[i].data())")
                     let data = documents[i].data()
                     let id = documents[i].documentID
@@ -145,34 +170,27 @@ class PostService {
                     guard let locationName = data["locationName"] as? String else { return }
                     guard let text = data["text"] as? String else { return }
                     
-                    guard let imageRef = data["image"] as? String else { return }
-                    self.storageRef.child("\(writer)/\(imageRef)").downloadURL{ url, err in
-                        if let err = err {
-                            print("Error occurred while get url \(err)")
-                        }else{
-                            count += 1
-                            do{
-                                let imageData = try Data(contentsOf: url!)
-                                let image = UIImage(data: imageData)!
-                            
-                                posts.append(PostOverview(id:id,
-                                                          image: image,
-                                                          date: date.dateValue(),
-                                                          text:text,
-                                                          createdAt: createdAt.dateValue(),
-                                                          coordinate: coordinate,
-                                                          locationName: locationName,
-                                                          likes: likes,
-                                                          comments: comments,
-                                                          writer: writer))
-
-                                if count == documents.count {
-                                    loadPosts(posts)
-                                }
-                            }catch{
-                                print("Error occured while load image from url")
-                            }
-                        }
+//                    guard let imageRef = data["image"] as? String else { return }
+                    guard let imageUrl = data["imageUrl"] as? String else { return }
+                    do{
+                        let url = URL(string: imageUrl)!
+                        let imageData = try Data(contentsOf: url)
+                        let image = UIImage(data: imageData)!
+                        posts.append(PostOverview(id:id,
+                                                  image: image,
+                                                  date: date.dateValue(),
+                                                  text:text,
+                                                  createdAt: createdAt.dateValue(),
+                                                  coordinate: coordinate,
+                                                  locationName: locationName,
+                                                  likes: likes,
+                                                  comments: comments,
+                                                  writer: writer))
+                    }catch{
+                        print("Error occured while load image from url")
+                    }
+                    if count == documents.count {
+                        loadPosts(posts)
                     }
                 }
             }
@@ -200,27 +218,23 @@ class PostService {
                 guard let coordinateData = location["coordinate"] as? GeoPoint else { return }
                 let coordinate = CLLocation(latitude: coordinateData.latitude, longitude: coordinateData.longitude)
                 
-                guard let imageRefs = data["images"] as? [String] else { return }
+//                guard let imageRefs = data["images"] as? [String] else { return }
+                guard let imageUrls = data["imageUrls"] as? [String] else { return }
                 var images:[UIImage] = []
                 var count = 0
-                for i in 0..<imageRefs.count {
-                    self.storageRef.child("\(writer)/\(imageRefs[i])").downloadURL{ url, err in
+                for i in 0..<imageUrls.count {
+                    do{
                         count += 1
-                        if let err = err {
-                            print("Error occurred while get url \(err)")
-                        }else{
-                            do{
-                                let imageData = try Data(contentsOf: url!)
-                                let image = UIImage(data: imageData)!
-                                images.append(image)
-                                
-                                if count == imageRefs.count{
-                                    loadPost(PostDetail(id: id, images: images, date: date.dateValue(), text: text, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), location: Location(name: name, address: address, postalCode: postalCode, country: country, coordinate: coordinate), likes: likes, likeUsers: likeUsers, comments: comments, writer: writer))
-                                }
-                            }catch{
-                                print("Error occured while load image from url")
-                            }
+                        let url = URL(string: imageUrls[i])!
+                        let imageData = try Data(contentsOf: url)
+                        let image = UIImage(data: imageData)!
+                        images.append(image)
+                        
+                        if count == imageUrls.count{
+                            loadPost(PostDetail(id: id, images: images, date: date.dateValue(), text: text, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), location: Location(name: name, address: address, postalCode: postalCode, country: country, coordinate: coordinate), likes: likes, likeUsers: likeUsers, comments: comments, writer: writer))
                         }
+                    }catch{
+                        print("Error occured while load image from url")
                     }
                 }
             } else {
