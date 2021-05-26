@@ -1222,13 +1222,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Travelog" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHA-hp-ZQp">
-                                <rect key="frame" x="120" y="307" width="150" height="50"/>
+                                <rect key="frame" x="120" y="340" width="150" height="50"/>
                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="40"/>
                                 <color key="textColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="트래블로그" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MX8-IW-i4H">
-                                <rect key="frame" x="86.666666666666671" y="211" width="216.66666666666663" height="56"/>
+                                <rect key="frame" x="86.666666666666671" y="244" width="216.66666666666663" height="56"/>
                                 <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="50"/>
                                 <color key="textColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1240,7 +1240,7 @@
                             <constraint firstItem="MHA-hp-ZQp" firstAttribute="top" secondItem="MX8-IW-i4H" secondAttribute="bottom" constant="40" id="1mh-q9-mfi"/>
                             <constraint firstItem="MHA-hp-ZQp" firstAttribute="centerX" secondItem="eon-HI-79R" secondAttribute="centerX" id="DtY-9W-AaO"/>
                             <constraint firstItem="MX8-IW-i4H" firstAttribute="centerX" secondItem="eon-HI-79R" secondAttribute="centerX" id="XDo-rI-DVb"/>
-                            <constraint firstItem="MX8-IW-i4H" firstAttribute="top" secondItem="htZ-zP-U9K" secondAttribute="top" constant="167" id="x4T-tO-Q6a"/>
+                            <constraint firstItem="MX8-IW-i4H" firstAttribute="top" secondItem="htZ-zP-U9K" secondAttribute="top" constant="200" id="x4T-tO-Q6a"/>
                         </constraints>
                     </view>
                 </viewController>
