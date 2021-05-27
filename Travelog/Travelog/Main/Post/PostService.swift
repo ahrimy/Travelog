@@ -72,7 +72,7 @@ class PostService {
                 "location" : [
                     "name" : location.name,
                     "address": location.address,
-                    "coutry" : location.country,
+                    "country" : location.country,
                     "postalCode" : location.postalCode,
                     "coordinate": GeoPoint(latitude: location.coordinate.coordinate.latitude, longitude: location.coordinate.coordinate.longitude)
                 ],

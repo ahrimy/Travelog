@@ -19,8 +19,8 @@ class StarredPostDetailViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var scrollview: UIScrollView!
-    @IBOutlet weak var imageSliderCollectionView: UICollectionView!
-    @IBOutlet weak var pageView: UIPageControl!
+    //@IBOutlet weak var imageSliderCollectionView: UICollectionView!
+    //@IBOutlet weak var pageView: UIPageControl!
     
     // MARK: - Properties
     //var data: PostDetail?
@@ -35,7 +35,7 @@ class StarredPostDetailViewController: UIViewController {
 //        view.layer.cornerRadius = 45 // 모달 둥근 정도..
         
         //pageView.numberOfPages = imageView.count // TODO : page 이미지 갯수와 연결
-        pageView.currentPage = 0
+        //pageView.currentPage = 0
         
         if let starredPostDetailViewController = self.starredPostDetailViewController {
             PostService.shared.loadPostDetail(postId: postId, loadPost: starredPostDetailViewController.loadPosts(posts:))
