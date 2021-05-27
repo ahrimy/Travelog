@@ -75,9 +75,10 @@ extension StarredPostListViewController:  UICollectionViewDelegateFlowLayout {
             return
         }
         postDetailView.modalTransitionStyle = .coverVertical
-        //postDetailView.data = posts[indexPath.row]
-        postDetailView.postId = posts[indexPath.row].id
-        self.present(postDetailView, animated: true, completion: nil)
+        PostService.shared.loadPostDetail(postId: posts[indexPath.row].id){post in
+            postDetailView.loadPost(post: post)
+            self.present(postDetailView, animated: true, completion: nil)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

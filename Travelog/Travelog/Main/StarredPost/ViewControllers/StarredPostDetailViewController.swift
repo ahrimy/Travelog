@@ -23,8 +23,6 @@ class StarredPostDetailViewController: UIViewController {
     //@IBOutlet weak var pageView: UIPageControl!
     
     // MARK: - Properties
-    //var data: PostDetail?
-    //var data: PostDetail?
     var postId: String = ""
     var data: PostDetail?
     var starredPostDetailViewController: StarredPostDetailViewController?
@@ -37,14 +35,14 @@ class StarredPostDetailViewController: UIViewController {
         //pageView.numberOfPages = imageView.count // TODO : page 이미지 갯수와 연결
         //pageView.currentPage = 0
         
-        if let starredPostDetailViewController = self.starredPostDetailViewController {
-            PostService.shared.loadPostDetail(postId: postId, loadPost: starredPostDetailViewController.loadPosts(posts:))
-        }
+//        if let starredPostDetailViewController = self.starredPostDetailViewController {
+//            PostService.shared.loadPostDetail(postId: postId, loadPost: starredPostDetailViewController.loadPosts(posts:))
+//        }
     }
     
     
-    func loadPosts(posts: PostDetail){
-        self.data = posts
+    func loadPost(post: PostDetail){
+        self.data = post
         //self.starredPostDetailViewController?.configureUI()
     }
     
