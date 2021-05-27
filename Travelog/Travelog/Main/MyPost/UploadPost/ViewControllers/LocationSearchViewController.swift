@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-protocol LocationSearchViewControllerDelegate {
+protocol LocationSearchViewControllerDelegate:AnyObject {
     func setLocation(info:[String:Any])
 }
 
@@ -19,7 +19,7 @@ class LocationSearchViewController: UIViewController, UISearchBarDelegate, MKLoc
     var searchResults = [MKLocalSearchCompletion]()
     
     // Delegate
-    var locationSearchViewControllerDelegate: LocationSearchViewControllerDelegate?
+    weak var locationSearchViewControllerDelegate: LocationSearchViewControllerDelegate?
    
    // MARK: - IBOutlet
     @IBOutlet weak var searchBar: UISearchBar!{
