@@ -89,7 +89,7 @@ class PostService {
                 "location" : [
                     "name" : location.name,
                     "address": location.address,
-                    "coutry" : location.country,
+                    "country" : location.country,
                     "postalCode" : location.postalCode,
                     "coordinate": GeoPoint(latitude: location.coordinate.coordinate.latitude, longitude: location.coordinate.coordinate.longitude)
                 ],
@@ -157,21 +157,21 @@ class PostService {
                 var count = 0
                 for i in 0..<documents.count {
                     count += 1
-//                    print("\(documents[i].documentID) => \(documents[i].data())")
+                    // print("\(documents[i].documentID) => \(documents[i].data())")
                     let data = documents[i].data()
                     let id = documents[i].documentID
-                    guard let writer = data["writer"] as? String else { return }
-                    guard let comments = data["comments"] as? Int else { return }
-                    guard let likes = data["likes"] as? Int else { return }
-                    guard let date = data["date"] as? Timestamp else { return }
-                    guard let createdAt = data["createdAt"] as? Timestamp else { return }
-                    guard let coordinateData = data["coordinate"] as? GeoPoint else { return }
+                    guard let writer = data["writer"] as? String else { continue }
+                    guard let comments = data["comments"] as? Int else { continue }
+                    guard let likes = data["likes"] as? Int else { continue }
+                    guard let date = data["date"] as? Timestamp else { continue }
+                    guard let createdAt = data["createdAt"] as? Timestamp else { continue }
+                    guard let coordinateData = data["coordinate"] as? GeoPoint else { continue }
                     let coordinate = CLLocation(latitude: coordinateData.latitude, longitude: coordinateData.longitude)
-                    guard let locationName = data["locationName"] as? String else { return }
-                    guard let text = data["text"] as? String else { return }
+                    guard let locationName = data["locationName"] as? String else { continue }
+                    guard let text = data["text"] as? String else { continue }
                     
 //                    guard let imageRef = data["image"] as? String else { return }
-                    guard let imageUrl = data["imageUrl"] as? String else { return }
+                    guard let imageUrl = data["imageUrl"] as? String else { continue }
                     do{
                         let url = URL(string: imageUrl)!
                         let imageData = try Data(contentsOf: url)
@@ -223,18 +223,17 @@ class PostService {
                 var images:[UIImage] = []
                 var count = 0
                 for i in 0..<imageUrls.count {
+                    count += 1
                     do{
-                        count += 1
                         let url = URL(string: imageUrls[i])!
                         let imageData = try Data(contentsOf: url)
                         let image = UIImage(data: imageData)!
                         images.append(image)
-                        
-                        if count == imageUrls.count{
-                            loadPost(PostDetail(id: id, images: images, date: date.dateValue(), text: text, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), location: Location(name: name, address: address, postalCode: postalCode, country: country, coordinate: coordinate), likes: likes, likeUsers: likeUsers, comments: comments, writer: writer))
-                        }
                     }catch{
                         print("Error occured while load image from url")
+                    }
+                    if count == imageUrls.count{
+                        loadPost(PostDetail(id: id, images: images, date: date.dateValue(), text: text, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), location: Location(name: name, address: address, postalCode: postalCode, country: country, coordinate: coordinate), likes: likes, likeUsers: likeUsers, comments: comments, writer: writer))
                     }
                 }
             } else {
