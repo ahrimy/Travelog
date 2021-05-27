@@ -25,7 +25,7 @@ class StarredPostListCell: UICollectionViewCell {
     func configure(with starredpostlist: PostOverview) {
         name.text = starredpostlist.writer
         imageView.image = starredpostlist.image
-        address_info.text = starredpostlist.locationName // TODO : nil 값 반환 해결 필요함
+        address_info.text = starredpostlist.locationName 
         likeNum.text = "\(starredpostlist.comments)"
         commentNum.text = "\(starredpostlist.likes)"
         text.text = starredpostlist.text

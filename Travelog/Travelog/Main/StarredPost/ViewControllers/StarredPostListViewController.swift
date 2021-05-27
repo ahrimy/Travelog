@@ -75,7 +75,8 @@ extension StarredPostListViewController:  UICollectionViewDelegateFlowLayout {
             return
         }
         postDetailView.modalTransitionStyle = .coverVertical
-        postDetailView.data = posts[indexPath.row]
+        //postDetailView.data = posts[indexPath.row]
+        postDetailView.postId = posts[indexPath.row].id
         self.present(postDetailView, animated: true, completion: nil)
     }
     

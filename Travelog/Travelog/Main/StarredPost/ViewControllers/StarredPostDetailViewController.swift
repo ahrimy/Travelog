@@ -19,15 +19,33 @@ class StarredPostDetailViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var scrollview: UIScrollView!
+    @IBOutlet weak var imageSliderCollectionView: UICollectionView!
+    @IBOutlet weak var pageView: UIPageControl!
     
     // MARK: - Properties
     //var data: PostDetail?
-    var data: PostOverview?
+    //var data: PostDetail?
+    var postId: String = ""
+    var data: PostDetail?
+    var starredPostDetailViewController: StarredPostDetailViewController?
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 //        view.layer.cornerRadius = 45 // 모달 둥근 정도..
+        
+        //pageView.numberOfPages = imageView.count // TODO : page 이미지 갯수와 연결
+        pageView.currentPage = 0
+        
+        if let starredPostDetailViewController = self.starredPostDetailViewController {
+            PostService.shared.loadPostDetail(postId: postId, loadPost: starredPostDetailViewController.loadPosts(posts:))
+        }
+    }
+    
+    
+    func loadPosts(posts: PostDetail){
+        self.data = posts
+        //self.starredPostDetailViewController?.configureUI()
     }
     
     @IBAction func editNdeleteButton(_ sender: Any){
@@ -86,8 +104,8 @@ class StarredPostDetailViewController: UIViewController {
     }()
     
     func configureUI(){
-        locationLabel.text = data?.locationName
-        imageView.image = data?.image
+        locationLabel.text = data?.location.name
+        imageView.image = data?.images[0]
         
         let date: Date? = data?.date
         if let newDate = date {
