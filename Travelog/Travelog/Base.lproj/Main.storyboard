@@ -70,23 +70,14 @@
                                 <segue destination="cCo-zQ-00d" kind="show" id="bh8-W3-q6t"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem title="설정" id="1tz-fz-6Uk">
-                                <imageReference key="image" image="gearshape.fill" catalog="system" symbolScale="large"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="touchUpSelectSettingButtonWith_sender:" destination="BYZ-38-t0r" id="LE4-ie-Lz2"/>
-                                    <segue destination="EOK-sM-XSu" kind="show" id="0M7-bR-EYM"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="알림" id="Ik0-I5-nC9">
-                                <imageReference key="image" image="bell" catalog="system" symbolScale="large"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="touchUpNotificatioinButton:" destination="BYZ-38-t0r" id="kl7-UZ-evF"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" title="설정" id="1tz-fz-6Uk">
+                            <imageReference key="image" image="gearshape.fill" catalog="system" symbolScale="large"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="touchUpSelectSettingButtonWith_sender:" destination="BYZ-38-t0r" id="LE4-ie-Lz2"/>
+                                <segue destination="EOK-sM-XSu" kind="show" id="0M7-bR-EYM"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -327,21 +318,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kBp-pJ-mD0">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="624"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zr-yD-BYu">
+                                <rect key="frame" x="20" y="559" width="350" height="35"/>
+                                <color key="backgroundColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="20"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="didTouchLogOutButton:" destination="EOK-sM-XSu" eventType="touchUpInside" id="xAG-7c-KoH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iJe-Wh-H5e"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="kBp-pJ-mD0" firstAttribute="top" secondItem="iJe-Wh-H5e" secondAttribute="top" id="7XN-uy-185"/>
-                            <constraint firstItem="iJe-Wh-H5e" firstAttribute="bottom" secondItem="kBp-pJ-mD0" secondAttribute="bottom" id="NpY-Bf-RVp"/>
-                            <constraint firstItem="iJe-Wh-H5e" firstAttribute="trailing" secondItem="kBp-pJ-mD0" secondAttribute="trailing" id="nWb-Gt-Ju5"/>
-                            <constraint firstItem="kBp-pJ-mD0" firstAttribute="leading" secondItem="iJe-Wh-H5e" secondAttribute="leading" id="yXN-lr-XTH"/>
+                            <constraint firstItem="iJe-Wh-H5e" firstAttribute="bottom" secondItem="5zr-yD-BYu" secondAttribute="bottom" constant="30" id="K8L-Rx-MT5"/>
+                            <constraint firstItem="iJe-Wh-H5e" firstAttribute="trailing" secondItem="5zr-yD-BYu" secondAttribute="trailing" constant="20" id="Yb1-9y-HCc"/>
+                            <constraint firstItem="5zr-yD-BYu" firstAttribute="leading" secondItem="iJe-Wh-H5e" secondAttribute="leading" constant="20" id="jMY-ih-DDz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uv4-Qq-dUf"/>
+                    <connections>
+                        <outlet property="LogOutButton" destination="5zr-yD-BYu" id="tUT-bv-Gi4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sUU-OU-OmR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1226,15 +1225,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="트래블로그" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MX8-IW-i4H">
-                                <rect key="frame" x="86.666666666666686" y="244" width="217" height="56"/>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="50"/>
-                                <color key="textColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Travelog" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHA-hp-ZQp">
                                 <rect key="frame" x="120" y="340" width="150" height="50"/>
                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="40"/>
+                                <color key="textColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="트래블로그" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MX8-IW-i4H">
+                                <rect key="frame" x="86.666666666666671" y="244" width="216.66666666666663" height="56"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="50"/>
                                 <color key="textColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1248,7 +1247,6 @@
                             <constraint firstItem="MX8-IW-i4H" firstAttribute="top" secondItem="htZ-zP-U9K" secondAttribute="top" constant="200" id="x4T-tO-Q6a"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="n7a-VI-sRo"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g2I-oL-H4Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1392,7 +1390,6 @@
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
     <resources>
-        <image name="bell" catalog="system" width="128" height="124"/>
         <image name="chevron.forward" catalog="system" width="96" height="128"/>
         <image name="dot" width="170.66667175292969" height="34.333332061767578"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>

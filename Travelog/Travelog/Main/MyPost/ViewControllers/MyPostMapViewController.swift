@@ -54,14 +54,15 @@ class MyPostMapViewController: UIViewController {
     func appendPost(post:PostOverview){
         self.posts.append(post)
         self.addAnnotation(with: post)
+        setRegion(coordinate: post.coordinate.coordinate)
     }
     func loadPosts(posts: [PostOverview]) {
-        self.posts = posts.sorted(by: {$0.createdAt < $1.createdAt})
+        self.posts = posts.sorted(by: {$0.createdAt > $1.createdAt})
+        if let recentPost = self.posts.first {
+            setRegion(coordinate: recentPost.coordinate.coordinate)
+        }
         self.posts.forEach{post in
             self.addAnnotation(with: post)
-        }
-        if let recentPost = self.posts.last {
-            setRegion(coordinate: recentPost.coordinate.coordinate)
         }
     }
     

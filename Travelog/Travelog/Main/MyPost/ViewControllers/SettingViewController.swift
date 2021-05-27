@@ -9,13 +9,20 @@ import UIKit
 
 class SettingViewController: UIViewController {
 
+    // MARK: - IBOutlet
+    @IBOutlet weak var LogOutButton: UIButton!{
+        didSet{
+            LogOutButton.layer.cornerRadius = 10
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationItem.title = "Settings"
     }
     
-
     /*
     // MARK: - Navigation
 
@@ -25,5 +32,16 @@ class SettingViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    // MARK: - Actions
+    @IBAction func didTouchLogOutButton(_ sender: Any) {
+        UserService.shared.signOut(completion: completeSignOut)
+    }
+    
+    // MARK: - Methods
+    func completeSignOut(){
+        if let vc = self.storyboard?.instantiateViewController(identifier: "AuthViewController") {
+            self.view.window?.rootViewController = vc
+        }
+    }
 }
