@@ -13,7 +13,7 @@ import MapKit
 class PostService {
     static let shared = PostService()
     
-    init(){
+    private init(){
         db = Firestore.firestore()
         storage = Storage.storage()
         storageRef = storage.reference()

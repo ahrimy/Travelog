@@ -13,7 +13,7 @@ import FirebaseAuth
 class UserService {
     static let shared = UserService()
     
-    init(){
+    private init(){
         db = Firestore.firestore()
         storage = Storage.storage()
         storageRef = storage.reference()
