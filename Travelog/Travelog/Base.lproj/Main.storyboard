@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UDO-IH-mEM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UDO-IH-mEM">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -251,7 +251,7 @@
                                 <color key="sectionIndexBackgroundColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationSearchResultCell" id="06L-Bq-kXO" customClass="LocationSearchTableViewCell" customModule="Travelog" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="330" height="44"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="330" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="06L-Bq-kXO" id="6el-jz-jOt">
                                             <rect key="frame" x="0.0" y="0.0" width="330" height="44"/>
@@ -716,15 +716,43 @@
             </objects>
             <point key="canvasLocation" x="-415.38461538461536" y="111.96682464454976"/>
         </scene>
-        <!--All Post View Controller-->
+        <!--Country Post View Controller-->
         <scene sceneID="u7b-3v-UHt">
             <objects>
-                <viewController id="naz-id-V5s" customClass="AllPostViewController" customModule="Travelog" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0vP-5l-8hP" customClass="StarredPostListViewCon">
+                <viewController id="naz-id-V5s" customClass="CountryPostViewController" customModule="Travelog" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0vP-5l-8hP">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aq2-8d-bUh">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="673"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1FM-bB-Cm0">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CountryCategoryCell" id="xIY-WZ-Vhb">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eja-IZ-QS6">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="PTa-Yt-qbb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aq2-8d-bUh" firstAttribute="leading" secondItem="PTa-Yt-qbb" secondAttribute="leading" id="554-zi-iXM"/>
+                            <constraint firstItem="PTa-Yt-qbb" firstAttribute="trailing" secondItem="aq2-8d-bUh" secondAttribute="trailing" id="YNF-jd-Xl3"/>
+                            <constraint firstItem="aq2-8d-bUh" firstAttribute="top" secondItem="PTa-Yt-qbb" secondAttribute="top" id="wK9-Ec-mob"/>
+                            <constraint firstItem="PTa-Yt-qbb" firstAttribute="bottom" secondItem="aq2-8d-bUh" secondAttribute="bottom" id="zpk-Im-1mx"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MBY-qN-xFt"/>
                 </viewController>

@@ -35,7 +35,7 @@
 		3E7701802656B1F700D9590E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E77017F2656B1F700D9590E /* SignUpViewController.swift */; };
 		3E7F918C26124A1800B319E8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F918B26124A1800B319E8 /* SearchViewController.swift */; };
 		3E7F919126124A2D00B319E8 /* StarredPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F919026124A2D00B319E8 /* StarredPostViewController.swift */; };
-		3E7F919626124A3800B319E8 /* AllPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F919526124A3800B319E8 /* AllPostViewController.swift */; };
+		3E7F919626124A3800B319E8 /* CountryPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F919526124A3800B319E8 /* CountryPostViewController.swift */; };
 		3EC3A4F8261DD1D2004BA4FF /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC3A4F7261DD1D2004BA4FF /* LocationSearchViewController.swift */; };
 		3EC3A4FD261E1461004BA4FF /* LocationSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC3A4FC261E1461004BA4FF /* LocationSearchTableViewCell.swift */; };
 		3EF3BA702648291F006B1DCA /* PostOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF3BA6F2648291F006B1DCA /* PostOverview.swift */; };
@@ -115,7 +115,7 @@
 		3E77017F2656B1F700D9590E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3E7F918B26124A1800B319E8 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3E7F919026124A2D00B319E8 /* StarredPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredPostViewController.swift; sourceTree = "<group>"; };
-		3E7F919526124A3800B319E8 /* AllPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPostViewController.swift; sourceTree = "<group>"; };
+		3E7F919526124A3800B319E8 /* CountryPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPostViewController.swift; sourceTree = "<group>"; };
 		3EC3A4F7261DD1D2004BA4FF /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 		3EC3A4FC261E1461004BA4FF /* LocationSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewCell.swift; sourceTree = "<group>"; };
 		3EF3BA6F2648291F006B1DCA /* PostOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOverview.swift; sourceTree = "<group>"; };
@@ -362,7 +362,7 @@
 		3EC3A530261E9AC7004BA4FF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3E7F919526124A3800B319E8 /* AllPostViewController.swift */,
+				3E7F919526124A3800B319E8 /* CountryPostViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -445,14 +445,14 @@
 			path = StarredPost;
 			sourceTree = "<group>";
 		};
-		4395B4FA261DE2C000E0C54D /* AllPost */ = {
+		4395B4FA261DE2C000E0C54D /* CountryPost */ = {
 			isa = PBXGroup;
 			children = (
 				3EC3A537261E9B0D004BA4FF /* Models */,
 				3EC3A533261E9AFB004BA4FF /* Views */,
 				3EC3A530261E9AC7004BA4FF /* ViewControllers */,
 			);
-			path = AllPost;
+			path = CountryPost;
 			sourceTree = "<group>";
 		};
 		4395B4FB261DE2C700E0C54D /* Main */ = {
@@ -465,7 +465,7 @@
 				4395B4F7261DE29D00E0C54D /* MyPost */,
 				4395B4F8261DE2AB00E0C54D /* Search */,
 				4395B4F9261DE2B700E0C54D /* StarredPost */,
-				4395B4FA261DE2C000E0C54D /* AllPost */,
+				4395B4FA261DE2C000E0C54D /* CountryPost */,
 				3E13E1B22655780D00D308BB /* LoadingViewController.swift */,
 			);
 			path = Main;
@@ -767,7 +767,7 @@
 				3E0FE1D72625E2D3004E93E7 /* AddButtonCollectionViewCell.swift in Sources */,
 				3EC3A4FD261E1461004BA4FF /* LocationSearchTableViewCell.swift in Sources */,
 				AC54C5B3261D6EED0020980D /* StarredPostListCell.swift in Sources */,
-				3E7F919626124A3800B319E8 /* AllPostViewController.swift in Sources */,
+				3E7F919626124A3800B319E8 /* CountryPostViewController.swift in Sources */,
 				3E464D8926088FF700390A0B /* MyPostViewController.swift in Sources */,
 				3E7F919126124A2D00B319E8 /* StarredPostViewController.swift in Sources */,
 				3E464D8F26088FF700390A0B /* Travelog.xcdatamodeld in Sources */,
