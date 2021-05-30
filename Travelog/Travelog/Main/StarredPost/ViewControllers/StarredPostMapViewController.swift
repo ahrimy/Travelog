@@ -21,6 +21,7 @@ class StarredPostMapViewController: UIViewController, CLLocationManagerDelegate{
         mapView = MKMapView()
         self.view.addSubview(mapView)
         mapView.translatesAutoresizingMaskIntoConstraints = false
+        mapView.isRotateEnabled = false
         
         mapView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         mapView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
