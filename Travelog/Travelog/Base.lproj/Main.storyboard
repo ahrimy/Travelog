@@ -716,10 +716,10 @@
             </objects>
             <point key="canvasLocation" x="-415.38461538461536" y="111.96682464454976"/>
         </scene>
-        <!--Country Post View Controller-->
+        <!--Attraction Post View Controller-->
         <scene sceneID="u7b-3v-UHt">
             <objects>
-                <viewController id="naz-id-V5s" customClass="CountryPostViewController" customModule="Travelog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="naz-id-V5s" customClass="AttractionPostViewController" customModule="Travelog" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0vP-5l-8hP">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

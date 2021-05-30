@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CountryPostViewController: UIViewController, UISearchBarDelegate {
+class AttractionPostViewController: UIViewController, UISearchBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,6 @@ class CountryPostViewController: UIViewController, UISearchBarDelegate {
         searchController.hidesNavigationBarDuringPresentation = true
         navigationItem.hidesSearchBarWhenScrolling = true
         //true for hiding, false for keep showing while scrolling
-        searchController.searchBar.sizeToFit()
         searchController.searchBar.returnKeyType = UIReturnKeyType.search
         searchController.searchBar.placeholder = "Search here"
         navigationItem.searchController = searchController
