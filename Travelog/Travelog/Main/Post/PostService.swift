@@ -134,7 +134,7 @@ class PostService {
         // TODO: 데이터 부분적으로 가져올 수 있도록
         if let starredUsers = UserService.shared.user?.starredUsers , starredUsers
         .count > 0{
-            let documentRef = db.collection("postoverviews").whereField("writer", in: starredUsers).whereField("isPublic", isEqualTo: true).limit(to: 5)
+            let documentRef = db.collection("postoverviews").whereField("writer", in: starredUsers).whereField("isPublic", isEqualTo: true)
             self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
         }
     }
@@ -142,7 +142,7 @@ class PostService {
         // TODO: 데이터 부분적으로 가져올 수 있도록
         if let starredUsers = UserService.shared.user?.starredUsers, starredUsers
             .count > 0 {
-            let documentRef = db.collection("postoverviews").whereField("writer", in: starredUsers).whereField("isPublic", isEqualTo: true).limit(to: 5)
+            let documentRef = db.collection("postoverviews").whereField("writer", in: starredUsers).whereField("isPublic", isEqualTo: true)
             self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
         }
     }

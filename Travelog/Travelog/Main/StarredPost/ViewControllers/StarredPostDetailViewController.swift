@@ -15,16 +15,17 @@ class StarredPostDetailViewController: UIViewController {
     @IBOutlet weak var likesCount: UILabel!
     @IBOutlet weak var commentsCount: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
+    //@IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var scrollview: UIScrollView!
-    //@IBOutlet weak var imageSliderCollectionView: UICollectionView!
-    //@IBOutlet weak var pageView: UIPageControl!
+    @IBOutlet weak var imageSliderCollectionView: UICollectionView!
+    @IBOutlet weak var pageView: UIPageControl!
     
     // MARK: - Properties
     var postId: String = ""
     var data: PostDetail?
+    var img: [UIImage] = []
     var starredPostDetailViewController: StarredPostDetailViewController?
     
     // MARK: - Life Cycle
@@ -32,18 +33,21 @@ class StarredPostDetailViewController: UIViewController {
         super.viewDidLoad()
 //        view.layer.cornerRadius = 45 // 모달 둥근 정도..
         
-        //pageView.numberOfPages = imageView.count // TODO : page 이미지 갯수와 연결
+        //pageView.numberOfPages = img.count // TODO : page 이미지 갯수와 연결
         //pageView.currentPage = 0
         
 //        if let starredPostDetailViewController = self.starredPostDetailViewController {
 //            PostService.shared.loadPostDetail(postId: postId, loadPost: starredPostDetailViewController.loadPosts(posts:))
 //        }
+        
+        imageSliderCollectionView.dataSource = self
+        imageSliderCollectionView.delegate = self
     }
     
     
     func loadPost(post: PostDetail){
         self.data = post
-        //self.starredPostDetailViewController?.configureUI()
+        //self.imageSliderCollectionView.reloadData()
     }
     
     @IBAction func editNdeleteButton(_ sender: Any){
@@ -103,7 +107,13 @@ class StarredPostDetailViewController: UIViewController {
     
     func configureUI(){
         locationLabel.text = data?.location.name
-        imageView.image = data?.images[0]
+        //imageView.image = data?.images[0]
+        
+        let imgSet: [UIImage]? = data?.images
+        if let newImg = imgSet {
+            img = newImg
+        }
+        //img = data?.images
         
         let date: Date? = data?.date
         if let newDate = date {
@@ -129,8 +139,8 @@ class StarredPostDetailViewController: UIViewController {
         locationLabel.font = UIFont.systemFont(ofSize: 17)
         locationLabel.numberOfLines = 1
         
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
+        //imageView.clipsToBounds = true
+        //imageView.contentMode = .scaleAspectFill
         
         textLabel.font = UIFont.systemFont(ofSize: 16)
         textLabel.numberOfLines = 0
@@ -140,4 +150,45 @@ class StarredPostDetailViewController: UIViewController {
     }
 
 
+}
+
+
+extension StarredPostDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailViewCell", for: indexPath) as? StarredPostDetailImageCell else {return UICollectionViewCell()}
+        
+        cell.imageView.image = img[indexPath.row]
+        //pageView.currentPage = indexPath.row
+        
+        return cell
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let page = Int(targetContentOffset.pointee.x / self.imageSliderCollectionView.frame.width)
+       self.pageView.currentPage = page
+     }
+
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return img.count
+    }
+}
+
+extension StarredPostDetailViewController: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top:0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath)-> CGSize{
+        let size = imageSliderCollectionView.frame.size
+        return CGSize(width: size.width, height: size.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
 }
