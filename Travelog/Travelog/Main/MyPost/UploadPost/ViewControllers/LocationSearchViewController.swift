@@ -103,11 +103,16 @@ extension LocationSearchViewController: UITableViewDelegate {
                 "address" : placemark.title ?? "",
                 "postalCode" : placemark.postalCode ?? "",
                 "country": placemark.country ?? "",
-                "coordinate":coordinate
+                "coordinate":coordinate,
+                "locality" : placemark.locality ?? "",
+                "countryCode": placemark.countryCode ?? ""
             ] as [String : Any]
             
 //            print("name: " + (placeInfo["name"] as? String ?? "No Data" ))
-//            print("address: " + (placeInfo["address"] as? String ?? "No Data" ))
+            print("address: " + (placeInfo["address"] as? String ?? "No Data" ))
+            print("countryCode: " + (placeInfo["countryCode"] as? String ?? "No Data" ))
+            print("locality: " + (placeInfo["locality"] as? String ?? "No Data" ))
+
 //            print("postal: " + (placeInfo["postalCode"] as? String ?? "No Data" ))
 //            print("country: " + (placeInfo["country"]as? String  ?? "No Data"))
             

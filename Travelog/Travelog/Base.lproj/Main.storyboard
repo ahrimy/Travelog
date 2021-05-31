@@ -716,33 +716,58 @@
             </objects>
             <point key="canvasLocation" x="-415.38461538461536" y="111.96682464454976"/>
         </scene>
-        <!--Attraction Post View Controller-->
+        <!--Attraction List View Controller-->
         <scene sceneID="u7b-3v-UHt">
             <objects>
-                <viewController id="naz-id-V5s" customClass="AttractionPostViewController" customModule="Travelog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="naz-id-V5s" customClass="AttractionListViewController" customModule="Travelog" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0vP-5l-8hP">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aq2-8d-bUh">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="673"/>
+                                <rect key="frame" x="0.0" y="44" width="390" height="717"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1FM-bB-Cm0">
-                                    <size key="itemSize" width="128" height="128"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="1FM-bB-Cm0">
+                                    <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CountryCategoryCell" id="xIY-WZ-Vhb">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eja-IZ-QS6">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AttractionCell" translatesAutoresizingMaskIntoConstraints="NO" id="xIY-WZ-Vhb" customClass="AttractionCollectionViewCell" customModule="Travelog" customModuleProvider="target">
+                                        <rect key="frame" x="92.666666666666671" y="0.0" width="205" height="335"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="205" height="335"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
+                                            <subviews>
+                                                <view clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2F-YC-Al0">
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XeK-bl-5Gn">
+                                                            <rect key="frame" x="0.0" y="0.0" width="201" height="331"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="XeK-bl-5Gn" secondAttribute="trailing" id="0GK-Pv-jxj"/>
+                                                        <constraint firstAttribute="bottom" secondItem="XeK-bl-5Gn" secondAttribute="bottom" id="NIG-tW-PFJ"/>
+                                                        <constraint firstItem="XeK-bl-5Gn" firstAttribute="leading" secondItem="T2F-YC-Al0" secondAttribute="leading" id="Ouc-lL-eOQ"/>
+                                                        <constraint firstItem="XeK-bl-5Gn" firstAttribute="top" secondItem="T2F-YC-Al0" secondAttribute="top" id="Sn6-4D-fjr"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="T2F-YC-Al0" firstAttribute="top" secondItem="xIY-WZ-Vhb" secondAttribute="top" id="7pG-FV-CTL"/>
+                                            <constraint firstItem="T2F-YC-Al0" firstAttribute="leading" secondItem="xIY-WZ-Vhb" secondAttribute="leading" id="iSP-0O-zy0"/>
+                                            <constraint firstAttribute="trailing" secondItem="T2F-YC-Al0" secondAttribute="trailing" id="nbQ-zp-hzG"/>
+                                            <constraint firstAttribute="bottom" secondItem="T2F-YC-Al0" secondAttribute="bottom" id="ua5-mD-tTF"/>
+                                        </constraints>
+                                        <size key="customSize" width="205" height="335"/>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="naz-id-V5s" id="bQm-mN-ueZ"/>
+                                    <outlet property="delegate" destination="naz-id-V5s" id="dwG-W0-DjE"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PTa-Yt-qbb"/>
@@ -755,10 +780,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MBY-qN-xFt"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="attractionCollectionView" destination="aq2-8d-bUh" id="f6B-2I-ReW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cau-La-uIA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1255" y="914"/>
+            <point key="canvasLocation" x="-1255.3846153846152" y="913.50710900473928"/>
         </scene>
         <!--My Post List View Controller-->
         <scene sceneID="2WQ-pj-q1F">

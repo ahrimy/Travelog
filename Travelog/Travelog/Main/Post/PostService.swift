@@ -30,8 +30,10 @@ class PostService {
         var count = 0
         for i in 0..<images.count{
             if let imageData = images[i].jpegData(compressionQuality: 0.8){
-                let imageRef:StorageReference = storageRef.child("\(writer)/\(ids[i])")
-                imageRef.putData(imageData, metadata: nil){(metaData, error) in
+                let imageRef:StorageReference = storageRef.child("\(writer)/\(ids[i]).jpeg")
+                let metaData = StorageMetadata()
+                metaData.contentType = "image/jpeg"
+                imageRef.putData(imageData, metadata: metaData){(metaData, error) in
                     if let error = error {
                         count += 1
                         print(error.localizedDescription)
@@ -67,6 +69,8 @@ class PostService {
                 "locationName":"\(location.name), \(location.country)",
                 "createdAt" : data["createdAt"] as! Date,
                 "isPublic" : data["isPublic"] as! Bool,
+                "locality" : data["locality"] as! String,
+                "countryCode" : data["countryCode"] as! String,
                 "likes" : 0,
                 "comments" : 0
             ], merge: true){ err in
@@ -119,7 +123,7 @@ class PostService {
     //현재 사용 X
     func loadPostOverviewsForMyPostList(loadPosts:@escaping ([PostOverview]) -> Void){
        if let username = UserService.shared.user?.username {
-           let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: username).limit(to: 5)
+        let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: username).limit(to: 5)
            self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
        }
     }

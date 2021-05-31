@@ -38,6 +38,7 @@ class UserService {
                     let starredUsers = (data["starredUsers"] ?? []) as! [String]
                     
                     UserService.shared.user = User(id: document.documentID, uid: authUser.uid, username: username, starredUsers: starredUsers)
+                    AttractionService.shared.loadAttractions()
                     authorizedCompletion()
                 }
             }
@@ -60,6 +61,7 @@ class UserService {
                         let starredUsers = (data["starredUsers"] ?? []) as! [String]
                         
                         UserService.shared.user = User(id: document.documentID,uid: uid, username: username, starredUsers: starredUsers)
+                        AttractionService.shared.loadAttractions()
                         completion()
                     }
                 }

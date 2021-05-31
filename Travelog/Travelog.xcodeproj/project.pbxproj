@@ -35,7 +35,10 @@
 		3E7701802656B1F700D9590E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E77017F2656B1F700D9590E /* SignUpViewController.swift */; };
 		3E7F918C26124A1800B319E8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F918B26124A1800B319E8 /* SearchViewController.swift */; };
 		3E7F919126124A2D00B319E8 /* StarredPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F919026124A2D00B319E8 /* StarredPostViewController.swift */; };
-		3E7F919626124A3800B319E8 /* AttractionPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F919526124A3800B319E8 /* AttractionPostViewController.swift */; };
+		3E7F919626124A3800B319E8 /* AttractionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7F919526124A3800B319E8 /* AttractionListViewController.swift */; };
+		3E8EB2002663F557004ECFDB /* AttractionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8EB1FF2663F557004ECFDB /* AttractionService.swift */; };
+		3E8EB2022663F5A1004ECFDB /* Attraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8EB2012663F5A1004ECFDB /* Attraction.swift */; };
+		3E8EB2062663FD2F004ECFDB /* AttractionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8EB2052663FD2F004ECFDB /* AttractionCollectionViewCell.swift */; };
 		3EC3A4F8261DD1D2004BA4FF /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC3A4F7261DD1D2004BA4FF /* LocationSearchViewController.swift */; };
 		3EC3A4FD261E1461004BA4FF /* LocationSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC3A4FC261E1461004BA4FF /* LocationSearchTableViewCell.swift */; };
 		3EF3BA702648291F006B1DCA /* PostOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF3BA6F2648291F006B1DCA /* PostOverview.swift */; };
@@ -116,7 +119,10 @@
 		3E77017F2656B1F700D9590E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3E7F918B26124A1800B319E8 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3E7F919026124A2D00B319E8 /* StarredPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredPostViewController.swift; sourceTree = "<group>"; };
-		3E7F919526124A3800B319E8 /* AttractionPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionPostViewController.swift; sourceTree = "<group>"; };
+		3E7F919526124A3800B319E8 /* AttractionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionListViewController.swift; sourceTree = "<group>"; };
+		3E8EB1FF2663F557004ECFDB /* AttractionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionService.swift; sourceTree = "<group>"; };
+		3E8EB2012663F5A1004ECFDB /* Attraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attraction.swift; sourceTree = "<group>"; };
+		3E8EB2052663FD2F004ECFDB /* AttractionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AttractionCollectionViewCell.swift; path = Travelog/Main/AttractionPost/ViewControllers/AttractionCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		3EC3A4F7261DD1D2004BA4FF /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 		3EC3A4FC261E1461004BA4FF /* LocationSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewCell.swift; sourceTree = "<group>"; };
 		3EF3BA6F2648291F006B1DCA /* PostOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOverview.swift; sourceTree = "<group>"; };
@@ -304,6 +310,15 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		3E8EB1FE2663F537004ECFDB /* Attraction */ = {
+			isa = PBXGroup;
+			children = (
+				3E8EB1FF2663F557004ECFDB /* AttractionService.swift */,
+				3E8EB2012663F5A1004ECFDB /* Attraction.swift */,
+			);
+			path = Attraction;
+			sourceTree = "<group>";
+		};
 		3EBB14BF265BA29800F4B815 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,7 +380,7 @@
 		3EC3A530261E9AC7004BA4FF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3E7F919526124A3800B319E8 /* AttractionPostViewController.swift */,
+				3E7F919526124A3800B319E8 /* AttractionListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -389,6 +404,7 @@
 		3EC3A533261E9AFB004BA4FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3E8EB2052663FD2F004ECFDB /* AttractionCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -461,6 +477,7 @@
 		4395B4FB261DE2C700E0C54D /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				3E8EB1FE2663F537004ECFDB /* Attraction */,
 				3EBB14BF265BA29800F4B815 /* Map */,
 				3E77017E26566A6E00D9590E /* User */,
 				3E13E1AE265560AE00D308BB /* Auth */,
@@ -752,6 +769,7 @@
 				3E7F918C26124A1800B319E8 /* SearchViewController.swift in Sources */,
 				AC5D30BD262F405200F2C920 /* StarredPostLocation.swift in Sources */,
 				3E5CF6D42659478C00847F84 /* MapItemAnnotationView.swift in Sources */,
+				3E8EB2062663FD2F004ECFDB /* AttractionCollectionViewCell.swift in Sources */,
 				3E13E1B12655612A00D308BB /* SignInViewController.swift in Sources */,
 				3E74B9D0261C61BF00AE1CB6 /* UploadPostViewController.swift in Sources */,
 				AC54C5B1261D6EED0020980D /* StarredPostList.swift in Sources */,
@@ -770,13 +788,15 @@
 				3E0FE1D72625E2D3004E93E7 /* AddButtonCollectionViewCell.swift in Sources */,
 				3EC3A4FD261E1461004BA4FF /* LocationSearchTableViewCell.swift in Sources */,
 				AC54C5B3261D6EED0020980D /* StarredPostListCell.swift in Sources */,
-				3E7F919626124A3800B319E8 /* AttractionPostViewController.swift in Sources */,
+				3E7F919626124A3800B319E8 /* AttractionListViewController.swift in Sources */,
+				3E8EB2002663F557004ECFDB /* AttractionService.swift in Sources */,
 				3E464D8926088FF700390A0B /* MyPostViewController.swift in Sources */,
 				3E7F919126124A2D00B319E8 /* StarredPostViewController.swift in Sources */,
 				3E464D8F26088FF700390A0B /* Travelog.xcdatamodeld in Sources */,
 				3E6F508B260B9E0800B22252 /* MyPostViewCell.swift in Sources */,
 				3E13E1B526557C9500D308BB /* User.swift in Sources */,
 				3E464D8526088FF700390A0B /* AppDelegate.swift in Sources */,
+				3E8EB2022663F5A1004ECFDB /* Attraction.swift in Sources */,
 				3E1322A92624639800D52C7D /* SelectedPhotoViewController.swift in Sources */,
 				3E1322AE262467CF00D52C7D /* SelectedPhotoCollectionViewCell.swift in Sources */,
 				3EC3A4F8261DD1D2004BA4FF /* LocationSearchViewController.swift in Sources */,
