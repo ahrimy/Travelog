@@ -20,10 +20,13 @@ class AttractionListViewController: UIViewController, UISearchBarDelegate,UIColl
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationItem.backButtonDisplayMode = .minimal
         attractionCollectionView.register(AttractionCollectionViewCell.self, forCellWithReuseIdentifier: AttractionCollectionViewCell.reuseIdentifier)
         attractions = AttractionService.shared.attractions
         attractionCollectionView.reloadData()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
     }
     
 
@@ -51,6 +54,14 @@ class AttractionListViewController: UIViewController, UISearchBarDelegate,UIColl
         cell.nameLabel.text = attractions[indexPath.row].name
         
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let attractionPostListViewController = self.storyboard?.instantiateViewController(identifier: "AttractionPostListViewController") as? AttractionPostListViewController{
+            
+            attractionPostListViewController.attraction = attractions[indexPath.row]
+            attractionPostListViewController.modalPresentationStyle = .fullScreen
+            self.navigationController?.pushViewController(attractionPostListViewController, animated: true)
+        }
     }
 
     /*
