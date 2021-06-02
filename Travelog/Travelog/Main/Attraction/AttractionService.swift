@@ -36,9 +36,9 @@ class AttractionService {
 //                     print("\(documents[i].documentID) => \(documents[i].data())")
                     let data = documents[i].data()
                     let id = documents[i].documentID
-                    guard let name = data["name"] as? String else { continue }
                     guard let locality = data["locality"] as? String else { continue }
                     guard let countryCode = data["countryCode"] as? String else { continue }
+                    guard let country = data["country"] as? String else { continue }
                     guard let imageUrl = data["imageUrl"] as? String else { continue }
                     do{
                         let url = URL(string: imageUrl)!
@@ -46,9 +46,9 @@ class AttractionService {
                         let image = UIImage(data: imageData)!
                         self.attractions.append(Attraction(id:id,
                                                   image: image,
-                                                  name:name,
                                                   locality:locality,
-                                                  countryCode:countryCode))
+                                                  countryCode:countryCode,
+                                                  country: country))
                     }catch{
                         print("Error occured while load image from url")
                     }
