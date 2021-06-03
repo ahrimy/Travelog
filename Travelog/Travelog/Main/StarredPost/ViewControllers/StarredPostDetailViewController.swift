@@ -34,7 +34,7 @@ class StarredPostDetailViewController: UIViewController {
 //        view.layer.cornerRadius = 45 // 모달 둥근 정도..
         configureUI()
         pageView.numberOfPages = img.count // TODO : page 이미지 갯수와 연결
-        //pageView.currentPage = 0
+        pageView.hidesForSinglePage = true
         
 //        if let starredPostDetailViewController = self.starredPostDetailViewController {
 //            PostService.shared.loadPostDetail(postId: postId, loadPost: starredPostDetailViewController.loadPosts(posts:))
