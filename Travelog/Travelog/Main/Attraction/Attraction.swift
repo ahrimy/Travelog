@@ -13,14 +13,15 @@ class Attraction{
     
     init(id:String,
          image:UIImage,
-         name:String,
          locality:String,
-         countryCode:String){
+         countryCode:String,
+         country:String){
         self.id = id
         self.image = image
-        self.name = name
+        self.name = "  \(locality), \n  \(country)"
         self.locality = locality
         self.countryCode = countryCode
+        self.country = country
     }
     
     let id: String
@@ -28,5 +29,6 @@ class Attraction{
     let name:String
     let locality:String
     let countryCode: String
+    let country: String
     
 }

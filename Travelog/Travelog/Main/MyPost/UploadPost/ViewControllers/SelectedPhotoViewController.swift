@@ -8,7 +8,7 @@
 import UIKit
 import PhotosUI
 
-protocol SelectedPhotoViewControllerDelegate{
+protocol SelectedPhotoViewControllerDelegate: AnyObject{
     func activateUploadButton()
 }
 
@@ -21,7 +21,7 @@ class SelectedPhotoViewController: UIViewController ,PHPickerViewControllerDeleg
     var iterator:IndexingIterator<[NSItemProvider]>?
     
     // Delegate
-    var selectedPhotoViewControllerDelegate: SelectedPhotoViewControllerDelegate?
+    weak var selectedPhotoViewControllerDelegate: SelectedPhotoViewControllerDelegate?
     
     // MARK: - IBOutlet
     
