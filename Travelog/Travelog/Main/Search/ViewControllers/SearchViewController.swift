@@ -65,6 +65,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         searchController.searchBar.setScopeBarButtonTitleTextAttributes([.foregroundColor : UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)], for: .selected)
         searchController.searchBar.setScopeBarButtonTitleTextAttributes([.foregroundColor : UIColor.white], for: .normal)
         searchController.automaticallyShowsCancelButton = true
+        searchController.searchBar.tintColor = UIColor.white
 
         if let textfield = searchController.searchBar.value(forKey: "searchField") as? UITextField {
             //플레이스홀더 글씨 색 정하기
