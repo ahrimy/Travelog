@@ -60,7 +60,7 @@ class AttractionListViewController: UIViewController, UISearchBarDelegate,UIColl
             
             attractionPostListViewController.attraction = attractions[indexPath.row]
             attractionPostListViewController.modalPresentationStyle = .fullScreen
-            self.navigationController?.pushViewController(attractionPostListViewController, animated: true)
+            self.navigationController?.pushViewController(attractionPostListViewController, animated: false)
         }
     }
 

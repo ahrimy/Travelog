@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-protocol SelectedLocationViewControllerDelegate{
+protocol SelectedLocationViewControllerDelegate: AnyObject{
     func activateUploadButton()
 }
 
@@ -19,7 +19,7 @@ class SelectedLocationViewController: UIViewController, LocationSearchViewContro
     var location = Location()
     
     // Delegate
-    var selectedLocationViewControllerDelegate: SelectedLocationViewControllerDelegate?
+    weak var selectedLocationViewControllerDelegate: SelectedLocationViewControllerDelegate?
 
     // MARK: - IBOutlet
     @IBOutlet weak var setLocationLabel: UILabel!
