@@ -32,8 +32,8 @@ class StarredPostDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        view.layer.cornerRadius = 45 // 모달 둥근 정도..
-        
-        //pageView.numberOfPages = img.count // TODO : page 이미지 갯수와 연결
+        configureUI()
+        pageView.numberOfPages = img.count // TODO : page 이미지 갯수와 연결
         //pageView.currentPage = 0
         
 //        if let starredPostDetailViewController = self.starredPostDetailViewController {
@@ -94,7 +94,7 @@ class StarredPostDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureUI()
+        
     }
     
     let dateFormatter: DateFormatter = {

@@ -56,6 +56,7 @@
 		ACA7BF10260A328F00C108EC /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7BF0F260A328E00C108EC /* SettingViewController.swift */; };
 		ACA7BF362613761F00C108EC /* MyPostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7BF352613761F00C108EC /* MyPostListViewController.swift */; };
 		ACA7BF3E2613767800C108EC /* MyPostMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7BF3D2613767800C108EC /* MyPostMapViewController.swift */; };
+		ACD9407426685807005E4148 /* SearchViewPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD9407326685807005E4148 /* SearchViewPostCell.swift */; };
 		ACE90859261B7F160087F6AA /* StarredPostMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE90858261B7F160087F6AA /* StarredPostMapViewController.swift */; };
 		ACE9085E261B7F8D0087F6AA /* StarredPostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE9085D261B7F8D0087F6AA /* StarredPostListViewController.swift */; };
 		ACE90875261C31D70087F6AA /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE90874261C31D70087F6AA /* Bundle-Decodable.swift */; };
@@ -141,6 +142,7 @@
 		ACA7BF0F260A328E00C108EC /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		ACA7BF352613761F00C108EC /* MyPostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostListViewController.swift; sourceTree = "<group>"; };
 		ACA7BF3D2613767800C108EC /* MyPostMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostMapViewController.swift; sourceTree = "<group>"; };
+		ACD9407326685807005E4148 /* SearchViewPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchViewPostCell.swift; path = Travelog/Main/StarredPost/ViewControllers/SearchViewPostCell.swift; sourceTree = SOURCE_ROOT; };
 		ACE90858261B7F160087F6AA /* StarredPostMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarredPostMapViewController.swift; sourceTree = "<group>"; };
 		ACE9085D261B7F8D0087F6AA /* StarredPostListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarredPostListViewController.swift; sourceTree = "<group>"; };
 		ACE90874261C31D70087F6AA /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 		3EC3A531261E9AF2004BA4FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				ACD9407326685807005E4148 /* SearchViewPostCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -774,6 +777,7 @@
 				3E74B9D0261C61BF00AE1CB6 /* UploadPostViewController.swift in Sources */,
 				AC54C5B1261D6EED0020980D /* StarredPostList.swift in Sources */,
 				3EF3BA702648291F006B1DCA /* PostOverview.swift in Sources */,
+				ACD9407426685807005E4148 /* SearchViewPostCell.swift in Sources */,
 				3E33A940262DDFAC00ABCA8A /* Location.swift in Sources */,
 				ACE9085E261B7F8D0087F6AA /* StarredPostListViewController.swift in Sources */,
 				3E13E1B32655780D00D308BB /* LoadingViewController.swift in Sources */,

@@ -7,14 +7,48 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    @IBOutlet weak var SearchViewCollectionView: UICollectionView!
+    @IBOutlet weak var SearchViewResultTableView: UITableView!
+    
+    var posts:[PostOverview] = []
+    let cellIdentifier: String = "SearchViewPostCell"
     //서치바 만들기
     let searchController = UISearchController(searchResultsController: nil)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Search"
         setSearchBar()
+        
+        SearchViewCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        SearchViewCollectionView.backgroundColor = .systemBackground
+        view.addSubview(SearchViewCollectionView)
+        
+        SearchViewCollectionView.translatesAutoresizingMaskIntoConstraints = false // AutoLayout 설정
+        SearchViewCollectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        SearchViewCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        SearchViewCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        SearchViewCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+
+        SearchViewCollectionView.register(SearchViewPostCell.self, forCellWithReuseIdentifier: SearchViewPostCell.reuseIdentifier)
+        
+        SearchViewCollectionView.dataSource = self
+        SearchViewCollectionView.delegate = self
+        
+        PostService.shared.loadPostOverviewsForStarredPostList(loadPosts: loadPosts(posts:))
+    }
+    
+    func appendPost(post:PostOverview){
+        self.posts.append(post)
+        self.SearchViewCollectionView.reloadData()
+    }
+    
+    func loadPosts(posts:[PostOverview]){
+        self.posts = posts
+        self.SearchViewCollectionView.reloadData()
     }
     
     func setSearchBar() {
@@ -55,9 +89,35 @@ class SearchViewController: UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = false // FIXME: 이거 추가하니까 상단에 잘 나와요
         definesPresentationContext = true
     }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return posts.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchViewPostCell", for: indexPath) as? SearchViewPostCell else { return UICollectionViewCell()}
+        
+        cell.configure(with: posts[indexPath.row])
+        
+        return cell
+    }
+    
 }
-extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
+
+
+
+extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, UICollectionViewDelegateFlowLayout {
     func updateSearchResults(for searchController: UISearchController) {
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width / 2 - 2, height: 300) // TODO: 셀 사이즈 지정
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    
 }

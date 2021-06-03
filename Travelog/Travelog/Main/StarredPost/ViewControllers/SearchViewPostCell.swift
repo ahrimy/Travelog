@@ -1,15 +1,15 @@
 //
-//  StarredPostListCell.swift
+//  SearchViewPostCell.swift
 //  Travelog
 //
-//  Created by 강예나 on 2021/04/06.
+//  Created by 강예나 on 2021/06/03.
 //
 
 import UIKit
 
-class StarredPostListCell: UICollectionViewCell {
-   
-    static let reuseIdentifier: String = "StarredPostListCell"
+class SearchViewPostCell: UICollectionViewCell {
+    
+    static let reuseIdentifier: String = "SearchViewPostCell"
 
     let name = UILabel()
     let imageView = UIImageView()
@@ -22,13 +22,13 @@ class StarredPostListCell: UICollectionViewCell {
     
     var postDetail : PostDetail?
     
-    func configure(with searchpostlist: PostOverview) {
-        name.text = searchpostlist.writer
-        imageView.image = searchpostlist.image
-        address_info.text = searchpostlist.locationName
-        likeNum.text = "\(searchpostlist.comments)"
-        commentNum.text = "\(searchpostlist.likes)"
-        text.text = searchpostlist.text
+    func configure(with starredpostlist: PostOverview) {
+        name.text = starredpostlist.writer
+        imageView.image = starredpostlist.image
+        address_info.text = starredpostlist.locationName
+        likeNum.text = "\(starredpostlist.comments)"
+        commentNum.text = "\(starredpostlist.likes)"
+        text.text = starredpostlist.text
         
     }
     
@@ -97,13 +97,8 @@ class StarredPostListCell: UICollectionViewCell {
 //        stackView.setCustomSpacing(5, after: address_info)
     }
     
-    
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    /*
-    let LabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(LocationLabel.addGestureRecognizer(_:)))
-    LocationLabel.addGestureRecognizer(LabelTapGesture)
-    */
+    
 }
