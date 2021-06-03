@@ -61,7 +61,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UICollec
         searchController.searchBar.setImage(UIImage(named: "icSearchNonW"), for: UISearchBar.Icon.search, state: .normal)
         //오른쪽 x버튼 이미지 세팅하기
         searchController.searchBar.setImage(UIImage(named: "icCancel"), for: .clear, state: .normal)
-        searchController.searchBar.scopeButtonTitles = [ "장소", "계정", "태그"]
+        searchController.searchBar.scopeButtonTitles = [ "장소", "계정"]
         searchController.searchBar.setScopeBarButtonTitleTextAttributes([.foregroundColor : UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)], for: .selected)
         searchController.searchBar.setScopeBarButtonTitleTextAttributes([.foregroundColor : UIColor.white], for: .normal)
         searchController.automaticallyShowsCancelButton = true
