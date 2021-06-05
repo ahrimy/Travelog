@@ -12,6 +12,7 @@ class PostDetail {
     
     init(id:String = "-1",
          images:[UIImage] = [],
+         imageUrls:[String],
          date:Date = Date(),
          text:String = "",
          createdAt:Date = Date(),
@@ -23,6 +24,7 @@ class PostDetail {
          writer:String = ""){
         self.id = id
         self.images = images
+        self.imageUrls = imageUrls
         self.date = date
         self.text = text
         self.createdAt = createdAt
@@ -35,7 +37,8 @@ class PostDetail {
     }
     
     var id: String
-    var images: [UIImage]
+    var images: [UIImage?]
+    var imageUrls: [String]
     var date: Date
     var text: String
     var createdAt: Date

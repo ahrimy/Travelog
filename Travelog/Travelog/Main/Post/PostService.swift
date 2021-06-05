@@ -69,8 +69,8 @@ class PostService {
                 "locationName":"\(location.name), \(location.country)",
                 "createdAt" : data["createdAt"] as! Date,
                 "isPublic" : data["isPublic"] as! Bool,
-                "locality" : data["locality"] as! String,
-                "countryCode" : data["countryCode"] as! String,
+                "locality" : location.locality ,
+                "countryCode" : location.countryCode ,
                 "likes" : 0,
                 "comments" : 0
             ], merge: true){ err in
@@ -116,6 +116,14 @@ class PostService {
     func loadMyPostOverviews(loadPosts:@escaping ([PostOverview]) -> Void){
         if let username = UserService.shared.user?.username {
             let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: username)
+            self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
+        }
+    }
+    
+    func loadStarredPostOverviews(loadPosts:@escaping ([PostOverview]) -> Void){
+        if let starredUsers = UserService.shared.user?.starredUsers, starredUsers
+            .count > 0 {
+            let documentRef = db.collection("postoverviews").whereField("writer", in: starredUsers).whereField("isPublic", isEqualTo: true)
             self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
         }
     }
@@ -174,25 +182,18 @@ class PostService {
                     guard let locationName = data["locationName"] as? String else { continue }
                     guard let text = data["text"] as? String else { continue }
                     
-//                    guard let imageRef = data["image"] as? String else { return }
                     guard let imageUrl = data["imageUrl"] as? String else { continue }
-                    do{
-                        let url = URL(string: imageUrl)!
-                        let imageData = try Data(contentsOf: url)
-                        let image = UIImage(data: imageData)!
-                        posts.append(PostOverview(id:id,
-                                                  image: image,
-                                                  date: date.dateValue(),
-                                                  text:text,
-                                                  createdAt: createdAt.dateValue(),
-                                                  coordinate: coordinate,
-                                                  locationName: locationName,
-                                                  likes: likes,
-                                                  comments: comments,
-                                                  writer: writer))
-                    }catch{
-                        print("Error occured while load image from url")
-                    }
+                    let post = PostOverview(id:id,
+                                           imageUrl: imageUrl,
+                                           date: date.dateValue(),
+                                           text:text,
+                                           createdAt: createdAt.dateValue(),
+                                           coordinate: coordinate,
+                                           locationName: locationName,
+                                           likes: likes,
+                                           comments: comments,
+                                           writer: writer)
+                    posts.append(post)
                     if count == documents.count {
                         loadPosts(posts)
                     }
@@ -222,24 +223,10 @@ class PostService {
                 guard let coordinateData = location["coordinate"] as? GeoPoint else { return }
                 let coordinate = CLLocation(latitude: coordinateData.latitude, longitude: coordinateData.longitude)
                 
-//                guard let imageRefs = data["images"] as? [String] else { return }
                 guard let imageUrls = data["imageUrls"] as? [String] else { return }
-                var images:[UIImage] = []
-                var count = 0
-                for i in 0..<imageUrls.count {
-                    count += 1
-                    do{
-                        let url = URL(string: imageUrls[i])!
-                        let imageData = try Data(contentsOf: url)
-                        let image = UIImage(data: imageData)!
-                        images.append(image)
-                    }catch{
-                        print("Error occured while load image from url")
-                    }
-                    if count == imageUrls.count{
-                        loadPost(PostDetail(id: id, images: images, date: date.dateValue(), text: text, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), location: Location(name: name, address: address, postalCode: postalCode, country: country, coordinate: coordinate), likes: likes, likeUsers: likeUsers, comments: comments, writer: writer))
-                    }
-                }
+                let post = PostDetail(id: id, imageUrls: imageUrls, date: date.dateValue(), text: text, createdAt: createdAt.dateValue(), updatedAt: updatedAt.dateValue(), location: Location(name: name, address: address, postalCode: postalCode, country: country, coordinate: coordinate), likes: likes, likeUsers: likeUsers, comments: comments, writer: writer)
+
+                loadPost(post)
             } else {
                 print("Document does not exist")
             }
