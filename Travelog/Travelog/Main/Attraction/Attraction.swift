@@ -12,12 +12,14 @@ import MapKit
 class Attraction{
     
     init(id:String,
-         image:UIImage,
+         image:UIImage? = nil,
+         imageUrl:String,
          locality:String,
          countryCode:String,
          country:String){
         self.id = id
         self.image = image
+        self.imageUrl = imageUrl
         self.name = "  \(locality), \n  \(country)"
         self.locality = locality
         self.countryCode = countryCode
@@ -25,7 +27,8 @@ class Attraction{
     }
     
     let id: String
-    let image:UIImage
+    var image:UIImage?
+    let imageUrl:String
     let name:String
     let locality:String
     let countryCode: String

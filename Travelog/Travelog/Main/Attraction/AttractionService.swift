@@ -40,18 +40,12 @@ class AttractionService {
                     guard let countryCode = data["countryCode"] as? String else { continue }
                     guard let country = data["country"] as? String else { continue }
                     guard let imageUrl = data["imageUrl"] as? String else { continue }
-                    do{
-                        let url = URL(string: imageUrl)!
-                        let imageData = try Data(contentsOf: url)
-                        let image = UIImage(data: imageData)!
-                        self.attractions.append(Attraction(id:id,
-                                                  image: image,
-                                                  locality:locality,
-                                                  countryCode:countryCode,
-                                                  country: country))
-                    }catch{
-                        print("Error occured while load image from url")
-                    }
+                    let attraction = Attraction(id:id,
+                                                imageUrl: imageUrl,
+                                                locality:locality,
+                                                countryCode:countryCode,
+                                                country: country)
+                    self.attractions.append(attraction)
                 }
             }
             
