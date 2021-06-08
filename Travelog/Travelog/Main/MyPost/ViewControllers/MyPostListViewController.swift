@@ -41,7 +41,11 @@ class MyPostListViewController: UIViewController, UICollectionViewDataSource, UI
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyPostOverviewCell", for: indexPath) as! MyPostViewCell
         
         cell.overview = posts[indexPath.row]
-        cell.imageView.image = posts[indexPath.row].image
+        if let image = posts[indexPath.row].image {
+            cell.imageView.image = image
+        }else{
+            cell.imageView.load(urlString: posts[indexPath.row].imageUrl)
+        }
         
         return cell
     }

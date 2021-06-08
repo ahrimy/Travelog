@@ -12,7 +12,8 @@ import MapKit
 class PostOverview{
     
     init(id:String = "-1",
-         image:UIImage,
+         image:UIImage? = nil,
+         imageUrl:String,
          date:Date = Date(),
          text:String = "",
          createdAt: Date = Date(),
@@ -23,6 +24,7 @@ class PostOverview{
          writer:String = ""){
         self.id = id
         self.image = image
+        self.imageUrl = imageUrl
         self.date = date
         self.text = text
         self.createdAt = createdAt
@@ -34,7 +36,8 @@ class PostOverview{
     }
     
     var id:String
-    var image:UIImage
+    var image:UIImage?
+    var imageUrl:String
     var date:Date
     var text:String
     var createdAt: Date

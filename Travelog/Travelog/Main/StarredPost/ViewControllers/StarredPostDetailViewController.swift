@@ -25,7 +25,7 @@ class StarredPostDetailViewController: UIViewController {
     // MARK: - Properties
     var postId: String = ""
     var data: PostDetail?
-    var img: [UIImage] = []
+    var imgUrls: [String] = []
     var starredPostDetailViewController: StarredPostDetailViewController?
     
     // MARK: - Life Cycle
@@ -33,7 +33,7 @@ class StarredPostDetailViewController: UIViewController {
         super.viewDidLoad()
 //        view.layer.cornerRadius = 45 // 모달 둥근 정도..
         configureUI()
-        pageView.numberOfPages = img.count // TODO : page 이미지 갯수와 연결
+        pageView.numberOfPages = imgUrls.count // TODO : page 이미지 갯수와 연결
         pageView.hidesForSinglePage = true
         
 //        if let starredPostDetailViewController = self.starredPostDetailViewController {
@@ -109,10 +109,7 @@ class StarredPostDetailViewController: UIViewController {
         locationLabel.text = data?.location.name
         //imageView.image = data?.images[0]
         
-        let imgSet: [UIImage]? = data?.images
-        if let newImg = imgSet {
-            img = newImg
-        }
+        imgUrls = data?.imageUrls ?? []
         //img = data?.images
         
         let date: Date? = data?.date
@@ -157,7 +154,8 @@ extension StarredPostDetailViewController: UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "detailViewCell", for: indexPath) as? StarredPostDetailImageCell else {return UICollectionViewCell()}
         
-        cell.imageView.image = img[indexPath.row]
+//        cell.imageView.image = img[indexPath.row]
+        cell.imageView.load(urlString: imgUrls[indexPath.row])
         //pageView.currentPage = indexPath.row
         
         return cell
@@ -170,7 +168,7 @@ extension StarredPostDetailViewController: UICollectionViewDelegate, UICollectio
 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return img.count
+        return imgUrls.count
     }
 }
 

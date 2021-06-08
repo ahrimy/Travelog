@@ -50,7 +50,7 @@ class AttractionListViewController: UIViewController, UISearchBarDelegate,UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AttractionCollectionViewCell.reuseIdentifier, for: indexPath) as! AttractionCollectionViewCell
         
         cell.attraction = attractions[indexPath.row]
-        cell.imageView.image = attractions[indexPath.row].image
+        cell.imageView.load(urlString: attractions[indexPath.row].imageUrl)
         cell.nameLabel.text = attractions[indexPath.row].name
         
         return cell
@@ -60,7 +60,7 @@ class AttractionListViewController: UIViewController, UISearchBarDelegate,UIColl
             
             attractionPostListViewController.attraction = attractions[indexPath.row]
             attractionPostListViewController.modalPresentationStyle = .fullScreen
-            self.navigationController?.pushViewController(attractionPostListViewController, animated: true)
+            self.navigationController?.pushViewController(attractionPostListViewController, animated: false)
         }
     }
 

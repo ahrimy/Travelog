@@ -36,12 +36,7 @@ class StarredPostViewController: UIViewController {
         mapListSegmentedControl.setTitleTextAttributes([.foregroundColor : UIColor.white], for: .selected)
         mapListSegmentedControl.setTitleTextAttributes([.foregroundColor : UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)], for: .normal)
         
-        if let starredPostListViewController = self.starredPostListViewController {
-            PostService.shared.loadPostOverviewsForStarredPostList(loadPosts: starredPostListViewController.loadPosts(posts:))
-        }
-        if let starredPostMapViewController = self.starredPostMapViewController {
-            PostService.shared.loadPostOverviewsForStarredPostMap(loadPosts: starredPostMapViewController.loadPosts(posts:))
-        }
+        PostService.shared.loadStarredPostOverviews(loadPosts: loadPost(posts:))
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,7 +48,14 @@ class StarredPostViewController: UIViewController {
         }
     }
     
-    
+    func loadPost(posts:[PostOverview]){
+        if let starredPostListViewController = self.starredPostListViewController {
+            starredPostListViewController.loadPosts(posts: posts )
+        }
+        if let starredPostMapViewController = self.starredPostMapViewController {
+            starredPostMapViewController.loadPosts(posts: posts)
+        }
+    }
     func appendPost(post: PostOverview){
         starredPostListViewController?.appendPost(post: post)
         starredPostMapViewController?.appendPost(post: post)

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol UploadPostViewControllerDelegate {
+protocol UploadPostViewControllerDelegate:AnyObject {
     func uploadPost(data:[String:Any],completion:()->())
 }
 
@@ -22,7 +22,7 @@ class UploadPostViewController: UIViewController,SelectedLocationViewControllerD
     var selectedPhotoViewController: SelectedPhotoViewController?
     
     // Delegate
-    var uploadPostViewControllerDelegate: UploadPostViewControllerDelegate?
+    weak var uploadPostViewControllerDelegate: UploadPostViewControllerDelegate?
 
     // MARK: - IBOutlet
     @IBOutlet weak var uploadButton: UIBarButtonItem!{

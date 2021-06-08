@@ -24,7 +24,7 @@ class StarredPostListCell: UICollectionViewCell {
     
     func configure(with searchpostlist: PostOverview) {
         name.text = searchpostlist.writer
-        imageView.image = searchpostlist.image
+        imageView.load(urlString: searchpostlist.imageUrl)
         address_info.text = searchpostlist.locationName
         likeNum.text = "\(searchpostlist.comments)"
         commentNum.text = "\(searchpostlist.likes)"

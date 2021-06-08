@@ -38,7 +38,9 @@ class UserService {
                     let starredUsers = (data["starredUsers"] ?? []) as! [String]
                     
                     UserService.shared.user = User(id: document.documentID, uid: authUser.uid, username: username, starredUsers: starredUsers)
-                    AttractionService.shared.loadAttractions()
+                    DispatchQueue.global().async {
+                        AttractionService.shared.loadAttractions()
+                    }
                     authorizedCompletion()
                 }
             }
