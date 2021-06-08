@@ -79,6 +79,7 @@ extension StarredPostListViewController:  UICollectionViewDelegateFlowLayout {
             postDetailView.loadPost(post: post)
             self.present(postDetailView, animated: true, completion: nil)
         }
+
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

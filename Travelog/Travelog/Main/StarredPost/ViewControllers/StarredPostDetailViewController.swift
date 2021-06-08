@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class StarredPostDetailViewController: UIViewController {
     
@@ -27,6 +28,7 @@ class StarredPostDetailViewController: UIViewController {
     var data: PostDetail?
     var imgUrls: [String] = []
     var starredPostDetailViewController: StarredPostDetailViewController?
+    var user: String = ""
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -44,11 +46,14 @@ class StarredPostDetailViewController: UIViewController {
         imageSliderCollectionView.delegate = self
     }
     
+  
     
     func loadPost(post: PostDetail){
         self.data = post
         //self.imageSliderCollectionView.reloadData()
     }
+    
+    
     
     @IBAction func editNdeleteButton(_ sender: Any){
         let alert =  UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -67,21 +72,57 @@ class StarredPostDetailViewController: UIViewController {
     }
     
     @IBAction func tappedLikeButton(_ sender: Any){
-        if (likesButton.isSelected == false) {
+        
+        let likesInt: Int? = data?.likes
+        if let newLikesInt = likesInt{
+            likesCount.text = "\(newLikesInt)"
+        }
+        
+        let username: String? = UserService.shared.user?.username
+        if let newUsername = username{
+            user = newUsername
+        }
+        print(data?.likeUsers as Any)
+        if (data?.likeUsers.contains(user) == false) {
+            data?.likeUsers.append(user)
+            print(data?.likeUsers as Any)
+            
             likesButton.isSelected = true
             likesButton.setImage(UIImage(named: "smile.fill"), for: .normal)
-//            var likesCountInt : Int = data!.likes
-//            likesCount.text = "\(likesCountInt)"
-//            likesCountInt += 1
-//            likesButton.tintColor = .white
-//            likesCountInt += 1
+            
+            // 좋아요 수 + 1 저장
+            let db = Firestore.firestore()
+            let id = data?.id
+            let ref = db.collection("postdetails").document(id!)
+            
+            db.runTransaction({(Transaction, ErrorPointer) -> Any? in let Document: DocumentSnapshot
+                do{ try Document = Transaction.getDocument(ref)
+                } catch let fetchError as NSError{
+                    ErrorPointer?.pointee = fetchError
+                    return nil
+                }
+                guard let like = Document.data()?["likes"] as? Int else{
+                    let error = NSError(domain: "AppErrorDomain", code: -1, userInfo: [NSLocalizedDescriptionKey:"Unable to retrieve like from snapshot \(Document)"])
+                    ErrorPointer?.pointee = error
+                    return nil
+                }
+                Transaction.updateData(["likes": like + 1], forDocument: ref)
+                return nil
+            }, completion: { (object, error) in
+                if let error = error {
+                    //실패했을때
+                    print("Transaction failed: \(error)")
+                } else {
+                    //성공했을 때 출력
+                    print("Transaction successfully committed!")
+                }
+            })
         }
-    
+        
+       
+        // 좋아요 취소
 //        else {
-//            likesButton.isSelected = false
-//            likesButton.setImage(UIImage(named: "smile"), for: .normal)
-//            likesButton.tintColor = .white
-//            likesCountInt -= 1
+
 //        }
     }
     
