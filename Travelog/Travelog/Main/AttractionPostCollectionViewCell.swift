@@ -118,7 +118,7 @@ class AttractionPostCollectionViewCell: UICollectionViewCell {
         likeCommentStackView.distribution = .fill
         likeCommentStackView.semanticContentAttribute = .forceRightToLeft
         
-        likeImg.image = UIImage(systemName: "star")
+        likeImg.image = UIImage(systemName: "smiley")
         likeImg.tintColor = UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)
 
         likeLabel.textColor = UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)

@@ -55,7 +55,7 @@ class StarredPostListCell: UICollectionViewCell {
         text.textAlignment = .left
         text.numberOfLines = 5
         
-        likeButton.setImage(UIImage(systemName: "star"), for: .normal)
+        likeButton.setImage(UIImage(systemName: "smiley"), for: .normal)
         likeButton.imageEdgeInsets = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
         likeButton.imageView?.contentMode = .scaleAspectFit
 
