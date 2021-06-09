@@ -11,8 +11,8 @@ class AttractionCollectionViewCell: UICollectionViewCell {
 
     static let reuseIdentifier: String = "AttractionCell"
     var attraction : Attraction?
-    var nameLabel = UILabel()
-    var imageView = UIImageView()
+    let nameLabel = UILabel()
+    let imageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

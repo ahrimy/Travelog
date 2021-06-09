@@ -11,18 +11,18 @@ class AttractionPostCollectionViewCell: UICollectionViewCell {
     
     static let reuseIdentifier: String = "AttractionPostCell"
     var post : PostOverview?
-    var cellView = UIView()
-    var nameLabel = UILabel()
-    var imageView = UIImageView()
-    var addressStackView = UIStackView()
-    var locationImg = UIImageView()
-    var addressLabel = UILabel()
-    var textLabel = UILabel()
-    var likeCommentStackView = UIStackView()
-    var likeImg = UIImageView()
-    var likeLabel = UILabel()
-    var commentImg = UIImageView()
-    var commentLabel = UILabel()
+    let cellView = UIView()
+    let nameLabel = UILabel()
+    let imageView = UIImageView()
+    let addressStackView = UIStackView()
+    let locationImg = UIImageView()
+    let addressLabel = UILabel()
+    let textLabel = UILabel()
+    let likeCommentStackView = UIStackView()
+    let likeImg = UIImageView()
+    let likeLabel = UILabel()
+    let commentImg = UIImageView()
+    let commentLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
