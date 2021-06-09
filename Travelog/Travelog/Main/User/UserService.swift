@@ -75,6 +75,9 @@ class UserService {
     func signOut(completion:()->Void){
         do {
             try auth.signOut()
+            AttractionService.shared.attractions = []
+            PostService.shared.posts = []
+            UserService.shared.user = nil
             completion()
         } catch let signOutError as NSError {
           print ("Error signing out: %@", signOutError)
