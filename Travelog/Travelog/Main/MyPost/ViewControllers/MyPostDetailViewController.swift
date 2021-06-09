@@ -38,14 +38,15 @@ class MyPostDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        pageView.numberOfPages = imgUrls.count
         pageView.hidesForSinglePage = true
-        
         imageSliderCollectionView.register(MyPostImageCollectionViewCell.self, forCellWithReuseIdentifier: MyPostImageCollectionViewCell.reuseIdentifier)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+        configureData()
+        imageSliderCollectionView.reloadData()
+    }
   
-    
     func loadPost(post: PostDetail){
         self.post = post
     }
@@ -76,12 +77,6 @@ class MyPostDetailViewController: UIViewController {
 //        likesButton.setImage(UIImage(named: "smile.fill.pink"), for: .normal)
         print("likes button has tapped")
     }
-
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
     
     let dateFormatter: DateFormatter = {
         let formatter: DateFormatter = DateFormatter()
@@ -90,9 +85,23 @@ class MyPostDetailViewController: UIViewController {
     }()
     
     func configureUI(){
+        locationLabel.font = UIFont.systemFont(ofSize: 17)
+        locationLabel.numberOfLines = 1
+        
+        textLabel.font = UIFont.systemFont(ofSize: 16)
+        textLabel.numberOfLines = 0
+        textLabel.textAlignment = .left
+        textLabel.lineBreakStrategy = .hangulWordPriority
+        textLabel.frame.size = CGSize(width: 358, height: 150)
+    }
+    func configureData(){
+        textLabel.text = post?.text
+        
+        locationLabel.text = post?.location.name
         imgUrls = post?.imageUrls ?? []
         
         let date: Date? = post?.date
+        
         if let newDate = date {
             let dateString: String = self.dateFormatter.string(from: newDate)
             dateLabel.text = dateString
@@ -107,20 +116,8 @@ class MyPostDetailViewController: UIViewController {
         if let newCommentsInt = commentsInt{
             commentsCount.text = "\(newCommentsInt)"
         }
-        
-        locationLabel.text = post?.location.name
-        locationLabel.font = UIFont.systemFont(ofSize: 17)
-        locationLabel.numberOfLines = 1
-        
-        
-        textLabel.text = post?.text
-        textLabel.font = UIFont.systemFont(ofSize: 16)
-        textLabel.numberOfLines = 0
-        textLabel.textAlignment = .left
-        textLabel.sizeToFit()
-        textLabel.lineBreakStrategy = .hangulWordPriority
+        pageView.numberOfPages = imgUrls.count
     }
-
 }
 
 extension MyPostDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
