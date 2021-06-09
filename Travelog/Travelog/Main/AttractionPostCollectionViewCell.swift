@@ -82,17 +82,16 @@ class AttractionPostCollectionViewCell: UICollectionViewCell {
     
     func setUpNameLabel() {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.backgroundColor = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 0.5)
+        nameLabel.backgroundColor = UIColor(red: 0.00, green: 0.00, blue: 0.00, alpha: 0.3)
         nameLabel.textColor = .white
         nameLabel.textAlignment = .right
-        nameLabel.numberOfLines = 2
-        nameLabel.font = UIFont(name: "Arial", size: 15)
+        nameLabel.numberOfLines = 1
     }
     
     func setUpAddressStackView(){
         addressStackView.translatesAutoresizingMaskIntoConstraints = false
         addressStackView.axis = .horizontal
-        addressStackView.spacing = 5
+        addressStackView.spacing = 3
         addressStackView.backgroundColor = .none
         addressStackView.alignment = .center
         addressStackView.distribution = .fill
@@ -114,6 +113,7 @@ class AttractionPostCollectionViewCell: UICollectionViewCell {
     func setUpLikeCommentStackView(){
         likeCommentStackView.translatesAutoresizingMaskIntoConstraints = false
         likeCommentStackView.backgroundColor = .none
+        likeCommentStackView.spacing = 3
         likeCommentStackView.alignment = .center
         likeCommentStackView.distribution = .fill
         likeCommentStackView.semanticContentAttribute = .forceRightToLeft
