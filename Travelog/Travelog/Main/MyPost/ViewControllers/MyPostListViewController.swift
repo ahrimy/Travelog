@@ -11,7 +11,8 @@ class MyPostListViewController: UIViewController, UICollectionViewDataSource, UI
     
     // MARK: - Properties
     var posts:[PostOverview] = []
-    
+    var myPostDetailViewController: MyPostDetailViewController?
+   
     // MARK: - IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -21,7 +22,7 @@ class MyPostListViewController: UIViewController, UICollectionViewDataSource, UI
 
         // Do any additional setup after loading the view.
     }
-
+    
     // MARK: - Methods
     func appendPost(post:PostOverview){
         self.posts.append(post)
@@ -30,6 +31,16 @@ class MyPostListViewController: UIViewController, UICollectionViewDataSource, UI
     }
     func loadPosts(posts: [PostOverview]) {
         self.posts = posts.sorted(by: {$0.date > $1.date})
+        self.collectionView.reloadData()
+    }
+    func deletePost(postId:String){
+        print("Has deleted in list")
+        for i in 0..<posts.count{
+            if posts[i].id == postId {
+                posts.remove(at: i)
+                break
+            }
+        }
         self.collectionView.reloadData()
     }
     
@@ -69,15 +80,15 @@ class MyPostListViewController: UIViewController, UICollectionViewDataSource, UI
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
       return 0
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let myPostDetailViewController = self.myPostDetailViewController else { return }
+        myPostDetailViewController.modalTransitionStyle = .coverVertical
+        PostService.shared.loadPostDetail(postId: posts[indexPath.row].id){ post in
+            myPostDetailViewController.index = indexPath.row
+            myPostDetailViewController.loadPost(post: post)
+            self.present(myPostDetailViewController, animated: true, completion: nil)
+        }
     }
-    */
 
 }

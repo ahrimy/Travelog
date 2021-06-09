@@ -11,7 +11,7 @@ import MapKit
 class MyPostMapViewController: UIViewController {
     
     // MARK: - Properties
-    var posts:[PostOverview] = []
+    var myPostDetailViewController: MyPostDetailViewController?
     
     // MARK: - IBOutlet
     @IBOutlet weak var mapView: MKMapView!
@@ -22,18 +22,9 @@ class MyPostMapViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         configureMapView()
+        
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     // MARK: - Methods
     private func configureMapView(){
         mapView.translatesAutoresizingMaskIntoConstraints = false
@@ -52,17 +43,27 @@ class MyPostMapViewController: UIViewController {
             forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
     }
     func appendPost(post:PostOverview){
-        self.posts.append(post)
         self.addAnnotation(with: post)
         setRegion(coordinate: post.coordinate.coordinate)
     }
     func loadPosts(posts: [PostOverview]) {
-        self.posts = posts.sorted(by: {$0.createdAt > $1.createdAt})
-        if let recentPost = self.posts.first {
+        let posts = posts.sorted(by: {$0.createdAt > $1.createdAt})
+        if let recentPost = posts.first {
             setRegion(coordinate: recentPost.coordinate.coordinate)
         }
-        self.posts.forEach{post in
+        posts.forEach{post in
             self.addAnnotation(with: post)
+        }
+    }
+    func deletePost(postId: String){
+        print("Has deleted on map")
+        let annotations = mapView.annotations
+        for annotation in annotations{
+            guard annotation is MapItem else { continue }
+            if (annotation as! MapItem).postId == postId {
+                mapView.removeAnnotation(annotation)
+                break
+            }
         }
     }
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UploadPostViewControllerDelegate {
+class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UploadPostViewControllerDelegate, MyPostDetailViewControllerDelegate {
 
     // MARK: - Properties
 
@@ -57,6 +57,11 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
         if let myPostMapViewController = segue.destination as? MyPostMapViewController {
             self.myPostMapViewController = myPostMapViewController
         }
+        if let myPostDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "MyPostDetailViewController") as? MyPostDetailViewController{
+            myPostDetailViewController.delegate = self
+            self.myPostListViewController?.myPostDetailViewController = myPostDetailViewController
+            self.myPostMapViewController?.myPostDetailViewController = myPostDetailViewController
+        }
         if let uploadPostViewController = segue.destination as? UploadPostViewController {
             uploadPostViewController.uploadPostViewControllerDelegate = self
         }
@@ -93,6 +98,14 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
     func appendPost(post: PostOverview){
         myPostListViewController?.appendPost(post: post)
         myPostMapViewController?.appendPost(post: post)
+    }
+    func deletePost(postId: String) {
+        if let myPostMapViewController = self.myPostMapViewController {
+            myPostMapViewController.deletePost(postId: postId)
+        }
+        if let myPostListViewController = self.myPostListViewController {
+            myPostListViewController.deletePost(postId: postId)
+        }
     }
 }
 
