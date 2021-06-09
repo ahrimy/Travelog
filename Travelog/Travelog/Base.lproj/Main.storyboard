@@ -695,22 +695,17 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="i3y-TE-eD6">
                                 <rect key="frame" x="0.0" y="113.33333333333331" width="390" height="730.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sap-MJ-oTA">
-                                    <size key="itemSize" width="128" height="128"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sap-MJ-oTA">
+                                    <size key="itemSize" width="185" height="276"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aeZ-o7-XVS">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mQh-vF-JaN">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="LTd-Ob-eMD" id="Dp5-CP-yEu"/>
+                                    <outlet property="delegate" destination="LTd-Ob-eMD" id="fGe-ek-7Oq"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MtG-Ev-MZS"/>
@@ -828,37 +823,7 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AttractionCell" translatesAutoresizingMaskIntoConstraints="NO" id="xIY-WZ-Vhb" customClass="AttractionCollectionViewCell" customModule="Travelog" customModuleProvider="target">
-                                        <rect key="frame" x="92.666666666666671" y="0.0" width="205" height="335"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="205" height="335"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view clipsSubviews="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2F-YC-Al0">
-                                                    <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XeK-bl-5Gn">
-                                                            <rect key="frame" x="0.0" y="0.0" width="201" height="331"/>
-                                                        </imageView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="XeK-bl-5Gn" secondAttribute="trailing" id="0GK-Pv-jxj"/>
-                                                        <constraint firstAttribute="bottom" secondItem="XeK-bl-5Gn" secondAttribute="bottom" id="NIG-tW-PFJ"/>
-                                                        <constraint firstItem="XeK-bl-5Gn" firstAttribute="leading" secondItem="T2F-YC-Al0" secondAttribute="leading" id="Ouc-lL-eOQ"/>
-                                                        <constraint firstItem="XeK-bl-5Gn" firstAttribute="top" secondItem="T2F-YC-Al0" secondAttribute="top" id="Sn6-4D-fjr"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="T2F-YC-Al0" firstAttribute="top" secondItem="xIY-WZ-Vhb" secondAttribute="top" id="7pG-FV-CTL"/>
-                                            <constraint firstItem="T2F-YC-Al0" firstAttribute="leading" secondItem="xIY-WZ-Vhb" secondAttribute="leading" id="iSP-0O-zy0"/>
-                                            <constraint firstAttribute="trailing" secondItem="T2F-YC-Al0" secondAttribute="trailing" id="nbQ-zp-hzG"/>
-                                            <constraint firstAttribute="bottom" secondItem="T2F-YC-Al0" secondAttribute="bottom" id="ua5-mD-tTF"/>
-                                        </constraints>
-                                        <size key="customSize" width="205" height="335"/>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                                 <connections>
                                     <outlet property="dataSource" destination="naz-id-V5s" id="bQm-mN-ueZ"/>
                                     <outlet property="delegate" destination="naz-id-V5s" id="dwG-W0-DjE"/>

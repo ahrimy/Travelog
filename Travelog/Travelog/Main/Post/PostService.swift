@@ -116,7 +116,7 @@ class PostService {
     func loadMyPostOverviews(loadPosts:@escaping ([PostOverview]) -> Void){
         if let username = UserService.shared.user?.username {
             let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: username)
-            self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
+            self.loadPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
         }
     }
     
@@ -124,42 +124,53 @@ class PostService {
         if let starredUsers = UserService.shared.user?.starredUsers, starredUsers
             .count > 0 {
             let documentRef = db.collection("postoverviews").whereField("writer", in: starredUsers).whereField("isPublic", isEqualTo: true)
-            self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
+            self.loadPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
         }
+    }
+    
+    func loadAttractionPostOverviews(locality:String, countryCode: String, loadPosts:@escaping ([PostOverview]) -> Void){
+        let documentRef = db.collection("postoverviews")
+            .whereField("isPublic", isEqualTo: true)
+            .whereField("locality", isEqualTo: locality)
+            .whereField("countryCode", isEqualTo: countryCode)
+        self.loadPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
+
     }
   
     //현재 사용 X
     func loadPostOverviewsForMyPostList(loadPosts:@escaping ([PostOverview]) -> Void){
        if let username = UserService.shared.user?.username {
         let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: username).limit(to: 5)
-           self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
+           self.loadPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
        }
     }
     //현재 사용 X
     func loadPostOverviewsForMyPostMap(loadPosts:@escaping ([PostOverview]) -> Void){
        if let username = UserService.shared.user?.username {
            let documentRef = db.collection("postoverviews").whereField("writer", isEqualTo: username).limit(to: 5)
-           self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
+           self.loadPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
        }
     }
+    //현재 사용 X
     func loadPostOverviewsForStarredPostList(loadPosts:@escaping ([PostOverview]) -> Void){
         // TODO: 데이터 부분적으로 가져올 수 있도록
         if let starredUsers = UserService.shared.user?.starredUsers , starredUsers
         .count > 0{
             let documentRef = db.collection("postoverviews").whereField("writer", in: starredUsers).whereField("isPublic", isEqualTo: true)
-            self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
+            self.loadPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
         }
     }
+    //현재 사용 X
     func loadPostOverviewsForStarredPostMap(loadPosts:@escaping ([PostOverview]) -> Void){
         // TODO: 데이터 부분적으로 가져올 수 있도록
         if let starredUsers = UserService.shared.user?.starredUsers, starredUsers
             .count > 0 {
             let documentRef = db.collection("postoverviews").whereField("writer", in: starredUsers).whereField("isPublic", isEqualTo: true)
-            self.appedPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
+            self.loadPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
         }
     }
     
-    func appedPostOverviews(documentRef:Query,loadPosts:@escaping ([PostOverview]) -> Void){
+    func loadPostOverviews(documentRef:Query,loadPosts:@escaping ([PostOverview]) -> Void){
         var posts:[PostOverview] = []
         documentRef.getDocuments(){(querySnapshot, err) in
             if let err = err {
@@ -169,7 +180,7 @@ class PostService {
                 var count = 0
                 for i in 0..<documents.count {
                     count += 1
-                    // print("\(documents[i].documentID) => \(documents[i].data())")
+//                     print("\(documents[i].documentID) => \(documents[i].data())")
                     let data = documents[i].data()
                     let id = documents[i].documentID
                     guard let writer = data["writer"] as? String else { continue }
@@ -231,5 +242,9 @@ class PostService {
                 print("Document does not exist")
             }
         }
+    }
+    func deletePost(postId:String){
+        db.collection("postoverviews").document(postId).delete()
+        db.collection("postdetails").document(postId).delete()
     }
 }
