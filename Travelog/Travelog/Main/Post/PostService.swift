@@ -130,6 +130,7 @@ class PostService {
     
     func loadAttractionPostOverviews(locality:String, countryCode: String, loadPosts:@escaping ([PostOverview]) -> Void){
         let documentRef = db.collection("postoverviews")
+            .whereField("isPublic", isEqualTo: true)
             .whereField("locality", isEqualTo: locality)
             .whereField("countryCode", isEqualTo: countryCode)
         self.loadPostOverviews(documentRef: documentRef, loadPosts: loadPosts)
