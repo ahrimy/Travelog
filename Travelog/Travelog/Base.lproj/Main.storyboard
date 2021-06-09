@@ -816,7 +816,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aq2-8d-bUh">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="673"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="1FM-bB-Cm0">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -832,7 +832,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PTa-Yt-qbb"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="aq2-8d-bUh" firstAttribute="leading" secondItem="PTa-Yt-qbb" secondAttribute="leading" id="554-zi-iXM"/>
                             <constraint firstItem="PTa-Yt-qbb" firstAttribute="trailing" secondItem="aq2-8d-bUh" secondAttribute="trailing" id="YNF-jd-Xl3"/>
