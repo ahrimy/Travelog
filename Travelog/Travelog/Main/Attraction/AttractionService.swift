@@ -26,7 +26,7 @@ class AttractionService {
     var attractions: [Attraction]
     
     func loadAttractions(){
-        let documentRef = db.collection("attractions")
+        let documentRef = db.collection("attractions").order(by: "locality")
         documentRef.getDocuments(){(querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
