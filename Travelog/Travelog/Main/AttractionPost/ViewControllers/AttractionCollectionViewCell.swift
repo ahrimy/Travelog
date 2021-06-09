@@ -11,13 +11,11 @@ class AttractionCollectionViewCell: UICollectionViewCell {
 
     static let reuseIdentifier: String = "AttractionCell"
     var attraction : Attraction?
-//    var cellView = UIView()
     var nameLabel = UILabel()
     var imageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        addSubview(cellView)
         addSubview(imageView)
         addSubview(nameLabel)
         setUpImageView()
@@ -28,12 +26,6 @@ class AttractionCollectionViewCell: UICollectionViewCell {
         super.init(coder: coder)
         fatalError("init(coder:) has not been implemented")
     }
-    
-//    func setUpCellView() {
-//        cellView.translatesAutoresizingMaskIntoConstraints = true
-//        cellView.clipsToBounds = true
-//        NSLayoutConstraint.activate([cellView.leadingAnchor.constraint(equalTo: self.leadingAnchor), cellView.trailingAnchor.constraint(equalTo: self.trailingAnchor), cellView.topAnchor.constraint(equalTo: self.topAnchor), cellView.bottomAnchor.constraint(equalTo: self.bottomAnchor)])
-//    }
     
     func setUpImageView() {
         imageView.contentMode = .scaleAspectFill

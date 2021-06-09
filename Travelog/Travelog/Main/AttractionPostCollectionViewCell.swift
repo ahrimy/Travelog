@@ -41,13 +41,6 @@ class AttractionPostCollectionViewCell: UICollectionViewCell {
         likeCommentStackView.addArrangedSubview(commentImg)
         likeCommentStackView.addArrangedSubview(likeLabel)
         likeCommentStackView.addArrangedSubview(likeImg)
-//        likeCommentStackView.addArrangedSubview(likeLabel)
-//        likeCommentStackView.addArrangedSubview(commentImg)
-//        likeCommentStackView.addArrangedSubview(commentLabel)
-//        likeCommentStackView.addSubview(likeImg)
-//        likeCommentStackView.addSubview(likeLabel)
-//        likeCommentStackView.addSubview(commentImg)
-//        likeCommentStackView.addSubview(commentLabel)
         
         setUpCellView()
         setUpImageView()
@@ -109,7 +102,6 @@ class AttractionPostCollectionViewCell: UICollectionViewCell {
         
         addressLabel.textColor = UIColor(red: 0.31, green: 0.16, blue: 0.36, alpha: 1.00)
         addressLabel.numberOfLines = 1
-//        addressLabel.text = post?.locationName
     }
     
     func setUpTextLabel(){
@@ -117,7 +109,6 @@ class AttractionPostCollectionViewCell: UICollectionViewCell {
         textLabel.backgroundColor = .white
         textLabel.textColor = .black
         textLabel.numberOfLines = 1
-//        textLabel.text = post?.text
     }
     
     func setUpLikeCommentStackView(){

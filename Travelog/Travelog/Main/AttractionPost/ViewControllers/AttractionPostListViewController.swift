@@ -41,16 +41,6 @@ class AttractionPostListViewController: UIViewController,UICollectionViewDataSou
         self.posts = posts
         self.postCollectionView.reloadData()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
@@ -58,10 +48,7 @@ class AttractionPostListViewController: UIViewController,UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AttractionPostCollectionViewCell.reuseIdentifier, for: indexPath) as! AttractionPostCollectionViewCell
-        
-//        cell.post = posts[indexPath.row]
-//        cell.imageView.load(urlString: posts[indexPath.row].imageUrl)
-//        cell.nameLabel.text = posts[indexPath.row].writer
+
         cell.configureData(post: posts[indexPath.row])
         
         return cell
