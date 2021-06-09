@@ -72,6 +72,7 @@ class StarredPostDetailViewController: UIViewController {
     }
     
     @IBAction func tappedLikeButton(_ sender: Any){
+        likesButton.isSelected = true
         likesButton.setImage(UIImage(named: "smile.fill.pink"), for: .normal)
         
         let likesInt: Int? = data?.likes
@@ -149,7 +150,7 @@ class StarredPostDetailViewController: UIViewController {
                     return nil
                 }
                 Transaction.updateData(["likes": like - 1], forDocument: ref_details)
-                Transaction.updateData(["likes": like + 1], forDocument: ref_overviews)
+                Transaction.updateData(["likes": like - 1], forDocument: ref_overviews)
                 Transaction.updateData(["likeUsers": FieldValue.arrayRemove([self.user])], forDocument: ref_details)
                 return nil
             }, completion: { (object, error) in

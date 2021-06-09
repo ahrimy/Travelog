@@ -26,8 +26,8 @@ class SearchViewPostCell: UICollectionViewCell {
         name.text = starredpostlist.writer
         imageView.load(urlString: starredpostlist.imageUrl)
         address_info.text = starredpostlist.locationName
-        likeNum.text = "\(starredpostlist.comments)"
-        commentNum.text = "\(starredpostlist.likes)"
+        likeNum.text = "\(starredpostlist.likes)"
+        commentNum.text = "\(starredpostlist.comments)"
         text.text = starredpostlist.text
         
     }
