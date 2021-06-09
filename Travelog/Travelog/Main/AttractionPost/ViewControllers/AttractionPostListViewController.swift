@@ -11,7 +11,7 @@ class AttractionPostListViewController: UIViewController,UICollectionViewDataSou
 
     var attraction: Attraction?
     var posts:[PostOverview] = []
-    let sectionInsets = UIEdgeInsets(top: 50, left: 10, bottom: 5, right: 10)
+    let sectionInsets = UIEdgeInsets(top: 30, left: 10, bottom: 5, right: 10)
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var postCollectionView: UICollectionView!

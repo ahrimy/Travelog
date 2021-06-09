@@ -77,7 +77,7 @@ class AttractionPostCollectionViewCell: UICollectionViewCell {
     func setUpCellView() {
         cellView.translatesAutoresizingMaskIntoConstraints = false
         cellView.clipsToBounds = true
-        cellView.backgroundColor = .red
+        cellView.backgroundColor = .none
     }
     
     func setUpImageView() {
@@ -100,7 +100,7 @@ class AttractionPostCollectionViewCell: UICollectionViewCell {
         addressStackView.translatesAutoresizingMaskIntoConstraints = false
         addressStackView.axis = .horizontal
         addressStackView.spacing = 5
-        addressStackView.backgroundColor = .blue
+        addressStackView.backgroundColor = .none
         addressStackView.alignment = .center
         addressStackView.distribution = .fill
         
@@ -114,7 +114,7 @@ class AttractionPostCollectionViewCell: UICollectionViewCell {
     
     func setUpTextLabel(){
         textLabel.translatesAutoresizingMaskIntoConstraints = false
-        textLabel.backgroundColor = .purple
+        textLabel.backgroundColor = .white
         textLabel.textColor = .black
         textLabel.numberOfLines = 1
 //        textLabel.text = post?.text
@@ -122,7 +122,7 @@ class AttractionPostCollectionViewCell: UICollectionViewCell {
     
     func setUpLikeCommentStackView(){
         likeCommentStackView.translatesAutoresizingMaskIntoConstraints = false
-        likeCommentStackView.backgroundColor = .brown
+        likeCommentStackView.backgroundColor = .none
         likeCommentStackView.alignment = .center
         likeCommentStackView.distribution = .fill
         likeCommentStackView.semanticContentAttribute = .forceRightToLeft
@@ -150,23 +150,23 @@ class AttractionPostCollectionViewCell: UICollectionViewCell {
 
         nameLabel.superview?.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor,constant: 0).isActive = true
         nameLabel.superview?.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 0).isActive = true
-        imageView.topAnchor.constraint(equalTo: nameLabel.topAnchor, constant: -10).isActive = true
+        imageView.topAnchor.constraint(equalTo: nameLabel.topAnchor, constant: -15).isActive = true
         nameLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
-        addressStackView.superview?.leadingAnchor.constraint(equalTo: addressStackView.leadingAnchor,constant: 0).isActive = true
-        addressStackView.superview?.trailingAnchor.constraint(greaterThanOrEqualTo: addressStackView.trailingAnchor, constant: 0).isActive = true
+        addressStackView.superview?.leadingAnchor.constraint(equalTo: addressStackView.leadingAnchor,constant: -5).isActive = true
+        addressStackView.superview?.trailingAnchor.constraint(greaterThanOrEqualTo: addressStackView.trailingAnchor, constant: 5).isActive = true
         addressStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 5).isActive = true
-        addressStackView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        addressStackView.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
-        textLabel.superview?.leadingAnchor.constraint(equalTo: textLabel.leadingAnchor,constant: 0).isActive = true
-        textLabel.superview?.trailingAnchor.constraint(equalTo: textLabel.trailingAnchor, constant: 0).isActive = true
-        textLabel.topAnchor.constraint(equalTo: addressStackView.bottomAnchor, constant: 5).isActive = true
-        textLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        textLabel.superview?.leadingAnchor.constraint(equalTo: textLabel.leadingAnchor,constant: -5).isActive = true
+        textLabel.superview?.trailingAnchor.constraint(equalTo: textLabel.trailingAnchor, constant: 5).isActive = true
+        textLabel.topAnchor.constraint(equalTo: addressStackView.bottomAnchor, constant: 2).isActive = true
+        textLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
-        likeCommentStackView.superview?.leadingAnchor.constraint(lessThanOrEqualTo: likeCommentStackView.leadingAnchor,constant: 0).isActive = true
-        likeCommentStackView.superview?.trailingAnchor.constraint(equalTo: likeCommentStackView.trailingAnchor, constant: 0).isActive = true
+        likeCommentStackView.superview?.leadingAnchor.constraint(lessThanOrEqualTo: likeCommentStackView.leadingAnchor,constant: -5).isActive = true
+        likeCommentStackView.superview?.trailingAnchor.constraint(equalTo: likeCommentStackView.trailingAnchor, constant: 5).isActive = true
         likeCommentStackView.superview?.bottomAnchor.constraint(equalTo: likeCommentStackView.bottomAnchor).isActive = true
-        likeCommentStackView.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 5).isActive = true
-        likeCommentStackView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        likeCommentStackView.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 2).isActive = true
+        likeCommentStackView.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
 }
