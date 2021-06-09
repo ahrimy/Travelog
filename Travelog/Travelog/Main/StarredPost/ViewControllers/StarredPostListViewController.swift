@@ -26,7 +26,6 @@ class StarredPostListViewController: UIViewController, UICollectionViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         StarredPostListCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         StarredPostListCollectionView.backgroundColor = .systemBackground
         view.addSubview(StarredPostListCollectionView)
@@ -57,7 +56,6 @@ class StarredPostListViewController: UIViewController, UICollectionViewDelegate,
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StarredPostListCell", for: indexPath) as? StarredPostListCell else { return UICollectionViewCell()}
         
         cell.configure(with: posts[indexPath.row])
-        
         return cell
     }
 
@@ -68,7 +66,6 @@ class StarredPostListViewController: UIViewController, UICollectionViewDelegate,
 extension StarredPostListViewController:  UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //print("\(sections[0].items[indexPath.item])") // TODO: 셀 클릭 했을 때, 동작
 
         // 포스트 상세 페이지 모달
         guard let postDetailView = self.storyboard?.instantiateViewController(withIdentifier: "postDetailView") as? StarredPostDetailViewController else {

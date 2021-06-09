@@ -72,31 +72,29 @@ class StarredPostDetailViewController: UIViewController {
     }
     
     @IBAction func tappedLikeButton(_ sender: Any){
+        likesButton.setImage(UIImage(named: "smile.fill.pink"), for: .normal)
         
         let likesInt: Int? = data?.likes
         if let newLikesInt = likesInt{
             likesCount.text = "\(newLikesInt)"
         }
         
-        let username: String? = UserService.shared.user?.username
-        if let newUsername = username{
-            user = newUsername
+        let userId: String? = UserService.shared.user?.uid
+        if let newUserId = userId{
+            user = newUserId
         }
         print(data?.likeUsers as Any)
         if (data?.likeUsers.contains(user) == false) {
-            data?.likeUsers.append(user)
-            print(data?.likeUsers as Any)
             
-            likesButton.isSelected = true
-            likesButton.setImage(UIImage(named: "smile.fill"), for: .normal)
             
             // 좋아요 수 + 1 저장
             let db = Firestore.firestore()
             let id = data?.id
-            let ref = db.collection("postdetails").document(id!)
+            let ref_details = db.collection("postdetails").document(id!)
+            let ref_overviews = db.collection("postoverviews").document(id!)
             
             db.runTransaction({(Transaction, ErrorPointer) -> Any? in let Document: DocumentSnapshot
-                do{ try Document = Transaction.getDocument(ref)
+                do{ try Document = Transaction.getDocument(ref_details)
                 } catch let fetchError as NSError{
                     ErrorPointer?.pointee = fetchError
                     return nil
@@ -106,7 +104,15 @@ class StarredPostDetailViewController: UIViewController {
                     ErrorPointer?.pointee = error
                     return nil
                 }
-                Transaction.updateData(["likes": like + 1], forDocument: ref)
+                guard var likeUsers = Document.data()?["likeUsers"] as? [String] else {
+                    let error = NSError(domain: "AppErrorDomain", code: -1, userInfo: [NSLocalizedDescriptionKey:"Unable to retrieve likeusers from snapshot \(Document)"])
+                    ErrorPointer?.pointee = error
+                    return nil
+                }
+                Transaction.updateData(["likes": like + 1], forDocument: ref_details)
+                Transaction.updateData(["likes": like + 1], forDocument: ref_overviews)
+                likeUsers.append(self.user)
+                Transaction.updateData(["likeUsers": likeUsers], forDocument: ref_details)
                 return nil
             }, completion: { (object, error) in
                 if let error = error {
@@ -117,13 +123,46 @@ class StarredPostDetailViewController: UIViewController {
                     print("Transaction successfully committed!")
                 }
             })
+            
+            
         }
         
        
         // 좋아요 취소
-//        else {
-
-//        }
+        else {
+            //likesButton.setImage(UIImage(named: "smile.pink"), for: .normal)
+            // 좋아요 수 - 1 저장
+            let db = Firestore.firestore()
+            let id = data?.id
+            let ref_details = db.collection("postdetails").document(id!)
+            let ref_overviews = db.collection("postoverviews").document(id!)
+            
+            db.runTransaction({(Transaction, ErrorPointer) -> Any? in let Document: DocumentSnapshot
+                do{ try Document = Transaction.getDocument(ref_details)
+                } catch let fetchError as NSError{
+                    ErrorPointer?.pointee = fetchError
+                    return nil
+                }
+                guard let like = Document.data()?["likes"] as? Int else{
+                    let error = NSError(domain: "AppErrorDomain", code: -1, userInfo: [NSLocalizedDescriptionKey:"Unable to retrieve like from snapshot \(Document)"])
+                    ErrorPointer?.pointee = error
+                    return nil
+                }
+                Transaction.updateData(["likes": like - 1], forDocument: ref_details)
+                Transaction.updateData(["likes": like + 1], forDocument: ref_overviews)
+                Transaction.updateData(["likeUsers": FieldValue.arrayRemove([self.user])], forDocument: ref_details)
+                return nil
+            }, completion: { (object, error) in
+                if let error = error {
+                    //실패했을때
+                    print("Transaction failed: \(error)")
+                } else {
+                    //성공했을 때 출력
+                    print("Transaction successfully committed!")
+                }
+            })
+            
+        }
     }
     
 //    @IBAction func tappedCommentField(_ sender: Any){
