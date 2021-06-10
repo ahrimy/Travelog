@@ -247,4 +247,39 @@ class PostService {
         db.collection("postoverviews").document(postId).delete()
         db.collection("postdetails").document(postId).delete()
     }
+    func updateLikes(postId:String, uid:String, isLike: Bool){
+        let ref_details = db.collection("postdetails").document(postId)
+        let ref_overviews = db.collection("postoverviews").document(postId)
+        
+        db.runTransaction({(Transaction, ErrorPointer) -> Any? in let Document: DocumentSnapshot
+            do{ try Document = Transaction.getDocument(ref_details)
+            } catch let fetchError as NSError{
+                ErrorPointer?.pointee = fetchError
+                return nil
+            }
+            guard let like = Document.data()?["likes"] as? Int else{
+                let error = NSError(domain: "AppErrorDomain", code: -1, userInfo: [NSLocalizedDescriptionKey:"Unable to retrieve like from snapshot \(Document)"])
+                ErrorPointer?.pointee = error
+                return nil
+            }
+            if isLike {
+                Transaction.updateData(["likes": like + 1], forDocument: ref_details)
+                Transaction.updateData(["likes": like + 1], forDocument: ref_overviews)
+                Transaction.updateData(["likeUsers": FieldValue.arrayUnion([uid])], forDocument: ref_details)
+            }else{
+                Transaction.updateData(["likes": like - 1], forDocument: ref_details)
+                Transaction.updateData(["likes": like - 1], forDocument: ref_overviews)
+                Transaction.updateData(["likeUsers": FieldValue.arrayRemove([uid])], forDocument: ref_details)
+            }
+            return nil
+        }, completion: { (object, error) in
+            if let error = error {
+                //실패했을때
+                print("Transaction failed: \(error)")
+            } else {
+                //성공했을 때 출력
+                print("Transaction successfully committed!")
+            }
+        })
+    }
 }

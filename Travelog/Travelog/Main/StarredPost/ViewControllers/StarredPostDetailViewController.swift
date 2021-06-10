@@ -8,10 +8,14 @@
 import UIKit
 import FirebaseFirestore
 
+protocol StarredPostDetailViewControllerDelegate: AnyObject {
+    func updateLikes(index: Int, likes: Int)
+}
+
 class StarredPostDetailViewController: UIViewController {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var userButton: UIButton!
     @IBOutlet weak var likesButton: UIButton!
     @IBOutlet weak var likesCount: UILabel!
     @IBOutlet weak var commentsCount: UILabel!
@@ -24,18 +28,22 @@ class StarredPostDetailViewController: UIViewController {
     @IBOutlet weak var pageView: UIPageControl!
     
     // MARK: - Properties
+    var index:Int?
     var postId: String = ""
-    var data: PostDetail?
+    var post: PostDetail?
     var imgUrls: [String] = []
     var starredPostDetailViewController: StarredPostDetailViewController?
     var user: String = ""
+    
+    // Delegate
+    weak var delegate: StarredPostDetailViewControllerDelegate?
+
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 //        view.layer.cornerRadius = 45 // 모달 둥근 정도..
         configureUI()
-        pageView.numberOfPages = imgUrls.count // TODO : page 이미지 갯수와 연결
         pageView.hidesForSinglePage = true
         
 //        if let starredPostDetailViewController = self.starredPostDetailViewController {
@@ -45,123 +53,55 @@ class StarredPostDetailViewController: UIViewController {
         imageSliderCollectionView.dataSource = self
         imageSliderCollectionView.delegate = self
     }
-    
-  
+    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+        configureData()
+        imageSliderCollectionView.reloadData()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        if let index = index, let likes = post?.likes {
+            delegate?.updateLikes(index: index, likes: likes)
+        }
+    }
     
     func loadPost(post: PostDetail){
-        self.data = post
+        self.post = post
         //self.imageSliderCollectionView.reloadData()
     }
     
     
     
-    @IBAction func editNdeleteButton(_ sender: Any){
-        let alert =  UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        let delete = UIAlertAction(title: "삭제", style: .destructive){_ in}
-        
-        let edit =  UIAlertAction(title: "수정", style: .default) {_ in 
-        }
-       
-        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        
-        alert.addAction(delete)
-        alert.addAction(edit)
-        alert.addAction(cancel)
-        present(alert, animated: true, completion: nil)
+    @IBAction func didTouchUserButton(_ sender: Any){
+        print(post?.writer)
     }
     
     @IBAction func tappedLikeButton(_ sender: Any){
-        likesButton.setImage(UIImage(named: "smile.fill.pink"), for: .normal)
         
-        let likesInt: Int? = data?.likes
-        if let newLikesInt = likesInt{
-            likesCount.text = "\(newLikesInt)"
-        }
+        guard let postId = post?.id else{ return }
+        guard let userId = UserService.shared.user?.uid else { return }
         
-        let userId: String? = UserService.shared.user?.uid
-        if let newUserId = userId{
-            user = newUserId
-        }
-        print(data?.likeUsers as Any)
-        if (data?.likeUsers.contains(user) == false) {
-            
-            
+        print(post?.likeUsers as Any)
+        if (post?.likeUsers.contains(userId) == false) {
             // 좋아요 수 + 1 저장
-            let db = Firestore.firestore()
-            let id = data?.id
-            let ref_details = db.collection("postdetails").document(id!)
-            let ref_overviews = db.collection("postoverviews").document(id!)
+            post?.likes += 1
+            post?.likeUsers.append(userId)
+            DispatchQueue.global().async {
+                PostService.shared.updateLikes(postId: postId, uid: userId, isLike: true)
+            }
             
-            db.runTransaction({(Transaction, ErrorPointer) -> Any? in let Document: DocumentSnapshot
-                do{ try Document = Transaction.getDocument(ref_details)
-                } catch let fetchError as NSError{
-                    ErrorPointer?.pointee = fetchError
-                    return nil
-                }
-                guard let like = Document.data()?["likes"] as? Int else{
-                    let error = NSError(domain: "AppErrorDomain", code: -1, userInfo: [NSLocalizedDescriptionKey:"Unable to retrieve like from snapshot \(Document)"])
-                    ErrorPointer?.pointee = error
-                    return nil
-                }
-                guard var likeUsers = Document.data()?["likeUsers"] as? [String] else {
-                    let error = NSError(domain: "AppErrorDomain", code: -1, userInfo: [NSLocalizedDescriptionKey:"Unable to retrieve likeusers from snapshot \(Document)"])
-                    ErrorPointer?.pointee = error
-                    return nil
-                }
-                Transaction.updateData(["likes": like + 1], forDocument: ref_details)
-                Transaction.updateData(["likes": like + 1], forDocument: ref_overviews)
-                likeUsers.append(self.user)
-                Transaction.updateData(["likeUsers": likeUsers], forDocument: ref_details)
-                return nil
-            }, completion: { (object, error) in
-                if let error = error {
-                    //실패했을때
-                    print("Transaction failed: \(error)")
-                } else {
-                    //성공했을 때 출력
-                    print("Transaction successfully committed!")
-                }
-            })
-            
-            
+            likesButton.setImage(UIImage(named: "smile.fill.pink"), for: .normal)
+            likesCount.text = "\(post?.likes ?? 0)"
         }
-        
-       
         // 좋아요 취소
         else {
-            //likesButton.setImage(UIImage(named: "smile.pink"), for: .normal)
             // 좋아요 수 - 1 저장
-            let db = Firestore.firestore()
-            let id = data?.id
-            let ref_details = db.collection("postdetails").document(id!)
-            let ref_overviews = db.collection("postoverviews").document(id!)
-            
-            db.runTransaction({(Transaction, ErrorPointer) -> Any? in let Document: DocumentSnapshot
-                do{ try Document = Transaction.getDocument(ref_details)
-                } catch let fetchError as NSError{
-                    ErrorPointer?.pointee = fetchError
-                    return nil
-                }
-                guard let like = Document.data()?["likes"] as? Int else{
-                    let error = NSError(domain: "AppErrorDomain", code: -1, userInfo: [NSLocalizedDescriptionKey:"Unable to retrieve like from snapshot \(Document)"])
-                    ErrorPointer?.pointee = error
-                    return nil
-                }
-                Transaction.updateData(["likes": like - 1], forDocument: ref_details)
-                Transaction.updateData(["likes": like + 1], forDocument: ref_overviews)
-                Transaction.updateData(["likeUsers": FieldValue.arrayRemove([self.user])], forDocument: ref_details)
-                return nil
-            }, completion: { (object, error) in
-                if let error = error {
-                    //실패했을때
-                    print("Transaction failed: \(error)")
-                } else {
-                    //성공했을 때 출력
-                    print("Transaction successfully committed!")
-                }
-            })
-            
+            post?.likes -= 1
+            post?.likeUsers = post?.likeUsers.filter(){$0 != userId} ?? []
+            DispatchQueue.global().async {
+                PostService.shared.updateLikes(postId: postId, uid: userId, isLike: false)
+            }
+            likesButton.setImage(UIImage(named: "smile.pink"), for: .normal)
+            likesCount.text = "\(post?.likes ?? 0)"
         }
     }
     
@@ -172,11 +112,6 @@ class StarredPostDetailViewController: UIViewController {
 //        self.present(commentView, animated: true, completion: nil)
 //    }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
     let dateFormatter: DateFormatter = {
         let formatter: DateFormatter = DateFormatter()
 //        formatter.dateStyle = .medium
@@ -186,46 +121,49 @@ class StarredPostDetailViewController: UIViewController {
     }()
     
     func configureUI(){
-        locationLabel.text = data?.location.name
-        //imageView.image = data?.images[0]
-        
-        imgUrls = data?.imageUrls ?? []
-        //img = data?.images
-        
-        let date: Date? = data?.date
-        if let newDate = date {
-            let dateString: String = self.dateFormatter.string(from: newDate)
-            dateLabel.text = dateString
-        }
-    
-        let likesInt: Int? = data?.likes
-        if let newLikesInt = likesInt{
-            likesCount.text = "\(newLikesInt)"
-        }
-        
-        let commentsInt: Int? = data?.comments
-        if let newCommentsInt = commentsInt{
-            commentsCount.text = "\(newCommentsInt)"
-        }
-        
-        textLabel.text = data?.text
-        
-        
-//        likesCount.text = "\(likesCountInt)"
+        imageSliderCollectionView.isPagingEnabled = true
         
         locationLabel.font = UIFont.systemFont(ofSize: 17)
         locationLabel.numberOfLines = 1
         
-        //imageView.clipsToBounds = true
-        //imageView.contentMode = .scaleAspectFill
-        
         textLabel.font = UIFont.systemFont(ofSize: 16)
         textLabel.numberOfLines = 0
         textLabel.textAlignment = .left
-        textLabel.sizeToFit()
         textLabel.lineBreakStrategy = .hangulWordPriority
+        textLabel.frame.size = CGSize(width: 358, height: 150)
     }
-
+    func configureData(){
+        textLabel.text = post?.text
+        
+        locationLabel.text = post?.location.name
+        imgUrls = post?.imageUrls ?? []
+        
+        let date: Date? = post?.date
+        
+        if let newDate = date {
+            let dateString: String = self.dateFormatter.string(from: newDate)
+            dateLabel.text = dateString
+        }
+        
+        if let uid = UserService.shared.user?.uid, let likeUsers = post?.likeUsers{
+            if likeUsers.contains(uid){
+                likesButton.setImage(UIImage(named: "smile.fill.pink"), for: .normal)
+            }else{
+                likesButton.setImage(UIImage(named: "smile.pink"), for: .normal)
+            }
+        }
+    
+        let likesInt: Int? = post?.likes
+        if let newLikesInt = likesInt{
+            likesCount.text = "\(newLikesInt)"
+        }
+        
+        let commentsInt: Int? = post?.comments
+        if let newCommentsInt = commentsInt{
+            commentsCount.text = "\(newCommentsInt)"
+        }
+        pageView.numberOfPages = imgUrls.count
+    }
 
 }
 

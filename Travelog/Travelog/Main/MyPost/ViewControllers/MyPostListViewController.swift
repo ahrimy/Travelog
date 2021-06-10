@@ -43,6 +43,10 @@ class MyPostListViewController: UIViewController, UICollectionViewDataSource, UI
         }
         self.collectionView.reloadData()
     }
+    func updateLikes(index: Int, likes:Int){
+        posts[index].likes = likes
+        collectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count

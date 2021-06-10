@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StarredPostViewController: UIViewController {
+class StarredPostViewController: UIViewController, StarredPostDetailViewControllerDelegate{
     
     // TODO: builder 생성 => 중복으로 Service 생성되지 않도록
 //    var postService = PostService(username: "ahrimy")
@@ -55,12 +55,21 @@ class StarredPostViewController: UIViewController {
         if let starredPostMapViewController = self.starredPostMapViewController {
             starredPostMapViewController.loadPosts(posts: posts)
         }
+        
+        if let starredPostDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "postDetailView") as? StarredPostDetailViewController {
+            starredPostDetailViewController.delegate = self
+            self.starredPostListViewController?.starredPostDetailViewController = starredPostDetailViewController
+        }
     }
     func appendPost(post: PostOverview){
         starredPostListViewController?.appendPost(post: post)
         starredPostMapViewController?.appendPost(post: post)
     }
-    
+    func updateLikes(index: Int, likes:Int){
+        if let starredPostListViewController = self.starredPostListViewController {
+            starredPostListViewController.updateLikes(index: index, likes: likes)
+        }
+    }
     
     /*
      // MARK: - Navigation

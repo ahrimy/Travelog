@@ -9,6 +9,7 @@ import UIKit
 
 protocol MyPostDetailViewControllerDelegate: AnyObject {
     func deletePost(postId: String)
+    func updateLikes(index: Int, likes: Int)
 }
 
 class MyPostDetailViewController: UIViewController {
@@ -46,6 +47,11 @@ class MyPostDetailViewController: UIViewController {
         configureData()
         imageSliderCollectionView.reloadData()
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        if let index = index, let likes = post?.likes {
+            delegate?.updateLikes(index: index, likes: likes)
+        }
+    }
   
     func loadPost(post: PostDetail){
         self.post = post
@@ -76,6 +82,32 @@ class MyPostDetailViewController: UIViewController {
     @IBAction func tappedLikeButton(_ sender: Any){
 //        likesButton.setImage(UIImage(named: "smile.fill.pink"), for: .normal)
         print("likes button has tapped")
+        guard let postId = post?.id else{ return }
+        guard let userId = UserService.shared.user?.uid else { return }
+        
+        print(post?.likeUsers as Any)
+        if (post?.likeUsers.contains(userId) == false) {
+            // 좋아요 수 + 1 저장
+            post?.likes += 1
+            post?.likeUsers.append(userId)
+            DispatchQueue.global().async {
+                PostService.shared.updateLikes(postId: postId, uid: userId, isLike: true)
+            }
+            
+            likesButton.setImage(UIImage(named: "smile.fill.pink"), for: .normal)
+            likesCount.text = "\(post?.likes ?? 0)"
+        }
+        // 좋아요 취소
+        else {
+            // 좋아요 수 - 1 저장
+            post?.likes -= 1
+            post?.likeUsers = post?.likeUsers.filter(){$0 != userId} ?? []
+            DispatchQueue.global().async {
+                PostService.shared.updateLikes(postId: postId, uid: userId, isLike: false)
+            }
+            likesButton.setImage(UIImage(named: "smile.pink"), for: .normal)
+            likesCount.text = "\(post?.likes ?? 0)"
+        }
     }
     
     let dateFormatter: DateFormatter = {
@@ -85,6 +117,7 @@ class MyPostDetailViewController: UIViewController {
     }()
     
     func configureUI(){
+        imageSliderCollectionView.isPagingEnabled = true
         locationLabel.font = UIFont.systemFont(ofSize: 17)
         locationLabel.numberOfLines = 1
         
@@ -107,6 +140,11 @@ class MyPostDetailViewController: UIViewController {
             dateLabel.text = dateString
         }
     
+        if let uid = UserService.shared.user?.uid, let likeUsers = post?.likeUsers{
+            if likeUsers.contains(uid){
+                likesButton.setImage(UIImage(named: "smile.fill.pink"), for: .normal)
+            }
+        }
         let likesInt: Int? = post?.likes
         if let newLikesInt = likesInt{
             likesCount.text = "\(newLikesInt)"

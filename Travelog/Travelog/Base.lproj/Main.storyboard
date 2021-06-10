@@ -816,7 +816,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aq2-8d-bUh">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="673"/>
-                                <color key="backgroundColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="1FM-bB-Cm0">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -1067,7 +1067,7 @@
                                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                     <state key="normal" image="dot"/>
                                                                                     <connections>
-                                                                                        <action selector="editNdeleteButton:" destination="osg-hi-0s5" eventType="touchUpInside" id="jFk-F4-mtH"/>
+                                                                                        <action selector="didTouchUserButton:" destination="osg-hi-0s5" eventType="touchUpInside" id="jFk-F4-mtH"/>
                                                                                     </connections>
                                                                                 </button>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Text" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBc-ku-5FN">
@@ -1171,14 +1171,6 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHr-QW-RRJ">
-                                                <rect key="frame" x="358" y="56" width="24" height="4"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="dot"/>
-                                                <connections>
-                                                    <action selector="editNdeleteButton:" destination="osg-hi-0s5" eventType="touchUpInside" id="4BA-2S-GNp"/>
-                                                </connections>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Text" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhX-KB-cFe">
                                                 <rect key="frame" x="16" y="540" width="358" height="169"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1235,6 +1227,17 @@
                                                 <color key="textColor" red="0.85098039219999999" green="0.72156862749999995" blue="0.75686274509999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHr-QW-RRJ">
+                                                <rect key="frame" x="348" y="37" width="34" height="34"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="person.circle" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="didTouchUserButton:" destination="osg-hi-0s5" eventType="touchUpInside" id="4BA-2S-GNp"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.30588235289999999" green="0.16078431369999999" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -1280,7 +1283,6 @@
                     <connections>
                         <outlet property="commentsCount" destination="UIr-8T-5Zp" id="rrC-K6-ytv"/>
                         <outlet property="dateLabel" destination="gF4-k2-rRX" id="zcQ-9I-5ad"/>
-                        <outlet property="editButton" destination="YHr-QW-RRJ" id="Mj5-lo-DNe"/>
                         <outlet property="imageSliderCollectionView" destination="7y3-Ok-IBw" id="0O2-Lf-Gfm"/>
                         <outlet property="likesButton" destination="tFw-OU-M1i" id="UxC-VT-xON"/>
                         <outlet property="likesCount" destination="Q6Z-Dh-KJw" id="GOY-HL-U13"/>
@@ -1288,6 +1290,7 @@
                         <outlet property="pageView" destination="cks-vz-KsK" id="wSH-Um-hYR"/>
                         <outlet property="scrollview" destination="WbT-Ty-If1" id="XeR-gK-QUK"/>
                         <outlet property="textLabel" destination="hhX-KB-cFe" id="DH1-t4-Bvv"/>
+                        <outlet property="userButton" destination="YHr-QW-RRJ" id="Mj5-lo-DNe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="39L-Uk-qJc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1831,6 +1834,7 @@
         <image name="dot" width="170.66667175292969" height="34.333332061767578"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" width="170.66667175292969" height="170.66667175292969"/>
         <image name="rectangle.split.2x2.fill" catalog="system" width="128" height="93"/>

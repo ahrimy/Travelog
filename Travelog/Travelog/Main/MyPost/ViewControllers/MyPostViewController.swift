@@ -107,5 +107,10 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
             myPostListViewController.deletePost(postId: postId)
         }
     }
+    func updateLikes(index: Int, likes:Int){
+        if let myPostListViewController = self.myPostListViewController {
+            myPostListViewController.updateLikes(index: index, likes: likes)
+        }
+    }
 }
 

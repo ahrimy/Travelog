@@ -10,6 +10,7 @@ import UIKit
 class StarredPostListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     var posts:[PostOverview] = []
+    var starredPostDetailViewController: StarredPostDetailViewController?
     let cellIdentifier: String = "StarredPostListCell"
     @IBOutlet weak var StarredPostListCollectionView: UICollectionView!
     
@@ -21,6 +22,11 @@ class StarredPostListViewController: UIViewController, UICollectionViewDelegate,
     func loadPosts(posts:[PostOverview]){
         self.posts = posts
         self.StarredPostListCollectionView.reloadData()
+    }
+    
+    func updateLikes(index: Int, likes: Int){
+        posts[index].likes = likes
+        StarredPostListCollectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
     }
     
     
@@ -68,11 +74,12 @@ extension StarredPostListViewController:  UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         // 포스트 상세 페이지 모달
-        guard let postDetailView = self.storyboard?.instantiateViewController(withIdentifier: "postDetailView") as? StarredPostDetailViewController else {
+        guard let postDetailView = self.starredPostDetailViewController else {
             return
         }
         postDetailView.modalTransitionStyle = .coverVertical
         PostService.shared.loadPostDetail(postId: posts[indexPath.row].id){post in
+            postDetailView.index = indexPath.row
             postDetailView.loadPost(post: post)
             self.present(postDetailView, animated: true, completion: nil)
         }
