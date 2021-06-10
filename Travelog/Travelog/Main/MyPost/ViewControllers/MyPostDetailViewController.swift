@@ -143,8 +143,11 @@ class MyPostDetailViewController: UIViewController {
         if let uid = UserService.shared.user?.uid, let likeUsers = post?.likeUsers{
             if likeUsers.contains(uid){
                 likesButton.setImage(UIImage(named: "smile.fill.pink"), for: .normal)
+            }else{
+                likesButton.setImage(UIImage(named: "smile.pink"), for: .normal)
             }
         }
+    
         let likesInt: Int? = post?.likes
         if let newLikesInt = likesInt{
             likesCount.text = "\(newLikesInt)"
