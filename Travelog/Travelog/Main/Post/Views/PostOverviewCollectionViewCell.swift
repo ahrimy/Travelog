@@ -77,6 +77,9 @@ class PostOverviewCollectionViewCell: UICollectionViewCell {
             
             nameLabel.heightAnchor.constraint(equalToConstant: 0).isActive = true
             textLabel.heightAnchor.constraint(equalToConstant: 0).isActive = true
+        }else{
+            nameLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+            textLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         }
     }
     
@@ -151,7 +154,6 @@ class PostOverviewCollectionViewCell: UICollectionViewCell {
         nameLabel.superview?.topAnchor.constraint(equalTo: nameLabel.topAnchor).isActive = true
         nameLabel.superview?.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor, constant: -5).isActive = true
         nameLabel.superview?.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 5).isActive = true
-        nameLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         imageView.superview?.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 0).isActive = true
         imageView.superview?.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 0).isActive = true
@@ -165,7 +167,6 @@ class PostOverviewCollectionViewCell: UICollectionViewCell {
         textLabel.superview?.leadingAnchor.constraint(equalTo: textLabel.leadingAnchor,constant: -5).isActive = true
         textLabel.superview?.trailingAnchor.constraint(equalTo: textLabel.trailingAnchor, constant: 5).isActive = true
         textLabel.topAnchor.constraint(equalTo: addressStackView.bottomAnchor, constant: 2).isActive = true
-        textLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         
         likeCommentStackView.superview?.leadingAnchor.constraint(lessThanOrEqualTo: likeCommentStackView.leadingAnchor,constant: -5).isActive = true
         likeCommentStackView.superview?.trailingAnchor.constraint(equalTo: likeCommentStackView.trailingAnchor, constant: 5).isActive = true

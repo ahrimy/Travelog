@@ -58,6 +58,7 @@ extension AttractionPostListViewController:UICollectionViewDataSource, UICollect
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostOverviewCollectionViewCell.reuseIdentifier, for: indexPath) as! PostOverviewCollectionViewCell
 
         cell.configureData(post: posts[indexPath.row])
+        cell.setUpHiddenUI(type: "attractionpost")
         
         return cell
     }

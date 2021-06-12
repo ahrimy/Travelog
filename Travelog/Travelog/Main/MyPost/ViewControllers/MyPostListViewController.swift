@@ -11,7 +11,7 @@ class MyPostListViewController: UIViewController {
     
     // MARK: - Properties
     var posts:[PostOverview] = []
-    var myPostDetailViewController: MyPostDetailViewController?
+    var myPostDetailViewController: PostDetailViewController?
     let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
    
     // MARK: - IBOutlet

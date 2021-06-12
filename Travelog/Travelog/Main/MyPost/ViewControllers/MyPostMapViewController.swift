@@ -11,7 +11,7 @@ import MapKit
 class MyPostMapViewController: UIViewController {
     
     // MARK: - Properties
-    var myPostDetailViewController: MyPostDetailViewController?
+    var myPostDetailViewController: PostDetailViewController?
     
     // MARK: - IBOutlet
     @IBOutlet weak var mapView: MKMapView!

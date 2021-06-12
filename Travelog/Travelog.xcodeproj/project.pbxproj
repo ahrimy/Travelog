@@ -28,6 +28,8 @@
 		3E464D9F26088FF800390A0B /* TravelogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E464D9E26088FF800390A0B /* TravelogTests.swift */; };
 		3E464DAA26088FF800390A0B /* TravelogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E464DA926088FF800390A0B /* TravelogUITests.swift */; };
 		3E4A57332674A0AD006FDCAF /* PostOverviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A57322674A0AD006FDCAF /* PostOverviewCollectionViewCell.swift */; };
+		3E4A573E2674C3BC006FDCAF /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A573D2674C3BC006FDCAF /* PostDetailViewController.swift */; };
+		3E4A57402674C5A9006FDCAF /* PostDetailImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A573F2674C5A9006FDCAF /* PostDetailImageCollectionViewCell.swift */; };
 		3E5CF6D22659476600847F84 /* ClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CF6D12659476600847F84 /* ClusterAnnotationView.swift */; };
 		3E5CF6D42659478C00847F84 /* MapItemAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CF6D32659478C00847F84 /* MapItemAnnotationView.swift */; };
 		3E5CF6D62659486800847F84 /* MapItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CF6D52659486800847F84 /* MapItem.swift */; };
@@ -115,6 +117,8 @@
 		3E464DA926088FF800390A0B /* TravelogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelogUITests.swift; sourceTree = "<group>"; };
 		3E464DAB26088FF800390A0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3E4A57322674A0AD006FDCAF /* PostOverviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOverviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		3E4A573D2674C3BC006FDCAF /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		3E4A573F2674C5A9006FDCAF /* PostDetailImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E5CF6D12659476600847F84 /* ClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterAnnotationView.swift; sourceTree = "<group>"; };
 		3E5CF6D32659478C00847F84 /* MapItemAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapItemAnnotationView.swift; sourceTree = "<group>"; };
 		3E5CF6D52659486800847F84 /* MapItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapItem.swift; sourceTree = "<group>"; };
@@ -310,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				3E4A57322674A0AD006FDCAF /* PostOverviewCollectionViewCell.swift */,
+				3E4A573F2674C5A9006FDCAF /* PostDetailImageCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -328,6 +333,7 @@
 		3E4A57342674A148006FDCAF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3E4A573D2674C3BC006FDCAF /* PostDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -805,8 +811,10 @@
 				3E5CF6D42659478C00847F84 /* MapItemAnnotationView.swift in Sources */,
 				3E8EB2062663FD2F004ECFDB /* AttractionCollectionViewCell.swift in Sources */,
 				3E13E1B12655612A00D308BB /* SignInViewController.swift in Sources */,
+				3E4A573E2674C3BC006FDCAF /* PostDetailViewController.swift in Sources */,
 				3E74B9D0261C61BF00AE1CB6 /* UploadPostViewController.swift in Sources */,
 				AC54C5B1261D6EED0020980D /* StarredPostList.swift in Sources */,
+				3E4A57402674C5A9006FDCAF /* PostDetailImageCollectionViewCell.swift in Sources */,
 				3EF3BA702648291F006B1DCA /* PostOverview.swift in Sources */,
 				ACD9407426685807005E4148 /* SearchViewPostCell.swift in Sources */,
 				3E33A940262DDFAC00ABCA8A /* Location.swift in Sources */,

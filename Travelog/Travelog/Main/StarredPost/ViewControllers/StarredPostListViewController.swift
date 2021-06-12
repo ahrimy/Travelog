@@ -10,7 +10,7 @@ import UIKit
 class StarredPostListViewController: UIViewController {
 
     var posts:[PostOverview] = []
-    var starredPostDetailViewController: StarredPostDetailViewController?
+    var starredPostDetailViewController: PostDetailViewController?
     @IBOutlet weak var StarredPostListCollectionView: UICollectionView!
     let sectionInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
 
@@ -61,6 +61,8 @@ extension StarredPostListViewController:  UICollectionViewDelegate, UICollection
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostOverviewCollectionViewCell.reuseIdentifier, for: indexPath) as? PostOverviewCollectionViewCell else { return PostOverviewCollectionViewCell()}
         
         cell.configureData(post: posts[indexPath.row])
+        cell.setUpHiddenUI(type: "starredpost")
+        
         return cell
     }
 }

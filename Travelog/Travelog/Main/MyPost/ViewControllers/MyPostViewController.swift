@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UploadPostViewControllerDelegate, MyPostDetailViewControllerDelegate {
+class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UploadPostViewControllerDelegate, PostDetailViewControllerDelegate {
 
     // MARK: - Properties
 
@@ -58,7 +58,7 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
         if let myPostMapViewController = segue.destination as? MyPostMapViewController {
             self.myPostMapViewController = myPostMapViewController
         }
-        if let myPostDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "MyPostDetailViewController") as? MyPostDetailViewController{
+        if let myPostDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostDetailViewController") as? PostDetailViewController{
             myPostDetailViewController.delegate = self
             self.myPostListViewController?.myPostDetailViewController = myPostDetailViewController
             self.myPostMapViewController?.myPostDetailViewController = myPostDetailViewController

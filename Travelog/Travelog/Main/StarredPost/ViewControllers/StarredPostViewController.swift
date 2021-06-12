@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StarredPostViewController: UIViewController, StarredPostDetailViewControllerDelegate{
+class StarredPostViewController: UIViewController, StarredPostDetailViewControllerDelegate, PostDetailViewControllerDelegate{
     
     // TODO: builder 생성 => 중복으로 Service 생성되지 않도록
 //    var postService = PostService(username: "ahrimy")
@@ -46,6 +46,10 @@ class StarredPostViewController: UIViewController, StarredPostDetailViewControll
         if let starredPostMapViewController = segue.destination as? StarredPostMapViewController {
             self.starredPostMapViewController = starredPostMapViewController
         }
+        if let starredPostDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostDetailViewController") as? PostDetailViewController{
+            starredPostDetailViewController.delegate = self
+            self.starredPostListViewController?.starredPostDetailViewController = starredPostDetailViewController
+        }
     }
     
     func loadPost(posts:[PostOverview]){
@@ -54,11 +58,6 @@ class StarredPostViewController: UIViewController, StarredPostDetailViewControll
         }
         if let starredPostMapViewController = self.starredPostMapViewController {
             starredPostMapViewController.loadPosts(posts: posts)
-        }
-        
-        if let starredPostDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: "postDetailView") as? StarredPostDetailViewController {
-            starredPostDetailViewController.delegate = self
-            self.starredPostListViewController?.starredPostDetailViewController = starredPostDetailViewController
         }
     }
     func appendPost(post: PostOverview){
@@ -69,6 +68,8 @@ class StarredPostViewController: UIViewController, StarredPostDetailViewControll
         if let starredPostListViewController = self.starredPostListViewController {
             starredPostListViewController.updateLikes(index: index, likes: likes)
         }
+    }
+    func deletePost(postId: String) {
     }
     
     /*
