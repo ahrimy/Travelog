@@ -7,13 +7,34 @@
 
 import UIKit
 
-class StarredPostListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class StarredPostListViewController: UIViewController {
 
     var posts:[PostOverview] = []
     var starredPostDetailViewController: StarredPostDetailViewController?
-    let cellIdentifier: String = "StarredPostListCell"
     @IBOutlet weak var StarredPostListCollectionView: UICollectionView!
+    let sectionInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        StarredPostListCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        StarredPostListCollectionView.backgroundColor = .systemBackground
+        view.addSubview(StarredPostListCollectionView)
+
+        StarredPostListCollectionView.translatesAutoresizingMaskIntoConstraints = false // AutoLayout 설정
+        StarredPostListCollectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        StarredPostListCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        StarredPostListCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        StarredPostListCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+
+        StarredPostListCollectionView.register(PostOverviewCollectionViewCell.self, forCellWithReuseIdentifier: PostOverviewCollectionViewCell.reuseIdentifier)
+        
+        StarredPostListCollectionView.dataSource = self
+        StarredPostListCollectionView.delegate = self
+        
+    }
     
+    // MARK: - Methods
     func appendPost(post:PostOverview){
         self.posts.append(post)
         self.StarredPostListCollectionView.reloadData()
@@ -28,46 +49,21 @@ class StarredPostListViewController: UIViewController, UICollectionViewDelegate,
         posts[index].likes = likes
         StarredPostListCollectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
     }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        StarredPostListCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        StarredPostListCollectionView.backgroundColor = .systemBackground
-        view.addSubview(StarredPostListCollectionView)
 
-        StarredPostListCollectionView.translatesAutoresizingMaskIntoConstraints = false // AutoLayout 설정
-        StarredPostListCollectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        StarredPostListCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        StarredPostListCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        StarredPostListCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+}
 
-        StarredPostListCollectionView.register(StarredPostListCell.self, forCellWithReuseIdentifier: StarredPostListCell.reuseIdentifier)
-        
-        StarredPostListCollectionView.dataSource = self
-        StarredPostListCollectionView.delegate = self
-        
-    }
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        StarredPostListCollectionView.reloadData()
-//    }
-
-    
+extension StarredPostListViewController:  UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StarredPostListCell", for: indexPath) as? StarredPostListCell else { return UICollectionViewCell()}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostOverviewCollectionViewCell.reuseIdentifier, for: indexPath) as? PostOverviewCollectionViewCell else { return PostOverviewCollectionViewCell()}
         
-        cell.configure(with: posts[indexPath.row])
+        cell.configureData(post: posts[indexPath.row])
         return cell
     }
-
 }
-
-
 
 extension StarredPostListViewController:  UICollectionViewDelegateFlowLayout {
 
@@ -87,10 +83,24 @@ extension StarredPostListViewController:  UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width / 2 - 2, height: 300) // TODO: 셀 사이즈 지정
+        let width = collectionView.frame.width
+        
+        let itemsPerRow: CGFloat = 2
+        let widthPadding = sectionInsets.left * (itemsPerRow + 1)
+        
+        let cellWidth = (width - widthPadding) / itemsPerRow
+        
+        
+        return CGSize(width: cellWidth, height: cellWidth*1.5)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return self.sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return self.sectionInsets.left
     }
 }

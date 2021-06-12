@@ -7,28 +7,32 @@
 
 import UIKit
 
-class AttractionPostListViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate {
+class AttractionPostListViewController: UIViewController {
 
     var attraction: Attraction?
     var posts:[PostOverview] = []
     let sectionInsets = UIEdgeInsets(top: 30, left: 10, bottom: 5, right: 10)
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var postCollectionView: UICollectionView!
+    @IBOutlet weak var nameLabel: UILabel!{
+        didSet{
+            nameLabel.numberOfLines = 2
+        }
+    }
+    @IBOutlet weak var postCollectionView: UICollectionView!{
+        didSet{
+            postCollectionView.layer.cornerRadius = 50
+            postCollectionView.layer.maskedCorners = [CACornerMask.layerMaxXMinYCorner, CACornerMask.layerMinXMinYCorner]
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         nameLabel.text = attraction?.name
-        nameLabel.numberOfLines = 2
-        postCollectionView.layer.cornerRadius = 50
-        postCollectionView.layer.maskedCorners = [CACornerMask.layerMaxXMinYCorner, CACornerMask.layerMinXMinYCorner]
         
-        postCollectionView.register(AttractionPostCollectionViewCell.self, forCellWithReuseIdentifier: AttractionPostCollectionViewCell.reuseIdentifier)
+        postCollectionView.register(PostOverviewCollectionViewCell.self, forCellWithReuseIdentifier: PostOverviewCollectionViewCell.reuseIdentifier)
         
         if let locality = attraction?.locality , let countryCode = attraction?.countryCode{
-            print(locality)
-            print(countryCode)
             PostService.shared.loadAttractionPostOverviews(locality: locality, countryCode: countryCode, loadPosts: loadPosts(posts:))
         }
         
@@ -37,23 +41,26 @@ class AttractionPostListViewController: UIViewController,UICollectionViewDataSou
         self.navigationController?.isNavigationBarHidden = false
     }
     
+    // MARK: - Methods
+    
     func loadPosts(posts:[PostOverview]){
         self.posts = posts
         self.postCollectionView.reloadData()
     }
-    
+}
+
+extension AttractionPostListViewController:UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AttractionPostCollectionViewCell.reuseIdentifier, for: indexPath) as! AttractionPostCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostOverviewCollectionViewCell.reuseIdentifier, for: indexPath) as! PostOverviewCollectionViewCell
 
         cell.configureData(post: posts[indexPath.row])
         
         return cell
     }
-
 }
 
 extension AttractionPostListViewController: UICollectionViewDelegateFlowLayout{

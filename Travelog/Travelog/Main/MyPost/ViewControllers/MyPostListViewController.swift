@@ -7,11 +7,12 @@
 
 import UIKit
 
-class MyPostListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class MyPostListViewController: UIViewController {
     
     // MARK: - Properties
     var posts:[PostOverview] = []
     var myPostDetailViewController: MyPostDetailViewController?
+    let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
    
     // MARK: - IBOutlet
     @IBOutlet weak var collectionView: UICollectionView!
@@ -21,6 +22,8 @@ class MyPostListViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        collectionView.register(PostOverviewCollectionViewCell.self, forCellWithReuseIdentifier: PostOverviewCollectionViewCell.reuseIdentifier)
+        
     }
     
     // MARK: - Methods
@@ -47,44 +50,47 @@ class MyPostListViewController: UIViewController, UICollectionViewDataSource, UI
         posts[index].likes = likes
         collectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
     }
-    
+}
+
+
+extension MyPostListViewController:UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyPostOverviewCell", for: indexPath) as! MyPostViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostOverviewCollectionViewCell.reuseIdentifier, for: indexPath) as! PostOverviewCollectionViewCell
         
-        cell.overview = posts[indexPath.row]
-        if let image = posts[indexPath.row].image {
-            cell.imageView.image = image
-        }else{
-            cell.imageView.load(urlString: posts[indexPath.row].imageUrl)
-        }
+        cell.configureData(post: posts[indexPath.row])
+        cell.setUpHiddenUI(type: "mypost")
         
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let width = collectionView.frame.width
-            let itemsPerRow: CGFloat = 3
-            let cellWidth = width / itemsPerRow
+}
 
-            return CGSize(width: cellWidth, height: cellWidth)
-    }
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
+extension MyPostListViewController: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width
         
-      return  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        let itemsPerRow: CGFloat = 2
+        let widthPadding = sectionInsets.left * (itemsPerRow + 1)
+        
+        let cellWidth = (width - widthPadding) / itemsPerRow
+        
+        
+        return CGSize(width: cellWidth, height: cellWidth*1.5)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return self.sectionInsets
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-      return 0
+        return self.sectionInsets.left
     }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let myPostDetailViewController = self.myPostDetailViewController else { return }
         myPostDetailViewController.modalTransitionStyle = .coverVertical
@@ -94,5 +100,5 @@ class MyPostListViewController: UIViewController, UICollectionViewDataSource, UI
             self.present(myPostDetailViewController, animated: true, completion: nil)
         }
     }
-
 }
+

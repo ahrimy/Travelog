@@ -19,6 +19,7 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var mapListSegmentedControl: UISegmentedControl!
     @IBOutlet weak var MyPostMapView: UIView!
     @IBOutlet weak var MyPostListView: UIView!
+    let customeView = UIView()
     
     // MARK: - IBAction
     @IBAction func touchUpSelectSettingButton(_sender: UIButton){
@@ -79,12 +80,10 @@ class MyPostViewController: UIViewController, UIImagePickerControllerDelegate, U
             }
         }
         let postId = UUID().uuidString
-        DispatchQueue.global().async {
-            PostService.shared.uploadImage(postId: postId, writer:writer, ids: imageIds, images: images ?? [])
-            PostService.shared.uploadPostOverview(id:postId, data:data, imageId: imageIds[0])
-            PostService.shared.uploadPostDetail(id:postId, data:data, imageIds: imageIds)
-        }
-        self.appendPost(post: PostOverview(id: postId, image: (images?[0])!, imageUrl:"",date: data["date"] as! Date, text: data["text"] as! String, createdAt: data["createdAt"] as! Date, coordinate: (data["location"] as! Location).coordinate,locationName: (data["location"] as! Location).name, likes: 0, comments: 0, writer: writer))
+        PostService.shared.uploadImage(postId: postId, writer:writer, ids: imageIds, images: images ?? [])
+        PostService.shared.uploadPostOverview(id:postId, data:data, imageId: imageIds[0])
+        PostService.shared.uploadPostDetail(id:postId, data:data, imageIds: imageIds)
+        self.appendPost(post: PostOverview(id: postId, image: (images?[0])!, imageUrl:"",date: data["date"] as! Date, text: data["text"] as! String, createdAt: data["createdAt"] as! Date, coordinate: (data["location"] as! Location).coordinate,locationName: "\((data["location"] as! Location).name), \((data["location"] as! Location).country)", likes: 0, comments: 0, writer: writer))
         completion()
     }
     func loadPost(posts:[PostOverview]){
