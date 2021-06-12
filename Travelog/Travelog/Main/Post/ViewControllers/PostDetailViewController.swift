@@ -142,6 +142,13 @@ class PostDetailViewController: UIViewController {
                 likesButton.setImage(UIImage(named: "smile.pink"), for: .normal)
             }
         }
+        if let username = UserService.shared.user?.username, let writer = post?.writer{
+            if username == writer{
+                editButton.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+            }else{
+                editButton.setImage(UIImage(systemName: "person.circle"), for: .normal)
+            }
+        }
     
         let likesInt: Int? = post?.likes
         if let newLikesInt = likesInt{
